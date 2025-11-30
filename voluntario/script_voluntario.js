@@ -1,11 +1,3 @@
- <div id="area-navbar"></div>
-
-   <div id="area-footer"></div>
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   // ================= NAVBAR =================
