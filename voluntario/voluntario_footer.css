@@ -1,0 +1,126 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.pagina {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.rodape {
+    margin-top: auto;
+}
+
+
+
+.rodape {
+    background-color: #00123B;
+    padding: 20px 0;
+}
+
+.conteiner-rodape {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 0 24px;
+}
+
+.bloco-links {
+    display: flex;
+    gap: 40px;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+.coluna-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.link-rodape {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.link-rodape:hover {
+    opacity: 0.8;
+}
+
+.linha-vertical {
+    width: 1px;
+    height: 56px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.bloco-sociais {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.link-social {
+    display: inline-flex;
+}
+
+.icone-social {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.bloco-apps {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.botao-app {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 26px;
+    border-radius: 999px;
+    border: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.icone-app {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.texto-botao-app {
+    font-size: 12px;
+    font-weight: 500;
+    color: #00123B;
+    white-space: nowrap;
+}
+
+.bloco-logo-rodape {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-rodape {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.texto-logo-rodape {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}

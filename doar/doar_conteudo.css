@@ -1,0 +1,255 @@
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+/* SECTION HERO DOAR */
+.secao-doacoes {
+    background-color: #F5F6FA;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-doacoes {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.bloco-texto-doacoes {
+    max-width: 560px;
+}
+
+.titulo-doacoes {
+    font-size: 40px;
+    line-height: 1.2;
+    color: #00123B;
+    margin: 0 0 24px 0;
+    font-weight: 700;
+}
+
+.subtitulo-doacoes {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #00123B;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+}
+
+.botao-doacoes {
+    background-color: #2E8B57;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 56px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+}
+
+.botao-doacoes:hover {
+    opacity: 0.95;
+}
+
+.bloco-imagem-doacoes {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.imagem-doacoes {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+/* SECTION 3 FORMAS DE DOAR */
+.secao-formas-doar {
+    background-color: #F5F6FA;
+    padding: 40px 0 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-formas {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.titulo-formas {
+    font-size: 32px;
+    line-height: 1.2;
+    color: #00123B;
+    font-weight: 700;
+    margin: 0 0 28px 0;
+}
+
+.cartoes-formas {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.cartao-forma {
+    flex: 1;
+    min-width: 260px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-topo {
+    padding: 24px 24px 18px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.cartao-corpo {
+    padding: 24px;
+    text-align: center;
+    font-size: 16px;
+    color: #00123B;
+}
+
+.cartao-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.cartao-subtitulo {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.cartao-texto {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.cartao-doadores {
+    border: 1px solid #00123B;
+}
+
+.cartao-doadores .cartao-topo {
+    background-color: #00123B;
+}
+
+.cartao-voluntarios {
+    border: 1px solid #2E8B57;
+}
+
+.cartao-voluntarios .cartao-topo {
+    background-color: #2E8B57;
+}
+
+.cartao-pontos {
+    border: 1px solid #FF7A00;
+}
+
+.cartao-pontos .cartao-topo {
+    background-color: #FF7A00;
+}
+
+/* SECTION PASSO A PASSO */
+.secao-passo-perfil {
+    background-color: #F5F6FA;
+    padding: 40px 0 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-passo-perfil {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.titulo-passo-perfil {
+    font-size: 32px;
+    line-height: 1.2;
+    color: #00123B;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+}
+
+.linha-passo {
+    display: grid;
+    grid-template-columns: 1.3fr 1.3fr 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 24px;
+}
+
+.linha-passo-doadores {
+    background-color: #8A91A6;
+    margin: 5px 0;
+}
+
+.linha-passo-voluntarios {
+    background-color: #608F83;
+    margin: 5px 0;
+}
+
+.linha-passo-pontos {
+    background-color: #A68549;
+    margin: 5px 0;
+}
+
+.coluna-texto {
+    font-size: 15px;
+    color: #00123B;
+}
+
+.texto-passo {
+    margin: 0 0 4px 0;
+}
+
+.coluna-botao {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botao-passo {
+    width: 250px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 10px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #FFFFFF;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.botao-passo-doadores {
+    background-color: #00123B;
+}
+
+.botao-passo-voluntarios {
+    background-color: #2E8B57;
+}
+
+.botao-passo-pontos {
+    background-color: #FF7A00;
+}
+
+.botao-passo:hover {
+    opacity: 0.96;
+}

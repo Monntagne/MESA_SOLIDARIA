@@ -1,0 +1,47 @@
+ <div id="area-navbar"></div>
+
+   <div id="area-footer"></div>
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ================= NAVBAR =================
+  fetch("../Navegacao/Navbar/navbar.html")
+    .then((resposta) => resposta.text())
+    .then((html) => {
+      const areaNavbar = document.getElementById("area-navbar");
+      if (areaNavbar) {
+        areaNavbar.innerHTML = html;
+      } else {
+        console.warn('Elemento com id "area-navbar" não encontrado na página.');
+      }
+    })
+    .catch((erro) => {
+      console.error("Erro ao carregar o navbar:", erro);
+    });
+
+
+  // ================= FOOTER =================
+  fetch("../Navegacao/Footer/footer.html")
+    .then((resposta) => resposta.text())
+    .then((html) => {
+      const areaFooter = document.getElementById("area-footer");
+      if (areaFooter) {
+        areaFooter.innerHTML = html;
+      } else {
+        console.warn('Elemento com id "area-footer" não encontrado na página.');
+      }
+    })
+    .catch((erro) => {
+      console.error("Erro ao carregar o footer:", erro);
+    });
+
+
+//RESTO DO CODIGO
+
+
+
+});
