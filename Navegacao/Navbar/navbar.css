@@ -1,20 +1,31 @@
+
 * {
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
+    padding-top: 100px; /* mesma altura do .cabecalho */
 }
 
+/* ================== CABEÇALHO / NAVBAR ================== */
 .cabecalho {
     background-color: #00123B;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
+/* ================== CONTAINER NAVBAR ================== */
 .conteiner-navbar {
     width: 100%;
     max-width: 1200px;
@@ -24,6 +35,7 @@ body {
     padding: 0 24px;
 }
 
+/* ================== LOGO ================== */
 .area-logo {
     display: flex;
     align-items: center;
@@ -34,13 +46,14 @@ body {
     object-fit: contain;
 }
 
+/* ================== MENU ================== */
 .menu {
     display: flex;
     align-items: center;
-    gap: 32px;
-    margin-left: 40px;
     flex: 1;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 28px;
+    margin: 0 40px;
 }
 
 .item-menu {
@@ -55,6 +68,7 @@ body {
     opacity: 0.8;
 }
 
+/* ================== BOTÃO ENTRAR ================== */
 .area-botao {
     display: flex;
     align-items: center;
@@ -62,16 +76,34 @@ body {
 }
 
 .botao-entrar {
-    background-color: #2E8B57;
+    background-color: transparent;
     color: #FFFFFF;
-    border: none;
+    border: 1.8px solid #FFFFFF;
     border-radius: 999px;
     padding: 8px 26px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .botao-entrar:hover {
-    opacity: 0.9;
+    background-color: #2E8B57;
+    border-color: #2E8B57;
+    color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* ================== CONTAINER .PAGINA ================== */
+.pagina {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* ================== SEÇÃO BANNER INICIAL ================== */
+.secao-banner-inicial {
+    width: 100%;
+    margin: 0;
+    /* resto das regras que você já tinha: altura, imagem, etc. */
 }
