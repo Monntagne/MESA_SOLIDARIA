@@ -33,3 +33,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cartoesMotivo = document.querySelectorAll(".cartao-motivo-voluntario");
+
+  cartoesMotivo.forEach((cartao) => {
+    // trava a altura atual do card pra ele não “pular” quando vira
+    const alturaOriginal = cartao.offsetHeight;
+    cartao.style.height = `${alturaOriginal}px`;
+
+    cartao.addEventListener("click", () => {
+      const estaVirado = cartao.classList.contains("virado");
+
+      if (!estaVirado) {
+        // escolhe aleatoriamente 180 ou -180
+        const sinal = Math.random() < 0.5 ? "" : "-";
+        const angulo = 180;
+
+        cartao.style.transform = `rotateY(${sinal}${angulo}deg)`;
+        cartao.classList.add("virado");
+      } else {
+        cartao.style.transform = "rotateY(0deg)";
+        cartao.classList.remove("virado");
+      }
+    });
+  });
+});

@@ -9,39 +9,16 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="como_funciona_navbar.css" />
+    <link rel="stylesheet" href="../Navegacao/Navbar/navbar.css" />
     <link rel="stylesheet" href="como_funciona_conteudo.css" />
-    <link rel="stylesheet" href="como_funciona_footer.css" />
+    <link rel="stylesheet" href="../Navegacao/Footer/footer.css" />
     <link rel="icon" type="image/png" href="img/logo.png" />
   </head>
   <body>
     <div class="pagina">
-      <header class="cabecalho">
-        <div class="conteiner-navbar">
-          <div class="area-logo">
-            <img
-              src="img/logo.png"
-              alt="Logo Mesa Solidária"
-              class="imagem-logo"
-            />
-          </div>
+       <div id="area-navbar"></div>     
 
-          <nav class="menu">
-            <a href="../inicio.html" class="item-menu">Início</a>
-            <a href="../sobre/sobre.html" class="item-menu">Sobre</a>
-            <a href="como_funciona.html" class="item-menu">Como funciona</a>
-            <a href="../Doar/doar.html" class="item-menu">Doar</a>
-            <a href="#voluntario" class="item-menu">Voluntário</a>
-            <a href="#impacto" class="item-menu">Impacto</a>
-            <a href="#faq" class="item-menu">FAQ</a>
-            <a href="#contato" class="item-menu">Contato</a>
-          </nav>
-
-          <div class="area-botao">
-            <button class="botao-entrar">Entrar</button>
-          </div>
-        </div>
-      </header>
+      
 
       <section class="secao-pilares">
         <div class="fundo-pilares">
@@ -217,64 +194,107 @@
           </div>
         </div>
       </section>
+      <!-- NOVA SEÇÃO – COMO FUNCIONA PARA CADA PERFIL -->
+      <section class="secao-como-funciona-perfis">
+        <div class="conteiner-como-funciona-perfis">
+          <h2 class="titulo-como-funciona-perfis">
+            Como funciona para cada perfil
+          </h2>
+          <p class="subtitulo-como-funciona-perfis">
+            Veja o passo a passo de cada participante dentro do Mesa Solidária.
+          </p>
 
-      <footer class="rodape">
-        <div class="conteiner-rodape">
-          <div class="bloco-links">
-            <div class="coluna-links">
-              <a href="#inicio" class="link-rodape">Início</a>
-              <a href="#sobre" class="link-rodape">Sobre</a>
-              <a href="#como-funciona" class="link-rodape">Como funciona</a>
-              <a href="#doar" class="link-rodape">Doar</a>
-            </div>
+          <div class="grade-como-funciona-perfis">
+            <article class="cartao-fluxo-perfil cartao-fluxo-beneficiario">
+              <h3 class="titulo-fluxo-perfil">Para beneficiários</h3>
+              <ol class="lista-passos-perfil">
+                <li>Cadastre sua família na plataforma.</li>
+                <li>Envie os documentos básicos para validação.</li>
+                <li>Escolha se vai retirar no ponto de coleta ou receber por voluntário.</li>
+                <li>Acompanhe seu histórico de retiradas e agendamentos.</li>
+              </ol>
+            </article>
 
-            <div class="coluna-links">
-              <a href="#voluntario" class="link-rodape">Voluntário</a>
-              <a href="#impacto" class="link-rodape">Impacto</a>
-              <a href="#faq" class="link-rodape">FAQ</a>
-              <a href="#contato" class="link-rodape">Contato</a>
-            </div>
-          </div>
+            <article class="cartao-fluxo-perfil cartao-fluxo-doador">
+              <h3 class="titulo-fluxo-perfil">Para doadores</h3>
+              <ol class="lista-passos-perfil">
+                <li>Registre a doação informando tipo de alimento e quantidade.</li>
+                <li>Escolha um ponto de coleta parceiro ou solicite retirada com voluntário.</li>
+                <li>Acompanhe a triagem e a entrega dos alimentos.</li>
+                <li>Receba confirmações e relatórios de impacto das doações.</li>
+              </ol>
+            </article>
 
-          <div class="linha-vertical"></div>
+            <article class="cartao-fluxo-perfil cartao-fluxo-voluntario">
+              <h3 class="titulo-fluxo-perfil">Para voluntários</h3>
+              <ol class="lista-passos-perfil">
+                <li>Crie sua conta e envie documentos para análise.</li>
+                <li>Conclua o pequeno treinamento online de boas práticas.</li>
+                <li>Escolha rotas disponíveis de retirada e entrega.</li>
+                <li>Ganhe pontos a cada rota concluída e acompanhe seu impacto.</li>
+              </ol>
+            </article>
 
-          <div class="bloco-sociais">
-            <a href="#" class="link-social">
-              <img src="Img/FACEBOOK.png" alt="Facebook" class="icone-social" />
-            </a>
-            <a href="#" class="link-social">
-              <img src="Img/GOOGLE.png" alt="Google" class="icone-social" />
-            </a>
-            <a href="#" class="link-social">
-              <img src="Img/LINKEDIN.png" alt="LinkedIn" class="icone-social" />
-            </a>
-            <a href="#" class="link-social">
-              <img src="Img/X.png" alt="X" class="icone-social" />
-            </a>
-          </div>
-
-          <div class="linha-vertical"></div>
-
-          <div class="bloco-apps">
-            <button class="botao-app">
-              <img src="Img/apple.png" alt="Apple" class="icone-app" />
-              <span class="texto-botao-app">Baixe nosso App!</span>
-            </button>
-
-            <button class="botao-app">
-              <img src="img/android.png" alt="Android" class="icone-app" />
-              <span class="texto-botao-app">Baixe nosso App!</span>
-            </button>
-          </div>
-
-          <div class="linha-vertical"></div>
-
-          <div class="bloco-logo-rodape">
-            <img src="img/logo.png" alt="Mesa Solidária" class="logo-rodape" />
-            <span class="texto-logo-rodape">Mesa Solidária</span>
+            <article class="cartao-fluxo-perfil cartao-fluxo-ponto-coleta">
+              <h3 class="titulo-fluxo-perfil">Para pontos de coleta</h3>
+              <ol class="lista-passos-perfil">
+                <li>Cadastre a empresa ou comércio como ponto de coleta.</li>
+                <li>Receba e registre as doações que chegam ao local.</li>
+                <li>Faça a triagem e organize os itens armazenados.</li>
+                <li>Libere retiradas para voluntários e famílias autorizadas.</li>
+              </ol>
+            </article>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <!-- NOVA SEÇÃO – TECNOLOGIA, SEGURANÇA E TRANSPARÊNCIA -->
+      <section class="secao-tecnologia-seguranca">
+        <div class="conteiner-tecnologia-seguranca">
+          <h2 class="titulo-tecnologia-seguranca">
+            Tecnologia, segurança e transparência
+          </h2>
+          <p class="subtitulo-tecnologia-seguranca">
+            Por trás da jornada da doação existe uma plataforma que organiza dados,
+            protege informações e mostra o impacto gerado em cada ação.
+          </p>
+
+          <div class="grade-tecnologia-seguranca">
+            <article class="cartao-tecnologia">
+              <span class="etiqueta-tecnologia">Proteção de dados</span>
+              <h3 class="titulo-cartao-tecnologia">LGPD e privacidade</h3>
+              <p class="texto-cartao-tecnologia">
+                Dados de beneficiários, doadores, voluntários e pontos de coleta
+                são tratados seguindo as diretrizes da LGPD, com cadastro seguro
+                e acesso controlado.
+              </p>
+            </article>
+
+            <article class="cartao-tecnologia">
+              <span class="etiqueta-tecnologia">Acompanhamento</span>
+              <h3 class="titulo-cartao-tecnologia">Rastreio das doações</h3>
+              <p class="texto-cartao-tecnologia">
+                Cada doação registrada gera um fluxo rastreável: registro,
+                triagem, armazenamento, retirada e entrega para a família
+                beneficiária.
+              </p>
+            </article>
+
+            <article class="cartao-tecnologia">
+              <span class="etiqueta-tecnologia">Impacto social</span>
+              <h3 class="titulo-cartao-tecnologia">Relatórios e ODS</h3>
+              <p class="texto-cartao-tecnologia">
+                A plataforma gera relatórios de impacto alinhados à ODS 2
+                (Fome Zero) e ODS 12 (Consumo e Produção Responsáveis),
+                mostrando resultados para doadores, voluntários, pontos de coleta
+                e empresas parceiras.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+   <div id="area-footer"></div>
+      
     </div>
   </body>
   <script src="script_como_funciona.js"></script>

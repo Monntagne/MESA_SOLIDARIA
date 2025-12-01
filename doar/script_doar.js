@@ -84,3 +84,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ========= SCROLL SUAVE DO BOTÃO HERO "QUERO COMEÇAR A DOAR" =========
+  const botaoHeroDoacoes = document.querySelector(".botao-doacoes");
+  const secaoOQueDoar = document.getElementById("secao-o-que-doar");
+
+  if (botaoHeroDoacoes && secaoOQueDoar) {
+    botaoHeroDoacoes.addEventListener("click", (evento) => {
+      evento.preventDefault();
+
+      const topo =
+        secaoOQueDoar.getBoundingClientRect().top + window.scrollY - 80;
+
+      window.scrollTo({
+        top: topo,
+        behavior: "smooth",
+      });
+    });
+  }
+
+  // ========= ANIMAÇÃO DE ENTRADA DOS NOVOS CARDS =========
+  const elementosAnimar = document.querySelectorAll(
+    ".cartao-tipo-doacao, .cartao-plano-doacao, .cartao-transparencia-doacao, .cartao-duvida-doador"
+  );
+
+  if ("IntersectionObserver" in window && elementosAnimar.length) {
+    const observer = new IntersectionObserver(
+      (entradas, obs) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visivel");
+            obs.unobserve(entrada.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    elementosAnimar.forEach((el) => observer.observe(el));
+  } else {
+    // fallback se o navegador não tiver IntersectionObserver
+    elementosAnimar.forEach((el) => el.classList.add("visivel"));
+  }
+});

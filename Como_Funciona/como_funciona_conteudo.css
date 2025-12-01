@@ -314,3 +314,218 @@
     transition: opacity 0.2s ease, width 0.2s ease, left 0.2s ease, top 0.2s ease;
     z-index: 0; /* fica atrás dos cards, mas acima da imagem */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================== COMO FUNCIONA PARA CADA PERFIL ================== */
+
+.secao-como-funciona-perfis {
+    width: 100%;
+    background-color: #F5F6FA;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-como-funciona-perfis {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.titulo-como-funciona-perfis {
+    font-size: 26px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.subtitulo-como-funciona-perfis {
+    font-size: 14px;
+    color: #00123B;
+    margin: 0 0 24px 0;
+    max-width: 640px;
+}
+
+.grade-como-funciona-perfis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.cartao-fluxo-perfil {
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 20px 20px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+}
+
+.cartao-fluxo-perfil:hover {
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.10);
+}
+
+/* cor da borda superior por perfil */
+
+.cartao-fluxo-perfil::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.cartao-fluxo-beneficiario::before {
+    background-color: #2E8B57;
+}
+
+.cartao-fluxo-doador::before {
+    background-color: #FF7A00;
+}
+
+.cartao-fluxo-voluntario::before {
+    background-color: #00123B;
+}
+
+.cartao-fluxo-ponto-coleta::before {
+    background-color: #FFD54F;
+}
+
+.titulo-fluxo-perfil {
+    font-size: 16px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 10px 0;
+}
+
+.lista-passos-perfil {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #00123B;
+}
+
+.lista-passos-perfil li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* bolinha antes de cada passo */
+
+.lista-passos-perfil li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00123B;
+}
+
+/* quando ganhar .visivel pelo JS */
+
+.cartao-fluxo-perfil.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================== TECNOLOGIA, SEGURANÇA E TRANSPARÊNCIA ================== */
+
+.secao-tecnologia-seguranca {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 48px 0 56px;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-tecnologia-seguranca {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.titulo-tecnologia-seguranca {
+    font-size: 26px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+}
+
+.subtitulo-tecnologia-seguranca {
+    font-size: 14px;
+    color: #00123B;
+    margin: 0 0 24px 0;
+    max-width: 640px;
+}
+
+.grade-tecnologia-seguranca {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.cartao-tecnologia {
+    background-color: #F5F6FA;
+    border-radius: 24px;
+    padding: 20px 20px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+}
+
+.cartao-tecnologia:hover {
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.10);
+}
+
+.etiqueta-tecnologia {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: #00123B;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.titulo-cartao-tecnologia {
+    font-size: 16px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+}
+
+.texto-cartao-tecnologia {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* estado final ao ganhar .visivel pelo JS */
+
+.cartao-tecnologia.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}

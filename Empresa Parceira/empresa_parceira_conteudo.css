@@ -1,0 +1,348 @@
+/* ================== BASE ================== */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.pagina {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* ================== BANNER EMPRESAS ================== */
+
+.secao-banner-empresas {
+    width: 100%;
+    margin: 0;
+    background-color: #F5F6FA;
+}
+
+.fundo-banner-empresas {
+    width: 100%;
+    padding: 48px 0 40px;
+}
+
+.conteiner-banner-empresas {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.bloco-texto-banner-empresas {
+    flex: 1;
+}
+
+.titulo-banner-empresas {
+    font-size: 30px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 16px 0;
+}
+
+.subtitulo-banner-empresas {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00123B;
+    margin: 0 0 24px 0;
+}
+
+.grupo-botoes-banner-empresas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.botao-banner-empresas {
+    display: inline-block;
+    padding: 10px 26px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.botao-banner-primario-empresas {
+    background-color: #2E8B57;
+    color: #FFFFFF;
+    border: none;
+}
+
+.botao-banner-primario-empresas:hover {
+    opacity: 0.95;
+}
+
+.botao-banner-secundario-empresas {
+    background-color: transparent;
+    color: #00123B;
+    border: 2px solid #00123B;
+}
+
+.botao-banner-secundario-empresas:hover {
+    background-color: #00123B;
+    color: #FFFFFF;
+}
+
+.bloco-imagem-banner-empresas {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem-banner-empresas {
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ================== TÍTULO PADRÃO SEÇÕES ================== */
+
+.titulo-secao-empresas {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 20px 0;
+}
+
+/* ================== MOTIVOS EMPRESAS ================== */
+
+.secao-motivos-empresas {
+    background-color: #FFFFFF;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-motivos-empresas {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.grade-motivos-empresas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.cartao-motivo-empresa {
+    background-color: #F5F6FA;
+    border-radius: 24px;
+    padding: 20px 20px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+.titulo-cartao-empresa {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+}
+
+.texto-cartao-empresa {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* ================== COMO FUNCIONA EMPRESAS ================== */
+
+.secao-como-funciona-empresas {
+    background-color: #F5F6FA;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-como-funciona-empresas {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.grade-passos-empresas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.cartao-passo-empresa {
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 20px 20px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.etapa-passo-empresa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #FF7A00;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.titulo-passo-empresa {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+}
+
+.texto-passo-empresa {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* ================== BENEFÍCIOS EMPRESAS ================== */
+
+.secao-beneficios-empresas {
+    background-color: #FFFFFF;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-beneficios-empresas {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.grade-beneficios-empresas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.cartao-beneficio-empresa {
+    background-color: #F5F6FA;
+    border-radius: 24px;
+    padding: 20px 20px 18px;
+}
+
+.titulo-beneficio-empresa {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 8px 0;
+}
+
+.texto-beneficio-empresa {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* ================== CONTATO / CTA EMPRESAS ================== */
+
+.secao-contato-empresas {
+    background-color: #F5F6FA;
+    padding: 48px 0 64px;
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-contato-empresas {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.texto-contato-empresas {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00123B;
+    margin: 0 0 12px 0;
+}
+
+.area-botoes-contato-empresas {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.botao-contato-empresas {
+    display: inline-block;
+    padding: 10px 26px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.botao-contato-principal {
+    background-color: #00123B;
+    color: #FFFFFF;
+    border: none;
+}
+
+.botao-contato-principal:hover {
+    opacity: 0.95;
+}
+
+.botao-contato-secundario {
+    background-color: transparent;
+    color: #00123B;
+    border: 2px solid #00123B;
+}
+
+.botao-contato-secundario:hover {
+    background-color: #00123B;
+    color: #FFFFFF;
+}
+
+/* ================== ANIMAÇÃO ENTRADA CARDS ================== */
+
+.cartao-motivo-empresa,
+.cartao-passo-empresa,
+.cartao-beneficio-empresa {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cartao-motivo-empresa.visivel,
+.cartao-passo-empresa.visivel,
+.cartao-beneficio-empresa.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================== HOVER CARDS ================== */
+
+.cartao-motivo-empresa:hover,
+.cartao-passo-empresa:hover,
+.cartao-beneficio-empresa:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
