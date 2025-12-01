@@ -1,35 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ================= NAVBAR =================
-  fetch("../Navegacao/Navbar/navbar.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaNavbar = document.getElementById("area-navbar");
-      if (areaNavbar) {
-        areaNavbar.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-navbar" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o navbar:", erro);
-    });
+  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
+  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
 
-  // ================= FOOTER =================
-  fetch("../Navegacao/Footer/footer.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaFooter = document.getElementById("area-footer");
-      if (areaFooter) {
-        areaFooter.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-footer" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o footer:", erro);
-    });
-
-  // ================= REFERÊNCIAS GERAIS =================
   const fundoPilares = document.querySelector(".fundo-pilares");
   const imagemPilares = document.querySelector(".imagem-pilares");
   const conteudoPilares = document.querySelector(".conteudo-pilares");
@@ -37,8 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cardsPilares = document.querySelectorAll(".card-pilar-persona");
   const passosFluxo = document.querySelectorAll(".passo-fluxo");
-
-  // AQUI ESTÁ A MUDANÇA IMPORTANTE 👇
   const cardsPerfil = document.querySelectorAll(".cartao-fluxo-perfil");
   const cardsTecnologia = document.querySelectorAll(".cartao-tecnologia");
 
@@ -46,16 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const conteudoFluxo = document.querySelector(".conteudo-fluxo-doacao");
   const imagemFluxo = document.querySelector(".imagem-fluxo-doacao");
 
-  // (opcional, só pra conferir no console)
-  console.log("Pilares:", cardsPilares.length);
-  console.log("Passos fluxo:", passosFluxo.length);
-  console.log("Cards fluxo por perfil:", cardsPerfil.length);
-  console.log("Cards tecnologia:", cardsTecnologia.length);
-
-  // ================= ANIMAÇÃO BANNER PILARES =================
   if (fundoPilares && imagemPilares && conteudoPilares) {
-    const estiloFundo = getComputedStyle(fundoPilares).position;
-    if (estiloFundo === "static") {
+    if (getComputedStyle(fundoPilares).position === "static") {
       fundoPilares.style.position = "relative";
     }
     fundoPilares.style.overflow = "hidden";
@@ -85,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= ANIMAÇÃO DE ENTRADA (INTERSECTION OBSERVER) =================
   let observer = null;
 
   if ("IntersectionObserver" in window) {
@@ -110,21 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function preparaAnimacaoLista(lista, delayInicial, passoDelay) {
-    if (!lista || lista.length === 0) return;
+    if (!lista || !lista.length) return;
 
     lista.forEach((el, index) => {
       el.style.opacity = "0";
       el.style.transform = "translateY(20px)";
-      el.style.transition =
-        (el.style.transition || "") +
-        ", opacity 0.6s ease, transform 0.6s ease";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
 
       el.dataset.delay = (delayInicial + index * passoDelay).toFixed(2) + "s";
 
       if (observer) {
         observer.observe(el);
       } else {
-        // fallback: se não tiver IntersectionObserver, mostra direto
         el.style.opacity = "1";
         el.style.transform = "translateY(0)";
       }
@@ -133,18 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   preparaAnimacaoLista(cardsPilares, 0, 0.12);
   preparaAnimacaoLista(passosFluxo, 0.2, 0.08);
-  preparaAnimacaoLista(cardsPerfil, 0.3, 0.08);      // seção "como funciona para cada perfil"
-  preparaAnimacaoLista(cardsTecnologia, 0.4, 0.08);  // tecnologia/segurança
+  preparaAnimacaoLista(cardsPerfil, 0.3, 0.08);
+  preparaAnimacaoLista(cardsTecnologia, 0.4, 0.08);
 
-  // ================= HOVER DOS CARDS PILARES =================
-  const elementosPilares = document.querySelectorAll(".card-pilar-persona");
-  elementosPilares.forEach((el) => {
+  cardsPilares.forEach((el) => {
     const bgOriginal = getComputedStyle(el).backgroundColor;
     el.dataset.bgOriginal = bgOriginal;
 
     el.style.transition =
-      (el.style.transition || "") +
-      ", transform 0.18s ease-out, box-shadow 0.18s ease-out, background-color 0.18s ease-out";
+      "transform 0.18s ease-out, box-shadow 0.18s ease-out, background-color 0.18s ease-out";
 
     el.addEventListener("mouseenter", () => {
       el.style.transform = "translateY(-4px)";
@@ -159,20 +114,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ================= HOVER DOS PASSOS DO FLUXO =================
   passosFluxo.forEach((passo) => {
     const icone = passo.querySelector(".icone-passo-fluxo");
     const caixa = passo.querySelector(".caixa-passo-fluxo");
 
     if (icone) {
       icone.style.transition =
-        (icone.style.transition || "") +
-        ", transform 0.2s ease-out, box-shadow 0.2s ease-out";
+        "transform 0.2s ease-out, box-shadow 0.2s ease-out";
     }
     if (caixa) {
       caixa.style.transition =
-        (caixa.style.transition || "") +
-        ", box-shadow 0.2s ease-out, transform 0.2s ease-out";
+        "box-shadow 0.2s ease-out, transform 0.2s ease-out";
     }
 
     passo.addEventListener("mouseenter", () => {
@@ -198,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ================= LINHA PROGRESSO DO FLUXO =================
   if (fundoFluxo && conteudoFluxo && passosFluxo.length > 1) {
     if (getComputedStyle(fundoFluxo).position === "static") {
       fundoFluxo.style.position = "relative";
@@ -283,5 +234,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     });
+  }
+
+  function carregarFragmento(url, idAlvo) {
+    fetch(url)
+      .then((resposta) => resposta.text())
+      .then((html) => {
+        const area = document.getElementById(idAlvo);
+        if (area) area.innerHTML = html;
+      })
+      .catch((erro) => {
+        console.error("Erro ao carregar fragmento:", url, erro);
+      });
   }
 });

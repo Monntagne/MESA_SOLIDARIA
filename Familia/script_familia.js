@@ -1,45 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ================= NAVBAR =================
-  fetch("../Navegacao/Navbar/navbar.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaNavbar = document.getElementById("area-navbar");
-      if (areaNavbar) {
-        areaNavbar.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-navbar" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o navbar:", erro);
-    });
+  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
+  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
 
-  // ================= FOOTER =================
-  fetch("../Navegacao/Footer/footer.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaFooter = document.getElementById("area-footer");
-      if (areaFooter) {
-        areaFooter.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-footer" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o footer:", erro);
-    });
-
-  // ================= ANIMAÇÕES DE ENTRADA =================
   const elementosAnimados = document.querySelectorAll(".familia-animado");
 
-  if ("IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window && elementosAnimados.length) {
     const observador = new IntersectionObserver(
-      (entradas, obs) => {
+      (entradas, observer) => {
         entradas.forEach((entrada) => {
           if (entrada.isIntersecting) {
-            const el = entrada.target;
-            el.classList.add("familia-visivel");
-            obs.unobserve(el);
+            entrada.target.classList.add("familia-visivel");
+            observer.unobserve(entrada.target);
           }
         });
       },
@@ -49,17 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
-    elementosAnimados.forEach((el) => {
-      observador.observe(el);
-    });
+    elementosAnimados.forEach((el) => observador.observe(el));
   } else {
-    // fallback – se o navegador não tiver IntersectionObserver
-    elementosAnimados.forEach((el) => {
-      el.classList.add("familia-visivel");
-    });
+    elementosAnimados.forEach((el) => el.classList.add("familia-visivel"));
   }
 
-  // ================= SCROLL SUAVE PARA ÂNCORAS =================
   const linksInternos = document.querySelectorAll('a[href^="#"]');
 
   linksInternos.forEach((link) => {
@@ -71,9 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         evento.preventDefault();
 
         const topo =
-          destinoElemento.getBoundingClientRect().top +
-          window.scrollY -
-          80; // ajuste da altura aproximada da navbar
+          destinoElemento.getBoundingClientRect().top + window.scrollY - 80;
 
         window.scrollTo({
           top: topo,
@@ -83,3 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function carregarFragmento(url, idAlvo) {
+  fetch(url)
+    .then((resposta) => resposta.text())
+    .then((html) => {
+      const area = document.getElementById(idAlvo);
+      if (area) area.innerHTML = html;
+    })
+    .catch((erro) => {
+      console.error("Erro ao carregar fragmento:", url, erro);
+    });
+}

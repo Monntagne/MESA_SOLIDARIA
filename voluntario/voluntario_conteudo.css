@@ -75,8 +75,6 @@
     object-fit: cover;
 }
 
-/* ================== DEFINIÇÃO VOLUNTÁRIO ================== */
-
 .secao-definicao-voluntario {
     width: 100%;
     background-color: #F5F6FA;
@@ -131,8 +129,6 @@
     object-fit: contain;
 }
 
-/* ================== MOTIVOS VOLUNTÁRIO ================== */
-
 .secao-motivos-voluntario {
     width: 100%;
     background-color: #F5F6FA;
@@ -162,8 +158,6 @@
     justify-content: space-between;
 }
 
-/* card base */
-
 .cartao-motivo-voluntario {
     flex: 1;
     border-radius: 24px;
@@ -171,18 +165,14 @@
     color: #FFFFFF;
     position: relative;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
-
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s ease, box-shadow 0.3s ease;
 }
-
-/* badge de clique – frente */
 
 .cartao-motivo-voluntario::after {
     content: "Clique para ver";
@@ -197,14 +187,10 @@
     pointer-events: none;
 }
 
-/* some o badge quando o card estiver virado */
-
 .cartao-motivo-voluntario.virado::after {
     content: "";
     display: none;
 }
-
-/* cor do texto do badge de acordo com o card */
 
 .cartao-motivo-verde::after {
     color: #2E8B57;
@@ -217,8 +203,6 @@
 .cartao-motivo-azul::after {
     color: #00123B;
 }
-
-/* hover (sem interferir no flip) */
 
 .cartao-motivo-voluntario:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
@@ -252,8 +236,6 @@
     text-align: left;
 }
 
-/* cores */
-
 .cartao-motivo-verde {
     background-color: #2E8B57;
 }
@@ -265,8 +247,6 @@
 .cartao-motivo-azul {
     background-color: #00123B;
 }
-
-/* frente/verso */
 
 .cartao-motivo-voluntario .texto-cartao-motivo {
     display: none;
@@ -288,8 +268,6 @@
     color: #FFFFFF;
     transform: rotateY(180deg);
 }
-
-/* ================== CADASTRO VOLUNTÁRIO ================== */
 
 .secao-cadastro-voluntario {
     width: 100%;
@@ -373,8 +351,6 @@
     opacity: 0.95;
 }
 
-/* ================== BENEFÍCIOS ================== */
-
 .secao-beneficios-voluntariado {
     width: 100%;
     background-color: #F5F6FA;
@@ -446,8 +422,6 @@
     color: #00123B;
     margin: 0;
 }
-
-/* ================== CTA FINAL ================== */
 
 .secao-cta-voluntario {
     width: 100%;

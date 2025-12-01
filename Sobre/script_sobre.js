@@ -1,59 +1,29 @@
-// script_sobre.js
-document.addEventListener("DOMContentLoaded", function () {
-  // Carrega NAVBAR
-  fetch("../Navegacao/Navbar/navbar.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaNavbar = document.getElementById("area-navbar");
-      if (areaNavbar) {
-        areaNavbar.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-navbar" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o navbar:", erro);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
+  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
 
-  // Carrega FOOTER
-  fetch("../Navegacao/Footer/footer.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaFooter = document.getElementById("area-footer");
-      if (areaFooter) {
-        areaFooter.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-footer" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o footer:", erro);
-    });
-
-  // Animação de entrada suave nos blocos da página Sobre
   const elementosAnimados = document.querySelectorAll(
     ".conteiner-banner-sobre, .cartao-mvv, .etapa-linha-tempo, .cartao-pilar-sobre, .card-membro-sobre, .conteiner-ods-sobre"
   );
 
-  if (elementosAnimados.length) {
+  if ("IntersectionObserver" in window && elementosAnimados.length) {
     const observador = new IntersectionObserver(
-      (entradas) => {
+      (entradas, observer) => {
         entradas.forEach((entrada) => {
           if (entrada.isIntersecting) {
             entrada.target.classList.add("visivel");
-            observador.unobserve(entrada.target);
+            observer.unobserve(entrada.target);
           }
         });
       },
-      {
-        threshold: 0.2,
-      }
+      { threshold: 0.2 }
     );
 
     elementosAnimados.forEach((el) => observador.observe(el));
+  } else {
+    elementosAnimados.forEach((el) => el.classList.add("visivel"));
   }
 
-  // Scroll suave para âncoras internas (#alguma-coisa)
   const linksInternos = document.querySelectorAll('a[href^="#"]');
 
   linksInternos.forEach((link) => {
@@ -65,9 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         evento.preventDefault();
 
         const topo =
-          destinoElemento.getBoundingClientRect().top +
-          window.scrollY -
-          80;
+          destinoElemento.getBoundingClientRect().top + window.scrollY - 80;
 
         window.scrollTo({
           top: topo,
@@ -77,3 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+function carregarFragmento(url, idAlvo) {
+  fetch(url)
+    .then((resposta) => resposta.text())
+    .then((html) => {
+      const area = document.getElementById(idAlvo);
+      if (area) area.innerHTML = html;
+    })
+    .catch((erro) => {
+      console.error("Erro ao carregar fragmento:", url, erro);
+    });
+}

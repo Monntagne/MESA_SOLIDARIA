@@ -1,37 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ================= NAVBAR =================
-  fetch("../Navegacao/Navbar/navbar.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaNavbar = document.getElementById("area-navbar");
-      if (areaNavbar) {
-        areaNavbar.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-navbar" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o navbar:", erro);
-    });
+  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
+  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
 
-  // ================= FOOTER =================
-  fetch("../Navegacao/Footer/footer.html")
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const areaFooter = document.getElementById("area-footer");
-      if (areaFooter) {
-        areaFooter.innerHTML = html;
-      } else {
-        console.warn('Elemento com id "area-footer" não encontrado na página.');
-      }
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar o footer:", erro);
-    });
- });
-// ================= CONFETE BOTÃO DOAR =================
+  const botoesDoar = document.querySelectorAll(".botao-doacoes");
+  botoesDoar.forEach((botao) => {
+    botao.addEventListener("click", (evento) => {
+      const cliqueX = evento.clientX + window.scrollX;
+      const cliqueY = evento.clientY + window.scrollY;
 
-// cria confete em uma posição específica da tela
+      botao.classList.add("botao-clicado");
+      setTimeout(() => {
+        botao.classList.remove("botao-clicado");
+      }, 300);
+
+      criarConfeteNaPosicao(cliqueX, cliqueY);
+    });
+  });
+
+  const botaoHeroDoacoes = document.querySelector(".botao-doacoes");
+  const secaoOQueDoar = document.getElementById("secao-o-que-doar");
+
+  if (botaoHeroDoacoes && secaoOQueDoar) {
+    botaoHeroDoacoes.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      const topo = secaoOQueDoar.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: topo, behavior: "smooth" });
+    });
+  }
+
+  const elementosAnimar = document.querySelectorAll(
+    ".cartao-tipo-doacao, .cartao-plano-doacao, .cartao-transparencia-doacao, .cartao-duvida-doador"
+  );
+
+  if ("IntersectionObserver" in window && elementosAnimar.length) {
+    const observer = new IntersectionObserver(
+      (entradas, obs) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visivel");
+            obs.unobserve(entrada.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    elementosAnimar.forEach((el) => observer.observe(el));
+  } else {
+    elementosAnimar.forEach((el) => el.classList.add("visivel"));
+  }
+});
+
 function criarConfeteNaPosicao(x, y) {
   const quantidadeConfetes = 100;
   const cores = ["#FF7A00", "#FFD54F", "#2E8B57", "#00123B", "#FFFFFF"];
@@ -40,7 +62,6 @@ function criarConfeteNaPosicao(x, y) {
     const confete = document.createElement("span");
     confete.classList.add("confete");
 
-    // posição inicial do confete = posição do clique
     confete.style.left = `${x}px`;
     confete.style.top = `${y}px`;
 
@@ -64,75 +85,14 @@ function criarConfeteNaPosicao(x, y) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const botoesDoar = document.querySelectorAll(".botao-doacoes");
-
-  botoesDoar.forEach((botao) => {
-    botao.addEventListener("click", (evento) => {
-      // posição exata do clique (considerando scroll da página)
-      const cliqueX = evento.clientX + window.scrollX;
-      const cliqueY = evento.clientY + window.scrollY;
-
-      // animação de "apertar" o botão
-      botao.classList.add("botao-clicado");
-      setTimeout(() => {
-        botao.classList.remove("botao-clicado");
-      }, 300);
-
-      // confete saindo do ponto clicado
-      criarConfeteNaPosicao(cliqueX, cliqueY);
+function carregarFragmento(url, idAlvo) {
+  fetch(url)
+    .then((resposta) => resposta.text())
+    .then((html) => {
+      const area = document.getElementById(idAlvo);
+      if (area) area.innerHTML = html;
+    })
+    .catch((erro) => {
+      console.error("Erro ao carregar fragmento:", url, erro);
     });
-  });
-});
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // ========= SCROLL SUAVE DO BOTÃO HERO "QUERO COMEÇAR A DOAR" =========
-  const botaoHeroDoacoes = document.querySelector(".botao-doacoes");
-  const secaoOQueDoar = document.getElementById("secao-o-que-doar");
-
-  if (botaoHeroDoacoes && secaoOQueDoar) {
-    botaoHeroDoacoes.addEventListener("click", (evento) => {
-      evento.preventDefault();
-
-      const topo =
-        secaoOQueDoar.getBoundingClientRect().top + window.scrollY - 80;
-
-      window.scrollTo({
-        top: topo,
-        behavior: "smooth",
-      });
-    });
-  }
-
-  // ========= ANIMAÇÃO DE ENTRADA DOS NOVOS CARDS =========
-  const elementosAnimar = document.querySelectorAll(
-    ".cartao-tipo-doacao, .cartao-plano-doacao, .cartao-transparencia-doacao, .cartao-duvida-doador"
-  );
-
-  if ("IntersectionObserver" in window && elementosAnimar.length) {
-    const observer = new IntersectionObserver(
-      (entradas, obs) => {
-        entradas.forEach((entrada) => {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add("visivel");
-            obs.unobserve(entrada.target);
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -10% 0px",
-      }
-    );
-
-    elementosAnimar.forEach((el) => observer.observe(el));
-  } else {
-    // fallback se o navegador não tiver IntersectionObserver
-    elementosAnimar.forEach((el) => el.classList.add("visivel"));
-  }
-});
+}

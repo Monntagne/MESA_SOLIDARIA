@@ -1,24 +1,17 @@
-/* ================== BASE ================== */
-
 .conteudo-impacto {
     width: 100%;
     background-color: #F5F6FA;
     font-family: "Poppins", sans-serif;
 }
-
 .impacto-animado {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .impacto-animado.visivel {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* ================== HERO ================== */
-
 .secao-impacto-hero {
     width: 100%;
     background-color: #FFFFFF;
@@ -26,7 +19,6 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-impacto-hero {
     max-width: 1200px;
     width: 100%;
@@ -36,17 +28,14 @@
     justify-content: space-between;
     gap: 40px;
 }
-
 .coluna-hero-impacto-texto {
     flex: 1.4;
 }
-
 .coluna-hero-impacto-kpi {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
-
 .etiqueta-impacto {
     display: inline-block;
     padding: 4px 10px;
@@ -57,27 +46,23 @@
     font-weight: 500;
     margin-bottom: 10px;
 }
-
 .titulo-impacto-hero {
     font-size: 30px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 14px 0;
 }
-
 .texto-impacto-hero {
     font-size: 14px;
     line-height: 1.6;
     color: #00123B;
     margin: 0 0 18px 0;
 }
-
 .linha-resumo-impacto {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
 }
-
 .chip-impacto {
     background-color: #F5F6FA;
     border-radius: 999px;
@@ -87,19 +72,14 @@
     flex-direction: column;
     font-size: 11px;
 }
-
 .chip-titulo {
     font-weight: 600;
     color: #00123B;
 }
-
 .chip-texto {
     color: #00123B;
     opacity: 0.85;
 }
-
-/* KPI HERO */
-
 .cartao-kpi-hero {
     background-color: #00123B;
     border-radius: 24px;
@@ -109,26 +89,20 @@
     min-width: 260px;
     max-width: 320px;
 }
-
 .rotulo-kpi-hero {
     font-size: 12px;
     font-weight: 500;
     opacity: 0.9;
 }
-
 .numero-kpi-hero {
     font-size: 40px;
     font-weight: 700;
     margin: 10px 0 4px 0;
 }
-
 .legenda-kpi-hero {
     font-size: 12px;
     opacity: 0.9;
 }
-
-/* ================== INDICADORES GERAIS ================== */
-
 .secao-indicadores-impacto {
     width: 100%;
     background-color: #F5F6FA;
@@ -136,49 +110,40 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-indicadores-impacto {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
 }
-
 .grade-indicadores-impacto {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
 }
-
 .cartao-indicador-impacto {
     background-color: #FFFFFF;
     border-radius: 22px;
     padding: 18px 18px 16px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
-
 .rotulo-indicador-impacto {
     font-size: 12px;
     font-weight: 600;
     color: #00123B;
     opacity: 0.8;
 }
-
 .numero-indicador-impacto {
     font-size: 26px;
     font-weight: 700;
     color: #00123B;
     margin: 8px 0 6px 0;
 }
-
 .texto-indicador-impacto {
     font-size: 12px;
     line-height: 1.5;
     color: #00123B;
     opacity: 0.9;
 }
-
-/* ================== GRÁFICOS ================== */
-
 .secao-graficos-impacto {
     width: 100%;
     background-color: #FFFFFF;
@@ -186,7 +151,6 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-graficos-impacto {
     max-width: 1200px;
     width: 100%;
@@ -195,48 +159,38 @@
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: 32px;
 }
-
 .titulo-grafico {
     font-size: 22px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 6px 0;
 }
-
 .subtitulo-grafico {
     font-size: 13px;
     color: #00123B;
     opacity: 0.9;
     margin: 0 0 18px 0;
 }
-
 .legenda-grafico {
     font-size: 11px;
     color: #00123B;
     opacity: 0.9;
     margin: 10px 0 0 0;
 }
-
-/* Card do gráfico de barras */
-
 .bloco-grafico-barras {
     background-color: #FFFFFF;
     border-radius: 24px;
     padding: 20px 24px 18px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
-
-/* --- Gráfico de barras --- */
-
 .area-grafico-barras {
     display: grid;
     grid-template-columns: 40px minmax(0, 1fr);
     gap: 8px;
     align-items: flex-end;
-    height: 230px; /* altura fixa para o height: % funcionar */
+    height: 230px;
     margin-top: 10px;
 }
-
 .linha-eixo-y {
     display: flex;
     flex-direction: column;
@@ -246,7 +200,6 @@
     color: #00123B;
     opacity: 0.7;
 }
-
 .grade-barras {
     display: flex;
     align-items: flex-end;
@@ -255,67 +208,52 @@
     padding-bottom: 8px;
     gap: 12px;
 }
-
 .coluna-barra {
     flex: 1;
     max-width: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;  /* barras grudadas embaixo */
-    height: 100%;               /* agora a barra tem de onde tirar o % */
+    justify-content: flex-end;
+    height: 100%;
     gap: 6px;
 }
-
-/* barra em si (altura animada via JS) */
 .barra-mes {
     width: 100%;
     border-radius: 999px 999px 4px 4px;
     background: linear-gradient(180deg, #2E8B57, #00123B);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
-    height: 0%; /* começa zerada */
+    height: 0%;
     transition: height 0.6s ease-out;
 }
-
 .rotulo-mes {
     font-size: 11px;
     font-weight: 500;
     color: #00123B;
     text-align: center;
 }
-
-/* --- Gráfico de pizza --- */
-
 .bloco-grafico-pizza {
     background-color: #FFFFFF;
     border-radius: 24px;
     padding: 20px 24px 18px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
-
 .area-grafico-pizza {
     display: flex;
     gap: 18px;
     align-items: center;
 }
-
 .pizza-impacto {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background:
-        conic-gradient(
-            #2E8B57 0 50%,
-            #FF7A00 50% 80%,
-            #00123B 80% 100%
-        );
+    background: conic-gradient(#2E8B57 0 50%, #FF7A00 50% 80%, #00123B 80% 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
     position: relative;
 }
-
 .miolo-pizza {
     width: 110px;
     height: 110px;
@@ -326,19 +264,16 @@
     align-items: center;
     justify-content: center;
 }
-
 .porcentagem-central {
     font-size: 22px;
     font-weight: 700;
     color: #00123B;
 }
-
 .texto-central {
     font-size: 11px;
     color: #00123B;
     text-align: center;
 }
-
 .legenda-pizza {
     display: flex;
     flex-direction: column;
@@ -346,33 +281,25 @@
     font-size: 12px;
     color: #00123B;
 }
-
 .item-legenda-pizza {
     display: flex;
     align-items: center;
     gap: 6px;
 }
-
 .bolinha-legenda {
     width: 10px;
     height: 10px;
     border-radius: 50%;
 }
-
 .bolinha-legenda-verde {
     background-color: #2E8B57;
 }
-
 .bolinha-legenda-laranja {
     background-color: #FF7A00;
 }
-
 .bolinha-legenda-azul {
     background-color: #00123B;
 }
-
-/* ================== IMPACTO POR PERFIS ================== */
-
 .secao-impacto-perfis {
     width: 100%;
     background-color: #F5F6FA;
@@ -380,26 +307,22 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-impacto-perfis {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
 }
-
 .titulo-impacto-perfis {
     font-size: 24px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 20px 0;
 }
-
 .grade-impacto-perfis {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
 }
-
 .cartao-impacto-perfil {
     background-color: #FFFFFF;
     border-radius: 20px;
@@ -409,7 +332,6 @@
     line-height: 1.5;
     color: #00123B;
 }
-
 .etiqueta-perfil-impacto {
     display: inline-block;
     padding: 4px 10px;
@@ -419,30 +341,22 @@
     margin-bottom: 8px;
     color: #FFFFFF;
 }
-
 .etiqueta-beneficiarios {
     background-color: #2E8B57;
 }
-
 .etiqueta-doadores {
     background-color: #FF7A00;
 }
-
 .etiqueta-voluntarios {
     background-color: #00123B;
 }
-
 .etiqueta-pontos {
     background-color: #FFD54F;
     color: #00123B;
 }
-
 .texto-impacto-perfil {
     margin: 0;
 }
-
-/* ================== LINHA DO TEMPO ================== */
-
 .secao-linha-tempo-impacto {
     width: 100%;
     background-color: #FFFFFF;
@@ -450,20 +364,17 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-linha-tempo-impacto {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
 }
-
 .titulo-linha-tempo-impacto {
     font-size: 24px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 20px 0;
 }
-
 .linha-tempo-impacto {
     position: relative;
     padding-left: 20px;
@@ -472,12 +383,10 @@
     flex-direction: column;
     gap: 18px;
 }
-
 .etapa-linha-tempo {
     position: relative;
     padding-left: 12px;
 }
-
 .etapa-linha-tempo::before {
     content: "";
     position: absolute;
@@ -488,7 +397,6 @@
     border-radius: 50%;
     background-color: #2E8B57;
 }
-
 .ano-linha-tempo {
     display: inline-block;
     font-size: 13px;
@@ -496,16 +404,12 @@
     color: #00123B;
     margin-bottom: 4px;
 }
-
 .texto-linha-tempo {
     font-size: 12px;
     color: #00123B;
     line-height: 1.5;
     margin: 0;
 }
-
-/* ================== CTA FINAL ================== */
-
 .secao-cta-impacto-final {
     width: 100%;
     background-color: #00123B;
@@ -513,34 +417,29 @@
     display: flex;
     justify-content: center;
 }
-
 .conteiner-cta-impacto-final {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
     text-align: center;
 }
-
 .titulo-cta-impacto-final {
     font-size: 26px;
     font-weight: 700;
     color: #FFFFFF;
     margin: 0 0 10px 0;
 }
-
 .subtitulo-cta-impacto-final {
     font-size: 13px;
     color: #FFFFFF;
     opacity: 0.9;
     margin: 0 0 20px 0;
 }
-
 .linha-botoes-cta-impacto {
     display: flex;
     justify-content: center;
     gap: 14px;
 }
-
 .botao-cta-impacto-principal,
 .botao-cta-impacto-secundario {
     display: inline-flex;
@@ -554,22 +453,18 @@
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
-
 .botao-cta-impacto-principal {
     background-color: #2E8B57;
     color: #FFFFFF;
 }
-
 .botao-cta-impacto-secundario {
     background-color: #FFFFFF;
     color: #00123B;
 }
-
 .botao-cta-impacto-principal:hover,
 .botao-cta-impacto-secundario:hover {
     opacity: 0.96;
 }
-
 .linha-divisoria-impacto {
     border: none;
     height: 0;

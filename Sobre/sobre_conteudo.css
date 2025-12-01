@@ -2,13 +2,9 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
-
 .pagina {
     width: 100%;
 }
-
-/* -------------------- Banner Sobre -------------------- */
-
 .secao-banner-sobre {
     width: 100%;
     background-color: #F5F6FA;
@@ -16,7 +12,6 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-banner-sobre {
     max-width: 1200px;
     width: 100%;
@@ -29,12 +24,10 @@ body {
     gap: 40px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
-
 .bloco-texto-banner-sobre {
     flex: 1;
     max-width: 560px;
 }
-
 .etiqueta-banner-sobre {
     display: inline-block;
     font-size: 12px;
@@ -47,7 +40,6 @@ body {
     border-radius: 999px;
     margin-bottom: 16px;
 }
-
 .titulo-banner-sobre {
     font-size: 32px;
     line-height: 1.3;
@@ -55,38 +47,29 @@ body {
     color: #00123B;
     margin: 0 0 16px 0;
 }
-
 .texto-banner-sobre {
     font-size: 15px;
     line-height: 1.6;
     color: #00123B;
     margin: 0;
 }
-
 .bloco-imagem-banner-sobre {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
-
 .imagem-banner-sobre {
     width: 100%;
     max-width: 460px;
     border-radius: 18px;
     object-fit: cover;
 }
-
-/* -------------------- Título padrão seções -------------------- */
-
 .titulo-secao-sobre {
     font-size: 24px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 20px 0;
 }
-
-/* -------------------- Missão / Visão / Valores -------------------- */
-
 .secao-missao-visao-valores {
     width: 100%;
     background-color: #FFFFFF;
@@ -94,54 +77,43 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-missao-visao-valores {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
 }
-
 .grade-missao-visao-valores {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
-
 .cartao-mvv {
     border-radius: 18px;
     padding: 22px 22px 20px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
     background-color: #F5F6FA;
 }
-
 .titulo-cartao-mvv {
     font-size: 17px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 10px 0;
 }
-
 .texto-cartao-mvv {
     font-size: 14px;
     line-height: 1.5;
     color: #00123B;
     margin: 0;
 }
-
 .cartao-missao {
     border-left: 4px solid #2E8B57;
 }
-
 .cartao-visao {
     border-left: 4px solid #FF7A00;
 }
-
 .cartao-valores {
     border-left: 4px solid #00123B;
 }
-
-/* -------------------- Como nascemos / Linha do tempo -------------------- */
-
 .secao-como-nascemos {
     width: 100%;
     background-color: #F5F6FA;
@@ -149,7 +121,6 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-como-nascemos {
     max-width: 1200px;
     width: 100%;
@@ -161,22 +132,18 @@ body {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
     gap: 40px;
 }
-
 .bloco-texto-como-nascemos {
     font-size: 15px;
     color: #00123B;
 }
-
 .texto-como-nascemos {
     line-height: 1.6;
     margin: 0 0 12px 0;
 }
-
 .linha-tempo-sobre {
     position: relative;
     padding-left: 22px;
 }
-
 .linha-tempo-sobre::before {
     content: "";
     position: absolute;
@@ -186,12 +153,10 @@ body {
     height: calc(100% - 16px);
     background-color: #D0D7E6;
 }
-
 .etapa-linha-tempo {
     position: relative;
     margin-bottom: 24px;
 }
-
 .bola-linha-tempo {
     position: absolute;
     top: 4px;
@@ -201,27 +166,21 @@ body {
     border-radius: 50%;
     background-color: #2E8B57;
 }
-
 .conteudo-linha-tempo {
     padding-left: 16px;
 }
-
 .titulo-etapa-linha-tempo {
     font-size: 16px;
     font-weight: 600;
     color: #00123B;
     margin: 0 0 6px 0;
 }
-
 .texto-etapa-linha-tempo {
     font-size: 14px;
     line-height: 1.5;
     color: #00123B;
     margin: 0;
 }
-
-/* -------------------- Pilares -------------------- */
-
 .secao-pilares-sobre {
     width: 100%;
     background-color: #FFFFFF;
@@ -229,42 +188,34 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-pilares-sobre {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
 }
-
 .grade-pilares-sobre {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
-
 .cartao-pilar-sobre {
     background-color: #F5F6FA;
     border-radius: 18px;
     padding: 22px 22px 20px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
-
 .titulo-pilar-sobre {
     font-size: 17px;
     font-weight: 700;
     color: #00123B;
     margin: 0 0 8px 0;
 }
-
 .texto-pilar-sobre {
     font-size: 14px;
     line-height: 1.5;
     color: #00123B;
     margin: 0;
 }
-
-/* -------------------- Time -------------------- */
-
 .secao-time-sobre {
     width: 100%;
     background-color: #F5F6FA;
@@ -272,21 +223,18 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-time-sobre {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
     text-align: center;
 }
-
 .grade-time-sobre {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     margin-top: 24px;
 }
-
 .card-membro-sobre {
     background-color: #FFFFFF;
     border-radius: 18px;
@@ -296,7 +244,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
 .foto-membro-sobre {
     width: 96px;
     height: 96px;
@@ -304,22 +251,17 @@ body {
     object-fit: cover;
     margin-bottom: 10px;
 }
-
 .nome-membro-sobre {
     font-size: 15px;
     font-weight: 600;
     color: #00123B;
     margin: 0 0 4px 0;
 }
-
 .funcao-membro-sobre {
     font-size: 13px;
     color: #00123B;
     margin: 0;
 }
-
-/* -------------------- ODS -------------------- */
-
 .secao-ods-sobre {
     width: 100%;
     background-color: #FFFFFF;
@@ -327,14 +269,12 @@ body {
     display: flex;
     justify-content: center;
 }
-
 .conteiner-ods-sobre {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
     text-align: center;
 }
-
 .texto-ods-sobre {
     font-size: 14px;
     line-height: 1.6;
@@ -342,13 +282,11 @@ body {
     max-width: 720px;
     margin: 0 auto 22px;
 }
-
 .linha-ods-sobre {
     display: flex;
     justify-content: center;
     gap: 24px;
 }
-
 .imagem-ods-sobre {
     width: 120px;
     height: auto;
