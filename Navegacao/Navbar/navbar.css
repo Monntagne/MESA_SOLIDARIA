@@ -1,9 +1,7 @@
-
 * {
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
-
 
 body {
     margin: 0;
@@ -85,6 +83,12 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s ease;
+
+    /* ajustes para funcionar bem como <a> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* remove sublinhado quando for <a> */
 }
 
 .botao-entrar:hover {
@@ -92,6 +96,12 @@ body {
     border-color: #2E8B57;
     color: #FFFFFF;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Foco para acessibilidade (opcional, mas bom ter) */
+.botao-entrar:focus-visible {
+    outline: 2px solid #FFD54F;
+    outline-offset: 2px;
 }
 
 /* ================== CONTAINER .PAGINA ================== */
@@ -105,5 +115,5 @@ body {
 .secao-banner-inicial {
     width: 100%;
     margin: 0;
-    /* resto das regras que você já tinha: altura, imagem, etc. */
+    /* aqui entram as regras de altura, imagem de fundo etc. */
 }

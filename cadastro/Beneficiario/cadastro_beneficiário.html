@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - Mesa Solidária</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="../../Navegacao/Navbar/navbar.css" />
+  <link rel="stylesheet" href="cadastro_beneficiario.css" />
+  <link rel="stylesheet" href="../../Navegacao/Footer/footer.css" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+</head>
+<body>
+  <div id="area-navbar"></div>
+
+  <main class="pagina-cadastro-beneficiario">
+    <section class="secao-cadastro-beneficiario">
+      <div class="cabecalho-cadastro">
+        <h1 class="titulo-cadastro">Cadastro de Beneficiário</h1>
+        <p class="texto-cadastro">
+          Preencha seus dados para se cadastrar como beneficiário no Mesa Solidária.
+        </p>
+      </div>
+
+      <form class="formulario-cadastro-beneficiario" action="processa_cadastro_beneficiario.php" method="post">
+        <!-- DADOS PESSOAIS -->
+        <div class="bloco-formulario">
+          <h2 class="subtitulo-bloco">Dados pessoais</h2>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="nome-completo">Nome completo</label>
+              <input
+                type="text"
+                id="nome-completo"
+                name="nome_completo"
+                class="entrada-campo"
+                required
+              />
+            </div>
+
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="cpf">CPF</label>
+              <input
+  type="text"
+  id="cpf"
+  name="cpf"
+  class="entrada-campo"
+  placeholder="000.000.000-00"
+  maxlength="14"
+  inputmode="numeric"
+  required
+/>
+
+            </div>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="data-nascimento">Data de nascimento</label>
+              <div class="campo-formulario">
+ 
+  <input
+    type="date"
+    id="data-nascimento"
+    name="data_nascimento"
+    class="entrada-campo"
+    required
+  />
+  <span class="mensagem-erro-campo" id="erro-data-nascimento"></span>
+</div>
+
+            </div>
+
+            <div class="campo-formulario">
+  <label class="rotulo-campo" for="telefone">Telefone</label>
+  <input
+    type="tel"
+    id="telefone"
+    name="telefone"
+    class="entrada-campo"
+    placeholder="(11) 99999-9999"
+    inputmode="numeric"
+    maxlength="15"
+    required
+  />
+</div>
+
+          </div>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="entrada-campo"
+              placeholder="seuemail@exemplo.com"
+              required
+            />
+            <span class="mensagem-erro-campo" id="erro-email"></span>
+          </div>
+        </div>
+
+        <!-- ENDEREÇO -->
+        <div class="bloco-formulario" id="bloco-endereco">
+  <h2 class="subtitulo-bloco">Endereço</h2>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="cep">CEP</label>
+              <input
+  type="text"
+  id="cep"
+  name="cep"
+  class="entrada-campo"
+  placeholder="00000-000"
+  maxlength="9"
+  inputmode="numeric"
+  required
+/>
+
+            </div>
+
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="cidade">Cidade</label>
+              <input
+                type="text"
+                id="cidade"
+                name="cidade"
+                class="entrada-campo"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="estado">Estado</label>
+              <input
+                type="text"
+                id="estado"
+                name="estado"
+                class="entrada-campo"
+                maxlength="2"
+                placeholder="SP"
+                required
+              />
+            </div>
+
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="bairro">Bairro</label>
+              <input
+                type="text"
+                id="bairro"
+                name="bairro"
+                class="entrada-campo"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo-formulario campo-maior">
+              <label class="rotulo-campo" for="logradouro">Rua / Logradouro</label>
+              <input
+                type="text"
+                id="logradouro"
+                name="logradouro"
+                class="entrada-campo"
+                required
+              />
+            </div>
+
+            <div class="campo-formulario campo-menor">
+              <label class="rotulo-campo" for="numero">Número</label>
+              <input
+                type="text"
+                id="numero"
+                name="numero"
+                class="entrada-campo"
+                required
+              />
+            </div>
+
+            <div class="campo-formulario campo-menor">
+              <label class="rotulo-campo" for="complemento">Complemento</label>
+              <input
+                type="text"
+                id="complemento"
+                name="complemento"
+                class="entrada-campo"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- SITUAÇÃO FAMILIAR -->
+        <div class="bloco-formulario" id="bloco-situacao-familiar">
+  <h2 class="subtitulo-bloco">Situação familiar</h2>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="quantidade-moradores">
+                Quantidade de pessoas no domicílio
+              </label>
+              <input
+                type="number"
+                id="quantidade-moradores"
+                name="quantidade_moradores"
+                class="entrada-campo"
+                min="1"
+                required
+              />
+            </div>
+
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="criancas-adolescentes">
+                Quantidade de crianças/adolescentes
+              </label>
+              <input
+                type="number"
+                id="criancas-adolescentes"
+                name="criancas_adolescentes"
+                class="entrada-campo"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="renda-familiar">
+              Renda familiar mensal aproximada
+            </label>
+            <select
+              id="renda-familiar"
+              name="renda_familiar"
+              class="entrada-campo"
+              required
+            >
+              <option value="">Selecione</option>
+              <option value="sem_renda">Sem renda fixa</option>
+              <option value="ate_1_sm">Até 1 salário mínimo</option>
+              <option value="1_a_2_sm">De 1 a 2 salários mínimos</option>
+              <option value="acima_2_sm">Acima de 2 salários mínimos</option>
+            </select>
+          </div>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="beneficios-sociais">
+              Recebe algum benefício social? (Ex: Bolsa Família, BPC)
+            </label>
+            <textarea
+              id="beneficios-sociais"
+              name="beneficios_sociais"
+              class="entrada-campo entrada-textarea"
+              rows="3"
+              placeholder="Descreva quais benefícios recebe, se houver."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- SAÚDE E ALIMENTAÇÃO -->
+       <div class="bloco-formulario" id="bloco-saude-alimentacao">
+  <h2 class="subtitulo-bloco">Saúde e alimentação</h2>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="restricoes-alimentares">
+              Restrições ou alergias alimentares
+            </label>
+            <textarea
+              id="restricoes-alimentares"
+              name="restricoes_alimentares"
+              class="entrada-campo entrada-textarea"
+              rows="3"
+              placeholder="Ex: intolerância à lactose, alergia a amendoim..."
+            ></textarea>
+          </div>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="observacoes">
+              Observações adicionais
+            </label>
+            <textarea
+              id="observacoes"
+              name="observacoes"
+              class="entrada-campo entrada-textarea"
+              rows="3"
+              placeholder="Use este espaço para compartilhar qualquer outra informação importante."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- ACESSO À PLATAFORMA -->
+        <div class="bloco-formulario" id="bloco-acesso-plataforma">
+  <h2 class="subtitulo-bloco">Acesso à plataforma</h2>
+
+          <div class="linha-campos">
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="senha-acesso">Crie uma senha</label>
+              <input
+                type="password"
+                id="senha-acesso"
+                name="senha_acesso"
+                class="entrada-campo"
+                required
+              />
+              <p class="texto-ajuda-campo">
+                A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, números e um caractere especial.
+              </p>
+              <span class="mensagem-erro-campo" id="erro-senha"></span>
+            </div>
+
+            <div class="campo-formulario">
+              <label class="rotulo-campo" for="confirmacao-senha">
+                Confirme a senha
+              </label>
+              <input
+                type="password"
+                id="confirmacao-senha"
+                name="confirmacao_senha"
+                class="entrada-campo"
+                required
+              />
+              <span class="mensagem-erro-campo" id="erro-confirmacao-senha"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="rodape-formulario">
+          <button type="submit" class="botao-principal-cadastro">
+            Concluir cadastro
+          </button>
+
+          <a href="../Login/login.html" class="botao-secundario-cadastro">
+            Já tenho cadastro
+          </a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="area-footer"></div>
+
+  <script src="cadastro_beneficiario.js"></script>
+</body>
+</html>

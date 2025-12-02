@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Mesa Solidária</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../Navegacao/Navbar/navbar.css" />
+  <link rel="stylesheet" href="login_conteudo.css" />
+  <link rel="stylesheet" href="../Navegacao/Footer/footer.css" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+</head>
+<body>
+  <div id="area-navbar"></div>
+
+  <div class="pagina-login">
+    <section class="coluna-perfis">
+      <h1 class="titulo-principal">Acesse o Mesa Solidária</h1>
+      <p class="texto-introducao">
+        Escolha como você quer entrar na plataforma e faça login com seus dados.
+      </p>
+
+      <div class="lista-perfis">
+        <button class="cartao-perfil">
+          <div class="avatar-perfil">
+            <img src="img/logo_beneficiario.png" alt="Beneficiário" />
+          </div>
+          <div class="conteudo-perfil">
+            <h2 class="titulo-perfil">Beneficiário</h2>
+            <p class="descricao-perfil">Para ver e acompanhar doações.</p>
+          </div>
+        </button>
+
+        <button class="cartao-perfil selecionado">
+          <div class="avatar-perfil">
+            <img src="img/logo_voluntario.png" alt="Voluntário" />
+          </div>
+          <div class="conteudo-perfil">
+            <h2 class="titulo-perfil">Voluntário</h2>
+            <p class="descricao-perfil">Para participar e gerar impacto.</p>
+          </div>
+        </button>
+
+        <button class="cartao-perfil">
+          <div class="avatar-perfil">
+            <img src="img/logo_doador.png" alt="Doador" />
+          </div>
+          <div class="conteudo-perfil">
+            <h2 class="titulo-perfil">Doador</h2>
+            <p class="descricao-perfil">
+              Para contribuir e fazer a diferença.
+            </p>
+          </div>
+        </button>
+
+        <button class="cartao-perfil">
+          <div class="avatar-perfil">
+            <img src="img/logo_ponto_de_coleta.png" alt="Ponto de coleta" />
+          </div>
+          <div class="conteudo-perfil">
+            <h2 class="titulo-perfil">Ponto de Coleta</h2>
+            <p class="descricao-perfil">Onde as doações são organizadas.</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <section class="coluna-formulario">
+      <div class="cartao-login">
+        <h2 class="titulo-login">Entre na sua conta</h2>
+
+        <form
+          class="formulario-login"
+          action="processa_login.php"
+          method="post"
+        >
+          <input
+            type="hidden"
+            name="tipo_usuario"
+            id="tipo-usuario"
+            value=""
+          />
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="entrada-identificador">
+              Digite seu E-mail ou CPF:
+            </label>
+            <div class="campo-com-icone">
+              <span class="icone-campo">@</span>
+              <input
+                type="text"
+                id="entrada-identificador"
+                name="identificador"
+                class="entrada-formulario"
+                placeholder="E-mail ou CPF"
+                autocomplete="username"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="campo-formulario">
+            <label class="rotulo-campo" for="entrada-senha">
+              Digite sua senha:
+            </label>
+            <div class="campo-com-icone">
+              <span class="icone-campo">🔒</span>
+              <input
+                type="password"
+                id="entrada-senha"
+                name="senha"
+                class="entrada-formulario"
+                placeholder="Senha"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="botao-entrar">Entrar</button>
+
+          <div class="acoes-login">
+            <a href="#" class="link-login">Esqueceu a senha?</a>
+            <span class="separador-links">•</span>
+            <a href="#" class="link-login">Cadastre-se</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div id="area-footer"></div>
+
+  <script src="script_login.js"></script>
+</body>
+</html>
