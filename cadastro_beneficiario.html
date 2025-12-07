@@ -3,17 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio - Mesa Solidária</title>
+  <title>Cadastro de Beneficiário - Mesa Solidária</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-  <link rel="stylesheet" href="../../Navegacao/Navbar/navbar.css" />
-  <link rel="stylesheet" href="cadastro_beneficiario.css" />
-  <link rel="stylesheet" href="../../Navegacao/Footer/footer.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/cadastro_beneficiario.css" />
+  <link rel="stylesheet" href="css/footer.css" />
   <link rel="icon" type="image/png" href="img/logo.png" />
 </head>
 <body>
-  <div id="area-navbar"></div>
+  <header class="cabecalho">
+    <div class="conteiner-navbar">
+      <div class="area-logo">
+        <a href="inicio.html">
+          <img src="img/logo.png" alt="Logo Mesa Solidária" class="imagem-logo" />
+        </a>
+      </div>
+
+      <nav class="menu">
+        <a href="inicio.html" class="item-menu">Início</a>
+        <a href="sobre.html" class="item-menu">Sobre</a>
+        <a href="comoFunciona.html" class="item-menu">Como funciona</a>
+        <a href="familia.html" class="item-menu">Famílias</a>
+        <a href="doador.html" class="item-menu">Doador</a>
+        <a href="voluntario.html" class="item-menu">Voluntário</a>
+        <a href="empresaParceira.html" class="item-menu">Empresas parceiras</a>
+        <a href="impacto.html" class="item-menu">Impacto</a>
+        <a href="faq.html" class="item-menu">FAQ</a>
+        <a href="contato.html" class="item-menu">Contato</a>
+      </nav>
+
+      <div class="area-botao">
+        <a class="botao-entrar" href="login.html">Entrar</a>
+      </div>
+    </div>
+  </header>
 
   <main class="pagina-cadastro-beneficiario">
     <section class="secao-cadastro-beneficiario">
@@ -24,8 +48,14 @@
         </p>
       </div>
 
-      <form class="formulario-cadastro-beneficiario" action="processa_cadastro_beneficiario.php" method="post">
-        <!-- DADOS PESSOAIS -->
+      <form
+        id="form-cadastro-beneficiario"
+        class="formulario-cadastro-beneficiario"
+        action="#"
+        method="get"
+        data-redirecionar="login.html"
+        novalidate
+      >
         <div class="bloco-formulario">
           <h2 class="subtitulo-bloco">Dados pessoais</h2>
 
@@ -44,50 +74,44 @@
             <div class="campo-formulario">
               <label class="rotulo-campo" for="cpf">CPF</label>
               <input
-  type="text"
-  id="cpf"
-  name="cpf"
-  class="entrada-campo"
-  placeholder="000.000.000-00"
-  maxlength="14"
-  inputmode="numeric"
-  required
-/>
-
+                type="text"
+                id="cpf"
+                name="cpf"
+                class="entrada-campo"
+                placeholder="000.000.000-00"
+                maxlength="14"
+                inputmode="numeric"
+                required
+              />
             </div>
           </div>
 
           <div class="linha-campos">
             <div class="campo-formulario">
               <label class="rotulo-campo" for="data-nascimento">Data de nascimento</label>
-              <div class="campo-formulario">
- 
-  <input
-    type="date"
-    id="data-nascimento"
-    name="data_nascimento"
-    class="entrada-campo"
-    required
-  />
-  <span class="mensagem-erro-campo" id="erro-data-nascimento"></span>
-</div>
-
+              <input
+                type="date"
+                id="data-nascimento"
+                name="data_nascimento"
+                class="entrada-campo"
+                required
+              />
+              <span class="mensagem-erro-campo" id="erro-data-nascimento"></span>
             </div>
 
             <div class="campo-formulario">
-  <label class="rotulo-campo" for="telefone">Telefone</label>
-  <input
-    type="tel"
-    id="telefone"
-    name="telefone"
-    class="entrada-campo"
-    placeholder="(11) 99999-9999"
-    inputmode="numeric"
-    maxlength="15"
-    required
-  />
-</div>
-
+              <label class="rotulo-campo" for="telefone">Telefone</label>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                class="entrada-campo"
+                placeholder="(11) 99999-9999"
+                inputmode="numeric"
+                maxlength="15"
+                required
+              />
+            </div>
           </div>
 
           <div class="campo-formulario">
@@ -104,24 +128,22 @@
           </div>
         </div>
 
-        <!-- ENDEREÇO -->
         <div class="bloco-formulario" id="bloco-endereco">
-  <h2 class="subtitulo-bloco">Endereço</h2>
+          <h2 class="subtitulo-bloco">Endereço</h2>
 
           <div class="linha-campos">
             <div class="campo-formulario">
               <label class="rotulo-campo" for="cep">CEP</label>
               <input
-  type="text"
-  id="cep"
-  name="cep"
-  class="entrada-campo"
-  placeholder="00000-000"
-  maxlength="9"
-  inputmode="numeric"
-  required
-/>
-
+                type="text"
+                id="cep"
+                name="cep"
+                class="entrada-campo"
+                placeholder="00000-000"
+                maxlength="9"
+                inputmode="numeric"
+                required
+              />
             </div>
 
             <div class="campo-formulario">
@@ -197,9 +219,8 @@
           </div>
         </div>
 
-        <!-- SITUAÇÃO FAMILIAR -->
         <div class="bloco-formulario" id="bloco-situacao-familiar">
-  <h2 class="subtitulo-bloco">Situação familiar</h2>
+          <h2 class="subtitulo-bloco">Situação familiar</h2>
 
           <div class="linha-campos">
             <div class="campo-formulario">
@@ -262,9 +283,8 @@
           </div>
         </div>
 
-        <!-- SAÚDE E ALIMENTAÇÃO -->
-       <div class="bloco-formulario" id="bloco-saude-alimentacao">
-  <h2 class="subtitulo-bloco">Saúde e alimentação</h2>
+        <div class="bloco-formulario" id="bloco-saude-alimentacao">
+          <h2 class="subtitulo-bloco">Saúde e alimentação</h2>
 
           <div class="campo-formulario">
             <label class="rotulo-campo" for="restricoes-alimentares">
@@ -293,9 +313,8 @@
           </div>
         </div>
 
-        <!-- ACESSO À PLATAFORMA -->
         <div class="bloco-formulario" id="bloco-acesso-plataforma">
-  <h2 class="subtitulo-bloco">Acesso à plataforma</h2>
+          <h2 class="subtitulo-bloco">Acesso à plataforma</h2>
 
           <div class="linha-campos">
             <div class="campo-formulario">
@@ -329,13 +348,16 @@
           </div>
         </div>
 
-        <!-- AÇÕES -->
         <div class="rodape-formulario">
-          <button type="submit" class="botao-principal-cadastro">
-            Concluir cadastro
+          <button
+            type="submit"
+            class="botao-principal-cadastro botao-confirmar-cadastro"
+            id="botao-principal-cadastro"
+          >
+            Continuar
           </button>
 
-          <a href="../Login/login.html" class="botao-secundario-cadastro">
+          <a href="login.html" class="botao-secundario-cadastro">
             Já tenho cadastro
           </a>
         </div>
@@ -343,8 +365,74 @@
     </section>
   </main>
 
-  <div id="area-footer"></div>
+  <footer class="rodape">
+    <div class="conteiner-rodape">
+      <div class="bloco-links">
+        <div class="coluna-links">
+          <a href="../../inicio.html" class="item-menu">Início</a>
+          <a href="../../Sobre/sobre.html" class="item-menu">Sobre</a>
+          <a href="../../Como_Funciona/como_funciona.html" class="item-menu">Como funciona</a>
+          <a href="../../Familia/familia.html" class="item-menu">Famílias</a>
+          <a href="../../doar/doar.html" class="item-menu">Doador</a>
+        </div>
 
-  <script src="cadastro_beneficiario.js"></script>
+        <div class="coluna-links">
+          <a href="../../voluntario/voluntario.html" class="item-menu">Voluntário</a>
+          <a href="../../Empresa Parceira/empresa_parceira.html" class="item-menu">Empresas parceiras</a>
+          <a href="../../impacto/impacto.html" class="item-menu">Impacto</a>
+          <a href="../../FAQ/faq.html" class="item-menu">FAQ</a>
+          <a href="../../Contato/contato.html" class="item-menu">Contato</a>
+        </div>
+      </div>
+
+      <div class="linha-vertical"></div>
+
+      <div class="bloco-sociais">
+        <a href="#" class="link-social">
+          <img src="img/FACEBOOK.png" alt="Facebook" class="icone-social" />
+        </a>
+        <a href="#" class="link-social">
+          <img src="img/GOOGLE.png" alt="Google" class="icone-social" />
+        </a>
+        <a href="#" class="link-social">
+          <img src="img/LINKEDIN.png" alt="LinkedIn" class="icone-social" />
+        </a>
+        <a href="#" class="link-social">
+          <img src="img/X.png" alt="X" class="icone-social" />
+        </a>
+      </div>
+
+      <div class="linha-vertical"></div>
+
+      <div class="bloco-apps">
+        <button class="botao-app">
+          <img src="img/apple.png" alt="Apple" class="icone-app" />
+          <span class="texto-botao-app">Baixe nosso App!</span>
+        </button>
+
+        <button class="botao-app">
+          <img src="img/android.png" alt="Android" class="icone-app" />
+          <span class="texto-botao-app">Baixe nosso App!</span>
+        </button>
+      </div>
+
+      <div class="linha-vertical"></div>
+
+      <div class="bloco-logo-rodape">
+        <img src="img/logo.png" alt="Mesa Solidária" class="logo-rodape" />
+        <span class="texto-logo-rodape">Mesa Solidária</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay-confirmacao" id="overlay-confirmacao">
+    <div class="popup-confirmacao">
+      <h2 class="titulo-confirmacao">Cadastro concluído</h2>
+      <p class="texto-confirmacao">Seu cadastro foi confirmado com sucesso.</p>
+      <button type="button" class="botao-confirmacao" id="botao-confirmacao">Ok</button>
+    </div>
+  </div>
+
+  <script src="js/cadastro_beneficiario.js"></script>
 </body>
 </html>

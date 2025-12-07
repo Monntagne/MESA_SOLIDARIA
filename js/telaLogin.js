@@ -1,100 +1,297 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const carregarFragmento = (idDestino, caminho) => {
-    const destino = document.getElementById(idDestino);
-    if (!destino) return;
+  const formulario =
+    document.getElementById("form-cadastro-beneficiario") ||
+    document.querySelector(".formulario-cadastro-beneficiario");
 
-    fetch(caminho)
-      .then((res) => res.text())
-      .then((html) => {
-        destino.innerHTML = html;
-      })
-      .catch((erro) => {
-        console.error(`Erro ao carregar ${caminho}:`, erro);
-      });
+  if (!formulario) return;
+
+  const botaoPrincipal =
+    document.getElementById("botao-principal-cadastro") ||
+    formulario.querySelector(".botao-principal-cadastro");
+
+  const overlay = document.getElementById("overlay-confirmacao");
+  const botaoOk = document.getElementById("botao-confirmacao");
+
+  const cpfInput = document.getElementById("cpf");
+  const telefoneInput = document.getElementById("telefone");
+  const cepInput = document.getElementById("cep");
+  const emailInput = document.getElementById("email");
+  const dataNascimentoInput = document.getElementById("data-nascimento");
+  const senhaInput = document.getElementById("senha-acesso");
+  const confirmacaoSenhaInput = document.getElementById("confirmacao-senha");
+
+  const erroEmail = document.getElementById("erro-email");
+  const erroDataNascimento = document.getElementById("erro-data-nascimento");
+  const erroSenha = document.getElementById("erro-senha");
+  const erroConfirmacaoSenha = document.getElementById("erro-confirmacao-senha");
+
+  const blocoEndereco = document.getElementById("bloco-endereco");
+  const blocoSituacao = document.getElementById("bloco-situacao-familiar");
+  const blocoSaude = document.getElementById("bloco-saude-alimentacao");
+  const blocoAcesso = document.getElementById("bloco-acesso-plataforma");
+
+  const blocosEtapas = [blocoEndereco, blocoSituacao, blocoSaude, blocoAcesso].filter(Boolean);
+
+  let etapaAtual = 0;
+
+  const destinoLogin = () => formulario.dataset.redirecionar || "login.html";
+
+  const abrirPopup = () => {
+    if (overlay) overlay.classList.add("ativo");
   };
 
-  carregarFragmento("area-navbar", "../Navegacao/Navbar/navbar.html");
-  carregarFragmento("area-footer", "../Navegacao/Footer/footer.html");
+  const fecharPopup = () => {
+    if (overlay) overlay.classList.remove("ativo");
+  };
 
-  const paginaLogin = document.querySelector(".pagina-login");
-  if (!paginaLogin) return;
+  const somenteDigitos = (v) => (v || "").replace(/\D/g, "");
 
-  const cartoesPerfil = paginaLogin.querySelectorAll(".cartao-perfil");
-  const colunaFormulario = paginaLogin.querySelector(".coluna-formulario");
-  const tituloLogin = paginaLogin.querySelector(".titulo-login");
-  const campoTipoUsuario = document.getElementById("tipo-usuario");
-  const formularioLogin = paginaLogin.querySelector(".formulario-login");
-  const entradaIdentificador = document.getElementById("entrada-identificador");
-  const entradaSenha = document.getElementById("entrada-senha");
-  const tituloPadrao = tituloLogin?.textContent || "Entre na sua conta";
+  const aplicarMascaraCPF = (evento) => {
+    const el = evento.target;
+    const dig = somenteDigitos(el.value).slice(0, 11);
+    let v = dig;
 
-  if (!cartoesPerfil.length || !colunaFormulario || !tituloLogin) return;
+    if (dig.length > 3) v = `${dig.slice(0, 3)}.${dig.slice(3)}`;
+    if (dig.length > 6) v = `${dig.slice(0, 3)}.${dig.slice(3, 6)}.${dig.slice(6)}`;
+    if (dig.length > 9) v = `${dig.slice(0, 3)}.${dig.slice(3, 6)}.${dig.slice(6, 9)}-${dig.slice(9)}`;
 
-  const esconderFormulario = () => {
-    colunaFormulario.style.display = "none";
-    cartoesPerfil.forEach((c) => c.classList.remove("selecionado"));
-    tituloLogin.textContent = tituloPadrao;
-    if (campoTipoUsuario) {
-      campoTipoUsuario.value = "";
+    el.value = v;
+  };
+
+  const aplicarMascaraTelefone = (evento) => {
+    const el = evento.target;
+    const dig = somenteDigitos(el.value).slice(0, 11);
+
+    if (dig.length <= 10) {
+      const p1 = dig.slice(0, 2);
+      const p2 = dig.slice(2, 6);
+      const p3 = dig.slice(6, 10);
+      el.value =
+        dig.length > 6
+          ? `(${p1}) ${p2}-${p3}`
+          : dig.length > 2
+          ? `(${p1}) ${p2}`
+          : dig.length > 0
+          ? `(${p1}`
+          : "";
+      return;
     }
+
+    const d1 = dig.slice(0, 2);
+    const d2 = dig.slice(2, 7);
+    const d3 = dig.slice(7, 11);
+    el.value = `(${d1}) ${d2}-${d3}`;
   };
 
-  const mostrarFormulario = (cartao) => {
-    colunaFormulario.style.display = "block";
-    cartao.classList.add("selecionado");
+  const aplicarMascaraCEP = (evento) => {
+    const el = evento.target;
+    const dig = somenteDigitos(el.value).slice(0, 8);
+    el.value = dig.length > 5 ? `${dig.slice(0, 5)}-${dig.slice(5)}` : dig;
+  };
 
-    const nomePerfil = cartao
-      .querySelector(".titulo-perfil")
-      ?.textContent.trim();
+  const limparErro = (input, span) => {
+    if (input) input.classList.remove("campo-invalido");
+    if (span) span.textContent = "";
+  };
 
-    if (nomePerfil) {
-      tituloLogin.textContent = `Entrar como ${nomePerfil}`;
-      if (campoTipoUsuario) {
-        campoTipoUsuario.value = nomePerfil.toLowerCase();
-      }
+  const marcarErro = (input, span, msg) => {
+    if (input) input.classList.add("campo-invalido");
+    if (span) span.textContent = msg;
+  };
+
+  const validarEmailSimples = () => {
+    if (!emailInput) return true;
+    limparErro(emailInput, erroEmail);
+
+    const v = emailInput.value.trim();
+    if (!v) return false;
+
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if (!ok) {
+      marcarErro(emailInput, erroEmail, "E-mail inválido.");
+      return false;
     }
+    return true;
   };
 
-  esconderFormulario();
+  const validarDataNascimento = () => {
+    if (!dataNascimentoInput) return true;
+    limparErro(dataNascimentoInput, erroDataNascimento);
 
-  cartoesPerfil.forEach((cartao) => {
-    cartao.addEventListener("click", () => {
-      const jaSelecionado = cartao.classList.contains("selecionado");
+    const v = dataNascimentoInput.value;
+    if (!v) return false;
 
-      if (jaSelecionado) {
-        esconderFormulario();
-      } else {
-        esconderFormulario();
-        mostrarFormulario(cartao);
-      }
+    const data = new Date(v + "T00:00:00");
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    if (data > hoje) {
+      marcarErro(dataNascimentoInput, erroDataNascimento, "Data de nascimento não pode ser futura.");
+      return false;
+    }
+    return true;
+  };
+
+  const validarSenha = () => {
+    if (!senhaInput) return true;
+    limparErro(senhaInput, erroSenha);
+
+    const v = senhaInput.value || "";
+    if (!v) return false;
+
+    const regra = /^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
+    if (!regra.test(v)) {
+      marcarErro(
+        senhaInput,
+        erroSenha,
+        "A senha deve ter 8+ caracteres, 1 maiúscula, números e 1 caractere especial."
+      );
+      return false;
+    }
+    return true;
+  };
+
+  const validarConfirmacaoSenha = () => {
+    if (!confirmacaoSenhaInput || !senhaInput) return true;
+    limparErro(confirmacaoSenhaInput, erroConfirmacaoSenha);
+
+    const s1 = senhaInput.value || "";
+    const s2 = confirmacaoSenhaInput.value || "";
+
+    if (!s2) return false;
+
+    if (s1 !== s2) {
+      marcarErro(confirmacaoSenhaInput, erroConfirmacaoSenha, "As senhas não coincidem.");
+      return false;
+    }
+    return true;
+  };
+
+  const validarMinimos = () => {
+    const cpfOk = !cpfInput || somenteDigitos(cpfInput.value).length === 11;
+    const telOk = !telefoneInput || somenteDigitos(telefoneInput.value).length >= 10;
+    const cepOk = !cepInput || somenteDigitos(cepInput.value).length === 8;
+    return cpfOk && telOk && cepOk;
+  };
+
+  const camposDoBloco = (bloco) =>
+    Array.from(bloco.querySelectorAll("input, select, textarea"));
+
+  const blocoVisivel = (bloco) =>
+    bloco && getComputedStyle(bloco).display !== "none";
+
+  const validarBlocosVisiveis = () => {
+    const blocosParaValidar = [];
+
+    const todosBlocos = Array.from(formulario.querySelectorAll(".bloco-formulario"));
+    todosBlocos.forEach((b) => {
+      if (blocoVisivel(b)) blocosParaValidar.push(b);
     });
-  });
 
-  const usuarioTeste = {
-    identificador: "silvasantosviniccius@gmail.com",
-    cpf: "38971590823",
-    senha: "123456",
-    tipoUsuario: "voluntário"
+    for (const b of blocosParaValidar) {
+      for (const campo of camposDoBloco(b)) {
+        if (campo.hasAttribute("required") && !campo.checkValidity()) {
+          campo.reportValidity();
+          return false;
+        }
+      }
+    }
+
+    if (!validarEmailSimples()) {
+      emailInput?.focus();
+      return false;
+    }
+
+    if (!validarDataNascimento()) {
+      dataNascimentoInput?.focus();
+      return false;
+    }
+
+    return true;
   };
 
-  if (formularioLogin && entradaIdentificador && entradaSenha) {
-    formularioLogin.addEventListener("submit", (event) => {
-      event.preventDefault();
+  const validarFinal = () => {
+    if (!formulario.checkValidity()) {
+      formulario.reportValidity();
+      return false;
+    }
 
-      const ident = entradaIdentificador.value.trim();
-      const senha = entradaSenha.value.trim();
-      const tipo = campoTipoUsuario ? campoTipoUsuario.value : "";
+    const emailOk = validarEmailSimples();
+    const dataOk = validarDataNascimento();
+    const senhaOk = validarSenha();
+    const confirmOk = validarConfirmacaoSenha();
 
-      const credenciaisOk =
-  (ident === usuarioTeste.identificador) ||
-  (usuarioTeste.cpf && senha === usuarioTeste.senha && (tipo === "voluntário" || tipo === usuarioTeste.tipoUsuario));
+    if (!emailOk || !dataOk || !senhaOk || !confirmOk) return false;
+    if (!validarMinimos()) return false;
 
+    return true;
+  };
 
-      if (credenciaisOk) {
-        window.location.href = "pagina_pos_login.html";
-      } else {
-        alert("Usuário ou senha inválidos para este perfil de acesso.");
-      }
+  const esconderEtapas = () => {
+    blocosEtapas.forEach((b) => {
+      if (b) b.style.display = "none";
+    });
+  };
+
+  const mostrarEtapa = (indice) => {
+    const bloco = blocosEtapas[indice];
+    if (!bloco) return;
+    bloco.style.display = "block";
+    bloco.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const atualizarTextoBotao = () => {
+    if (!botaoPrincipal) return;
+    botaoPrincipal.textContent = etapaAtual < blocosEtapas.length ? "Continuar" : "Concluir cadastro";
+  };
+
+  esconderEtapas();
+  atualizarTextoBotao();
+
+  if (cpfInput) cpfInput.addEventListener("input", aplicarMascaraCPF);
+  if (telefoneInput) telefoneInput.addEventListener("input", aplicarMascaraTelefone);
+  if (cepInput) cepInput.addEventListener("input", aplicarMascaraCEP);
+
+  if (emailInput) emailInput.addEventListener("blur", validarEmailSimples);
+  if (dataNascimentoInput) dataNascimentoInput.addEventListener("blur", validarDataNascimento);
+
+  if (senhaInput) {
+    senhaInput.addEventListener("input", () => {
+      validarSenha();
+      validarConfirmacaoSenha();
     });
   }
+
+  if (confirmacaoSenhaInput) {
+    confirmacaoSenhaInput.addEventListener("input", validarConfirmacaoSenha);
+  }
+
+  if (botaoOk) {
+    botaoOk.addEventListener("click", () => {
+      fecharPopup();
+      window.location.href = destinoLogin();
+    });
+  }
+
+  formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (etapaAtual < blocosEtapas.length) {
+      const okVisiveis = validarBlocosVisiveis();
+      if (!okVisiveis) return;
+
+      mostrarEtapa(etapaAtual);
+      etapaAtual += 1;
+      atualizarTextoBotao();
+      return;
+    }
+
+    if (!validarFinal()) return;
+
+    abrirPopup();
+
+    setTimeout(() => {
+      window.location.href = destinoLogin();
+    }, 2000);
+  });
 });

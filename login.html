@@ -5,25 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Mesa Solidária</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/telaLogin.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="icon" type="image/png" href="img/logo.png" />
 </head>
 <body>
- <header class="cabecalho">
+  <header class="cabecalho">
     <div class="conteiner-navbar">
       <div class="area-logo">
         <a href="inicio.html">
-          <img
-            src="img/logo.png"
-            alt="Logo Mesa Solidária"
-            class="imagem-logo"
-          />
+          <img src="img/logo.png" alt="Logo Mesa Solidária" class="imagem-logo" />
         </a>
       </div>
 
@@ -31,25 +24,17 @@
         <a href="inicio.html" class="item-menu">Início</a>
         <a href="sobre.html" class="item-menu">Sobre</a>
         <a href="comoFunciona.html" class="item-menu">Como funciona</a>
-
         <a href="familia.html" class="item-menu">Famílias</a>
         <a href="doador.html" class="item-menu">Doador</a>
-        <a href="voluntario.html" class="item-menu">
-          Voluntário
-        </a>
-        <a href="empresaParceira.html" class="item-menu">
-          Empresas parceiras
-        </a>
-
+        <a href="voluntario.html" class="item-menu">Voluntário</a>
+        <a href="empresaParceira.html" class="item-menu">Empresas parceiras</a>
         <a href="impacto.html" class="item-menu">Impacto</a>
         <a href="faq.html" class="item-menu">FAQ</a>
         <a href="contato.html" class="item-menu">Contato</a>
       </nav>
 
       <div class="area-botao">
-        <a class="botao-entrar" href="login.html">
-          Entrar
-        </a>
+        <a class="botao-entrar" href="login.html">Entrar</a>
       </div>
     </div>
   </header>
@@ -62,7 +47,7 @@
       </p>
 
       <div class="lista-perfis">
-        <button class="cartao-perfil">
+        <button class="cartao-perfil" type="button" data-tipo="beneficiario">
           <div class="avatar-perfil">
             <img src="img/logo_beneficiario.png" alt="Beneficiário" />
           </div>
@@ -72,7 +57,7 @@
           </div>
         </button>
 
-        <button class="cartao-perfil selecionado">
+        <button class="cartao-perfil" type="button" data-tipo="voluntario">
           <div class="avatar-perfil">
             <img src="img/logo_voluntario.png" alt="Voluntário" />
           </div>
@@ -82,19 +67,17 @@
           </div>
         </button>
 
-        <button class="cartao-perfil">
+        <button class="cartao-perfil" type="button" data-tipo="doador">
           <div class="avatar-perfil">
             <img src="img/logo_doador.png" alt="Doador" />
           </div>
           <div class="conteudo-perfil">
             <h2 class="titulo-perfil">Doador</h2>
-            <p class="descricao-perfil">
-              Para contribuir e fazer a diferença.
-            </p>
+            <p class="descricao-perfil">Para contribuir e fazer a diferença.</p>
           </div>
         </button>
 
-        <button class="cartao-perfil">
+        <button class="cartao-perfil" type="button" data-tipo="ponto_de_coleta">
           <div class="avatar-perfil">
             <img src="img/logo_ponto_de_coleta.png" alt="Ponto de coleta" />
           </div>
@@ -110,17 +93,8 @@
       <div class="cartao-login">
         <h2 class="titulo-login">Entre na sua conta</h2>
 
-        <form
-          class="formulario-login"
-          action="processa_login.php"
-          method="post"
-        >
-          <input
-            type="hidden"
-            name="tipo_usuario"
-            id="tipo-usuario"
-            value=""
-          />
+        <form class="formulario-login" action="#" novalidate>
+          <input type="hidden" name="tipo_usuario" id="tipo-usuario" value="" />
 
           <div class="campo-formulario">
             <label class="rotulo-campo" for="entrada-identificador">
@@ -163,7 +137,7 @@
           <div class="acoes-login">
             <a href="#" class="link-login">Esqueceu a senha?</a>
             <span class="separador-links">•</span>
-            <a href="#" class="link-login">Cadastre-se</a>
+            <a href="#" class="link-login" id="link-cadastro">Cadastre-se</a>
           </div>
         </form>
       </div>
