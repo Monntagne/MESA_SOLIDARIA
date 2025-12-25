@@ -1,5 +1,4 @@
 // script_inicio.js
-
 document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // 1) CARREGAR FRAGMENTOS
@@ -21,9 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   carregarFragmento("area-footer", "Navegacao/Footer/footer.html", "footer");
 
   // =========================
-  // 2) CONFETE
+  // 2) CONFETE + REDIRECIONAR
   // =========================
   const botaoDoar = document.getElementById("botao-doar-agora");
+  let redirecionando = false;
 
   const criarConfete = (x, y) => {
     const cores = ["#FF7A00", "#FFD54F", "#2E8B57", "#00123B", "#FFFFFF"];
@@ -38,7 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       confete.style.setProperty("--confete-x", `${(Math.random() - 0.5) * 200}px`);
       confete.style.setProperty("--confete-y", `${-(Math.random() * 200 + 80)}px`);
-      confete.style.setProperty("--confete-rotacao", `${(Math.random() - 0.5) * 360}deg`);
+      confete.style.setProperty(
+        "--confete-rotacao",
+        `${(Math.random() - 0.5) * 360}deg`
+      );
       confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
 
       document.body.appendChild(confete);
@@ -49,10 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (botaoDoar) {
     botaoDoar.addEventListener("click", (e) => {
       e.preventDefault();
-      criarConfete(
-        e.clientX + window.scrollX,
-        e.clientY + window.scrollY
-      );
+      if (redirecionando) return;
+      redirecionando = true;
+
+      criarConfete(e.clientX + window.scrollX, e.clientY + window.scrollY);
+
+      setTimeout(() => {
+        window.location.href = "doador.html"; // <-- ALTERE A URL AQUI
+      }, 1500);
     });
   } else {
     console.warn('Elemento com id "botao-doar-agora" não foi encontrado.');
@@ -87,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     elementosAnimados.forEach((el) => observador.observe(el));
   }
-
+/*
   // =========================
   // 4) FLIP DOS CARTÕES AJUDA
   // =========================
@@ -95,9 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const icone = cartao.querySelector(".icone-cartao");
     if (!icone) return;
 
-    // guarda cor original
-    cartao.dataset.corOriginal =
-      window.getComputedStyle(cartao).backgroundColor;
+    cartao.dataset.corOriginal = window.getComputedStyle(cartao).backgroundColor;
 
     const corIcone = window.getComputedStyle(icone).backgroundColor;
 
@@ -112,6 +117,41 @@ document.addEventListener("DOMContentLoaded", () => {
         cartao.style.transform = "rotateY(0deg)";
         cartao.style.backgroundColor = cartao.dataset.corOriginal || "";
       }
+    });
+  });*/
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoMenu = document.querySelector(".botao-menu");
+  const menu = document.querySelector(".menu");
+
+  if (!botaoMenu || !menu) return;
+
+  botaoMenu.addEventListener("click", () => {
+    const ativo = menu.classList.toggle("ativo");
+    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
+  });
+
+  // Fecha ao clicar em um item
+  menu.querySelectorAll(".item-menu").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("ativo");
+      botaoMenu.setAttribute("aria-expanded", "false");
     });
   });
 });

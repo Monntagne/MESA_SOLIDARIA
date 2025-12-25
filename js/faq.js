@@ -92,3 +92,38 @@ function carregarFragmento(url, idAlvo) {
       console.error("Erro ao carregar fragmento:", url, erro);
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoMenu = document.querySelector(".botao-menu");
+  const menu = document.querySelector(".menu");
+
+  if (!botaoMenu || !menu) return;
+
+  botaoMenu.addEventListener("click", () => {
+    const ativo = menu.classList.toggle("ativo");
+    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
+  });
+
+  // Fecha ao clicar em um item
+  menu.querySelectorAll(".item-menu").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("ativo");
+      botaoMenu.setAttribute("aria-expanded", "false");
+    });
+  });
+});
