@@ -320,3 +320,148 @@ body {
         transform: translateY(0);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+  html {
+    scroll-padding-top: 90px; 
+  }
+
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+  .secao-ods-sobre {
+    padding: 32px 0 40px;
+  }
+
+  .conteiner-banner-sobre {
+    padding: 28px 28px;
+    gap: 24px;
+  }
+
+  .conteiner-como-nascemos {
+    padding: 24px 24px;
+    gap: 24px;
+    grid-template-columns: 1fr; 
+  }
+
+  .bloco-imagem-banner-sobre {
+    justify-content: center; 
+  }
+
+  .imagem-banner-sobre {
+    max-width: 520px; 
+  }
+
+  .grade-missao-visao-valores,
+  .grade-pilares-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+
+  .grade-time-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+
+  .linha-ods-sobre {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .imagem-ods-sobre {
+    width: 110px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 80px; 
+  }
+
+  
+  body {
+    overflow-x: hidden;
+  }
+
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+  .secao-ods-sobre {
+    padding: 24px 0 32px;
+  }
+
+  .conteiner-banner-sobre {
+    padding: 22px 16px;
+    gap: 18px;
+    flex-direction: column;      
+    text-align: center;           
+  }
+
+  .bloco-texto-banner-sobre {
+    max-width: 100%;
+  }
+
+  .bloco-imagem-banner-sobre {
+    justify-content: center;
+  }
+
+  .imagem-banner-sobre {
+    max-width: 100%;
+  }
+
+  .conteiner-como-nascemos {
+    padding: 20px 16px;
+    gap: 18px;
+    grid-template-columns: 1fr;   
+  }
+
+  .grade-missao-visao-valores,
+  .grade-pilares-sobre,
+  .grade-time-sobre {
+    grid-template-columns: 1fr;   
+  }
+
+  .titulo-banner-sobre {
+    font-size: 24px;
+  }
+
+  .titulo-secao-sobre {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .foto-membro-sobre {
+    width: 84px;
+    height: 84px;
+  }
+
+  .linha-ods-sobre {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .imagem-ods-sobre {
+    width: 96px;
+  }
+}

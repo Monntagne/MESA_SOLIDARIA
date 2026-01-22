@@ -21,7 +21,7 @@ body {
   color: var(--azul-escuro);
 }
 
-/* LAYOUT GERAL */
+
 
 .pagina-login {
   min-height: 100vh;
@@ -32,7 +32,6 @@ body {
   padding: 40px 24px;
 }
 
-/* COLUNA ESQUERDA – PERFIS */
 
 .coluna-perfis {
   width: 100%;
@@ -113,7 +112,6 @@ body {
   color: var(--cinza-texto);
 }
 
-/* COLUNA DIREITA – LOGIN */
 
 .coluna-formulario {
   width: 100%;
@@ -182,7 +180,6 @@ body {
 
 
 
-/* LINKS INFERIORES */
 
 .acoes-login {
   margin-top: 14px;

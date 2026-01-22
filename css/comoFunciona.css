@@ -586,3 +586,171 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+  .conteiner-hero-como,
+  .conteiner-pilares-como,
+  .conteiner-jornada-como,
+  .conteiner-perfis-como,
+  .conteiner-regras-como,
+  .conteiner-tecnologia-como,
+  .conteiner-cta-como {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .secao-hero-como {
+    padding: 44px 0 58px;
+  }
+
+  .conteiner-hero-como {
+    gap: 32px;
+  }
+
+  .linha-metricas-hero {
+    flex-wrap: wrap;
+  }
+
+  .cartao-metrica {
+    min-width: 0;          
+    flex: 1 1 220px;       
+  }
+
+  .linha-botoes-hero,
+  .linha-botoes-cta {
+    flex-wrap: wrap;
+  }
+
+ 
+  .grade-pilares-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .linha-timeline-como {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grade-regras-como,
+  .grade-tecnologia-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .conteiner-hero-como {
+    grid-template-columns: 1fr;
+  }
+
+  .coluna-hero-imagem {
+    justify-content: center;
+  }
+
+  .moldura-hero {
+    max-width: 720px;
+    min-height: 320px;
+  }
+
+  .linha-timeline-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .conteiner-hero-como,
+  .conteiner-pilares-como,
+  .conteiner-jornada-como,
+  .conteiner-perfis-como,
+  .conteiner-regras-como,
+  .conteiner-tecnologia-como,
+  .conteiner-cta-como {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .secao-hero-como {
+    padding: 34px 0 46px;
+  }
+
+  .titulo-hero {
+    font-size: clamp(24px, 7.6vw, 30px);
+    line-height: 1.15;
+  }
+
+  .texto-hero {
+    font-size: 14.5px;
+  }
+
+  .linha-metricas-hero {
+    flex-direction: column;
+  }
+
+  .cartao-metrica {
+    width: 100%;
+    flex: none;
+  }
+
+  .linha-botoes-hero,
+  .linha-botoes-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-primario,
+  .botao-secundario {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .moldura-hero {
+    min-height: 240px;
+    border-radius: var(--raio-24);
+  }
+
+  .faixa-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .grade-pilares-como,
+  .linha-timeline-como,
+  .grade-perfis-como,
+  .grade-regras-como,
+  .grade-tecnologia-como {
+    grid-template-columns: 1fr;
+  }
+
+  .secao-pilares-como,
+  .secao-jornada-como,
+  .secao-regras-como,
+  .secao-perfis-como,
+  .secao-tecnologia-como {
+    padding: 44px 0 54px;
+  }
+
+  .secao-cta-como {
+    padding: 52px 0 62px;
+  }
+}

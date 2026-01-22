@@ -17,7 +17,6 @@ body {
     padding-top: var(--altura-cabecalho);
 }
 
-/* ================== CABEÇALHO / NAVBAR ================== */
 .cabecalho {
     background-color: #00123B;
     height: var(--altura-cabecalho);
@@ -31,10 +30,8 @@ body {
     z-index: 1000;
 
     overflow-x: visible;
-    /* desktop não corta o menu */
 }
 
-/* ================== CONTAINER NAVBAR ================== */
 .conteiner-navbar {
     width: 100%;
     max-width: 1200px;
@@ -45,7 +42,6 @@ body {
     min-width: 0;
 }
 
-/* ================== LOGO ================== */
 .area-logo {
     display: flex;
     align-items: center;
@@ -58,7 +54,6 @@ body {
     display: block;
 }
 
-/* ================== MENU (DESKTOP) ================== */
 .menu {
     display: flex;
     align-items: center;
@@ -81,7 +76,6 @@ body {
     opacity: 0.8;
 }
 
-/* ================== BOTÃO ENTRAR ================== */
 .area-botao {
     display: flex;
     align-items: center;
@@ -119,10 +113,8 @@ body {
     outline-offset: 2px;
 }
 
-/* ================== BOTÃO HAMBÚRGUER ================== */
 .botao-menu {
     display: none;
-    /* aparece só no responsivo */
     align-items: center;
     justify-content: center;
     width: 44px;
@@ -161,10 +153,8 @@ body {
     top: 6px;
 }
 
-/* =========================
-   DESKTOP COMPACTO (opcional, mas ajuda a caber mais links)
-========================= */
-@media (max-width: 1400px) {
+
+@media (max-width: 1930px) {
     .menu {
         gap: 16px;
         margin: 0 18px;
@@ -179,21 +169,17 @@ body {
     }
 }
 
-/* =========================
-   TABLET + CELULAR (até 1200px)
-   -> vira hambúrguer + painel
-========================= */
+
 @media (max-width: 1200px) {
 
     html,
     body {
         overflow-x: hidden;
-        /* evita arrastar pro lado */
+       
     }
 
     .cabecalho {
         overflow-x: clip;
-        /* corta qualquer sobra no responsivo */
     }
 
     :root {
@@ -212,13 +198,11 @@ body {
         display: inline-flex;
     }
 
-    /* some o menu horizontal */
     .menu {
         display: none;
         margin: 0;
     }
 
-    /* menu aberto vira painel */
     .menu.ativo {
         display: flex;
         position: fixed;
@@ -258,9 +242,6 @@ body {
     }
 }
 
-/* =========================
-   CELULAR (até 600px)
-========================= */
 @media (max-width: 600px) {
     :root {
         --altura-cabecalho: 80px;

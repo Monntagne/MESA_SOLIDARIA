@@ -14,9 +14,6 @@ body {
   width: 100%;
 }
 
-/* =========================
-   BANNER INICIAL
-========================= */
 .secao-banner-inicial {
   width: 100%;
 }
@@ -107,9 +104,6 @@ body {
   background-color: rgba(0, 18, 59, 0.06);
 }
 
-/* =========================
-   SEÇÕES / TÍTULOS
-========================= */
 .titulo-secao {
   margin: 0 0 14px;
   font-size: clamp(22px, 3vw, 30px);
@@ -213,14 +207,11 @@ body {
   font-size: 14px;
 }
 
-/* efeito “virar” (JS aplica) */
 .cartao-ajuda.virado {
   transform: rotateY(180deg);
 }
 
-/* =========================
-   SOBRE
-========================= */
+
 .secao-sobre-mesa {
   padding: 72px 0;
 }
@@ -254,9 +245,7 @@ body {
   background: #0A245F;
 }
 
-/* =========================
-   PÚBLICOS
-========================= */
+
 .secao-publicos {
   padding: 72px 0;
   background-color: #F5F6FA;
@@ -302,9 +291,7 @@ body {
   font-size: 14px;
 }
 
-/* =========================
-   COMO FUNCIONA
-========================= */
+
 .secao-como-funciona {
   padding: 72px 0;
 }
@@ -362,9 +349,6 @@ body {
   font-size: 14px;
 }
 
-/* =========================
-   SEGURANÇA
-========================= */
 .secao-seguranca {
   padding: 72px 0;
   background-color: #F5F6FA;
@@ -434,9 +418,7 @@ body {
   background-color: rgba(0, 18, 59, 0.06);
 }
 
-/* =========================
-   ODS
-========================= */
+
 .secao-ods {
   padding: 72px 0;
 }
@@ -474,9 +456,7 @@ body {
   font-size: 14px;
 }
 
-/* =========================
-   EMPRESAS
-========================= */
+
 .secao-empresas {
   padding: 72px 0;
   background-color: #F5F6FA;
@@ -546,9 +526,7 @@ body {
   background: #e86f00;
 }
 
-/* =========================
-   REVEAL AO SCROLL
-========================= */
+
 .cartao-ajuda,
 .cartao-publico,
 .cartao-passo-funcionamento,
@@ -565,9 +543,7 @@ body {
   transform: translateY(0) !important;
 }
 
-/* =========================
-   CONFETE
-========================= */
+
 .confete {
   position: absolute;
   width: 10px;
@@ -585,11 +561,6 @@ body {
   }
 }
 
-
-/* =======================================================================
-   TEMA (override) — sem o "branco + cinza claro" e com mais identidade 🙌
-   Não mexe no navbar/footer (essas regras só afetam as seções e cartões).
-   ======================================================================= */
 
 :root {
   --azul: #00123B;
@@ -699,9 +670,6 @@ button:focus-visible {
   border-radius: 999px;
 }
 
-/* =========================
-   ÍCONES: CONTRASTE + CENTRALIZAÇÃO
-========================= */
 .icone-verde {
   background-color: #2E8B57 !important;
 }
@@ -748,27 +716,6 @@ button:focus-visible {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   RESPONSIVO — TABLET
-   (601px até 1024px)
-========================= */
 @media (min-width: 601px) and (max-width: 1024px) {
   .conteudo-banner-inicial {
     padding: 56px 0;
@@ -809,10 +756,6 @@ button:focus-visible {
   }
 }
 
-/* =========================
-   RESPONSIVO — CELULAR
-   (até 600px)
-========================= */
 @media (max-width: 600px) {
   html {
     scroll-padding-top: 72px;

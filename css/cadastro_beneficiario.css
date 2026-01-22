@@ -182,27 +182,10 @@
 .pagina-cadastro-beneficiario .campo-invalido {
   border-color: #c62828;
 }
+
 .pagina-cadastro-beneficiario .campo-invalido:focus {
   box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .overlay-confirmacao {
@@ -257,6 +240,10 @@
 
 
 
-.overlay-confirmacao { display: none; }
-.overlay-confirmacao.ativo { display: flex; }
+.overlay-confirmacao {
+  display: none;
+}
 
+.overlay-confirmacao.ativo {
+  display: flex;
+}

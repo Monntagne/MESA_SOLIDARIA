@@ -586,3 +586,306 @@ body {
   width: 12%;
   margin: 0 auto 24px auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVO — FAMÍLIA
+   (cole no final do familia.css)
+========================= */
+
+/* TABLET (até 1024px) */
+@media (max-width: 1024px) {
+  /* HERO */
+  .secao-familia-hero {
+    padding: 28px 0 34px;
+  }
+
+  .conteiner-familia-hero {
+    padding: 28px 24px;
+    gap: 24px;
+    border-radius: 22px;
+  }
+
+  .titulo-familia-hero {
+    font-size: 28px;
+  }
+
+  .coluna-hero-familia-texto {
+    max-width: 100%;
+  }
+
+  .coluna-hero-familia-imagem {
+    justify-content: center;
+  }
+
+  .cartao-hero-familia-imagem {
+    max-width: 520px;
+  }
+
+  /* REALIDADE (2 colunas -> 1 coluna) */
+  .secao-familia-realidade {
+    padding: 24px 0 32px;
+  }
+
+  .conteiner-familia-realidade {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 18px;
+  }
+
+  .grade-dados-realidade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* TRILHA (4 -> 2) */
+  .secao-familia-trilha {
+    padding: 32px 0 36px;
+  }
+
+  .conteiner-familia-trilha {
+    padding: 0 20px;
+  }
+
+  .linha-trilha-familia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* CADASTRO (2 colunas -> 1 coluna) */
+  .secao-familia-cadastro-detalhado {
+    padding: 32px 0 36px;
+  }
+
+  .conteiner-familia-cadastro-detalhado {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 18px;
+  }
+
+  .grade-requisitos-familia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* DÚVIDAS (3 -> 2) */
+  .secao-familia-duvidas {
+    padding: 32px 0 36px;
+  }
+
+  .conteiner-familia-duvidas {
+    padding: 0 20px;
+  }
+
+  .grade-familia-duvidas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* CTA */
+  .secao-cta-familia-final {
+    padding: 32px 0 36px;
+  }
+
+  .conteiner-cta-familia-final {
+    padding: 0 20px;
+  }
+}
+
+/* CELULAR (até 600px) */
+@media (max-width: 600px) {
+  /* HERO */
+  .secao-familia-hero {
+    padding: 18px 0 26px;
+  }
+
+  .conteiner-familia-hero {
+    padding: 22px 16px;
+    gap: 18px;
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .titulo-familia-hero {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .texto-familia-hero {
+    font-size: 13px;
+  }
+
+  .linha-resumo-familia {
+    gap: 10px;
+  }
+
+  /* chips ocupam 100% (fica “projeto real”, sem aperto) */
+  .chip-resumo-familia {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .area-botoes-hero-familia {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-hero-familia-principal,
+  .botao-hero-familia-secundario {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  .cartao-hero-familia-imagem {
+    min-height: 220px;
+    border-radius: 18px;
+  }
+
+  .faixa-impacto-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 14px;
+  }
+
+  /* REALIDADE */
+  .secao-familia-realidade {
+    padding: 18px 0 26px;
+  }
+
+  .conteiner-familia-realidade {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .coluna-realidade,
+  .coluna-solucao {
+    padding: 20px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .titulo-realidade-familia,
+  .titulo-solucao-familia {
+    font-size: 18px;
+  }
+
+  .grade-dados-realidade {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .valor-dado-realidade {
+    font-size: 20px;
+  }
+
+  /* TRILHA (2 -> 1) */
+  .secao-familia-trilha {
+    padding: 22px 0 28px;
+  }
+
+  .conteiner-familia-trilha {
+    padding: 0 16px;
+  }
+
+  .titulo-familia-trilha {
+    font-size: 20px;
+  }
+
+  .linha-trilha-familia {
+    grid-template-columns: 1fr;
+  }
+
+  /* CADASTRO */
+  .secao-familia-cadastro-detalhado {
+    padding: 22px 0 28px;
+  }
+
+  .conteiner-familia-cadastro-detalhado {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .coluna-cadastro-texto,
+  .coluna-cadastro-info {
+    padding: 20px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .titulo-familia-cadastro {
+    font-size: 18px;
+  }
+
+  .grade-requisitos-familia {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .botao-iniciar-cadastro-familia {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  /* DÚVIDAS */
+  .secao-familia-duvidas {
+    padding: 22px 0 28px;
+  }
+
+  .conteiner-familia-duvidas {
+    padding: 0 16px;
+  }
+
+  .titulo-familia-duvidas {
+    font-size: 20px;
+  }
+
+  .grade-familia-duvidas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* CTA */
+  .secao-cta-familia-final {
+    padding: 28px 0 32px;
+  }
+
+  .conteiner-cta-familia-final {
+    padding: 0 16px;
+  }
+
+  .titulo-cta-familia-final {
+    font-size: 20px;
+  }
+
+  .botao-cta-familia-final {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  .linha-divisoria-familia {
+    width: 26%;
+  }
+}
