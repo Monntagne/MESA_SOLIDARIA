@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Voluntário — Mesa Solidária</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/logos/logo.png" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+
+    <header class="cabecalho-perfil">
+      <div class="conteiner-navbar-perfil">
+
+        <a href="index.html" class="logo-perfil-link">
+          <img src="img/logos/MESA SOLIDARIA - LOGO PRINCIPAL.svg" alt="Logo Mesa Solidária" class="imagem-logo-perfil" />
+        </a>
+
+        <nav class="menu-perfil">
+          <a href="dashboard_voluntario.html" class="item-menu-perfil ativo">🏠 Meu Painel</a>
+          <a href="#" class="item-menu-perfil" id="btn-ir-entregas">🚚 Minhas Entregas</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-cupons">🎁 Cupons</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-certificado">📜 Certificado</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-perfil">👤 Meu Perfil</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-ajuda">❓ Ajuda</a>
+        </nav>
+
+        <div class="acoes-perfil">
+          <div class="sino-notificacao" id="sino" title="Notificações">
+            🔔
+            <span class="badge-sino" id="badge-sino">0</span>
+          </div>
+          <div class="painel-notificacoes" id="painel-notificacoes">
+            <div class="cabecalho-notificacoes">Notificações</div>
+            <div class="lista-notificacoes" id="lista-notificacoes">
+              <div class="sem-notificacoes" id="sem-notificacoes">Nenhuma notificação ainda</div>
+            </div>
+          </div>
+          <div class="chip-usuario" style="cursor:pointer;" id="chip-usuario">
+            <div class="avatar-chip" id="avatar-chip">R</div>
+            <span id="nome-chip">Ricardo Lima</span>
+          </div>
+          <a href="login.html" class="botao-sair-nav">Sair →</a>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="pagina-dashboard">
+
+      
+      <div class="boas-vindas">
+        <div class="avatar-usuario" id="avatar-inicial">R</div>
+        <div class="texto-boas-vindas">
+          <h1 id="titulo-boas-vindas">Olá, Ricardo Lima!</h1>
+          <p>Sua dedicação faz a diferença na vida de muitas famílias 🤝</p>
+        </div>
+        <div class="boas-vindas-badges">
+          <span class="badge-status badge-voluntario">Voluntário ativo</span>
+          <span class="chip-pontos" id="chip-pontos-display" title="Ver cupons disponíveis">🪙 <strong id="saldo-pontos-display">47</strong> pts</span>
+        </div>
+      </div>
+
+      
+      <div class="grade-resumo grade-resumo-4">
+        <div class="card-resumo destaque">
+          <div class="label-card">Entregas concluídas</div>
+          <div class="valor-card">10</div>
+          <div class="detalhe-card">desde que se cadastrou</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Famílias atendidas</div>
+          <div class="valor-card">24</div>
+          <div class="detalhe-card">beneficiários entregues</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Em rota</div>
+          <div class="valor-card" id="contador-em-rota">1</div>
+          <div class="detalhe-card">entrega em andamento</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Pendentes</div>
+          <div class="valor-card" id="contador-pendentes-vol">2</div>
+          <div class="detalhe-card">aguardando retirada</div>
+        </div>
+      </div>
+
+      
+      <div class="banner-motivacao-voluntario">
+        🚗 Você já realizou <strong>10 entregas</strong> e ajudou <strong>24 famílias</strong> a receberem doações com dignidade. Muito obrigado!
+      </div>
+
+      
+      <div class="secao-cabecalho" id="secao-minhas-entregas" style="margin-top:8px;">
+        <h2 class="secao-titulo" style="margin:0;">🚚 Minhas Entregas</h2>
+        <span class="badge-contagem" id="badge-total-entregas">5 entregas</span>
+      </div>
+      <div class="filtros-doacoes" id="filtros-entregas"></div>
+      <div id="lista-minhas-entregas"></div>
+
+      
+      <div class="secao-cabecalho" style="margin-top:36px;">
+        <h2 class="secao-titulo" style="margin:0;">📌 Entregas disponíveis</h2>
+        <span class="badge-contagem" id="badge-disp">0 disponíveis</span>
+      </div>
+      <p class="secao-desc-disp">Solicitações abertas aguardando um voluntário. Aceite uma entrega e ajude uma família!</p>
+      <div id="lista-entregas-disponiveis"></div>
+
+    </main>
+
+    
+    <div class="gaveta-overlay" id="gaveta-overlay"></div>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-perfil">
+      <div class="gaveta-cabecalho">
+        <h2 class="gaveta-titulo">Meu Perfil</h2>
+        <button class="gaveta-fechar" id="gaveta-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-avatar-bloco">
+          <div class="gaveta-avatar" id="gaveta-avatar">R</div>
+          <div>
+            <div class="gaveta-nome-exibido" id="gaveta-nome-exibido">Ricardo Lima</div>
+            <span class="badge-status badge-voluntario" style="margin-left:0;">Voluntário ativo</span>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Informações pessoais</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-nome">Nome completo</label>
+              <input class="gaveta-input" id="gv-nome" type="text" value="Ricardo Lima" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-email">E-mail</label>
+              <input class="gaveta-input" id="gv-email" type="email" value="voluntario@voluntario.com" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-telefone">Telefone</label>
+              <input class="gaveta-input" id="gv-telefone" type="tel" value="(11) 98765-4321" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-cpf">CPF</label>
+              <input class="gaveta-input" id="gv-cpf" type="text" value="987.654.321-00" disabled />
+            </div>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Informações de voluntariado</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-disponibilidade">Disponibilidade</label>
+              <input class="gaveta-input" id="gv-disponibilidade" type="text" value="Seg a Sex, manhãs" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-veiculo">Veículo</label>
+              <input class="gaveta-input" id="gv-veiculo" type="text" value="Carro" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-editar" id="gaveta-btn-editar">✏️ Editar informações</button>
+        <div class="gaveta-acoes-edicao" id="gaveta-acoes-edicao">
+          <button class="gaveta-btn-cancelar" id="gaveta-btn-cancelar">Cancelar</button>
+          <button class="gaveta-btn-salvar" id="gaveta-btn-salvar">💾 Salvar alterações</button>
+        </div>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-ajuda">
+      <div class="gaveta-cabecalho">
+        <div>
+          <h2 class="gaveta-titulo">Central de Ajuda</h2>
+          <p class="gaveta-subtitulo">Fale com nosso SAC</p>
+        </div>
+        <button class="gaveta-fechar" id="gaveta-ajuda-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Enviar mensagem</div>
+          <div class="form-grupo">
+            <label class="form-label" for="sac-assunto">Assunto <span class="form-obrigatorio">*</span></label>
+            <select class="form-select" id="sac-assunto">
+              <option value="">Selecione um assunto...</option>
+              <option value="entrega">Dúvida sobre entrega</option>
+              <option value="rota">Informações de rota</option>
+              <option value="beneficiario">Problema com beneficiário</option>
+              <option value="ponto">Problema no ponto de coleta</option>
+              <option value="sistema">Problema no sistema</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-grupo" style="margin-top:14px;">
+            <label class="form-label" for="sac-mensagem">Mensagem <span class="form-obrigatorio">*</span></label>
+            <textarea class="form-textarea" id="sac-mensagem" rows="5" placeholder="Descreva sua dúvida ou problema..."></textarea>
+          </div>
+          <p class="form-aviso" style="margin-top:14px;">🕒 Tempo médio de resposta: <strong>1 a 2 dias úteis</strong>.</p>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-cancelar" id="gaveta-ajuda-cancelar">Cancelar</button>
+        <button class="gaveta-btn-salvar" id="gaveta-ajuda-enviar">📨 Enviar mensagem</button>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-cupons">
+      <div class="gaveta-cabecalho">
+        <div>
+          <h2 class="gaveta-titulo">🎁 Meus Cupons</h2>
+          <p class="gaveta-subtitulo">Troque seus pontos por recompensas</p>
+        </div>
+        <button class="gaveta-fechar" id="gaveta-cupons-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="saldo-cupons-header">
+        <div class="saldo-cupons-esq">
+          <span class="saldo-cupons-label">Seu saldo</span>
+          <span class="saldo-cupons-valor"><span id="saldo-cupons-valor">47</span> 🪙 pontos</span>
+        </div>
+        <span class="saldo-cupons-regra">A cada 0,5 km percorrido = 1 ponto</span>
+      </div>
+      <div class="gaveta-corpo" style="padding-top:0;">
+        <div id="lista-cupons"></div>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-certificado">
+      <div class="gaveta-cabecalho">
+        <div>
+          <h2 class="gaveta-titulo">📜 Certificado</h2>
+          <p class="gaveta-subtitulo">Horas complementares de voluntariado</p>
+        </div>
+        <button class="gaveta-fechar" id="gaveta-cert-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="cert-preview">
+          <div class="cert-cabecalho">
+            <span class="cert-logo">Mesa Solidária</span>
+            <span class="cert-titulo-doc">Certificado de Voluntariado</span>
+          </div>
+          <p class="cert-texto">Certificamos que <strong id="cert-nome">Ricardo Lima</strong> realizou atividades de voluntariado na plataforma Mesa Solidária, contribuindo com entregas de doações para famílias em situação de vulnerabilidade social.</p>
+          <div class="cert-stats">
+            <div class="cert-stat">
+              <span class="cert-stat-valor" id="cert-entregas">12</span>
+              <span class="cert-stat-label">Entregas</span>
+            </div>
+            <div class="cert-stat">
+              <span class="cert-stat-valor" id="cert-horas">18,0h</span>
+              <span class="cert-stat-label">Horas</span>
+            </div>
+            <div class="cert-stat">
+              <span class="cert-stat-valor">24</span>
+              <span class="cert-stat-label">Famílias</span>
+            </div>
+          </div>
+          <div class="cert-periodo">Janeiro de 2026 — Maio de 2026</div>
+          <div class="cert-assinatura">Mesa Solidária — Plataforma de Doações Solidárias</div>
+        </div>
+        <div class="gaveta-secao" style="margin-top:16px;">
+          <div class="gaveta-secao-titulo">Emitir certificado</div>
+          <div class="form-grupo">
+            <label class="form-label" for="cert-nome-input">Nome a constar no certificado</label>
+            <input class="gaveta-input" id="cert-nome-input" type="text" value="Ricardo Lima" />
+          </div>
+          <p class="form-aviso" style="margin-top:10px;">📋 O certificado será enviado para <strong>voluntario@voluntario.com</strong>.</p>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-cancelar" id="gaveta-cert-cancelar">Fechar</button>
+        <button class="gaveta-btn-salvar" id="gaveta-cert-emitir">📄 Emitir Certificado</button>
+      </div>
+    </aside>
+
+    
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-caixa">
+        <div class="modal-icone" id="modal-icone">🚚</div>
+        <h3 class="modal-titulo" id="modal-titulo">Confirmar ação</h3>
+        <p class="modal-texto" id="modal-texto"></p>
+        <div class="modal-acoes">
+          <button class="btn-modal-cancelar" id="modal-cancelar">Cancelar</button>
+          <button class="btn-modal-confirmar verde" id="modal-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="js/script.js"></script>
+    <script>
+
+      // ── Toast ──
+      function mostrarToast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("visivel");
+        setTimeout(() => t.classList.remove("visivel"), 3500);
+      }
+
+      // ── Modal ──
+      function abrirModal({ icone, titulo, texto, corBotao, onConfirmar }) {
+        document.getElementById("modal-icone").textContent  = icone;
+        document.getElementById("modal-titulo").textContent = titulo;
+        document.getElementById("modal-texto").textContent  = texto;
+        const btn = document.getElementById("modal-confirmar");
+        btn.className = `btn-modal-confirmar ${corBotao}`;
+        document.getElementById("modal-overlay").classList.add("aberto");
+        btn.onclick = () => {
+          document.getElementById("modal-overlay").classList.remove("aberto");
+          onConfirmar();
+        };
+      }
+
+      document.getElementById("modal-cancelar").onclick = () =>
+        document.getElementById("modal-overlay").classList.remove("aberto");
+
+      document.getElementById("modal-overlay").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modal-overlay"))
+          document.getElementById("modal-overlay").classList.remove("aberto");
+      });
+
+      // ── Dados mock ──
+      let minhasEntregas = [
+        { id: 1, beneficiario: "Maria Silva",   iniciais: "MS", endereco: "Rua das Palmeiras, 45 — Vila Nova",  ponto: "Ponto Centro", distancia: 2.0, itens: [{ nome: "Cesta básica", qtd: 2 }, { nome: "Higiene", qtd: 1 }], data: "17/05/2026", obs: "Entregar pela manhã",    status: "pendente" },
+        { id: 2, beneficiario: "João Ferreira", iniciais: "JF", endereco: "Av. das Acácias, 120 — Jardim Bela", ponto: "Ponto Norte",  distancia: 3.5, itens: [{ nome: "Roupas e calçados", qtd: 5 }],                            data: "17/05/2026", obs: "",                        status: "em_rota"  },
+        { id: 5, beneficiario: "Lúcia Santos",  iniciais: "LS", endereco: "Av. Central, 55 — Santo André",      ponto: "Ponto Centro", distancia: 2.5, itens: [{ nome: "Higiene", qtd: 3 }],                                      data: "18/05/2026", obs: "Idosa, cuidado ao subir", status: "pendente" },
+      ];
+
+      let entregasDisponiveis = [
+        { id:10, beneficiario:"Carlos Mendes",  iniciais:"CM", endereco:"Rua dos Pinheiros, 210 — Pinheiros",  ponto:"Ponto Centro", distancia:1.5, itens:[{ nome:"Cesta básica", qtd:1 }] },
+        { id:11, beneficiario:"Fernanda Lima",  iniciais:"FL", endereco:"Av. São João, 550 — República",       ponto:"Ponto Norte",  distancia:3.0, itens:[{ nome:"Higiene", qtd:2 }, { nome:"Brinquedos", qtd:1 }] },
+        { id:12, beneficiario:"Roberto Costa",  iniciais:"RC", endereco:"Rua Vergueiro, 800 — Liberdade",     ponto:"Ponto Sul",    distancia:4.5, itens:[{ nome:"Cesta básica", qtd:2 }] },
+        { id:13, beneficiario:"Mariana Souza",  iniciais:"MS", endereco:"Av. Paulista, 1200 — Bela Vista",   ponto:"Ponto Leste",  distancia:2.0, itens:[{ nome:"Roupas e calçados", qtd:3 }] },
+        { id:14, beneficiario:"Tamíres Almeida", iniciais:"TA", endereco:"Rua Augusta, 300 — Consolidação",  ponto:"Ponto Sul",    distancia:1.0, itens:[{ nome:"Cesta básica", qtd:1 }, { nome:"Higiene", qtd:1 }] },
+      ];
+
+      let filtroAtivo = "todas";
+
+      // ── Sistema de pontos ──
+      let saldoPontos = 47;
+      let cuponsResgatados = [];
+
+      function calcularPontos(distancia) {
+        return Math.floor(distancia / 0.5);
+      }
+
+      function atualizarSaldoPontos() {
+        document.querySelectorAll("#saldo-pontos-display, #saldo-cupons-valor").forEach(el => {
+          if (el) el.textContent = saldoPontos;
+        });
+      }
+
+      // ── Cupons disponíveis ──
+      const cuponsDisponiveis = [
+        { id:1, icone:"🎬", categoria:"Cinema",      nome:"Ingresso Cinemark",   desc:"1 ingresso meia-entrada em qualquer sessão",       pontos:15 },
+        { id:2, icone:"🎵", categoria:"Shows",        nome:"Show 20% OFF",         desc:"Desconto em ingressos selecionados via Ingresse",   pontos:25 },
+        { id:3, icone:"💻", categoria:"Tecnologia",   nome:"Kabum R$ 50 OFF",     desc:"R$ 50 de desconto em compras acima de R$ 200",      pontos:30 },
+        { id:4, icone:"🎮", categoria:"Games",         nome:"Game Pass 1 mês",     desc:"1 mês de Xbox Game Pass Ultimate",                  pontos:40 },
+        { id:5, icone:"🍕", categoria:"Alimentação",   nome:"Pizza Hut 20%",        desc:"20% de desconto em qualquer pedido",                pontos:10 },
+        { id:6, icone:"📱", categoria:"Tecnologia",   nome:"TIM R$ 30",            desc:"R$ 30 de crédito em conta TIM",                     pontos:20 },
+        { id:7, icone:"🎭", categoria:"Cultura",       nome:"Museu Gratuito",       desc:"2 entradas gratuitas no Museu de Arte",             pontos:8  },
+        { id:8, icone:"🎪", categoria:"Lazer",         nome:"Ingresso Hopi Hari",  desc:"1 entrada no parque de diversões",                  pontos:65 },
+      ];
+
+      function renderCupons() {
+        const container = document.getElementById("lista-cupons");
+        if (!container) return;
+        atualizarSaldoPontos();
+        container.innerHTML = "";
+
+        // Disponíveis para resgatar
+        const secDisp = document.createElement("div");
+        secDisp.className = "gaveta-secao-titulo" ;
+        secDisp.style.cssText = "padding: 14px 20px 8px; font-size:.72rem;";
+        secDisp.textContent = "Disponíveis para resgatar";
+        container.appendChild(secDisp);
+
+        cuponsDisponiveis.forEach(c => {
+          const podeResgatar = saldoPontos >= c.pontos;
+          const item = document.createElement("div");
+          item.className = `card-cupom${podeResgatar ? "" : " indisponivel"}`;
+          item.innerHTML = `
+            <div class="card-cupom-icone">${c.icone}</div>
+            <div class="card-cupom-info">
+              <span class="card-cupom-categoria">${c.categoria}</span>
+              <strong class="card-cupom-nome">${c.nome}</strong>
+              <span class="card-cupom-desc">${c.desc}</span>
+            </div>
+            <div class="card-cupom-acao">
+              <span class="card-cupom-custo">${c.pontos} pts</span>
+              <button class="btn-resgatar${podeResgatar ? "" : " desabilitado"}" ${podeResgatar ? `onclick="resgatarCupom(${c.id})"` : "disabled"}>
+                ${podeResgatar ? "Resgatar" : "Sem saldo"}
+              </button>
+            </div>`;
+          container.appendChild(item);
+        });
+
+        // Resgatados não usados
+        if (cuponsResgatados.length > 0) {
+          const sep = document.createElement("div");
+          sep.className = "cupons-resgatados-sep";
+          sep.innerHTML = `<span>Meus cupons resgatados</span><span class="cupons-resgatados-badge">${cuponsResgatados.length}</span>`;
+          container.appendChild(sep);
+
+          cuponsResgatados.forEach(r => {
+            const item = document.createElement("div");
+            item.className = "card-cupom card-cupom-resgatado";
+            item.innerHTML = `
+              <div class="card-cupom-icone">${r.icone}</div>
+              <div class="card-cupom-info">
+                <span class="card-cupom-categoria">${r.categoria}</span>
+                <strong class="card-cupom-nome">${r.nome}</strong>
+                <span class="card-cupom-codigo">Código: <code>${r.codigo}</code></span>
+              </div>
+              <div class="card-cupom-acao">
+                <button class="btn-usar-cupom" onclick="usarCupom('${r.codigo}')">Marcar usado</button>
+              </div>`;
+            container.appendChild(item);
+          });
+        }
+      }
+
+      window.usarCupom = (codigo) => {
+        cuponsResgatados = cuponsResgatados.filter(r => r.codigo !== codigo);
+        renderCupons();
+        mostrarToast("✅ Cupom marcado como usado!");
+      };
+
+      window.resgatarCupom = (id) => {
+        const c = cuponsDisponiveis.find(x => x.id === id);
+        abrirModal({
+          icone: c.icone,
+          titulo: "Resgatar cupom",
+          texto: `Resgatar "${c.nome}" por ${c.pontos} pontos? Seu saldo passará para ${saldoPontos - c.pontos} pontos.`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            saldoPontos -= c.pontos;
+            const codigo = `MESA-${Math.random().toString(36).slice(2,8).toUpperCase()}`;
+            cuponsResgatados.unshift({ ...c, codigo });
+            renderCupons();
+            renderEntregas();
+            mostrarToast(`🎉 "${c.nome}" resgatado! Código: ${codigo}`);
+          },
+        });
+      };
+
+      // ── Certificado ──
+      function atualizarCertificado() {
+        const entreguesAgora = minhasEntregas.filter(e => e.status === "entregue").length;
+        const totalEntregas = 10 + entreguesAgora;
+        const totalHoras = (totalEntregas * 1.5).toFixed(1).replace(".", ",");
+        const elE = document.getElementById("cert-entregas");
+        const elH = document.getElementById("cert-horas");
+        if (elE) elE.textContent = totalEntregas;
+        if (elH) elH.textContent = `${totalHoras}h`;
+        const nomeEl = document.getElementById("cert-nome");
+        const nomeInput = document.getElementById("cert-nome-input");
+        if (nomeEl && nomeInput) nomeEl.textContent = nomeInput.value;
+      }
+
+      // ── Contadores ──
+      function contarPorStatus(status) {
+        return minhasEntregas.filter(e => status === "todas" ? true : e.status === status).length;
+      }
+
+      function atualizarContadores() {
+        document.getElementById("contador-em-rota").textContent      = contarPorStatus("em_rota");
+        document.getElementById("contador-pendentes-vol").textContent = contarPorStatus("pendente");
+      }
+
+      // ── Progresso visual ──
+      function buildProgressoHTML(status) {
+        const passos = [
+          { key: "pendente", label: "Retirar no ponto", icone: "📍" },
+          { key: "em_rota",  label: "Em rota",          icone: "🚚" },
+          { key: "entregue", label: "Entregue",         icone: "✅" },
+        ];
+        const idx = { pendente: 0, em_rota: 1, entregue: 2 }[status];
+        return `<div class="progresso-entrega">
+          ${passos.map((p, i) => {
+            const cls = i < idx ? "concluido" : i === idx ? "ativo" : "";
+            const linha = i < passos.length - 1
+              ? `<div class="passo-linha${i < idx ? " concluida" : ""}"></div>`
+              : "";
+            return `<div class="passo-entrega ${cls}">
+              <div class="passo-circulo">${p.icone}</div>
+              <span>${p.label}</span>
+            </div>${linha}`;
+          }).join("")}
+        </div>`;
+      }
+
+      // ── Filtros ──
+      function renderFiltros() {
+        const container = document.getElementById("filtros-entregas");
+        const opcoes = [
+          { valor: "todas",    label: "Todas ativas" },
+          { valor: "pendente", label: "Aguardando"    },
+          { valor: "em_rota",  label: "Em rota"       },
+        ];
+        container.innerHTML = "";
+        opcoes.forEach(op => {
+          const btn = document.createElement("button");
+          btn.className = `filtro-doacao${filtroAtivo === op.valor ? " ativo" : ""}`;
+          btn.textContent = `${op.label} (${contarPorStatus(op.valor)})`;
+          btn.addEventListener("click", () => {
+            filtroAtivo = op.valor;
+            renderFiltros();
+            renderEntregas();
+          });
+          container.appendChild(btn);
+        });
+      }
+
+      // ── Lista de entregas ──
+      function renderEntregas() {
+        const container = document.getElementById("lista-minhas-entregas");
+        const ativas = minhasEntregas.filter(e => e.status !== "entregue");
+        const badge = document.getElementById("badge-total-entregas");
+        if (badge) badge.textContent = `${ativas.length} entrega${ativas.length !== 1 ? "s" : ""}`;
+
+        const lista = filtroAtivo === "todas"
+          ? ativas
+          : ativas.filter(e => e.status === filtroAtivo);
+
+        container.innerHTML = "";
+
+        if (lista.length === 0) {
+          container.innerHTML = `<div class="sem-solicitacoes">📦 Nenhuma entrega ativa no momento. Veja as disponíveis abaixo!</div>`;
+          return;
+        }
+
+        lista.forEach(e => {
+          const itensTexto = e.itens.map(i => `${i.nome} ×${i.qtd}`).join(" · ");
+          const pts = calcularPontos(e.distancia);
+          const cfg = {
+            pendente: { classe: "badge-entrega-pendente", icone: "⏳", label: "Aguardando" },
+            em_rota:  { classe: "badge-entrega-em-rota",  icone: "🚚", label: "Em rota"    },
+            entregue: { classe: "badge-entrega-entregue", icone: "✅",  label: "Entregue"   },
+          }[e.status];
+
+          const acoes = e.status === "pendente"
+            ? `<button class="btn-acao-entrega btn-retirar" onclick="confirmarRetirada(${e.id})">📦 Confirmar retirada</button>`
+            : e.status === "em_rota"
+            ? `<button class="btn-acao-entrega btn-confirmar-entrega" onclick="confirmarEntrega(${e.id})">✅ Confirmar entrega</button>`
+            : "";
+
+          const card = document.createElement("div");
+          card.id = `card-e-${e.id}`;
+          card.className = `card-entrega card-entrega-${e.status.replace("_", "-")} acordeon`;
+          card.innerHTML = `
+            <div class="acordeon-header" onclick="toggleAcordeon('card-e-${e.id}')">
+              <div class="entrega-avatar">${e.iniciais}</div>
+              <div class="acordeon-info">
+                <strong>${e.beneficiario}</strong>
+                <span>📍 ${e.endereco}</span>
+              </div>
+              <div class="acordeon-meta">
+                <span class="badge-status-entrega ${cfg.classe}">${cfg.icone} ${cfg.label}</span>
+                <span class="tag-pontos-entrega${e.status === 'entregue' ? ' ganho' : ''}">🪙 +${pts}</span>
+                <span class="acordeon-data">${e.data.slice(0,5)}</span>
+                <span class="acordeon-seta">›</span>
+              </div>
+            </div>
+            <div class="acordeon-body">
+              ${buildProgressoHTML(e.status)}
+              <div class="card-entrega-detalhe">
+                <span class="card-entrega-ponto">🏪 ${e.ponto}</span>
+                <span class="card-entrega-itens">${itensTexto}</span>
+              </div>
+              ${e.obs ? `<div class="card-entrega-obs">💬 ${e.obs}</div>` : ""}
+              ${acoes ? `<div class="card-entrega-acoes">${acoes}</div>` : ""}
+            </div>`;
+          container.appendChild(card);
+        });
+      }
+
+      window.toggleAcordeon = (id) => {
+        const card = document.getElementById(id);
+        if (card) card.classList.toggle("expandido");
+      };
+
+      // ── Entregas disponíveis ──
+      function renderEntregasDisponiveis() {
+        const container = document.getElementById("lista-entregas-disponiveis");
+        if (!container) return;
+        const badge = document.getElementById("badge-disp");
+        if (badge) badge.textContent = `${entregasDisponiveis.length} disponíve${entregasDisponiveis.length !== 1 ? "is" : "l"}`;
+        container.innerHTML = "";
+
+        if (entregasDisponiveis.length === 0) {
+          container.innerHTML = `<div class="sem-solicitacoes">🎉 Todas as entregas do dia já foram aceitas. Volte mais tarde!</div>`;
+          return;
+        }
+
+        entregasDisponiveis.forEach(d => {
+          const pts = calcularPontos(d.distancia);
+          const itensTexto = d.itens.map(i => `${i.nome} ×${i.qtd}`).join(" · ");
+          const card = document.createElement("div");
+          card.className = "card-disp";
+          card.innerHTML = `
+            <div class="card-disp-bene">
+              <div class="entrega-avatar">${d.iniciais}</div>
+              <div class="entrega-bene-info">
+                <strong>${d.beneficiario}</strong>
+                <span>📍 ${d.endereco}</span>
+              </div>
+            </div>
+            <div class="card-disp-meta">
+              <span class="card-disp-ponto">🏪 ${d.ponto}</span>
+              <span class="card-disp-dist">📌 ${d.distancia.toFixed(1).replace(".",",")} km do ponto até o beneficiário</span>
+              <span class="card-disp-itens">📦 ${itensTexto}</span>
+            </div>
+            <div class="card-disp-rodape">
+              <span class="tag-pontos-disp">🪙 +${pts} pts ao concluir</span>
+              <button class="btn-aceitar-entrega" onclick="aceitarEntrega(${d.id})">Aceitar entrega</button>
+            </div>`;
+          container.appendChild(card);
+        });
+      }
+
+      window.aceitarEntrega = (id) => {
+        const d = entregasDisponiveis.find(x => x.id === id);
+        const pts = calcularPontos(d.distancia);
+        abrirModal({
+          icone: "🚚",
+          titulo: "Aceitar entrega",
+          texto: `Aceitar entrega para ${d.beneficiario} partindo do ${d.ponto}? Você ganhará +${pts} pontos ao concluir!`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            entregasDisponiveis = entregasDisponiveis.filter(x => x.id !== id);
+            const hoje = new Date();
+            const dataStr = `${String(hoje.getDate()).padStart(2,"0")}/${String(hoje.getMonth()+1).padStart(2,"0")}/${hoje.getFullYear()}`;
+            minhasEntregas.unshift({ ...d, data: dataStr, obs: "", status: "pendente" });
+            renderEntregasDisponiveis();
+            renderFiltros();
+            renderEntregas();
+            atualizarContadores();
+            adicionarNotificacao("🚚", "Entrega aceita", `Retire os itens no ${d.ponto} e entregue a ${d.beneficiario}.`);
+            mostrarToast(`✅ Entrega aceita! Retire no ${d.ponto}. +${pts} pts ao concluir.`);
+          },
+        });
+      };
+
+      // ── Confirmar retirada ──
+      window.confirmarRetirada = (id) => {
+        const e = minhasEntregas.find(x => x.id === id);
+        abrirModal({
+          icone: "📦",
+          titulo: "Confirmar retirada",
+          texto: `Confirmar que você retirou os itens para ${e.beneficiario} no ${e.ponto}?`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            e.status = "em_rota";
+            atualizarContadores();
+            renderFiltros();
+            renderEntregas();
+            mostrarToast(`✅ Retirada confirmada! Boa viagem até ${e.beneficiario}.`);
+          },
+        });
+      };
+
+      // ── Confirmar entrega ──
+      window.confirmarEntrega = (id) => {
+        const e = minhasEntregas.find(x => x.id === id);
+        const pts = calcularPontos(e.distancia);
+        abrirModal({
+          icone: "✅",
+          titulo: "Confirmar entrega",
+          texto: `Confirmar que os itens foram entregues a ${e.beneficiario}? Você ganhará +${pts} pontos!`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            e.status = "entregue";
+            saldoPontos += pts;
+            atualizarSaldoPontos();
+            renderCupons();
+            atualizarContadores();
+            renderFiltros();
+            renderEntregas();
+            mostrarToast(`🎉 +${pts} pontos ganhos! Saldo: ${saldoPontos} pts. Obrigado, Ricardo!`);
+          },
+        });
+      };
+
+      // ── Notificações ──
+      let contadorNotif = 0;
+      function adicionarNotificacao(icone, titulo, detalhe) {
+        contadorNotif++;
+        const badge = document.getElementById("badge-sino");
+        badge.textContent = contadorNotif;
+        badge.classList.add("visivel");
+        const semNotif = document.getElementById("sem-notificacoes");
+        if (semNotif) semNotif.remove();
+        const lista = document.getElementById("lista-notificacoes");
+        const item = document.createElement("div");
+        item.className = "item-notificacao";
+        item.innerHTML = `<span class="notif-icone">${icone}</span><div class="notif-texto"><strong>${titulo}</strong><span>${detalhe}</span></div>`;
+        lista.prepend(item);
+      }
+
+      document.getElementById("sino").addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById("painel-notificacoes").classList.toggle("aberto");
+      });
+
+      document.addEventListener("click", () =>
+        document.getElementById("painel-notificacoes").classList.remove("aberto")
+      );
+
+      // ── Gavetas ──
+      const gavOv = document.getElementById("gaveta-overlay");
+
+      function fecharTodasGavetas() {
+        document.querySelectorAll(".gaveta-perfil.aberta").forEach(g => g.classList.remove("aberta"));
+        gavOv.classList.remove("aberta");
+        document.body.style.overflow = "";
+      }
+
+      function abrirGaveta(id) {
+        fecharTodasGavetas();
+        document.getElementById(id).classList.add("aberta");
+        gavOv.classList.add("aberta");
+        document.body.style.overflow = "hidden";
+      }
+
+      gavOv.addEventListener("click", fecharTodasGavetas);
+
+      // ── Gaveta Perfil ──
+      const camposEditaveis = ["gv-nome", "gv-telefone", "gv-disponibilidade", "gv-veiculo"];
+      let valoresOriginais = {};
+      const btnEditar = document.getElementById("gaveta-btn-editar");
+      const acoesEd   = document.getElementById("gaveta-acoes-edicao");
+
+      function sincronizarNome(nome) {
+        const inicial = nome.charAt(0).toUpperCase();
+        document.getElementById("gaveta-nome-exibido").textContent = nome;
+        document.getElementById("gaveta-avatar").textContent = inicial;
+        document.getElementById("avatar-inicial").textContent = inicial;
+        document.getElementById("avatar-chip").textContent = inicial;
+        document.getElementById("titulo-boas-vindas").textContent = `Olá, ${nome}!`;
+        document.getElementById("nome-chip").textContent = nome;
+      }
+
+      sincronizarNome(document.getElementById("gv-nome").value);
+
+      document.getElementById("btn-abrir-perfil").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-perfil"); });
+      document.getElementById("chip-usuario").addEventListener("click", () => abrirGaveta("gaveta-perfil"));
+      document.getElementById("gaveta-fechar").addEventListener("click", fecharTodasGavetas);
+
+      btnEditar.addEventListener("click", () => {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          valoresOriginais[id] = inp.value;
+          inp.disabled = false;
+        });
+        btnEditar.style.display = "none";
+        acoesEd.classList.add("visivel");
+        document.getElementById("gv-nome").focus();
+      });
+
+      function sairModoEdicao(salvar) {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          if (!salvar) inp.value = valoresOriginais[id] ?? inp.value;
+          inp.disabled = true;
+        });
+        btnEditar.style.display = "";
+        acoesEd.classList.remove("visivel");
+      }
+
+      document.getElementById("gaveta-btn-cancelar").addEventListener("click", () => sairModoEdicao(false));
+      document.getElementById("gaveta-btn-salvar").addEventListener("click", () => {
+        sairModoEdicao(true);
+        const novoNome = document.getElementById("gv-nome").value.trim();
+        if (novoNome) sincronizarNome(novoNome);
+        mostrarToast("✅ Perfil atualizado com sucesso!");
+      });
+
+      // ── Gaveta Ajuda ──
+      document.getElementById("btn-abrir-ajuda").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-ajuda"); });
+      document.getElementById("gaveta-ajuda-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-cancelar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-enviar").addEventListener("click", () => {
+        const assunto  = document.getElementById("sac-assunto").value;
+        const mensagem = document.getElementById("sac-mensagem").value.trim();
+        if (!assunto)  { mostrarToast("⚠️ Selecione um assunto."); return; }
+        if (!mensagem) { mostrarToast("⚠️ Escreva sua mensagem."); return; }
+        document.getElementById("sac-assunto").value  = "";
+        document.getElementById("sac-mensagem").value = "";
+        fecharTodasGavetas();
+        mostrarToast("✅ Mensagem enviada! Retornaremos em até 2 dias úteis.");
+      });
+
+      // ── Link rápido ──
+      document.getElementById("btn-ir-entregas").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("secao-minhas-entregas").scrollIntoView({ behavior: "smooth" });
+      });
+
+      // ── Gaveta Cupons ──
+      document.getElementById("btn-abrir-cupons").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-cupons"); renderCupons(); });
+      document.getElementById("gaveta-cupons-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("chip-pontos-display").addEventListener("click", () => { abrirGaveta("gaveta-cupons"); renderCupons(); });
+
+      // ── Gaveta Certificado ──
+      document.getElementById("btn-abrir-certificado").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-certificado"); atualizarCertificado(); });
+      document.getElementById("gaveta-cert-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-cert-cancelar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("cert-nome-input").addEventListener("input", () => {
+        const nomeEl = document.getElementById("cert-nome");
+        if (nomeEl) nomeEl.textContent = document.getElementById("cert-nome-input").value || "Ricardo Lima";
+      });
+      document.getElementById("gaveta-cert-emitir").addEventListener("click", () => {
+        const nome = document.getElementById("cert-nome-input").value.trim();
+        if (!nome) { mostrarToast("⚠️ Informe o nome para o certificado."); return; }
+        fecharTodasGavetas();
+        mostrarToast("✅ Certificado enviado para voluntario@voluntario.com!");
+      });
+
+      // ── Init ──
+      renderFiltros();
+      renderEntregas();
+      renderEntregasDisponiveis();
+      atualizarContadores();
+      renderCupons();
+      atualizarSaldoPontos();
+      atualizarCertificado();
+
+      // Notificações mock iniciais
+      adicionarNotificacao("🚚", "Nova entrega aceita", "Maria Silva aguarda seus itens do Ponto Centro.");
+      adicionarNotificacao("📌", "5 entregas disponíveis", "Novas solicitações aguardando voluntário na sua região.");
+
+    </script>
+  </body>
+</html>

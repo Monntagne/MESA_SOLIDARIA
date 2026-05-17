@@ -1,0 +1,2445 @@
+
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  padding-top: 0 !important;
+  background-color: #f5f6fa;
+  color: #00123b;
+}
+
+/* Menu de navegação dos dashboards — azul escuro, fica fixo no topo */
+.cabecalho-perfil {
+  background: #00123b;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Área interna do menu do dashboard: logo, links e ações do usuário */
+.conteiner-navbar-perfil {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.logo-perfil-link { display: flex; align-items: center; flex-shrink: 0; }
+
+.imagem-logo-perfil { height: 46px; object-fit: contain; }
+
+/* Links de navegação horizontal do dashboard */
+.menu-perfil {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+/* Cada link do menu do dashboard (texto cinza, arredondado ao passar o mouse) */
+.item-menu-perfil {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.item-menu-perfil:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+.item-menu-perfil.ativo { background: rgba(255, 255, 255, 0.15); color: white; font-weight: 600; }
+
+/* Área à direita do menu com nome do usuário, sino e botão sair */
+.acoes-perfil {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Pastilha arredondada mostrando o avatar e nome do usuário logado */
+.chip-usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 5px 14px 5px 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Avatar circular verde com as iniciais do usuário */
+.avatar-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2e8b57;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Botão 'Sair' no canto direito do menu do dashboard */
+.botao-sair-nav {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.botao-sair-nav:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+/* Botão circular com ícone de sino para ver notificações */
+.sino-notificacao {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 17px;
+  transition: background 0.2s;
+}
+
+.sino-notificacao:hover { background: rgba(255, 255, 255, 0.18); }
+
+/* Bolinha vermelha com número de notificações não lidas sobre o sino */
+.badge-sino {
+  display: none;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e53935;
+  color: white;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.badge-sino.visivel { display: flex; }
+
+/* Painel que abre ao clicar no sino mostrando as notificações recentes */
+.painel-notificacoes {
+  display: none;
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 300px;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 18, 59, 0.1);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  z-index: 500;
+  overflow: hidden;
+}
+
+.painel-notificacoes.aberto { display: block; }
+
+/* Cabeçalho do painel de notificações com o título */
+.cabecalho-notificacoes {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00123b;
+  border-bottom: 1px solid rgba(0, 18, 59, 0.08);
+}
+
+.lista-notificacoes { max-height: 260px; overflow-y: auto; }
+
+/* Uma notificação na lista (ícone + texto + data) */
+.item-notificacao {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 18, 59, 0.06);
+  font-size: 13px;
+  color: #00123b;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.item-notificacao:last-child { border-bottom: none; }
+.item-notificacao .notif-icone { font-size: 20px; flex-shrink: 0; }
+.item-notificacao .notif-texto strong { display: block; margin-bottom: 2px; }
+.item-notificacao .notif-texto span { font-size: 11px; color: rgba(0, 18, 59, 0.5); }
+
+/* Mensagem mostrada quando não há notificações */
+.sem-notificacoes {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(0, 18, 59, 0.45);
+}
+
+/* Área de conteúdo principal do dashboard, centralizada e com espaçamento */
+.pagina-dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+}
+
+/* Bloco de saudação com avatar grande, nome e status do usuário */
+.boas-vindas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Avatar grande azul com as iniciais do usuário na saudação */
+.avatar-usuario {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #00123b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.texto-boas-vindas h1 { margin: 0 0 2px; font-size: 22px; font-weight: 700; }
+.texto-boas-vindas p  { margin: 0; font-size: 14px; color: rgba(0, 18, 59, 0.65); }
+
+/* Etiqueta com o status do usuário (ex: Ativo) com ponto colorido animado */
+.badge-status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  color: #2e8b57;
+  border: 1px solid #a5d6a7;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Ponto de cor antes do texto de status */
+.badge-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2e8b57;
+}
+
+/* Grade com 3 colunas para os cards de resumo numérico */
+.grade-resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Card branco com número grande de resumo (total de doações, pontos, etc.) */
+.card-resumo {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(0, 18, 59, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Rótulo pequeno em maiúsculas acima do número principal do card */
+.card-resumo .label-card {
+  font-size: 12px;
+  color: rgba(0, 18, 59, 0.55);
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Número grande em destaque no card de resumo */
+.card-resumo .valor-card {
+  font-size: 26px;
+  font-weight: 700;
+  color: #00123b;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.card-resumo .detalhe-card { font-size: 12px; color: rgba(0, 18, 59, 0.55); }
+
+.card-resumo.destaque { background: #00123b; }
+.card-resumo.destaque .label-card,
+.card-resumo.destaque .detalhe-card { color: rgba(255, 255, 255, 0.9); }
+.card-resumo.destaque .valor-card   { color: #FFD54F; }
+
+/* Título de uma seção dentro do dashboard */
+.secao-titulo {
+  font-size: 17px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 14px;
+}
+
+/* Card com data e informações da próxima doação/entrega agendada */
+.card-proxima-doacao {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(0, 18, 59, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Bloco calendário com mês e dia da doação em destaque */
+.data-doacao {
+  background: #f5f6fa;
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.data-doacao .mes { font-size: 11px; font-weight: 600; color: #2e8b57; text-transform: uppercase; }
+.data-doacao .dia { font-size: 30px; font-weight: 800; color: #00123b; line-height: 1; }
+
+.info-doacao h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+.info-doacao p  { margin: 0; font-size: 13px; color: rgba(0, 18, 59, 0.65); }
+
+/* Etiqueta verde 'Disponível' no card de agendamento */
+.badge-disponivel {
+  margin-left: auto;
+  background: #e8f5e9;
+  color: #2e8b57;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #a5d6a7;
+  flex-shrink: 0;
+}
+
+/* Card que contém o mapa de pontos de coleta */
+.card-mapa {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(0, 18, 59, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: 28px;
+}
+
+.legenda-mapa { display: flex; gap: 18px; margin-bottom: 12px; flex-wrap: wrap; }
+
+.item-legenda { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(0, 18, 59, 0.75); }
+
+.bolinha-legenda { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+#mapa-pontos-coleta { width: 100%; height: 320px; border-radius: 10px; overflow: hidden; }
+
+/* Card com a tabela de histórico de doações ou entregas */
+.card-historico {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(0, 18, 59, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-historico { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+/* Cabeçalho de coluna da tabela (texto pequeno em maiúsculas) */
+.tabela-historico th {
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: rgba(0, 18, 59, 0.55);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid rgba(0, 18, 59, 0.08);
+}
+
+.tabela-historico td { padding: 12px 14px; border-bottom: 1px solid rgba(0, 18, 59, 0.06); color: #00123b; }
+.tabela-historico tr:last-child td { border-bottom: none; }
+
+.tag-entregue { background: #e8f5e9; color: #2e8b57; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+.tag-agendado { background: #fff8e1; color: #f59e0b; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+
+/* Fundo escuro que aparece atrás do modal, bloqueando o restante da tela */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 18, 59, 0.45);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.aberto { display: flex; }
+
+/* Caixa branca do modal com conteúdo centralizado */
+.modal-caixa {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.modal-icone  { font-size: 36px; margin-bottom: 12px; }
+.modal-titulo { font-size: 17px; font-weight: 700; color: #00123b; margin: 0 0 8px; }
+.modal-texto  { font-size: 13px; color: rgba(0, 18, 59, 0.7); line-height: 1.55; margin: 0 0 22px; }
+
+.modal-acoes { display: flex; gap: 10px; justify-content: center; }
+
+/* Botão Cancelar do modal (fundo branco com borda cinza) */
+.btn-modal-cancelar {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #00123b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Botão de confirmação do modal (cor varia conforme o contexto) */
+.btn-modal-confirmar {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-modal-confirmar.verde { background: #2e8b57; }
+.btn-modal-confirmar.azul  { background: #00123b; }
+
+/* Mensagem rápida flutuante que aparece na parte de baixo da tela para dar feedback */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #00123b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.visivel { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.popup-acoes { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+
+/* Botão de ação dentro do popup do mapa */
+.btn-popup {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 7px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.btn-popup-caminho  { background: #e8f5e9; color: #2e8b57; }
+.btn-popup-entrega  { background: #fff3e0; color: #e65100; }
+.btn-popup-notificar { background: #e3f2fd; color: #1565c0; }
+.btn-popup-caminho:hover  { background: #c8e6c9; }
+.btn-popup-entrega:hover  { background: #ffe0b2; }
+.btn-popup-notificar:hover { background: #bbdefb; }
+
+/* Ajustes para tablets e celulares (telas até 768px) */
+@media (max-width: 768px) {
+  .grade-resumo          { grid-template-columns: 1fr; }
+  .card-proxima-doacao   { flex-wrap: wrap; }
+  .badge-status          { margin-left: 0; }
+  .boas-vindas           { flex-wrap: wrap; }
+  .menu-perfil           { display: none; }
+}
+
+/* Fundo escuro com desfoque que cobre a tela ao abrir a gaveta lateral */
+.gaveta-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 18, 59, 0.45);
+  z-index: 2000;
+  backdrop-filter: blur(2px);
+}
+
+.gaveta-overlay.aberta { display: block; }
+
+/* Painel lateral que desliza da direita para mostrar perfil, ajuda ou cupons */
+.gaveta-perfil {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: white;
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gaveta-perfil.aberta { transform: translateX(0); }
+
+/* Cabeçalho azul escuro da gaveta com título e botão de fechar */
+.gaveta-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(0, 18, 59, 0.08);
+  flex-shrink: 0;
+  background: #00123b;
+  color: white;
+}
+
+.gaveta-titulo { margin: 0; font-size: 18px; font-weight: 700; }
+.gaveta-subtitulo { margin: 2px 0 0; font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 400; }
+
+/* Grade com botões de atalho rápido dentro da gaveta de ajuda */
+.ajuda-atalhos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+/* Botão de atalho da gaveta de ajuda (ícone + texto, fundo cinza claro) */
+.ajuda-atalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,18,59,0.1);
+  background: #f5f6fa;
+  text-decoration: none;
+  color: #00123b;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.18s, border-color 0.18s;
+  cursor: pointer;
+}
+
+.ajuda-atalho:hover { background: #eaecf5; border-color: rgba(0,18,59,0.2); }
+
+.ajuda-atalho-icone { font-size: 24px; }
+
+/* Botão circular X para fechar a gaveta lateral */
+.gaveta-fechar {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.18s;
+  flex-shrink: 0;
+}
+
+.gaveta-fechar:hover { background: rgba(255, 255, 255, 0.22); }
+
+/* Área interna da gaveta com rolagem e o conteúdo principal */
+.gaveta-corpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+/* Bloco com avatar grande e nome do usuário no topo da gaveta de perfil */
+.gaveta-avatar-bloco {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 18, 59, 0.08);
+}
+
+/* Avatar grande do usuário dentro da gaveta */
+.gaveta-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #00123b;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Nome do usuário em destaque dentro da gaveta */
+.gaveta-nome-exibido {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00123b;
+  margin-bottom: 6px;
+}
+
+.gaveta-secao { margin-bottom: 24px; }
+
+/* Rótulo de seção em maiúsculas e letra pequena */
+.gaveta-secao-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 18, 59, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 14px;
+}
+
+/* Grade de dois campos lado a lado nos formulários da gaveta */
+.gaveta-grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.gaveta-campo { display: flex; flex-direction: column; gap: 5px; }
+
+/* Rótulo do campo em maiúsculas e letra bem pequena */
+.gaveta-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 18, 59, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Campo de texto da gaveta — cinza quando desabilitado, branco ao editar */
+.gaveta-input {
+  border: 1px solid rgba(0, 18, 59, 0.15);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #00123b;
+  background: #f5f6fa;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gaveta-input:disabled { cursor: default; }
+
+/* Campo habilitado tem fundo branco e borda mais visível */
+.gaveta-input:not(:disabled) {
+  background: white;
+  border-color: rgba(0, 18, 59, 0.4);
+}
+
+/* Campo em foco ganha borda verde e brilho suave */
+.gaveta-input:not(:disabled):focus {
+  border-color: #2e8b57;
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.12);
+}
+
+/* Rodapé da gaveta com os botões Editar / Salvar / Cancelar */
+.gaveta-rodape {
+  padding: 16px 28px;
+  border-top: 1px solid rgba(0, 18, 59, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: white;
+}
+
+/* Botão 'Editar perfil' — inicia o modo de edição na gaveta */
+.gaveta-btn-editar {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid #00123b;
+  background: white;
+  color: #00123b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.18s;
+}
+
+.gaveta-btn-editar:hover { background: #f0f0f0; }
+
+/* Grupo com botões Salvar e Cancelar que aparecem no modo de edição */
+.gaveta-acoes-edicao {
+  display: none;
+  gap: 10px;
+}
+
+.gaveta-acoes-edicao.visivel { display: flex; }
+
+/* Botão 'Cancelar' na gaveta — descarta as alterações */
+.gaveta-btn-cancelar {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 18, 59, 0.2);
+  background: white;
+  color: #00123b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.18s;
+}
+
+.gaveta-btn-cancelar:hover { background: #f5f6fa; }
+
+/* Botão 'Salvar' verde na gaveta — confirma as alterações */
+.gaveta-btn-salvar {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  background: #2e8b57;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.18s;
+}
+
+.gaveta-btn-salvar:hover { background: #256d45; }
+
+/* Ajustes para tablets e celulares (telas até 768px) */
+@media (max-width: 768px) {
+  .gaveta-perfil  { width: 100%; }
+  .gaveta-grade   { grid-template-columns: 1fr; }
+}
+
+/* Barra de totais de solicitações com números grandes (Pendentes, Confirmadas, etc.) */
+.solicit-resumo {
+  display: flex;
+  gap: 0;
+  background: #f5f6fa;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(0,18,59,0.08);
+}
+
+/* Um bloco de total na barra de resumo de solicitações */
+.solicit-resumo-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 8px;
+  border-right: 1px solid rgba(0,18,59,0.08);
+}
+
+.solicit-resumo-item:last-child { border-right: none; }
+
+/* Número grande do total de solicitações */
+.solicit-resumo-valor {
+  font-size: 26px;
+  font-weight: 800;
+  color: #00123b;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+/* Rótulo abaixo do número de total */
+.solicit-resumo-label {
+  font-size: 11px;
+  color: rgba(0,18,59,0.5);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Uma linha de solicitação com data, nome e botão de ação */
+.solicit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,18,59,0.06);
+}
+
+.solicit-item:last-child { border-bottom: none; }
+
+/* Bloco de calendário com mês e dia da solicitação */
+.solicit-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f6fa;
+  border-radius: 8px;
+  padding: 6px 10px;
+  flex-shrink: 0;
+  min-width: 44px;
+}
+
+.solicit-mes { font-size: 10px; font-weight: 700; color: #2e8b57; text-transform: uppercase; }
+.solicit-dia { font-size: 20px; font-weight: 800; color: #00123b; line-height: 1.1; }
+
+/* Bloco com nome e detalhes da pessoa que fez a solicitação */
+.solicit-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.solicit-info strong { font-size: 13px; color: #00123b; font-weight: 600; }
+.solicit-info span   { font-size: 12px; color: rgba(0,18,59,0.5); }
+
+/* Botão verde 'Nova Solicitação' que abre o formulário */
+.btn-nova-solicitacao {
+  margin-left: auto;
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #2e8b57;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.18s;
+  flex-shrink: 0;
+}
+
+.btn-nova-solicitacao:hover { background: #256d45; }
+
+/* Fundo escuro que cobre a tela ao abrir o formulário de solicitação */
+.modal-form-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 18, 59, 0.5);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-form-overlay.aberto { display: flex; }
+
+/* Caixa do formulário modal com altura máxima e rolagem interna */
+.modal-form-caixa {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+/* Cabeçalho azul escuro do formulário com título e botão de fechar */
+.modal-form-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: #00123b;
+  color: white;
+  flex-shrink: 0;
+}
+
+.modal-form-titulo { margin: 0; font-size: 17px; font-weight: 700; }
+
+/* Área interna rolável do formulário com todos os campos */
+.modal-form-corpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Rodapé do formulário com os botões Cancelar e Salvar */
+.modal-form-rodape {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0,18,59,0.08);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.form-grupo { display: flex; flex-direction: column; gap: 8px; }
+
+/* Dois campos de formulário lado a lado na mesma linha */
+.form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Rótulo do campo em maiúsculas e negrito */
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0,18,59,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-obrigatorio { color: #e53935; }
+.form-sugestao    { color: rgba(0,18,59,0.4); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; }
+
+.form-input,
+.form-select,
+
+/* Campo de texto longo do formulário — pode ser redimensionado verticalmente */
+.form-textarea {
+  border: 1px solid rgba(0,18,59,0.18);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #00123b;
+  background: white;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-select:focus,
+
+/* Campo de formulário: form textarea */
+.form-textarea:focus {
+  border-color: #2e8b57;
+  box-shadow: 0 0 0 3px rgba(46,139,87,0.12);
+}
+
+.form-textarea { resize: vertical; min-height: 80px; }
+
+/* Grade de dois checkboxes lado a lado */
+.form-checkboxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.form-check,
+
+/* Campo de formulário: form radio */
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #00123b;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,18,59,0.12);
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+
+.form-check:hover,
+.form-radio:hover { background: #f5f6fa; }
+
+.form-check input,
+.form-radio input { accent-color: #2e8b57; flex-shrink: 0; }
+
+.form-radios { display: flex; flex-direction: column; gap: 8px; }
+
+/* Aviso em amarelo com borda esquerda laranja dentro do formulário */
+.form-aviso {
+  font-size: 12px;
+  color: rgba(0,18,59,0.5);
+  background: #fff8e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0;
+  border-left: 3px solid #f59e0b;
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+  .form-linha       { grid-template-columns: 1fr; }
+  .form-checkboxes  { grid-template-columns: 1fr; }
+}
+
+.grade-resumo-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Etiqueta azul 'Ponto de Coleta' no cabeçalho do dashboard */
+.badge-ponto {
+  background: #e3f2fd;
+  color: #1565c0;
+  border-color: #90caf9;
+}
+
+.badge-ponto::before { background: #1565c0; }
+
+/* Cabeçalho de uma seção do dashboard com título e contagem */
+.secao-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Etiqueta laranja com o número de itens na seção */
+.badge-contagem {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffcc80;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Card de uma solicitação (avatar, dados, e botões de ação) */
+.card-solicitacao {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgba(0,18,59,0.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Bloco com avatar e dados do beneficiário que fez a solicitação */
+.solicitacao-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Avatar circular do beneficiário solicitante */
+.solicitacao-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00123b;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solicitacao-dados { display: flex; flex-direction: column; gap: 2px; }
+.solicitacao-dados strong { font-size: 14px; color: #00123b; font-weight: 600; }
+.solicitacao-dados span   { font-size: 12px; color: rgba(0,18,59,0.6); }
+.solicitacao-obs          { font-size: 11px !important; color: rgba(0,18,59,0.5) !important; font-style: italic; }
+
+/* Modalidade e data da solicitação, alinhados à direita */
+.solicitacao-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.solicitacao-modalidade { font-size: 12px; font-weight: 600; color: #00123b; }
+.solicitacao-data       { font-size: 11px; color: rgba(0,18,59,0.5); }
+
+/* Botões de ação — Confirmar ou Recusar a solicitação */
+.solicitacao-acoes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Bloco azul claro com os dados do voluntário vinculado à entrega */
+.solicitacao-voluntario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f4ff;
+  border: 1px solid #c5d1f5;
+  border-radius: 10px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+
+/* Avatar do voluntário vinculado */
+.solicitacao-voluntario-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1565c0;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solicitacao-voluntario .solicitacao-dados strong { font-size: 13px; color: #1565c0; }
+.solicitacao-voluntario .solicitacao-dados span   { font-size: 11px; color: rgba(21,101,192,0.7); }
+
+.btn-confirmar-solic,
+
+/* Botão vermelho claro para recusar a solicitação */
+.btn-recusar-solic {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.18s;
+  white-space: nowrap;
+}
+
+.btn-confirmar-solic { background: #e8f5e9; color: #2e8b57; }
+.btn-confirmar-solic:hover { background: #c8e6c9; }
+.btn-recusar-solic   { background: #fce4ec; color: #c62828; }
+.btn-recusar-solic:hover { background: #f8bbd0; }
+
+/* Mensagem centralizada quando não há solicitações para mostrar */
+.sem-solicitacoes {
+  background: white;
+  border-radius: 14px;
+  padding: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0,18,59,0.5);
+  border: 1px solid rgba(0,18,59,0.08);
+  margin-bottom: 28px;
+}
+
+/* Card de solicitação já confirmada — borda e fundo verde claro */
+.card-solicitacao-confirmada {
+  border-color: #a5d6a7;
+  background: #f9fffe;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-solicitacao-confirmada .solicitacao-acoes { width: 100%; justify-content: flex-end; }
+
+/* Etiqueta 'Confirmada' no topo do card confirmado */
+.badge-confirmada-topo {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2e8b57;
+  background: #e8f5e9;
+  border-radius: 6px;
+  padding: 3px 10px;
+  align-self: flex-start;
+}
+
+.card-solicitacao-confirmada .solicitacao-info,
+.card-solicitacao-confirmada .solicitacao-voluntario,
+
+/* Card: card solicitacao confirmada .solicitacao meta */
+.card-solicitacao-confirmada .solicitacao-meta {
+  width: 100%;
+}
+
+/* Botão azul 'Aguardando retirada' no card confirmado */
+.btn-confirmada-aguardando {
+  background: #e3f2fd !important;
+  color: #1565c0 !important;
+}
+.btn-confirmada-aguardando:hover { background: #bbdefb !important; }
+
+.btn-entregue { background: #e8f5e9 !important; color: #2e7d32 !important; font-weight: 600 !important; }
+.btn-entregue:hover { background: #c8e6c9 !important; }
+
+/* Lista com as entregas confirmadas do ponto (fundo verde claro) */
+.lista-confirmada {
+  display: flex;
+  flex-direction: column;
+  background: #f9fffe;
+  border: 1px solid #a5d6a7;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+/* Uma linha de entrega confirmada (avatar + nome + endereço) */
+.linha-confirmada {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(0,100,50,0.08);
+}
+
+.linha-confirmada:last-child { border-bottom: none; }
+
+/* Avatar verde do beneficiário com entrega confirmada */
+.linha-confirmada-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2e7d32;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Nome e endereço do beneficiário com entrega confirmada */
+.linha-confirmada-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.linha-confirmada-info strong { font-size: 13px; color: #1b5e20; font-weight: 600; }
+.linha-confirmada-info span   { font-size: 11px; color: rgba(27,94,32,0.6); }
+
+.voluntario-avatar-aguardando { background: #1565c0; opacity: 0.7; }
+
+/* Subtítulo que separa grupos de solicitações (ex: Aguardando, Em rota) */
+.solicitacoes-secao-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(0,18,59,0.04);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0,18,59,0.65);
+}
+
+.solicitacoes-secao-titulo:first-child { margin-top: 0; }
+
+/* Contagem de itens dentro do grupo de solicitações */
+.badge-secao-count {
+  background: rgba(0,18,59,0.1);
+  color: rgba(0,18,59,0.65);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Lista com as entregas que estão em rota (fundo amarelo claro) */
+.lista-em-rota {
+  display: flex;
+  flex-direction: column;
+  background: #fffde7;
+  border: 1px solid #ffcc80;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Uma linha de entrega em rota (avatar laranja + info) */
+.linha-em-rota {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(230,150,0,0.12);
+}
+
+.linha-em-rota:last-child { border-bottom: none; }
+
+/* Avatar laranja do beneficiário com entrega em rota */
+.linha-em-rota-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e65100;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Nome e endereço do beneficiário com entrega em rota */
+.linha-em-rota-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.linha-em-rota-info strong { font-size: 13px; color: #3e2000; font-weight: 600; }
+.linha-em-rota-info span   { font-size: 11px; color: rgba(62,32,0,0.55); }
+
+/* Etiqueta 'Em rota' na linha da entrega */
+.linha-em-rota-status {
+  font-size: 11px;
+  color: #e65100;
+  background: #fff3e0;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+/* Lista de entregas concluídas (fundo branco, borda cinza discreta) */
+.lista-concluidas {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid rgba(0,18,59,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Uma linha de entrega concluída */
+.linha-concluida {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(0,18,59,0.06);
+  transition: background 0.15s;
+}
+
+.linha-concluida:last-child { border-bottom: none; }
+.linha-concluida:hover { background: rgba(0,18,59,0.025); }
+
+/* Avatar cinza do beneficiário de entrega concluída */
+.linha-concluida-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0,18,59,0.12);
+  color: rgba(0,18,59,0.5);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Nome e endereço do beneficiário de entrega concluída (em cinza) */
+.linha-concluida-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.linha-concluida-info strong { font-size: 13px; color: rgba(0,18,59,0.7); font-weight: 600; }
+.linha-concluida-info span   { font-size: 11px; color: rgba(0,18,59,0.4); }
+
+/* Data e hora da entrega concluída */
+.linha-concluida-meta {
+  font-size: 11px;
+  color: rgba(0,18,59,0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tag-estoque-ok   { background: #e8f5e9; color: #2e8b57; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+.tag-estoque-baixo { background: #fff3e0; color: #e65100; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+
+.lista-voluntarios { display: flex; flex-direction: column; gap: 10px; }
+
+.gaveta-busca { margin-bottom: 12px; }
+
+/* Input de busca dentro da gaveta (borda suave, fundo claro) */
+.gaveta-busca input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid rgba(0,18,59,0.15);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #00123b;
+  background: #f8f9fc;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .2s;
+}
+.gaveta-busca input:focus { border-color: #ff7a00; background: #fff; }
+
+/* Lista de doações recebidas pelo ponto (borda azul clara) */
+.lista-doacoes {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid #dce8ff;
+}
+
+/* Uma doação na lista (avatar + nome do doador + botão receber) */
+.linha-doacao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f5f8ff;
+  border-bottom: 1px solid #dce8ff;
+}
+.linha-doacao:last-child { border-bottom: none; }
+
+/* Avatar azul do doador */
+.linha-doacao-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #1565c0;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.linha-doacao-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.linha-doacao-info strong { font-size: 13px; color: #00123b; font-weight: 600; }
+.linha-doacao-info span   { font-size: 11px; color: rgba(0,18,59,0.55); }
+.linha-doacao-meta        { font-size: 11px; color: rgba(0,18,59,0.4) !important; }
+
+/* Botão azul 'Receber' para registrar a entrada de uma doação */
+.btn-receber-doacao {
+  background: #1565c0; color: #fff; border: none;
+  border-radius: 6px; padding: 6px 11px;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; flex-shrink: 0; font-family: inherit;
+  transition: background .15s;
+}
+.btn-receber-doacao:hover { background: #0d47a1; }
+.tag-estoque-vazio { background: #ffebee; color: #b71c1c; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+
+/* Um voluntário na lista (avatar + nome + veículo) */
+.voluntario-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,18,59,0.06);
+}
+
+.voluntario-item:last-child { border-bottom: none; }
+
+/* Avatar circular do voluntário */
+.voluntario-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #00123b;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.voluntario-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.voluntario-info strong { font-size: 13px; color: #00123b; font-weight: 600; }
+.voluntario-info span   { font-size: 12px; color: rgba(0,18,59,0.55); }
+
+/* Ajustes para tablets (telas até 900px) */
+@media (max-width: 900px) {
+  .grade-resumo-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Etiqueta laranja 'Doador' no cabeçalho do dashboard */
+.badge-doador {
+  background: #fff3e0;
+  color: #e65100;
+  border-color: #ffcc80;
+}
+.badge-doador::before { background: #ff7a00; }
+
+/* Banner amarelo com mensagem motivacional sobre o impacto das doações */
+.banner-impacto-doador {
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+  border: 1.5px solid #ffe082;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4e3400;
+  line-height: 1.5;
+}
+.banner-impacto-doador strong { color: #e65100; }
+
+/* Card branco para o doador registrar uma nova doação */
+.card-nova-doacao {
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,18,59,0.08);
+  box-shadow: 0 2px 8px rgba(0,18,59,0.06);
+  padding: 24px;
+  margin-bottom: 8px;
+}
+
+/* Painel com informações do ponto selecionado (aparece ao escolher um ponto no formulário) */
+.form-ponto-info {
+  display: none;
+  margin-top: 6px;
+  font-size: 12px;
+  padding: 8px 12px;
+  background: #f5f8ff;
+  border-radius: 6px;
+  border: 1px solid #dce8ff;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ponto-info-endereco { color: rgba(0,18,59,0.55); }
+
+/* Itens em falta no ponto destacados em amarelo */
+.ponto-info-falta {
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+.ponto-info-falta strong { color: #7c2d12; }
+
+/* Mensagem de estoque OK no ponto em verde claro */
+.ponto-info-ok {
+  color: #166534;
+  background: #dcfce7;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.form-opcional { font-size: 11px; color: rgba(0,18,59,0.4); font-weight: 400; }
+.form-erro     { color: #c62828; font-size: 13px; margin-top: 8px; min-height: 16px; }
+
+/* Lista de itens disponíveis para doação com checkboxes */
+.lista-itens-doacao {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,18,59,0.1);
+}
+
+/* Uma linha de item para doação (checkbox + nome + campo de quantidade) */
+.item-doacao-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,18,59,0.07);
+  transition: background .15s;
+}
+.item-doacao-row:last-child  { border-bottom: none; }
+.item-doacao-row.selecionado { background: #f0f7ff; }
+
+/* Rótulo clicável do item (inclui o checkbox e o nome do item) */
+.item-doacao-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #00123b;
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Checkbox do item com destaque laranja quando marcado */
+.item-doacao-check {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff7a00;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Campo de quantidade do item — só aparece quando o item está marcado */
+.item-doacao-qty {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  width: 130px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+.item-doacao-qty.visivel-qty { display: flex; }
+
+/* Campo numérico para digitar a quantidade do item */
+.item-doacao-qtd-input {
+  width: 64px;
+  padding: 5px 8px;
+  border: 1.5px solid rgba(0,18,59,0.2);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #00123b;
+  text-align: center;
+  outline: none;
+  transition: border-color .2s;
+}
+.item-doacao-qtd-input:focus { border-color: #ff7a00; }
+
+.item-doacao-unidade { font-size: 12px; color: rgba(0,18,59,0.5); min-width: 36px; }
+
+/* Botão laranja 'Registrar Doação' — envia o formulário de doação */
+.btn-registrar-doacao {
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-registrar-doacao:hover { background: #e06900; }
+
+/* Botões de filtro do histórico de doações (Todas, Pendentes, Recebidas) */
+.filtros-doacoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+/* Um botão de filtro com borda arredondada */
+.filtro-doacao {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(0,18,59,0.15);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,18,59,0.6);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+}
+.filtro-doacao:hover      { border-color: #ff7a00; color: #ff7a00; }
+.filtro-doacao.ativo      { background: #ff7a00; border-color: #ff7a00; color: #fff; }
+
+/* Card de uma doação no histórico do doador */
+.card-doacao-historico {
+  background: #fff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,18,59,0.08);
+  box-shadow: 0 2px 6px rgba(0,18,59,0.05);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  transition: box-shadow .15s;
+}
+.card-doacao-historico:hover { box-shadow: 0 4px 12px rgba(0,18,59,0.1); }
+
+.card-doacao-pendente  { border-left: 4px solid #f59e0b; }
+.card-doacao-recebida  { border-left: 4px solid #22c55e; }
+.card-doacao-cancelada { border-left: 4px solid #94a3b8; opacity: 0.75; }
+
+/* Linha do topo do card de doação com etiqueta de status e data */
+.card-doacao-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Etiqueta de status da doação (Pendente, Recebida ou Cancelada) */
+.badge-status-doacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-doacao-pendente  { background: #fef3c7; color: #92400e; }
+.badge-doacao-recebida  { background: #dcfce7; color: #166534; }
+.badge-doacao-cancelada { background: #f1f5f9; color: #64748b; }
+
+.card-doacao-data  { font-size: 12px; color: rgba(0,18,59,0.45); white-space: nowrap; }
+.card-doacao-ponto { font-size: 14px; font-weight: 600; color: #00123b; margin-bottom: 4px; }
+.card-doacao-itens { font-size: 13px; color: rgba(0,18,59,0.7); margin-bottom: 4px; }
+.card-doacao-obs   { font-size: 12px; color: rgba(0,18,59,0.5); margin-bottom: 4px; }
+.card-doacao-receb { font-size: 12px; color: #16a34a; margin-top: 4px; }
+.card-doacao-acoes { margin-top: 12px; display: flex; gap: 8px; }
+
+/* Botão vermelho sem preenchimento para cancelar uma doação pendente */
+.btn-cancelar-doacao {
+  background: transparent;
+  color: #c62828;
+  border: 1.5px solid #c62828;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+}
+.btn-cancelar-doacao:hover { background: #c62828; color: #fff; }
+
+/* Etiqueta verde 'Voluntário' no cabeçalho do dashboard */
+.badge-voluntario {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+.badge-voluntario::before { background: #2e7d32; }
+
+/* Banner verde com mensagem motivacional para o voluntário */
+.banner-motivacao-voluntario {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border: 1.5px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #1b4332;
+  line-height: 1.5;
+}
+.banner-motivacao-voluntario strong { color: #15803d; }
+
+/* Card de uma entrega — borda colorida lateral indica o status */
+.card-entrega {
+  background: #fff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,18,59,0.08);
+  box-shadow: 0 2px 6px rgba(0,18,59,0.05);
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  transition: box-shadow .15s;
+}
+.card-entrega:hover { box-shadow: 0 4px 12px rgba(0,18,59,0.1); }
+
+.card-entrega-pendente  { border-left: 4px solid #f59e0b; }
+.card-entrega-em-rota   { border-left: 4px solid #3b82f6; }
+.card-entrega-entregue  { border-left: 4px solid #22c55e; }
+
+/* Linha do topo do card de entrega (status + data) */
+.card-entrega-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.card-entrega-data { font-size: 12px; color: rgba(0,18,59,0.45); white-space: nowrap; }
+
+/* Etiqueta de status da entrega */
+.badge-status-entrega {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-entrega-pendente { background: #fef3c7; color: #92400e; }
+.badge-entrega-em-rota  { background: #dbeafe; color: #1e40af; }
+.badge-entrega-entregue { background: #dcfce7; color: #166534; }
+
+/* Barra visual de progresso mostrando as etapas da entrega */
+.progresso-entrega {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 2px 0 14px;
+}
+
+/* Uma etapa da barra de progresso (círculo + texto) */
+.passo-entrega {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(0,18,59,0.3);
+  text-align: center;
+  min-width: 72px;
+}
+.passo-entrega.concluido { color: #16a34a; }
+.passo-entrega.ativo     { color: #e65100; font-weight: 700; }
+
+/* Círculo da etapa na barra de progresso */
+.passo-circulo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0,18,59,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.passo-entrega.concluido .passo-circulo { background: #dcfce7; }
+.passo-entrega.ativo     .passo-circulo { background: #fff3e0; }
+
+/* Linha conectora entre etapas da barra de progresso */
+.passo-linha {
+  flex: 1;
+  height: 2px;
+  background: rgba(0,18,59,0.1);
+  margin-bottom: 14px;
+}
+.passo-linha.concluida { background: #22c55e; }
+
+/* Bloco com avatar e nome do beneficiário dentro do card de entrega */
+.card-entrega-bene {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Avatar azul do beneficiário no card de entrega */
+.entrega-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1565c0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Nome e endereço do beneficiário no card de entrega */
+.entrega-bene-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.entrega-bene-info strong { font-size: 14px; color: #00123b; font-weight: 600; }
+.entrega-bene-info span   { font-size: 12px; color: rgba(0,18,59,0.55); }
+
+/* Detalhes da entrega: ponto de coleta, itens e observações */
+.card-entrega-detalhe {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.card-entrega-ponto { font-size: 12px; color: rgba(0,18,59,0.5); }
+.card-entrega-itens { font-size: 13px; color: rgba(0,18,59,0.7); font-weight: 500; }
+.card-entrega-obs   { font-size: 12px; color: rgba(0,18,59,0.5); margin-top: 2px; }
+
+.card-entrega-acoes { margin-top: 14px; display: flex; gap: 8px; }
+
+/* Botão de ação do card de entrega com animação de pressionar */
+.btn-acao-entrega {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s, transform .1s;
+}
+.btn-acao-entrega:active { transform: scale(0.97); }
+
+/* Botão laranja 'Retirar no ponto' — inicia a entrega */
+.btn-retirar {
+  background: #ff7a00;
+  color: #fff;
+}
+.btn-retirar:hover { background: #e06900; }
+
+/* Botão verde 'Confirmar entrega' — finaliza a entrega */
+.btn-confirmar-entrega {
+  background: #16a34a;
+  color: #fff;
+}
+.btn-confirmar-entrega:hover { background: #15803d; }
+
+.card-entrega.acordeon { cursor: default; }
+
+/* Cabeçalho clicável do acordeon com avatar, nome, data e seta */
+.acordeon-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Nome e endereço do beneficiário no cabeçalho do acordeon */
+.acordeon-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Nome do beneficiário em destaque no acordeon */
+.acordeon-info strong {
+  display: block;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Endereço discreto abaixo do nome no acordeon */
+.acordeon-info span {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* Lado direito do cabeçalho com data, pontos e seta de expansão */
+.acordeon-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Data da entrega no acordeon em cinza */
+.acordeon-data {
+  font-size: 0.72rem;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+/* Seta indicadora que rotaciona ao expandir o acordeon */
+.acordeon-seta {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1;
+  transition: transform .2s;
+  margin-left: 2px;
+}
+.acordeon.expandido .acordeon-seta { transform: rotate(90deg); }
+
+/* Corpo do card acordeon — oculto por padrão, aparece ao expandir */
+.acordeon-body {
+  display: none;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 12px;
+}
+.acordeon.expandido .acordeon-body { display: block; }
+
+/* Separador entre a lista de cupons disponíveis e os já resgatados */
+.cupons-resgatados-sep {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #888;
+  border-top: 2px solid #f0f0f0;
+  margin-top: 8px;
+}
+
+/* Badge verde com a quantidade de cupons já resgatados */
+.cupons-resgatados-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Card de um cupom que já foi resgatado (fundo verde claro, borda verde) */
+.card-cupom-resgatado {
+  background: #f9fdf9;
+  border-left: 3px solid #4caf50;
+}
+
+/* Linha com o código do cupom resgatado */
+.card-cupom-codigo {
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+/* Código do cupom em fonte mono com fundo cinza (estilo de código) */
+.card-cupom-codigo code {
+  font-family: monospace;
+  background: #eee;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  letter-spacing: .04em;
+}
+
+/* Botão verde 'Usar' para marcar um cupom como utilizado */
+.btn-usar-cupom {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1.5px solid #a5d6a7;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.btn-usar-cupom:hover { background: #c8e6c9; }
+
+/* Lado direito do topo do card de entrega com badge de status e pontos */
+.card-entrega-topo-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Etiqueta laranja indicando quantos pontos serão ganhos com a entrega */
+.tag-pontos-entrega {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+/* Etiqueta verde indicando que os pontos já foram ganhos */
+.tag-pontos-entrega.ganho {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Linha com etiquetas abaixo do nome na saudação (status + saldo de pontos) */
+.boas-vindas-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+/* Pastilha laranja com o saldo de pontos do voluntário — clica para ver cupons */
+.chip-pontos {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #ff7a00, #f59e0b);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 99px;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity .18s;
+  box-shadow: 0 2px 8px rgba(255,122,0,.25);
+}
+.chip-pontos:hover { opacity: .88; }
+
+/* Cabeçalho gradiente laranja na gaveta de cupons com o saldo atual */
+.saldo-cupons-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #fff8f0, #fff3e0);
+  border-bottom: 1px solid #ffe0b2;
+  flex-wrap: wrap;
+}
+
+/* Lado esquerdo do cabeçalho de cupons (rótulo + valor do saldo) */
+.saldo-cupons-esq {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Rótulo 'Seu saldo' acima do número de pontos */
+.saldo-cupons-label {
+  font-size: 0.72rem;
+  color: #a0522d;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* Número grande de pontos disponíveis para troca */
+.saldo-cupons-valor {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #e65100;
+}
+
+/* Regra de acumulação de pontos (ex: 0,5 km = 1 ponto) */
+.saldo-cupons-regra {
+  font-size: 0.72rem;
+  color: #888;
+  text-align: right;
+}
+
+/* Card de um cupom disponível para resgatar */
+.card-cupom {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background .15s;
+}
+.card-cupom:hover { background: #fafafa; }
+.card-cupom.indisponivel { opacity: .5; }
+
+/* Ícone grande do cupom (ex: logo da empresa parceira) */
+.card-cupom-icone {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 44px;
+  text-align: center;
+}
+
+/* Bloco com nome e descrição do cupom */
+.card-cupom-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Categoria do cupom em texto pequeno e cinza */
+.card-cupom-categoria {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #ff7a00;
+}
+
+/* Nome do cupom em destaque */
+.card-cupom-nome {
+  font-size: 0.92rem;
+  color: #1a1a1a;
+}
+
+/* Descrição do cupom */
+.card-cupom-desc {
+  font-size: 0.78rem;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Lado direito do card com custo em pontos e botão de resgatar */
+.card-cupom-acao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Custo em pontos para resgatar o cupom */
+.card-cupom-custo {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #e65100;
+}
+
+/* Botão para resgatar o cupom com os pontos disponíveis */
+.btn-resgatar {
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.btn-resgatar:hover { background: #e86800; }
+
+/* Botão de resgatar desabilitado quando não há pontos suficientes */
+.btn-resgatar.desabilitado {
+  background: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Área de pré-visualização do certificado dentro da gaveta */
+.cert-preview {
+  background: linear-gradient(135deg, #fff8f0 0%, #fffde7 100%);
+  border: 2px solid #ffe0b2;
+  border-radius: 16px;
+  padding: 24px 22px 20px;
+  text-align: center;
+}
+
+/* Cabeçalho do certificado com logo e nome do projeto */
+.cert-cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+/* Logo do projeto dentro do certificado */
+.cert-logo {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #ff7a00;
+}
+
+/* Título 'CERTIFICADO DE VOLUNTARIADO' em destaque */
+.cert-titulo-doc {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+/* Texto de reconhecimento ao voluntário dentro do certificado */
+.cert-texto {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+/* Linha com as estatísticas do voluntário no certificado */
+.cert-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* Uma estatística do certificado (número + rótulo) */
+.cert-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+/* Número em destaque da estatística */
+.cert-stat-valor {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ff7a00;
+}
+
+/* Rótulo da estatística no certificado */
+.cert-stat-label {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* Período de atividade do voluntário no certificado */
+.cert-periodo {
+  font-size: 0.76rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+/* Linha de assinatura no rodapé do certificado */
+.cert-assinatura {
+  font-size: 0.7rem;
+  color: #bbb;
+  border-top: 1px solid #f0d9c0;
+  padding-top: 10px;
+  margin-top: 6px;
+}
+
+/* Texto descritivo da seção de entregas disponíveis para aceitar */
+.secao-desc-disp {
+  font-size: 0.83rem;
+  color: #888;
+  margin: -4px 0 16px;
+}
+
+/* Card de uma entrega disponível que o voluntário pode aceitar */
+.card-disp {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+/* Card: card disp */
+.card-disp:hover {
+  border-color: #ff7a00;
+  box-shadow: 0 3px 14px rgba(255,122,0,.1);
+}
+
+/* Avatar e nome do beneficiário no card de entrega disponível */
+.card-disp-bene {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Informações da entrega: distância, ponto, itens */
+.card-disp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.83rem;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+/* Distância da entrega disponível até o beneficiário */
+.card-disp-dist {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.card-disp-ponto { color: #888; }
+.card-disp-itens { color: #666; }
+
+/* Rodapé do card com pontos a ganhar e botão de aceitar */
+.card-disp-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Etiqueta laranja mostrando os pontos que serão ganhos ao aceitar */
+.tag-pontos-disp {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  color: #e65100;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 99px;
+}
+
+/* Botão laranja 'Aceitar entrega' para assumir a entrega */
+.btn-aceitar-entrega {
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+
+/* Botão aceitar entrega fica mais escuro ao passar o mouse */
+.btn-aceitar-entrega:hover {
+  background: #e86800;
+  transform: translateY(-1px);
+}
+
+/* Ajustes para celulares (telas até 500px) */
+@media (max-width: 500px) {
+  .grade-resumo-4 { grid-template-columns: 1fr; }
+  .solicitacao-meta { align-items: flex-start; }
+}

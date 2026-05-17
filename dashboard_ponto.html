@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Ponto — Mesa Solidária</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/logos/logo.png" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+
+    <header class="cabecalho-perfil">
+      <div class="conteiner-navbar-perfil">
+
+        <a href="index.html" class="logo-perfil-link">
+          <img src="img/logos/MESA SOLIDARIA - LOGO PRINCIPAL.svg" alt="Logo Mesa Solidária" class="imagem-logo-perfil" />
+        </a>
+
+        <nav class="menu-perfil">
+          <a href="dashboard_ponto.html" class="item-menu-perfil ativo">🏠 Meu Painel</a>
+          <a href="#" class="item-menu-perfil" id="btn-ir-solicitacoes">📋 Solicitações</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-doacoes">📦 Receber Doação</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-perfil">👤 Meu Perfil</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-ajuda">❓ Ajuda</a>
+        </nav>
+
+        <div class="acoes-perfil">
+          <div class="sino-notificacao" id="sino" title="Notificações">
+            🔔
+            <span class="badge-sino" id="badge-sino">0</span>
+          </div>
+          <div class="painel-notificacoes" id="painel-notificacoes">
+            <div class="cabecalho-notificacoes">Notificações</div>
+            <div class="lista-notificacoes" id="lista-notificacoes">
+              <div class="sem-notificacoes" id="sem-notificacoes">Nenhuma notificação ainda</div>
+            </div>
+          </div>
+          <div class="chip-usuario" style="cursor:pointer;" id="chip-usuario">
+            <div class="avatar-chip" id="avatar-chip">P</div>
+            <span id="nome-chip">Ponto Centro</span>
+          </div>
+          <a href="login.html" class="botao-sair-nav">Sair →</a>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="pagina-dashboard">
+
+      
+      <div class="boas-vindas">
+        <div class="avatar-usuario" id="avatar-inicial">P</div>
+        <div class="texto-boas-vindas">
+          <h1 id="titulo-boas-vindas">Olá, Ponto Centro!</h1>
+          <p>Gerencie seu estoque, solicitações e voluntários</p>
+        </div>
+        <span class="badge-status badge-ponto">Ponto ativo</span>
+      </div>
+
+      
+      <div class="grade-resumo grade-resumo-4">
+        <div class="card-resumo destaque">
+          <div class="label-card">Itens em estoque</div>
+          <div class="valor-card">847</div>
+          <div class="detalhe-card">unidades disponíveis</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Solicitações pendentes</div>
+          <div class="valor-card" id="contador-pendentes">5</div>
+          <div class="detalhe-card">aguardando confirmação</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Beneficiários atendidos</div>
+          <div class="valor-card">23</div>
+          <div class="detalhe-card">em maio/2026</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Doações a receber</div>
+          <div class="valor-card" id="contador-doacoes-card">4</div>
+          <div class="detalhe-card">aguardando recebimento</div>
+        </div>
+      </div>
+
+      
+      <div class="secao-cabecalho" id="secao-solicitacoes">
+        <h2 class="secao-titulo" style="margin:0;">Solicitações pendentes</h2>
+        <span class="badge-contagem" id="badge-pendentes">5 pendentes</span>
+      </div>
+      <div id="lista-solicitacoes-pendentes"></div>
+
+      
+      <h2 class="secao-titulo" style="margin-top:8px;">Estoque atual</h2>
+      <div class="card-historico">
+        <table class="tabela-historico">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Itens</th>
+              <th>Unidades</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-estoque">
+            <tr>
+              <td>🛒 Cesta básica</td>
+              <td>Arroz, feijão, óleo, macarrão, sal, açúcar</td>
+              <td><strong>45</strong> cestas</td>
+              <td><span class="tag-estoque-ok">Disponível</span></td>
+            </tr>
+            <tr>
+              <td>🧴 Higiene</td>
+              <td>Sabonete, shampoo, pasta de dente, absorvente</td>
+              <td><strong>120</strong> kits</td>
+              <td><span class="tag-estoque-ok">Disponível</span></td>
+            </tr>
+            <tr>
+              <td>👕 Roupas e calçados</td>
+              <td>Roupas adulto/infantil, calçados variados</td>
+              <td><strong>89</strong> peças</td>
+              <td><span class="tag-estoque-ok">Disponível</span></td>
+            </tr>
+            <tr>
+              <td>🧸 Brinquedos</td>
+              <td>Jogos, bonecas, carrinhos</td>
+              <td><strong>34</strong> itens</td>
+              <td><span class="tag-estoque-baixo">Estoque baixo</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      <h2 class="secao-titulo" style="margin-top:28px;">Histórico de distribuições</h2>
+      <div class="card-historico">
+        <table class="tabela-historico">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Beneficiário</th>
+              <th>Itens entregues</th>
+              <th>Modalidade</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>14/05/2026</td>
+              <td>João Pereira</td>
+              <td>Cesta básica + Higiene</td>
+              <td>Retirada</td>
+              <td><span class="tag-entregue">Entregue</span></td>
+            </tr>
+            <tr>
+              <td>12/05/2026</td>
+              <td>Ana Lima</td>
+              <td>Cesta básica</td>
+              <td>Entrega</td>
+              <td><span class="tag-entregue">Entregue</span></td>
+            </tr>
+            <tr>
+              <td>10/05/2026</td>
+              <td>Carlos Santos</td>
+              <td>Roupas e calçados</td>
+              <td>Retirada</td>
+              <td><span class="tag-entregue">Entregue</span></td>
+            </tr>
+            <tr>
+              <td>08/05/2026</td>
+              <td>Maria Oliveira</td>
+              <td>Cesta básica + Brinquedos</td>
+              <td>Entrega</td>
+              <td><span class="tag-entregue">Entregue</span></td>
+            </tr>
+            <tr>
+              <td>05/05/2026</td>
+              <td>Fernanda Costa</td>
+              <td>Higiene + Roupas</td>
+              <td>Retirada</td>
+              <td><span class="tag-entregue">Entregue</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+    
+    <div class="gaveta-overlay" id="gaveta-overlay"></div>
+
+    <aside class="gaveta-perfil" id="gaveta-perfil">
+      <div class="gaveta-cabecalho">
+        <h2 class="gaveta-titulo">Perfil do Ponto</h2>
+        <button class="gaveta-fechar" id="gaveta-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-avatar-bloco">
+          <div class="gaveta-avatar" id="gaveta-avatar">P</div>
+          <div>
+            <div class="gaveta-nome-exibido" id="gaveta-nome-exibido">Ponto Centro</div>
+            <span class="badge-status badge-ponto" style="margin-left:0;">Ponto ativo</span>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Informações do ponto</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-nome">Nome do ponto</label>
+              <input class="gaveta-input" id="gv-nome" type="text" value="Ponto Centro" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-responsavel">Responsável</label>
+              <input class="gaveta-input" id="gv-responsavel" type="text" value="Roberto Almeida" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-email">E-mail</label>
+              <input class="gaveta-input" id="gv-email" type="email" value="ponto@ponto.com" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-telefone">Telefone</label>
+              <input class="gaveta-input" id="gv-telefone" type="tel" value="(11) 3456-7890" disabled />
+            </div>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Endereço e funcionamento</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo" style="grid-column: span 2;">
+              <label class="gaveta-label" for="gv-rua">Endereço</label>
+              <input class="gaveta-input" id="gv-rua" type="text" value="Rua das Flores, 100" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-bairro">Bairro</label>
+              <input class="gaveta-input" id="gv-bairro" type="text" value="Centro" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-cidade">Cidade</label>
+              <input class="gaveta-input" id="gv-cidade" type="text" value="São Paulo" disabled />
+            </div>
+            <div class="gaveta-campo" style="grid-column: span 2;">
+              <label class="gaveta-label" for="gv-horario">Horário de funcionamento</label>
+              <input class="gaveta-input" id="gv-horario" type="text" value="Segunda a sábado — 09h às 17h" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-editar" id="gaveta-btn-editar">✏️ Editar informações</button>
+        <div class="gaveta-acoes-edicao" id="gaveta-acoes-edicao">
+          <button class="gaveta-btn-cancelar" id="gaveta-btn-cancelar">Cancelar</button>
+          <button class="gaveta-btn-salvar" id="gaveta-btn-salvar">💾 Salvar alterações</button>
+        </div>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-doacoes">
+      <div class="gaveta-cabecalho">
+        <h2 class="gaveta-titulo">Receber Doações</h2>
+        <button class="gaveta-fechar" id="gaveta-doacoes-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-secao">
+          <div class="gaveta-busca">
+            <input type="search" id="busca-doador" placeholder="🔍 Buscar doador pelo nome..." autocomplete="off" />
+          </div>
+          <div class="gaveta-secao-titulo" id="titulo-doacoes-gaveta">Doações aguardando recebimento (0)</div>
+          <div id="lista-doacoes-dinamica"></div>
+        </div>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-ajuda">
+      <div class="gaveta-cabecalho">
+        <div>
+          <h2 class="gaveta-titulo">Central de Ajuda</h2>
+          <p class="gaveta-subtitulo">Fale com nosso SAC</p>
+        </div>
+        <button class="gaveta-fechar" id="gaveta-ajuda-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Enviar mensagem</div>
+          <div class="form-grupo">
+            <label class="form-label" for="sac-assunto">Assunto <span class="form-obrigatorio">*</span></label>
+            <select class="form-select" id="sac-assunto">
+              <option value="">Selecione um assunto...</option>
+              <option value="duvida">Dúvida geral</option>
+              <option value="estoque">Problema com estoque</option>
+              <option value="voluntarios">Gestão de voluntários</option>
+              <option value="sistema">Problema no sistema</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-grupo" style="margin-top:14px;">
+            <label class="form-label" for="sac-mensagem">Mensagem <span class="form-obrigatorio">*</span></label>
+            <textarea class="form-textarea" id="sac-mensagem" rows="5" placeholder="Descreva sua dúvida ou problema com o máximo de detalhes possível..."></textarea>
+          </div>
+          <p class="form-aviso" style="margin-top:14px;">🕒 Tempo médio de resposta: <strong>1 a 2 dias úteis</strong>. Você será notificado por e-mail.</p>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-cancelar" id="gaveta-ajuda-cancelar">Cancelar</button>
+        <button class="gaveta-btn-salvar" id="gaveta-ajuda-enviar">📨 Enviar mensagem</button>
+      </div>
+    </aside>
+
+    
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-caixa">
+        <div class="modal-icone" id="modal-icone">📦</div>
+        <h3 class="modal-titulo" id="modal-titulo">Confirmar ação</h3>
+        <p class="modal-texto" id="modal-texto"></p>
+        <div class="modal-acoes">
+          <button class="btn-modal-cancelar" id="modal-cancelar">Cancelar</button>
+          <button class="btn-modal-confirmar verde" id="modal-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="js/script.js"></script>
+    <script>
+
+      // ── Toast ──
+      function mostrarToast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("visivel");
+        setTimeout(() => t.classList.remove("visivel"), 3500);
+      }
+
+      // ── Modal de confirmação ──
+      function abrirModal({ icone, titulo, texto, corBotao, onConfirmar }) {
+        document.getElementById("modal-icone").textContent  = icone;
+        document.getElementById("modal-titulo").textContent = titulo;
+        document.getElementById("modal-texto").textContent  = texto;
+        const btn = document.getElementById("modal-confirmar");
+        btn.className = `btn-modal-confirmar ${corBotao}`;
+        document.getElementById("modal-overlay").classList.add("aberto");
+        btn.onclick = () => {
+          document.getElementById("modal-overlay").classList.remove("aberto");
+          onConfirmar();
+        };
+      }
+
+      document.getElementById("modal-cancelar").onclick = () =>
+        document.getElementById("modal-overlay").classList.remove("aberto");
+
+      document.getElementById("modal-overlay").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modal-overlay"))
+          document.getElementById("modal-overlay").classList.remove("aberto");
+      });
+
+      // ── Estoque ──
+      const estoqueAtual = [
+        { id: "cesta",      icone: "🛒", categoria: "Cesta básica",     descricao: "Arroz, feijão, óleo, macarrão, sal, açúcar",   qtd: 45,  unidade: "cestas" },
+        { id: "higiene",    icone: "🧴", categoria: "Higiene",           descricao: "Sabonete, shampoo, pasta de dente, absorvente", qtd: 120, unidade: "kits"   },
+        { id: "roupas",     icone: "👕", categoria: "Roupas e calçados", descricao: "Roupas adulto/infantil, calçados variados",     qtd: 89,  unidade: "peças"  },
+        { id: "brinquedos", icone: "🧸", categoria: "Brinquedos",        descricao: "Jogos, bonecas, carrinhos",                    qtd: 34,  unidade: "itens"  },
+      ];
+
+      // ── Doações de doadores para este ponto ──
+      const doacoesPendentes = [
+        { id: 1, doador: "Roberto Mendes",   iniciais: "RM", telefone: "(11) 98765-4321", data: "18/05/2026", obs: "Pode entregar pela manhã",       itens: [{ nome: "Cesta básica", qtd: 3 }, { nome: "Higiene", qtd: 2 }] },
+        { id: 2, doador: "Sandra Lima",      iniciais: "SL", telefone: "(11) 91234-5678", data: "19/05/2026", obs: "",                               itens: [{ nome: "Roupas e calçados", qtd: 10 }] },
+        { id: 3, doador: "Empresa TechCorp", iniciais: "TC", telefone: "(11) 3333-4444",  data: "20/05/2026", obs: "Entrega em caixas identificadas", itens: [{ nome: "Cesta básica", qtd: 15 }, { nome: "Higiene", qtd: 8 }, { nome: "Brinquedos", qtd: 5 }] },
+        { id: 4, doador: "Paulo Ferreira",   iniciais: "PF", telefone: "(11) 99876-5432", data: "21/05/2026", obs: "",                               itens: [{ nome: "Brinquedos", qtd: 6 }] },
+      ];
+
+      // ── Solicitações ──
+      // status: (vazio) = pendente | "confirmada" = voluntário vem buscar | "retirada" = em rota para beneficiário
+      const solicitacoesPendentes = [
+        // Pendentes de confirmação
+        { id: 1, nome: "Maria da Silva",  itens: ["Cesta básica", "Higiene"],         modalidade: "retirada",           data: "20/05/2026", obs: "" },
+        { id: 2, nome: "João Pereira",    itens: ["Cesta básica"],                    modalidade: "entrega_voluntario",  data: "21/05/2026", obs: "Moro no 3º andar, sem elevador",          voluntario: { nome: "Maria Carvalho",  iniciais: "MC", info: "Aceita entregar Ter ou Qui" } },
+        { id: 3, nome: "Ana Lima",        itens: ["Roupas e calçados", "Brinquedos"], modalidade: "retirada",           data: "22/05/2026", obs: "Calçado tam. 38 adulto, tam. 28 criança" },
+        { id: 4, nome: "Carlos Santos",   itens: ["Higiene"],                         modalidade: "entrega_voluntario",  data: "22/05/2026", obs: "",                                          voluntario: { nome: "Lucas Silva",     iniciais: "LS", info: "Disponível Seg, Qua, Sex" } },
+        { id: 5, nome: "Fernanda Rocha",  itens: ["Cesta básica", "Brinquedos"],      modalidade: "retirada",           data: "23/05/2026", obs: "Família com 2 crianças pequenas" },
+        // Confirmada — voluntário a caminho do ponto para retirar
+        { id: 6, nome: "Paulo Lima",      itens: ["Cesta básica"],                    modalidade: "entrega_voluntario",  data: "17/05/2026", obs: "", status: "confirmada",
+          voluntario: { nome: "Juliana Alves",   iniciais: "JA", info: "Previsto às 11h30" } },
+        // Em rota — voluntário retirou do ponto, está entregando ao beneficiário
+        { id: 7, nome: "Ana Costa",       itens: ["Higiene", "Roupas"],               modalidade: "entrega_voluntario",  data: "17/05/2026", obs: "", status: "retirada", resolvida: true,
+          voluntario: { nome: "Felipe Oliveira", iniciais: "FO", info: "Saiu às 09h20" } },
+        // Concluídas — aparecem no grupo 4
+        { id: 8, nome: "Beatriz Sousa",   itens: ["Cesta básica"],                    modalidade: "retirada",            data: "16/05/2026", obs: "", status: "entregue",  resolvida: true },
+        { id: 9, nome: "Ricardo Nunes",   itens: ["Higiene"],                         modalidade: "entrega_voluntario",  data: "15/05/2026", obs: "", status: "entregue",  resolvida: true,
+          voluntario: { nome: "Carla Mendes",    iniciais: "CM", info: "Entregue com sucesso" } },
+      ];
+
+      function renderSolicitacoes() {
+        const container = document.getElementById("lista-solicitacoes-pendentes");
+        container.innerHTML = "";
+
+        // ── 4 grupos em ordem visual ──────────────────────────────────
+        // 1. Retirada pelo beneficiário (pendentes de confirmação)
+        const grupoBenef   = solicitacoesPendentes.filter(s => s.modalidade === "retirada" && !s.resolvida);
+        // 2. Entrega por voluntário — pendente ou confirmada (voluntário ainda não retirou do ponto)
+        const grupoVolunt  = solicitacoesPendentes.filter(s => s.modalidade === "entrega_voluntario" && !s.resolvida);
+        // 3. Em rota — voluntário retirou e está entregando ao beneficiário
+        const grupoEmRota  = solicitacoesPendentes.filter(s => s.status === "retirada");
+        // 4. Concluídas — entregues ou retiradas; exclui recusadas do display
+        const grupoConcl   = solicitacoesPendentes.filter(s => s.resolvida && s.status !== "retirada" && s.status !== "recusada");
+
+        const totalVisivel = grupoBenef.length + grupoVolunt.length + grupoEmRota.length + grupoConcl.length;
+        if (totalVisivel === 0) {
+          container.innerHTML = `<div class="sem-solicitacoes">✅ Nenhuma solicitação no momento.</div>`;
+          return;
+        }
+
+        // ── Helpers ──────────────────────────────────────────────────
+        const blocoVol = (s) => s.voluntario ? `
+          <div class="solicitacao-voluntario">
+            <div class="solicitacao-voluntario-avatar">${s.voluntario.iniciais}</div>
+            <div class="solicitacao-dados"><strong>${s.voluntario.nome}</strong><span>${s.voluntario.info}</span></div>
+          </div>` : "";
+
+        const criarCard = (s, { extraClasse = "", badgeTopo = "", botoes = "" } = {}) => {
+          const iniciais   = s.nome.split(" ").slice(0, 2).map(n => n[0]).join("");
+          const iconeModal = s.modalidade === "retirada" ? "🚶" : "🏠";
+          const textoModal = s.modalidade === "retirada" ? "Retirada no ponto" : "Entrega por voluntário";
+          const div = document.createElement("div");
+          div.className = `card-solicitacao${extraClasse ? " " + extraClasse : ""}`;
+          div.innerHTML = `
+            ${badgeTopo}
+            <div class="solicitacao-info">
+              <div class="solicitacao-avatar">${iniciais}</div>
+              <div class="solicitacao-dados">
+                <strong>${s.nome}</strong>
+                <span>${s.itens.join(" · ")}</span>
+                ${s.obs ? `<span class="solicitacao-obs">💬 ${s.obs}</span>` : ""}
+              </div>
+            </div>
+            ${blocoVol(s)}
+            <div class="solicitacao-meta">
+              <span class="solicitacao-modalidade">${iconeModal} ${textoModal}</span>
+              <span class="solicitacao-data">📅 ${s.data}</span>
+            </div>
+            ${botoes ? `<div class="solicitacao-acoes">${botoes}</div>` : ""}`;
+          container.appendChild(div);
+        };
+
+        const criarSecao = (titulo, icone, lista) => {
+          if (!lista.length) return;
+          const h = document.createElement("div");
+          h.className = "solicitacoes-secao-titulo";
+          h.innerHTML = `<span>${icone} ${titulo}</span><span class="badge-secao-count">${lista.length}</span>`;
+          container.appendChild(h);
+        };
+
+        // ── Grupo 1: Retirada pelo beneficiário ──────────────────────
+        criarSecao("Retirada pelo beneficiário", "🚶", grupoBenef);
+        grupoBenef.forEach(s => criarCard(s, {
+          botoes: `<button class="btn-confirmar-solic" onclick="confirmarSolicitacao(${s.id})">✅ Confirmar</button>
+                   <button class="btn-recusar-solic"   onclick="recusarSolicitacao(${s.id})">❌ Recusar</button>`,
+        }));
+
+        // ── Grupo 2: Entrega por voluntário ──────────────────────────
+        criarSecao("Entrega por voluntário", "🏠", grupoVolunt);
+
+        // Pendentes: cards completos com Confirmar/Recusar
+        grupoVolunt.filter(s => !s.status).forEach(s => criarCard(s, {
+          botoes: `<button class="btn-confirmar-solic" onclick="confirmarSolicitacao(${s.id})">✅ Confirmar</button>
+                   <button class="btn-recusar-solic"   onclick="recusarSolicitacao(${s.id})">❌ Recusar</button>`,
+        }));
+
+        // Confirmadas: lista compacta com botão inline
+        const confirmadas = grupoVolunt.filter(s => s.status === "confirmada");
+        if (confirmadas.length) {
+          const lista = document.createElement("div");
+          lista.className = "lista-confirmada";
+          confirmadas.forEach(s => {
+            const iniciais = s.nome.split(" ").slice(0, 2).map(n => n[0]).join("");
+            const volNome  = s.voluntario ? s.voluntario.nome : "Voluntário";
+            const volInfo  = s.voluntario ? ` · ${s.voluntario.info}` : "";
+            const li = document.createElement("div");
+            li.className = "linha-confirmada";
+            li.innerHTML = `
+              <div class="linha-confirmada-avatar">${iniciais}</div>
+              <div class="linha-confirmada-info">
+                <strong>${s.nome}</strong>
+                <span>🚶 ${volNome}${volInfo}</span>
+              </div>
+              <button class="btn-confirmar-solic btn-confirmada-aguardando btn-linha" onclick="marcarRetirado(${s.id})">📦 Retirou</button>`;
+            lista.appendChild(li);
+          });
+          container.appendChild(lista);
+        }
+
+        // ── Grupo 3: Em rota ─────────────────────────────────────────
+        // ── Grupo 3: Em rota (lista compacta com ação) ──────────────
+        criarSecao("Em rota · voluntário entregando", "🚴", grupoEmRota);
+        if (grupoEmRota.length) {
+          const lista = document.createElement("div");
+          lista.className = "lista-em-rota";
+          grupoEmRota.forEach(s => {
+            const iniciais  = s.nome.split(" ").slice(0, 2).map(n => n[0]).join("");
+            const volNome   = s.voluntario ? s.voluntario.nome : "Voluntário";
+            const li = document.createElement("div");
+            li.className = "linha-em-rota";
+            li.innerHTML = `
+              <div class="linha-em-rota-avatar">${iniciais}</div>
+              <div class="linha-em-rota-info">
+                <strong>${s.nome}</strong>
+                <span>${s.itens.join(", ")} · 🚴 ${volNome}</span>
+              </div>
+              <span class="linha-em-rota-status">em rota</span>`;
+            lista.appendChild(li);
+          });
+          container.appendChild(lista);
+        }
+
+        // ── Grupo 4: Concluídas (lista compacta) ────────────────────
+        criarSecao("Concluídas", "✅", grupoConcl);
+        if (grupoConcl.length) {
+          const lista = document.createElement("div");
+          lista.className = "lista-concluidas";
+          grupoConcl.forEach(s => {
+            const iniciais   = s.nome.split(" ").slice(0, 2).map(n => n[0]).join("");
+            const icone      = s.modalidade === "retirada" ? "🚶" : "🏠";
+            const volNome    = s.voluntario ? ` · ${s.voluntario.nome}` : "";
+            const li = document.createElement("div");
+            li.className = "linha-concluida";
+            li.innerHTML = `
+              <div class="linha-concluida-avatar">${iniciais}</div>
+              <div class="linha-concluida-info">
+                <strong>${s.nome}</strong>
+                <span>${s.itens.join(", ")}${volNome}</span>
+              </div>
+              <span class="linha-concluida-meta">${icone} ${s.data}</span>`;
+            lista.appendChild(li);
+          });
+          container.appendChild(lista);
+        }
+      }
+
+      function atualizarContadorPendentes() {
+        // Conta apenas as ainda não confirmadas (pendentes de decisão)
+        const qtd = solicitacoesPendentes.filter(s => !s.resolvida && (!s.status || s.status === "pendente")).length;
+        document.getElementById("contador-pendentes").textContent = qtd;
+        document.getElementById("badge-pendentes").textContent = `${qtd} pendente${qtd !== 1 ? "s" : ""}`;
+      }
+
+      function renderEstoque() {
+        const tbody = document.getElementById("corpo-estoque");
+        if (!tbody) return;
+        tbody.innerHTML = estoqueAtual.map(item => {
+          const status = item.qtd >= 30
+            ? `<span class="tag-estoque-ok">Disponível</span>`
+            : item.qtd > 0
+              ? `<span class="tag-estoque-baixo">Estoque baixo</span>`
+              : `<span class="tag-estoque-vazio">Esgotado</span>`;
+          return `<tr>
+              <td>${item.icone} ${item.categoria}</td>
+              <td>${item.descricao}</td>
+              <td><strong>${item.qtd}</strong> ${item.unidade}</td>
+              <td>${status}</td>
+            </tr>`;
+        }).join("");
+      }
+
+      function renderDoacoes(filtro = "") {
+        const container = document.getElementById("lista-doacoes-dinamica");
+        const titulo    = document.getElementById("titulo-doacoes-gaveta");
+        if (!container) return;
+        const pendentes = doacoesPendentes.filter(d => !d.recebida);
+        const filtradas = filtro
+          ? pendentes.filter(d => d.doador.toLowerCase().includes(filtro.toLowerCase()))
+          : pendentes;
+        if (titulo) titulo.textContent = `Doações aguardando recebimento (${pendentes.length})`;
+        container.innerHTML = "";
+        if (filtradas.length === 0) {
+          container.innerHTML = `<div class="sem-solicitacoes" style="margin:0;">${filtro ? "Nenhum doador encontrado com esse nome." : "📦 Nenhuma doação aguardando recebimento."}</div>`;
+          return;
+        }
+        const lista = document.createElement("div");
+        lista.className = "lista-doacoes";
+        filtradas.forEach(d => {
+          const itensTexto = d.itens.map(i => `${i.nome} ×${i.qtd}`).join(" · ");
+          const div = document.createElement("div");
+          div.className = "linha-doacao";
+          div.innerHTML = `
+            <div class="linha-doacao-avatar">${d.iniciais}</div>
+            <div class="linha-doacao-info">
+              <strong>${d.doador}</strong>
+              <span>${itensTexto}</span>
+              ${d.obs ? `<span>💬 ${d.obs}</span>` : ""}
+              <span class="linha-doacao-meta">📅 ${d.data}${d.telefone ? ` · ☎ ${d.telefone}` : ""}</span>
+            </div>
+            <button class="btn-receber-doacao btn-linha" onclick="confirmarDoacao(${d.id})">✅ Receber</button>`;
+          lista.appendChild(div);
+        });
+        container.appendChild(lista);
+      }
+
+      function atualizarContadorDoacoes() {
+        const qtd = doacoesPendentes.filter(d => !d.recebida).length;
+        const el  = document.getElementById("contador-doacoes-card");
+        if (el) el.textContent = qtd;
+      }
+
+      window.confirmarDoacao = (id) => {
+        const d = doacoesPendentes.find(x => x.id === id);
+        const mapaEstoque = { "Cesta básica": "cesta", "Higiene": "higiene", "Roupas e calçados": "roupas", "Brinquedos": "brinquedos" };
+        const listaItens  = d.itens.map(i => `${i.nome} ×${i.qtd}`).join(", ");
+        abrirModal({
+          icone: "📦",
+          titulo: "Confirmar recebimento",
+          texto: `Confirmar recebimento da doação de "${d.doador}"? Os itens (${listaItens}) serão adicionados ao estoque.`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            d.recebida = true;
+            d.itens.forEach(item => {
+              const stock = estoqueAtual.find(e => e.id === mapaEstoque[item.nome]);
+              if (stock) stock.qtd += item.qtd;
+            });
+            renderDoacoes();
+            renderEstoque();
+            atualizarContadorDoacoes();
+            mostrarToast(`✅ Doação de ${d.doador} recebida! Estoque atualizado.`);
+          },
+        });
+      };
+
+      window.confirmarSolicitacao = (id) => {
+        const s = solicitacoesPendentes.find(x => x.id === id);
+        const isVoluntario = s.modalidade === "entrega_voluntario";
+        const textoExtra = isVoluntario && s.voluntario
+          ? ` O voluntário ${s.voluntario.nome} será notificado para vir buscar os itens.`
+          : "";
+        abrirModal({
+          icone: "✅",
+          titulo: "Confirmar solicitação",
+          texto: `Confirmar o atendimento de "${s.nome}"? Os itens serão reservados e o beneficiário será notificado.${textoExtra}`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            if (isVoluntario && s.voluntario) {
+              // Estado intermediário: confirmada, aguardando voluntário retirar
+              s.status = "confirmada";
+            } else {
+              s.resolvida = true;
+            }
+            renderSolicitacoes();
+            atualizarContadorPendentes();
+            mostrarToast(`✅ Solicitação de ${s.nome} confirmada!`);
+          },
+        });
+      };
+
+      // Chamado quando o voluntário chega e retira os itens do ponto
+      window.marcarRetirado = (id) => {
+        const s = solicitacoesPendentes.find(x => x.id === id);
+        abrirModal({
+          icone: "📦",
+          titulo: "Confirmar retirada",
+          texto: `O voluntário ${s.voluntario?.nome ?? ""} retirou os itens para entrega a "${s.nome}"?`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            s.status = "retirada";
+            s.resolvida = true; // remove da lista de solicitações ativas
+            renderSolicitacoes();
+            atualizarContadorPendentes();
+            mostrarToast(`🚴 ${s.voluntario?.nome ?? "Voluntário"} saiu para entregar a ${s.nome}!`);
+          },
+        });
+      };
+
+      window.marcarEntregue = (id) => {
+        const s = solicitacoesPendentes.find(x => x.id === id);
+        abrirModal({
+          icone: "✅",
+          titulo: "Confirmar entrega",
+          texto: `O voluntário ${s.voluntario?.nome ?? ""} entregou os itens a "${s.nome}"?`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            s.status = "entregue";
+            s.resolvida = true;
+            renderSolicitacoes();
+            atualizarContadorPendentes();
+            mostrarToast(`✅ Entrega a ${s.nome} confirmada!`);
+          },
+        });
+      };
+
+      window.recusarSolicitacao = (id) => {
+        const s = solicitacoesPendentes.find(x => x.id === id);
+        abrirModal({
+          icone: "❌",
+          titulo: "Recusar solicitação",
+          texto: `Tem certeza que deseja recusar a solicitação de "${s.nome}"? O beneficiário será notificado.`,
+          corBotao: "azul",
+          onConfirmar: () => {
+            s.status = "recusada";
+            s.resolvida = true;
+            renderSolicitacoes();
+            atualizarContadorPendentes();
+            mostrarToast(`Solicitação de ${s.nome} recusada.`);
+          },
+        });
+      };
+
+      renderSolicitacoes();
+      renderEstoque();
+      renderDoacoes();
+      atualizarContadorDoacoes();
+
+      // ── Notificações ──
+      let contadorNotif = 0;
+
+      function adicionarNotificacao(icone, titulo, detalhe) {
+        contadorNotif++;
+        const badge = document.getElementById("badge-sino");
+        badge.textContent = contadorNotif;
+        badge.classList.add("visivel");
+        const semNotif = document.getElementById("sem-notificacoes");
+        if (semNotif) semNotif.remove();
+        const lista = document.getElementById("lista-notificacoes");
+        const item = document.createElement("div");
+        item.className = "item-notificacao";
+        item.innerHTML = `<span class="notif-icone">${icone}</span><div class="notif-texto"><strong>${titulo}</strong><span>${detalhe}</span></div>`;
+        lista.prepend(item);
+      }
+
+      document.getElementById("sino").addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById("painel-notificacoes").classList.toggle("aberto");
+      });
+
+      document.addEventListener("click", () =>
+        document.getElementById("painel-notificacoes").classList.remove("aberto")
+      );
+
+      // ── Controle de gavetas ──
+      const gavOv = document.getElementById("gaveta-overlay");
+
+      function fecharTodasGavetas() {
+        document.querySelectorAll(".gaveta-perfil.aberta").forEach(g => g.classList.remove("aberta"));
+        gavOv.classList.remove("aberta");
+        document.body.style.overflow = "";
+      }
+
+      function abrirGaveta(id) {
+        fecharTodasGavetas();
+        document.getElementById(id).classList.add("aberta");
+        gavOv.classList.add("aberta");
+        document.body.style.overflow = "hidden";
+      }
+
+      gavOv.addEventListener("click", fecharTodasGavetas);
+
+      // ── Gaveta Perfil ──
+      const camposEditaveis = ["gv-nome", "gv-responsavel", "gv-telefone", "gv-rua", "gv-bairro", "gv-cidade", "gv-horario"];
+      let valoresOriginais = {};
+      const btnEditar = document.getElementById("gaveta-btn-editar");
+      const acoesEd   = document.getElementById("gaveta-acoes-edicao");
+
+      function sincronizarNome(nome) {
+        const inicial = nome.charAt(0).toUpperCase();
+        document.getElementById("gaveta-nome-exibido").textContent = nome;
+        document.getElementById("gaveta-avatar").textContent = inicial;
+        document.getElementById("avatar-inicial").textContent = inicial;
+        document.getElementById("avatar-chip").textContent = inicial;
+        document.getElementById("titulo-boas-vindas").textContent = `Olá, ${nome}!`;
+        document.getElementById("nome-chip").textContent = nome;
+      }
+
+      sincronizarNome(document.getElementById("gv-nome").value);
+
+      document.getElementById("btn-abrir-perfil").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-perfil"); });
+      document.getElementById("chip-usuario").addEventListener("click", () => abrirGaveta("gaveta-perfil"));
+      document.getElementById("gaveta-fechar").addEventListener("click", fecharTodasGavetas);
+
+      btnEditar.addEventListener("click", () => {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          valoresOriginais[id] = inp.value;
+          inp.disabled = false;
+        });
+        btnEditar.style.display = "none";
+        acoesEd.classList.add("visivel");
+        document.getElementById("gv-nome").focus();
+      });
+
+      function sairModoEdicao(salvar) {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          if (!salvar) inp.value = valoresOriginais[id] ?? inp.value;
+          inp.disabled = true;
+        });
+        btnEditar.style.display = "";
+        acoesEd.classList.remove("visivel");
+      }
+
+      document.getElementById("gaveta-btn-cancelar").addEventListener("click", () => sairModoEdicao(false));
+      document.getElementById("gaveta-btn-salvar").addEventListener("click", () => {
+        sairModoEdicao(true);
+        const novoNome = document.getElementById("gv-nome").value.trim();
+        if (novoNome) sincronizarNome(novoNome);
+        mostrarToast("✅ Perfil atualizado com sucesso!");
+      });
+
+      // ── Gaveta Doações ──
+      document.getElementById("btn-abrir-doacoes").addEventListener("click", (e) => { e.preventDefault(); renderDoacoes(); abrirGaveta("gaveta-doacoes"); });
+      document.getElementById("gaveta-doacoes-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("busca-doador").addEventListener("input", (e) => renderDoacoes(e.target.value));
+
+      // ── Gaveta Ajuda ──
+      document.getElementById("btn-abrir-ajuda").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-ajuda"); });
+      document.getElementById("gaveta-ajuda-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-cancelar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-enviar").addEventListener("click", () => {
+        const assunto  = document.getElementById("sac-assunto").value;
+        const mensagem = document.getElementById("sac-mensagem").value.trim();
+        if (!assunto)  { mostrarToast("⚠️ Selecione um assunto."); return; }
+        if (!mensagem) { mostrarToast("⚠️ Escreva sua mensagem."); return; }
+        document.getElementById("sac-assunto").value  = "";
+        document.getElementById("sac-mensagem").value = "";
+        fecharTodasGavetas();
+        mostrarToast("✅ Mensagem enviada! Retornaremos em até 2 dias úteis.");
+      });
+
+      // ── Link Solicitações (scroll) ──
+      document.getElementById("btn-ir-solicitacoes").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("secao-solicitacoes").scrollIntoView({ behavior: "smooth" });
+      });
+
+    </script>
+  </body>
+</html>

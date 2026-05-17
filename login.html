@@ -9,18 +9,220 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/telaLogin.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/logos/logo.png" />
+    <style>
+      /* ── Layout geral ── */
+      .corpo-login {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .cabecalho {
+        flex-shrink: 0;
+        position: static;
+      }
+
+      .pagina-login {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+      }
+
+      /* ── Painel esquerdo ── */
+      .painel-esquerdo {
+        flex-basis: 42%;
+        background-color: #00123b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        overflow: hidden;
+      }
+
+      .conteudo-esquerdo {
+        text-align: center;
+        color: white;
+        max-width: 320px;
+      }
+
+      .logo-login {
+        width: 180px;
+        height: auto;
+        margin: 0 auto 16px;
+        display: block;
+      }
+
+      .divisor-login {
+        height: 2px;
+        width: 48px;
+        background-color: #2e8b57;
+        margin: 0 auto 16px;
+      }
+
+      .slogan-login {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 10px;
+        line-height: 1.3;
+      }
+
+      .descricao-login {
+        font-size: 14px;
+        opacity: 0.85;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* ── Painel direito ── */
+      .painel-direito {
+        flex-basis: 58%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 24px;
+        background-color: #f5f6fa;
+        overflow-y: auto;
+      }
+
+      .caixa-login {
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 20px 24px;
+        border-radius: 14px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .titulo-form {
+        font-size: 18px;
+        font-weight: 600;
+        color: #00123b;
+        margin: 0 0 2px;
+        text-align: center;
+      }
+
+      .subtitulo-form {
+        font-size: 12px;
+        color: #666;
+        margin: 0 0 12px;
+        text-align: center;
+      }
+
+      /* ── Grade de perfis ── */
+      .grade-perfis {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .cartao-perfil {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 6px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: transparent;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s;
+        font-size: 12px;
+        font-weight: 500;
+        color: #00123b;
+      }
+
+      .cartao-perfil:hover   { background-color: #f0f5ff; }
+      .cartao-perfil.ativo   { border-color: #2e8b57; background-color: #e8f5e9; }
+
+      .icone-perfil {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* ── Formulário ── */
+      .formulario-wrapper { display: none; }
+
+      .campo-login { margin-bottom: 8px; }
+
+      .rotulo-campo {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: #00123b;
+      }
+
+      .entrada-formulario {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        font-size: 13px;
+      }
+
+      .botao-submit {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 7px;
+        background-color: #00123b;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 6px;
+      }
+
+      .links-login {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+        font-size: 12px;
+      }
+
+      .link-form { color: #00123b; text-decoration: none; }
+
+      /* ── CTA criar conta ── */
+      .criar-conta-cta {
+        text-align: center;
+        margin-top: 16px;
+      }
+
+      .criar-conta-cta p {
+        margin: 0 0 8px;
+        font-size: 13px;
+        color: #666;
+      }
+
+      .botao-criar-conta {
+        display: inline-block;
+        padding: 8px 22px;
+        border: 1px solid #00123b;
+        border-radius: 7px;
+        color: #00123b;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .mensagem-erro {
+        color: #c0392b;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+    </style>
   </head>
-  <body>
+  <body class="corpo-login">
     <header class="cabecalho">
       <div class="conteiner-navbar">
         <div class="area-logo">
-          <a href="inicio.html">
+          <a href="index.html">
             <img
-              src="img/MESA SOLIDARIA - LOGO PRINCIPAL.svg"
+              src="img/logos/MESA SOLIDARIA - LOGO PRINCIPAL.svg"
               alt="Logo Mesa Solidária"
               class="imagem-logo"
             />
@@ -55,124 +257,105 @@
 </header>
 
     <div class="pagina-login">
-      <section class="coluna-perfis">
-        <h1 class="titulo-principal">Acesse o Mesa Solidária</h1>
-        <p class="texto-introducao">
-          Escolha como você quer entrar na plataforma e faça login com seus
-          dados.
-        </p>
 
-        <div class="lista-perfis">
-          <button class="cartao-perfil" type="button" data-tipo="beneficiario">
-            <div class="avatar-perfil">
-              <img src="img/logo_beneficiario.png" alt="Beneficiário" />
-            </div>
-            <div class="conteudo-perfil">
-              <h2 class="titulo-perfil">Beneficiário</h2>
-              <p class="descricao-perfil">Para ver e acompanhar doações.</p>
-            </div>
-          </button>
-
-          <button class="cartao-perfil" type="button" data-tipo="voluntario">
-            <div class="avatar-perfil">
-              <img src="img/logo_voluntario.png" alt="Voluntário" />
-            </div>
-            <div class="conteudo-perfil">
-              <h2 class="titulo-perfil">Voluntário</h2>
-              <p class="descricao-perfil">Para participar e gerar impacto.</p>
-            </div>
-          </button>
-
-          <button class="cartao-perfil" type="button" data-tipo="doador">
-            <div class="avatar-perfil">
-              <img src="img/logo_doador.png" alt="Doador" />
-            </div>
-            <div class="conteudo-perfil">
-              <h2 class="titulo-perfil">Doador</h2>
-              <p class="descricao-perfil">
-                Para contribuir e fazer a diferença.
-              </p>
-            </div>
-          </button>
-
-          <button
-            class="cartao-perfil"
-            type="button"
-            data-tipo="ponto_de_coleta"
-          >
-            <div class="avatar-perfil">
-              <img src="img/logo_ponto_de_coleta.png" alt="Ponto de coleta" />
-            </div>
-            <div class="conteudo-perfil">
-              <h2 class="titulo-perfil">Ponto de Coleta</h2>
-              <p class="descricao-perfil">Onde as doações são organizadas.</p>
-            </div>
-          </button>
-        </div>
-      </section>
-
-      <section class="coluna-formulario">
-        <div class="cartao-login">
-          <h2 class="titulo-login">Entre na sua conta</h2>
-
-          <form class="formulario-login" action="#" novalidate>
-            <input
-              type="hidden"
-              name="tipo_usuario"
-              id="tipo-usuario"
-              value=""
+      
+      <aside class="painel-esquerdo">
+        <div class="conteudo-esquerdo">
+          <a href="index.html">
+            <img
+              src="img/logos/MESA SOLIDARIA - LOGO PRINCIPAL.svg"
+              alt="Logo Mesa Solidária"
+              class="logo-login"
             />
+          </a>
+          <div class="divisor-login"></div>
+          <h1 class="slogan-login">
+            Conectando quem pode ajudar a quem precisa
+          </h1>
+          <p class="descricao-login">
+            Juntos construímos uma rede solidária que transforma doações em esperança para famílias.
+          </p>
+        </div>
+      </aside>
 
-            <div class="campo-formulario">
-              <label class="rotulo-campo" for="entrada-identificador">
-                Digite seu E-mail ou CPF:
-              </label>
-              <div class="campo-com-icone">
-                <span class="icone-campo">@</span>
-                <input
-                  type="text"
-                  id="entrada-identificador"
-                  name="identificador"
-                  class="entrada-formulario"
-                  placeholder="E-mail ou CPF"
-                  autocomplete="username"
-                  required
-                />
-              </div>
+      
+      <main class="painel-direito">
+        <div class="caixa-login">
+          <h2 class="titulo-form">Bem-vindo de volta</h2>
+          <p class="subtitulo-form">Selecione seu perfil e acesse sua conta</p>
+
+          
+          <div class="grade-perfis">
+            <button class="cartao-perfil" type="button" data-tipo="beneficiario">
+              <img src="img/logos/logo_beneficiario.png" alt="" class="icone-perfil" />
+              <span>Beneficiário</span>
+            </button>
+            <button class="cartao-perfil" type="button" data-tipo="voluntario">
+              <img src="img/logos/logo_voluntario.png" alt="" class="icone-perfil" />
+              <span>Voluntário</span>
+            </button>
+            <button class="cartao-perfil" type="button" data-tipo="doador">
+              <img src="img/logos/logo_doador.png" alt="" class="icone-perfil" />
+              <span>Doador</span>
+            </button>
+            <button class="cartao-perfil" type="button" data-tipo="ponto_de_coleta">
+              <img src="img/logos/logo_ponto_de_coleta.png" alt="" class="icone-perfil" />
+              <span>Ponto de Coleta</span>
+            </button>
+          </div>
+
+          
+          <div id="formulario-wrapper" class="formulario-wrapper">
+          <form class="formulario-login" action="#" novalidate>
+            <input type="hidden" name="tipo_usuario" id="tipo-usuario" value="" />
+
+            <p id="erro-login" class="mensagem-erro" style="display: none;"></p>
+
+            <div class="campo-login">
+              <label class="rotulo-campo" for="entrada-identificador">E-mail ou CPF</label>
+              <input
+                type="text"
+                id="entrada-identificador"
+                name="identificador"
+                class="entrada-formulario"
+                placeholder="Digite seu e-mail ou CPF"
+                autocomplete="username"
+                required
+              />
             </div>
 
-            <div class="campo-formulario">
-              <label class="rotulo-campo" for="entrada-senha">
-                Digite sua senha:
-              </label>
-              <div class="campo-com-icone">
-                <span class="icone-campo">🔒</span>
-                <input
-                  type="password"
-                  id="entrada-senha"
-                  name="senha"
-                  class="entrada-formulario"
-                  placeholder="Senha"
-                  autocomplete="current-password"
-                  required
-                />
-              </div>
+            <div class="campo-login">
+              <label class="rotulo-campo" for="entrada-senha">Senha</label>
+              <input
+                type="password"
+                id="entrada-senha"
+                name="senha"
+                class="entrada-formulario"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+                required
+              />
             </div>
 
-            <button type="submit" class="botao-entrar">Entrar</button>
+            <button type="submit" class="botao-submit">Entrar</button>
 
-            <div class="acoes-login">
-              <a href="#" class="link-login">Esqueceu a senha?</a>
-              <span class="separador-links">•</span>
-              <a href="#" class="link-login" id="link-cadastro">Cadastre-se</a>
+            <div class="links-login">
+              <a href="#" class="link-form">Esqueceu a senha?</a>
+              <a href="#" class="link-form" id="link-cadastro">Criar conta</a>
             </div>
           </form>
+          </div>
+
+          
+          <div class="criar-conta-cta">
+            <p>Novo por aqui?</p>
+            <a href="cadastro_beneficiario.html" class="botao-criar-conta">Criar conta</a>
+          </div>
+
         </div>
-      </section>
+      </main>
     </div>
 
-    <div id="area-footer"></div>
-
-    <script src="js/telaLogin.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

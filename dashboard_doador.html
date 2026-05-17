@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Doador — Mesa Solidária</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/logos/logo.png" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+
+    <header class="cabecalho-perfil">
+      <div class="conteiner-navbar-perfil">
+
+        <a href="index.html" class="logo-perfil-link">
+          <img src="img/logos/MESA SOLIDARIA - LOGO PRINCIPAL.svg" alt="Logo Mesa Solidária" class="imagem-logo-perfil" />
+        </a>
+
+        <nav class="menu-perfil">
+          <a href="dashboard_doador.html" class="item-menu-perfil ativo">🏠 Meu Painel</a>
+          <a href="#" class="item-menu-perfil" id="btn-ir-doacoes">📦 Minhas Doações</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-perfil">👤 Meu Perfil</a>
+          <a href="#" class="item-menu-perfil" id="btn-abrir-ajuda">❓ Ajuda</a>
+        </nav>
+
+        <div class="acoes-perfil">
+          <div class="sino-notificacao" id="sino" title="Notificações">
+            🔔
+            <span class="badge-sino" id="badge-sino">0</span>
+          </div>
+          <div class="painel-notificacoes" id="painel-notificacoes">
+            <div class="cabecalho-notificacoes">Notificações</div>
+            <div class="lista-notificacoes" id="lista-notificacoes">
+              <div class="sem-notificacoes" id="sem-notificacoes">Nenhuma notificação ainda</div>
+            </div>
+          </div>
+          <div class="chip-usuario" style="cursor:pointer;" id="chip-usuario">
+            <div class="avatar-chip" id="avatar-chip">C</div>
+            <span id="nome-chip">Carlos Souza</span>
+          </div>
+          <a href="login.html" class="botao-sair-nav">Sair →</a>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="pagina-dashboard">
+
+      
+      <div class="boas-vindas">
+        <div class="avatar-usuario" id="avatar-inicial">C</div>
+        <div class="texto-boas-vindas">
+          <h1 id="titulo-boas-vindas">Olá, Carlos Souza!</h1>
+          <p>Obrigado por fazer parte da Mesa Solidária ❤️</p>
+        </div>
+        <span class="badge-status badge-doador">Doador ativo</span>
+      </div>
+
+      
+      <div class="grade-resumo grade-resumo-4">
+        <div class="card-resumo destaque">
+          <div class="label-card">Total de doações</div>
+          <div class="valor-card">12</div>
+          <div class="detalhe-card">desde que se cadastrou</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Famílias impactadas</div>
+          <div class="valor-card">38</div>
+          <div class="detalhe-card">beneficiários atendidos</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Itens doados</div>
+          <div class="valor-card">247</div>
+          <div class="detalhe-card">unidades no total</div>
+        </div>
+        <div class="card-resumo">
+          <div class="label-card">Pendentes</div>
+          <div class="valor-card" id="contador-pendentes-doador">2</div>
+          <div class="detalhe-card">aguardando recebimento</div>
+        </div>
+      </div>
+
+      
+      <div class="banner-impacto-doador">
+        🌟 Você já ajudou <strong>38 famílias</strong> e doou <strong>247 itens</strong> para comunidades em situação de vulnerabilidade. Continue assim!
+      </div>
+
+      
+      <div class="secao-cabecalho" id="secao-nova-doacao" style="margin-top:8px;">
+        <h2 class="secao-titulo" style="margin:0;">📦 Registrar nova doação</h2>
+      </div>
+
+      <div class="card-nova-doacao">
+        <div class="form-grupo">
+          <label class="form-label" for="select-ponto">Ponto de coleta destino <span class="form-obrigatorio">*</span></label>
+          <select class="form-select" id="select-ponto">
+            <option value="">Escolha um ponto de coleta...</option>
+          </select>
+          <div class="form-ponto-info" id="ponto-info"></div>
+        </div>
+
+        <div class="form-grupo" style="margin-top:18px;">
+          <label class="form-label">O que você vai doar? <span class="form-obrigatorio">*</span></label>
+          <div class="lista-itens-doacao" id="lista-itens-form"></div>
+        </div>
+
+        <div class="form-grupo" style="margin-top:16px;">
+          <label class="form-label" for="obs-doacao">Observação <span class="form-opcional">(opcional)</span></label>
+          <textarea class="form-textarea" id="obs-doacao" rows="2" placeholder="Ex.: roupas tamanho P, brinquedos seminovos..."></textarea>
+        </div>
+
+        <p class="form-erro" id="erro-nova-doacao"></p>
+
+        <div style="margin-top:20px;display:flex;justify-content:flex-end;">
+          <button class="btn-registrar-doacao" id="btn-registrar-doacao">📦 Registrar Doação</button>
+        </div>
+      </div>
+
+      
+      <div class="secao-cabecalho" id="secao-minhas-doacoes" style="margin-top:32px;">
+        <h2 class="secao-titulo" style="margin:0;">Minhas doações</h2>
+        <span class="badge-contagem" id="badge-total-doacoes">5 doações</span>
+      </div>
+      <div class="filtros-doacoes" id="filtros-doacoes"></div>
+      <div id="lista-minhas-doacoes"></div>
+
+    </main>
+
+    
+    <div class="gaveta-overlay" id="gaveta-overlay"></div>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-perfil">
+      <div class="gaveta-cabecalho">
+        <h2 class="gaveta-titulo">Meu Perfil</h2>
+        <button class="gaveta-fechar" id="gaveta-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-avatar-bloco">
+          <div class="gaveta-avatar" id="gaveta-avatar">C</div>
+          <div>
+            <div class="gaveta-nome-exibido" id="gaveta-nome-exibido">Carlos Souza</div>
+            <span class="badge-status badge-doador" style="margin-left:0;">Doador ativo</span>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Informações pessoais</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-nome">Nome completo</label>
+              <input class="gaveta-input" id="gv-nome" type="text" value="Carlos Souza" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-email">E-mail</label>
+              <input class="gaveta-input" id="gv-email" type="email" value="doador@doador.com" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-telefone">Telefone</label>
+              <input class="gaveta-input" id="gv-telefone" type="tel" value="(11) 99876-5432" disabled />
+            </div>
+            <div class="gaveta-campo">
+              <label class="gaveta-label" for="gv-cpf">CPF</label>
+              <input class="gaveta-input" id="gv-cpf" type="text" value="123.456.789-00" disabled />
+            </div>
+          </div>
+        </div>
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Preferências de doação</div>
+          <div class="gaveta-grade">
+            <div class="gaveta-campo" style="grid-column: span 2;">
+              <label class="gaveta-label" for="gv-ponto-preferido">Ponto de coleta preferido</label>
+              <input class="gaveta-input" id="gv-ponto-preferido" type="text" value="Ponto Centro" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-editar" id="gaveta-btn-editar">✏️ Editar informações</button>
+        <div class="gaveta-acoes-edicao" id="gaveta-acoes-edicao">
+          <button class="gaveta-btn-cancelar" id="gaveta-btn-cancelar">Cancelar</button>
+          <button class="gaveta-btn-salvar" id="gaveta-btn-salvar">💾 Salvar alterações</button>
+        </div>
+      </div>
+    </aside>
+
+    
+    <aside class="gaveta-perfil" id="gaveta-ajuda">
+      <div class="gaveta-cabecalho">
+        <div>
+          <h2 class="gaveta-titulo">Central de Ajuda</h2>
+          <p class="gaveta-subtitulo">Fale com nosso SAC</p>
+        </div>
+        <button class="gaveta-fechar" id="gaveta-ajuda-fechar" aria-label="Fechar">✕</button>
+      </div>
+      <div class="gaveta-corpo">
+        <div class="gaveta-secao">
+          <div class="gaveta-secao-titulo">Enviar mensagem</div>
+          <div class="form-grupo">
+            <label class="form-label" for="sac-assunto">Assunto <span class="form-obrigatorio">*</span></label>
+            <select class="form-select" id="sac-assunto">
+              <option value="">Selecione um assunto...</option>
+              <option value="doacao">Dúvida sobre doação</option>
+              <option value="ponto">Informações sobre ponto de coleta</option>
+              <option value="cancelamento">Cancelar ou alterar doação</option>
+              <option value="sistema">Problema no sistema</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-grupo" style="margin-top:14px;">
+            <label class="form-label" for="sac-mensagem">Mensagem <span class="form-obrigatorio">*</span></label>
+            <textarea class="form-textarea" id="sac-mensagem" rows="5" placeholder="Descreva sua dúvida ou problema..."></textarea>
+          </div>
+          <p class="form-aviso" style="margin-top:14px;">🕒 Tempo médio de resposta: <strong>1 a 2 dias úteis</strong>.</p>
+        </div>
+      </div>
+      <div class="gaveta-rodape">
+        <button class="gaveta-btn-cancelar" id="gaveta-ajuda-cancelar">Cancelar</button>
+        <button class="gaveta-btn-salvar" id="gaveta-ajuda-enviar">📨 Enviar mensagem</button>
+      </div>
+    </aside>
+
+    
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-caixa">
+        <div class="modal-icone" id="modal-icone">📦</div>
+        <h3 class="modal-titulo" id="modal-titulo">Confirmar ação</h3>
+        <p class="modal-texto" id="modal-texto"></p>
+        <div class="modal-acoes">
+          <button class="btn-modal-cancelar" id="modal-cancelar">Cancelar</button>
+          <button class="btn-modal-confirmar verde" id="modal-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="js/script.js"></script>
+    <script>
+
+      // ── Toast ──
+      function mostrarToast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("visivel");
+        setTimeout(() => t.classList.remove("visivel"), 3500);
+      }
+
+      // ── Modal ──
+      function abrirModal({ icone, titulo, texto, corBotao, onConfirmar }) {
+        document.getElementById("modal-icone").textContent  = icone;
+        document.getElementById("modal-titulo").textContent = titulo;
+        document.getElementById("modal-texto").textContent  = texto;
+        const btn = document.getElementById("modal-confirmar");
+        btn.className = `btn-modal-confirmar ${corBotao}`;
+        document.getElementById("modal-overlay").classList.add("aberto");
+        btn.onclick = () => {
+          document.getElementById("modal-overlay").classList.remove("aberto");
+          onConfirmar();
+        };
+      }
+
+      document.getElementById("modal-cancelar").onclick = () =>
+        document.getElementById("modal-overlay").classList.remove("aberto");
+
+      document.getElementById("modal-overlay").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modal-overlay"))
+          document.getElementById("modal-overlay").classList.remove("aberto");
+      });
+
+      // ── Dados mock ──
+      const pontosDisponiveis = [
+        { id: "centro", nome: "Ponto Centro", endereco: "Rua das Flores, 100 — Centro · Seg–Sáb 09h–17h", necessidades: ["Higiene", "Brinquedos"] },
+        { id: "norte",  nome: "Ponto Norte",  endereco: "Av. Norte, 450 — Santana · Seg–Sex 08h–16h",     necessidades: ["Cesta básica"] },
+        { id: "sul",    nome: "Ponto Sul",     endereco: "Rua do Sul, 88 — Santo André · Ter–Sáb 10h–18h", necessidades: ["Cesta básica", "Brinquedos", "Roupas e calçados"] },
+        { id: "leste",  nome: "Ponto Leste",  endereco: "Av. Celso Garcia, 200 — Belém · Seg–Sex 09h–17h", necessidades: [] },
+      ];
+
+      const catalogoItens = [
+        { id: "cesta",      icone: "🛒", nome: "Cesta básica",     unidade: "cestas" },
+        { id: "higiene",    icone: "🧴", nome: "Higiene",           unidade: "kits"   },
+        { id: "roupas",     icone: "👕", nome: "Roupas e calçados", unidade: "peças"  },
+        { id: "brinquedos", icone: "🧸", nome: "Brinquedos",        unidade: "itens"  },
+      ];
+
+      let minhasDoacoes = [
+        { id: 1, ponto: "Ponto Centro", itens: [{ nome: "Cesta básica", qtd: 3 }, { nome: "Higiene", qtd: 2 }],    data: "10/04/2026", dataReceb: "11/04/2026", obs: "",                          status: "recebida"  },
+        { id: 2, ponto: "Ponto Norte",  itens: [{ nome: "Roupas e calçados", qtd: 8 }],                            data: "25/04/2026", dataReceb: "27/04/2026", obs: "Roupas infantis tamanho P", status: "recebida"  },
+        { id: 3, ponto: "Ponto Sul",    itens: [{ nome: "Brinquedos", qtd: 5 }, { nome: "Cesta básica", qtd: 2 }], data: "05/05/2026", dataReceb: null,          obs: "Brinquedos em bom estado", status: "pendente"  },
+        { id: 4, ponto: "Ponto Centro", itens: [{ nome: "Higiene", qtd: 10 }],                                     data: "12/05/2026", dataReceb: null,          obs: "",                          status: "pendente"  },
+        { id: 5, ponto: "Ponto Leste",  itens: [{ nome: "Cesta básica", qtd: 1 }],                                 data: "01/03/2026", dataReceb: null,          obs: "",                          status: "cancelada" },
+      ];
+
+      let proximoId = 6;
+      let filtroAtivo = "todas";
+
+      // ── Contadores ──
+      function contarPorStatus(status) {
+        return minhasDoacoes.filter(d => status === "todas" ? true : d.status === status).length;
+      }
+
+      function atualizarContadorPendentes() {
+        document.getElementById("contador-pendentes-doador").textContent = contarPorStatus("pendente");
+      }
+
+      // ── Filtros ──
+      function renderFiltros() {
+        const container = document.getElementById("filtros-doacoes");
+        const opcoes = [
+          { valor: "todas",     label: "Todas"     },
+          { valor: "pendente",  label: "Pendentes" },
+          { valor: "recebida",  label: "Recebidas" },
+          { valor: "cancelada", label: "Canceladas"},
+        ];
+        container.innerHTML = "";
+        opcoes.forEach(op => {
+          const btn = document.createElement("button");
+          btn.className = `filtro-doacao${filtroAtivo === op.valor ? " ativo" : ""}`;
+          btn.textContent = `${op.label} (${contarPorStatus(op.valor)})`;
+          btn.addEventListener("click", () => {
+            filtroAtivo = op.valor;
+            renderFiltros();
+            renderDoacoes();
+          });
+          container.appendChild(btn);
+        });
+      }
+
+      // ── Lista de doações ──
+      function renderDoacoes() {
+        const container = document.getElementById("lista-minhas-doacoes");
+        const total = minhasDoacoes.length;
+        const badge = document.getElementById("badge-total-doacoes");
+        if (badge) badge.textContent = `${total} doação${total !== 1 ? "s" : ""}`;
+
+        const lista = filtroAtivo === "todas"
+          ? minhasDoacoes
+          : minhasDoacoes.filter(d => d.status === filtroAtivo);
+
+        container.innerHTML = "";
+
+        if (lista.length === 0) {
+          container.innerHTML = `<div class="sem-solicitacoes">📭 Nenhuma doação encontrada nessa categoria.</div>`;
+          return;
+        }
+
+        lista.forEach(d => {
+          const itensTexto = d.itens.map(i => `${i.nome} ×${i.qtd}`).join(" · ");
+          const cfg = {
+            pendente:  { classe: "badge-doacao-pendente",  icone: "⏳", label: "Aguardando recebimento" },
+            recebida:  { classe: "badge-doacao-recebida",  icone: "✅", label: "Recebida pelo ponto"    },
+            cancelada: { classe: "badge-doacao-cancelada", icone: "❌", label: "Cancelada"              },
+          }[d.status];
+
+          const card = document.createElement("div");
+          card.className = `card-doacao-historico card-doacao-${d.status}`;
+          card.innerHTML = `
+            <div class="card-doacao-topo">
+              <span class="badge-status-doacao ${cfg.classe}">${cfg.icone} ${cfg.label}</span>
+              <span class="card-doacao-data">📅 ${d.data}</span>
+            </div>
+            <div class="card-doacao-ponto">📍 ${d.ponto}</div>
+            <div class="card-doacao-itens">${itensTexto}</div>
+            ${d.obs     ? `<div class="card-doacao-obs">💬 ${d.obs}</div>` : ""}
+            ${d.dataReceb ? `<div class="card-doacao-receb">✅ Recebida em ${d.dataReceb}</div>` : ""}
+            ${d.status === "pendente"
+              ? `<div class="card-doacao-acoes">
+                   <button class="btn-cancelar-doacao" onclick="cancelarDoacao(${d.id})">❌ Cancelar doação</button>
+                 </div>`
+              : ""}`;
+          container.appendChild(card);
+        });
+      }
+
+      // ── Formulário: itens ──
+      function iniciarFormItens() {
+        const container = document.getElementById("lista-itens-form");
+        container.innerHTML = "";
+        catalogoItens.forEach(item => {
+          const row = document.createElement("div");
+          row.className = "item-doacao-row";
+          row.innerHTML = `
+            <label class="item-doacao-label">
+              <input type="checkbox" class="item-doacao-check" data-id="${item.id}" />
+              <span>${item.icone} ${item.nome}</span>
+            </label>
+            <div class="item-doacao-qty" id="qty-${item.id}">
+              <input type="number" class="item-doacao-qtd-input" id="qtd-${item.id}" min="1" max="999" placeholder="0" />
+              <span class="item-doacao-unidade">${item.unidade}</span>
+            </div>`;
+          container.appendChild(row);
+
+          row.querySelector(".item-doacao-check").addEventListener("change", (e) => {
+            const qtyDiv = document.getElementById(`qty-${item.id}`);
+            const qtdInput = document.getElementById(`qtd-${item.id}`);
+            if (e.target.checked) {
+              qtyDiv.classList.add("visivel-qty");
+              qtdInput.focus();
+            } else {
+              qtyDiv.classList.remove("visivel-qty");
+              qtdInput.value = "";
+            }
+            row.classList.toggle("selecionado", e.target.checked);
+          });
+        });
+      }
+
+      // ── Formulário: pontos ──
+      function iniciarFormPontos() {
+        const sel = document.getElementById("select-ponto");
+        pontosDisponiveis.forEach(p => {
+          const opt = document.createElement("option");
+          opt.value = p.id;
+          if (p.necessidades.length > 0) {
+            opt.textContent = `${p.nome} (falta: ${p.necessidades.join(", ")})`;
+          } else {
+            opt.textContent = `${p.nome} (estoque completo)`;
+          }
+          sel.appendChild(opt);
+        });
+        sel.addEventListener("change", () => {
+          const info = document.getElementById("ponto-info");
+          const p = pontosDisponiveis.find(x => x.id === sel.value);
+          if (p) {
+            const necessidadesHtml = p.necessidades.length > 0
+              ? `<span class="ponto-info-falta">⚠️ Itens em falta: <strong>${p.necessidades.join(" · ")}</strong></span>`
+              : `<span class="ponto-info-ok">✅ Estoque completo — qualquer doação é bem-vinda!</span>`;
+            info.innerHTML = `<span class="ponto-info-endereco">📍 ${p.endereco}</span>${necessidadesHtml}`;
+            info.style.display = "flex";
+          } else {
+            info.style.display = "none";
+          }
+        });
+      }
+
+      // ── Registrar doação ──
+      document.getElementById("btn-registrar-doacao").addEventListener("click", () => {
+        const erroEl = document.getElementById("erro-nova-doacao");
+        erroEl.textContent = "";
+
+        const pontoId = document.getElementById("select-ponto").value;
+        const obs = document.getElementById("obs-doacao").value.trim();
+
+        const itensSelecionados = [];
+        catalogoItens.forEach(item => {
+          const check = document.querySelector(`.item-doacao-check[data-id="${item.id}"]`);
+          const qtdInput = document.getElementById(`qtd-${item.id}`);
+          if (check?.checked) {
+            const qtd = parseInt(qtdInput?.value || "0", 10);
+            if (qtd > 0) itensSelecionados.push({ nome: item.nome, qtd });
+          }
+        });
+
+        if (!pontoId)                { erroEl.textContent = "⚠️ Selecione um ponto de coleta."; return; }
+        if (!itensSelecionados.length) { erroEl.textContent = "⚠️ Selecione ao menos um item com quantidade válida."; return; }
+
+        const ponto = pontosDisponiveis.find(p => p.id === pontoId);
+        const hoje = new Date();
+        const dataHoje = `${String(hoje.getDate()).padStart(2,"0")}/${String(hoje.getMonth()+1).padStart(2,"0")}/${hoje.getFullYear()}`;
+
+        abrirModal({
+          icone: "📦",
+          titulo: "Confirmar doação",
+          texto: `Registrar doação de ${itensSelecionados.map(i => `${i.nome} ×${i.qtd}`).join(", ")} para "${ponto.nome}"?`,
+          corBotao: "verde",
+          onConfirmar: () => {
+            minhasDoacoes.unshift({
+              id: proximoId++,
+              ponto: ponto.nome,
+              itens: itensSelecionados,
+              data: dataHoje,
+              dataReceb: null,
+              obs,
+              status: "pendente",
+            });
+            iniciarFormItens();
+            document.getElementById("select-ponto").value = "";
+            document.getElementById("ponto-info").style.display = "none";
+            document.getElementById("obs-doacao").value = "";
+            filtroAtivo = "pendente";
+            atualizarContadorPendentes();
+            renderFiltros();
+            renderDoacoes();
+            mostrarToast(`✅ Doação registrada! O ${ponto.nome} será notificado.`);
+          },
+        });
+      });
+
+      // ── Cancelar doação ──
+      window.cancelarDoacao = (id) => {
+        const d = minhasDoacoes.find(x => x.id === id);
+        abrirModal({
+          icone: "❌",
+          titulo: "Cancelar doação",
+          texto: `Tem certeza que deseja cancelar a doação para "${d.ponto}"? O ponto de coleta será notificado.`,
+          corBotao: "azul",
+          onConfirmar: () => {
+            d.status = "cancelada";
+            atualizarContadorPendentes();
+            renderFiltros();
+            renderDoacoes();
+            mostrarToast(`Doação para ${d.ponto} cancelada.`);
+          },
+        });
+      };
+
+      // ── Notificações ──
+      let contadorNotif = 0;
+      function adicionarNotificacao(icone, titulo, detalhe) {
+        contadorNotif++;
+        const badge = document.getElementById("badge-sino");
+        badge.textContent = contadorNotif;
+        badge.classList.add("visivel");
+        const semNotif = document.getElementById("sem-notificacoes");
+        if (semNotif) semNotif.remove();
+        const lista = document.getElementById("lista-notificacoes");
+        const item = document.createElement("div");
+        item.className = "item-notificacao";
+        item.innerHTML = `<span class="notif-icone">${icone}</span><div class="notif-texto"><strong>${titulo}</strong><span>${detalhe}</span></div>`;
+        lista.prepend(item);
+      }
+
+      document.getElementById("sino").addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById("painel-notificacoes").classList.toggle("aberto");
+      });
+
+      document.addEventListener("click", () =>
+        document.getElementById("painel-notificacoes").classList.remove("aberto")
+      );
+
+      // ── Gavetas ──
+      const gavOv = document.getElementById("gaveta-overlay");
+
+      function fecharTodasGavetas() {
+        document.querySelectorAll(".gaveta-perfil.aberta").forEach(g => g.classList.remove("aberta"));
+        gavOv.classList.remove("aberta");
+        document.body.style.overflow = "";
+      }
+
+      function abrirGaveta(id) {
+        fecharTodasGavetas();
+        document.getElementById(id).classList.add("aberta");
+        gavOv.classList.add("aberta");
+        document.body.style.overflow = "hidden";
+      }
+
+      gavOv.addEventListener("click", fecharTodasGavetas);
+
+      // ── Gaveta Perfil ──
+      const camposEditaveis = ["gv-nome", "gv-telefone", "gv-ponto-preferido"];
+      let valoresOriginais = {};
+      const btnEditar = document.getElementById("gaveta-btn-editar");
+      const acoesEd   = document.getElementById("gaveta-acoes-edicao");
+
+      function sincronizarNome(nome) {
+        const inicial = nome.charAt(0).toUpperCase();
+        document.getElementById("gaveta-nome-exibido").textContent = nome;
+        document.getElementById("gaveta-avatar").textContent = inicial;
+        document.getElementById("avatar-inicial").textContent = inicial;
+        document.getElementById("avatar-chip").textContent = inicial;
+        document.getElementById("titulo-boas-vindas").textContent = `Olá, ${nome}!`;
+        document.getElementById("nome-chip").textContent = nome;
+      }
+
+      sincronizarNome(document.getElementById("gv-nome").value);
+
+      document.getElementById("btn-abrir-perfil").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-perfil"); });
+      document.getElementById("chip-usuario").addEventListener("click", () => abrirGaveta("gaveta-perfil"));
+      document.getElementById("gaveta-fechar").addEventListener("click", fecharTodasGavetas);
+
+      btnEditar.addEventListener("click", () => {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          valoresOriginais[id] = inp.value;
+          inp.disabled = false;
+        });
+        btnEditar.style.display = "none";
+        acoesEd.classList.add("visivel");
+        document.getElementById("gv-nome").focus();
+      });
+
+      function sairModoEdicao(salvar) {
+        camposEditaveis.forEach(id => {
+          const inp = document.getElementById(id);
+          if (!salvar) inp.value = valoresOriginais[id] ?? inp.value;
+          inp.disabled = true;
+        });
+        btnEditar.style.display = "";
+        acoesEd.classList.remove("visivel");
+      }
+
+      document.getElementById("gaveta-btn-cancelar").addEventListener("click", () => sairModoEdicao(false));
+      document.getElementById("gaveta-btn-salvar").addEventListener("click", () => {
+        sairModoEdicao(true);
+        const novoNome = document.getElementById("gv-nome").value.trim();
+        if (novoNome) sincronizarNome(novoNome);
+        mostrarToast("✅ Perfil atualizado com sucesso!");
+      });
+
+      // ── Gaveta Ajuda ──
+      document.getElementById("btn-abrir-ajuda").addEventListener("click", (e) => { e.preventDefault(); abrirGaveta("gaveta-ajuda"); });
+      document.getElementById("gaveta-ajuda-fechar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-cancelar").addEventListener("click", fecharTodasGavetas);
+      document.getElementById("gaveta-ajuda-enviar").addEventListener("click", () => {
+        const assunto  = document.getElementById("sac-assunto").value;
+        const mensagem = document.getElementById("sac-mensagem").value.trim();
+        if (!assunto)  { mostrarToast("⚠️ Selecione um assunto."); return; }
+        if (!mensagem) { mostrarToast("⚠️ Escreva sua mensagem."); return; }
+        document.getElementById("sac-assunto").value  = "";
+        document.getElementById("sac-mensagem").value = "";
+        fecharTodasGavetas();
+        mostrarToast("✅ Mensagem enviada! Retornaremos em até 2 dias úteis.");
+      });
+
+      // ── Link rápido ──
+      document.getElementById("btn-ir-doacoes").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("secao-minhas-doacoes").scrollIntoView({ behavior: "smooth" });
+      });
+
+      // ── Inicialização ──
+      iniciarFormPontos();
+      iniciarFormItens();
+      renderFiltros();
+      renderDoacoes();
+      atualizarContadorPendentes();
+
+      // Notificações mock iniciais
+      adicionarNotificacao("✅", "Doação recebida", "Ponto Centro recebeu sua doação de 10/04.");
+      adicionarNotificacao("📦", "Doação registrada", "Ponto Sul aguarda seus itens.");
+
+    </script>
+  </body>
+</html>

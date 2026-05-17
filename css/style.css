@@ -1,0 +1,8637 @@
+
+
+html,
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 18, 59, 0.18);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 18, 59, 0.32);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 18, 59, 0.18) transparent;
+}
+
+:root {
+    --altura-cabecalho: 90px;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+    margin: 0;
+    padding-top: var(--altura-cabecalho);
+}
+
+/* Menu de navegação azul escuro que fica grudado no topo da tela ao rolar a página */
+.cabecalho {
+    background-color: #00123B;
+    height: var(--altura-cabecalho);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    overflow-x: visible;
+}
+
+/* Área interna do menu: organiza logo, links e botões lado a lado */
+.conteiner-navbar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    min-width: 0;
+}
+
+/* Espaço reservado para a imagem da logo no menu */
+.area-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Tamanho e proporção da imagem da logo no menu principal */
+.imagem-logo {
+    height: 67px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Grupo de links de navegação centralizado no menu */
+.menu {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-evenly;
+    gap: 25px;
+    margin: 0 36px;
+    min-width: 0;
+}
+
+/* Estilo de cada link do menu (texto branco, sem sublinhado) */
+.item-menu {
+    color: #FFFFFF;
+    font-size: 13.5px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+/* Link do menu fica levemente transparente quando o mouse passa por cima */
+.item-menu:hover {
+    opacity: 0.8;
+}
+
+/* Área dos botões de ação à direita do menu (ex: botão Entrar) */
+.area-botao {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Botão 'Entrar' com borda branca e cantos bem arredondados */
+.botao-entrar {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1.6px solid #FFFFFF;
+    border-radius: 999px;
+    padding: 7px 23px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Botão 'Entrar' fica verde ao passar o mouse */
+.botao-entrar:hover {
+    background-color: #2E8B57;
+    border-color: #2E8B57;
+    color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Contorno amarelo para acessibilidade quando o botão é selecionado pelo teclado */
+.botao-entrar:focus-visible {
+    outline: 2px solid #FFD54F;
+    outline-offset: 2px;
+}
+
+/* Botão hambúrguer (três linhas) que aparece somente em celulares para abrir o menu */
+.botao-menu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1.8px solid rgba(255, 255, 255, 0.55);
+    background: transparent;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Linha do meio do ícone hambúrguer */
+.botao-menu span {
+    width: 20px;
+    height: 2px;
+    background: #FFFFFF;
+    position: relative;
+    display: block;
+    border-radius: 999px;
+}
+
+.botao-menu span::before,
+
+/* Linha inferior do ícone hambúrguer */
+.botao-menu span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #FFFFFF;
+    border-radius: 999px;
+}
+
+/* Linha superior do ícone hambúrguer */
+.botao-menu span::before {
+    top: -6px;
+}
+
+/* Linha inferior do ícone hambúrguer */
+.botao-menu span::after {
+    top: 6px;
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1930px) */
+@media (max-width: 1930px) {
+
+    /* Grupo de links de navegação centralizado no menu */
+    .menu {
+        gap: 16px;
+        margin: 0 18px;
+    }
+
+    /* Estilo de cada link do menu (texto branco, sem sublinhado) */
+    .item-menu {
+        font-size: 14px;
+    }
+
+    /* Botão 'Entrar' com borda branca e cantos bem arredondados */
+    .botao-entrar {
+        padding: 8px 18px;
+    }
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1200px) */
+@media (max-width: 1200px) {
+
+    html,
+
+    /* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+    body {
+        overflow-x: hidden;
+       
+    }
+
+    /* Menu de navegação azul escuro que fica grudado no topo da tela ao rolar a página */
+    .cabecalho {
+        overflow-x: clip;
+    }
+
+    :root {
+        --altura-cabecalho: 90px;
+    }
+
+    /* Área interna do menu: organiza logo, links e botões lado a lado */
+    .conteiner-navbar {
+        padding: 0 16px;
+    }
+
+    /* Tamanho e proporção da imagem da logo no menu principal */
+    .imagem-logo {
+        height: 64px;
+    }
+
+    /* Botão hambúrguer (três linhas) que aparece somente em celulares para abrir o menu */
+    .botao-menu {
+        display: inline-flex;
+    }
+
+    /* Grupo de links de navegação centralizado no menu */
+    .menu {
+        display: none;
+        margin: 0;
+    }
+
+    /* Menu expandido no celular: aparece como um painel vertical abaixo do cabeçalho */
+    .menu.ativo {
+        display: flex;
+        position: fixed;
+        top: var(--altura-cabecalho);
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1100;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        padding: 14px 16px;
+        background: #00123B;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+        max-height: calc(100vh - var(--altura-cabecalho));
+        overflow-y: auto;
+    }
+
+    /* Link do menu mobile ocupa toda a largura e tem texto um pouco maior */
+    .menu.ativo .item-menu {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        white-space: normal;
+        font-size: 15px;
+    }
+
+    /* Link do menu mobile fica com fundo claro ao tocar */
+    .menu.ativo .item-menu:hover {
+        background: rgba(255, 255, 255, 0.10);
+        opacity: 1;
+    }
+
+    /* Botão 'Entrar' com borda branca e cantos bem arredondados */
+    .botao-entrar {
+        padding: 8px 18px;
+    }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+    :root {
+        --altura-cabecalho: 80px;
+    }
+
+    /* Tamanho e proporção da imagem da logo no menu principal */
+    .imagem-logo {
+        height: 56px;
+    }
+
+    /* Botão 'Entrar' com borda branca e cantos bem arredondados */
+    .botao-entrar {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    /* Botão hambúrguer (três linhas) que aparece somente em celulares para abrir o menu */
+    .botao-menu {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+html,
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Rodapé azul escuro que fica na parte de baixo de todas as páginas */
+.rodape {
+    margin-top: auto;
+    background-color: #00123B;
+    padding: 20px 0;
+}
+
+/* Área interna do rodapé que organiza os elementos lado a lado */
+.conteiner-rodape {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 0 24px;
+}
+
+/* Grupo de colunas com links institucionais (Sobre, Contato, etc.) */
+.bloco-links {
+    display: flex;
+    gap: 40px;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+/* Coluna individual de links dentro do rodapé */
+.coluna-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Link do rodapé (texto branco, sem sublinhado) */
+.link-rodape {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* Link do rodapé fica levemente transparente ao passar o mouse */
+.link-rodape:hover {
+    opacity: 0.8;
+}
+
+/* Divisória vertical fina entre blocos do rodapé */
+.linha-vertical {
+    width: 1px;
+    height: 56px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Área com ícones das redes sociais */
+.bloco-sociais {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Link de rede social no rodapé */
+.link-social {
+    display: inline-flex;
+}
+
+/* Ícone circular de rede social */
+.icone-social {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Área com botões de download do app para celular */
+.bloco-apps {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Botão de download (fundo branco, ícone + texto lado a lado) */
+.botao-app {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 26px;
+    border-radius: 999px;
+    border: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Ícone pequeno dentro do botão de download do app */
+.icone-app {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* Texto do botão de download (loja do app) */
+.texto-botao-app {
+    font-size: 12px;
+    font-weight: 500;
+    color: #00123B;
+    white-space: nowrap;
+}
+
+/* Bloco com logo e nome do projeto no rodapé */
+.bloco-logo-rodape {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Imagem da logo no rodapé */
+.logo-rodape {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* Nome do projeto ao lado da logo no rodapé */
+.texto-logo-rodape {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #00123B;
+  background-color: #FFFFFF;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  width: 100%;
+}
+
+/* Seção do banner de destaque no topo da página */
+.secao-banner-inicial {
+  width: 100%;
+}
+
+/* Fundo do banner com foto cobrindo toda a área */
+.fundo-banner-inicial {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Foto de fundo do banner (cobre 100% sem distorcer) */
+.imagem-banner-fundo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Camada escura semitransparente sobre a foto para o texto ficar legível */
+.sobreposicao-banner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 18, 59, 0.30) 0%,
+    rgba(0, 18, 59, 0.65) 100%
+  );
+}
+
+/* Conteúdo do banner: título, subtítulo e botões, centralizados */
+.conteudo-banner-inicial {
+  position: relative;
+  z-index: 2;
+  width: min(1120px, calc(100% - 48px));
+  text-align: center;
+  color: #FFFFFF;
+  padding: 72px 0;
+}
+
+/* Título grande e em negrito do banner principal */
+.titulo-banner-inicial {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+/* Parágrafo de subtítulo abaixo do título no banner */
+.subtitulo-banner-inicial {
+  margin: 0 0 28px;
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 400;
+  opacity: 0.88;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.55;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.30);
+}
+
+/* Grupo de botões de ação do banner lado a lado */
+.grupo-botoes-banner {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* Botão padrão do banner com animação suave de elevação ao passar o mouse */
+.botao-banner {
+  width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.18s ease, background-color 0.18s ease,
+    color 0.18s ease;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Botão do banner sobe levemente ao passar o mouse */
+.botao-banner:hover {
+  transform: translateY(-1px);
+}
+
+/* Botão laranja principal (ação primária do banner) */
+.botao-banner-principal {
+  background: #FF7A00;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Botão principal fica um pouco mais escuro ao passar o mouse */
+.botao-banner-principal:hover {
+  background: #e86f00;
+}
+
+/* Botão secundário semitransparente (ação alternativa do banner) */
+.botao-banner-secundario {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+}
+
+/* Botão secundário fica discretamente mais visível ao passar o mouse */
+.botao-banner-secundario:hover {
+  background-color: rgba(0, 18, 59, 0.06);
+}
+
+/* Título azul escuro e em negrito de uma seção da página */
+.titulo-secao {
+  margin: 0 0 14px;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: #00123B;
+}
+
+.texto-secao,
+
+/* Texto: texto sobre mesa */
+.texto-sobre-mesa {
+  margin: 0 0 12px;
+  line-height: 1.7;
+  color: rgba(0, 18, 59, 0.82);
+}
+
+/* Seção com os cards de como ajudar (fundo cinza claro) */
+.secao-ajuda-destaques {
+  padding: 72px 0;
+  background-color: #F5F6FA;
+}
+
+/* Área interna centralizada da seção de destaques */
+.conteiner-ajuda-destaques {
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Título de um bloco de cards de ajuda */
+.titulo-bloco-ajuda {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Grade com 8 colunas para os cards de formas de ajudar */
+.grade-cartoes-ajuda {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Card individual de forma de ajuda (branco, sombra suave) */
+.cartao-ajuda {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px 14px 16px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  cursor: default;
+  text-align: center;
+}
+
+/* Quadradinho com ícone centralizado dentro do card */
+.icone-cartao {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+}
+
+/* Fundo verde claro para ícones de categoria verde */
+.icone-verde {
+  background: rgba(46, 139, 87, 0.14);
+}
+
+/* Fundo laranja claro para ícones de categoria laranja */
+.icone-laranja {
+  background: rgba(255, 122, 0, 0.14);
+}
+
+/* Fundo azul claro para ícones de categoria azul */
+.icone-azul {
+  background: rgba(0, 18, 59, 0.10);
+}
+
+/* Ícone: icone amarelo */
+.icone-amarelo {
+  background: rgba(255, 213, 79, 0.20);
+}
+
+/* Imagem: imagem icone cartao */
+.imagem-icone-cartao {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Título: titulo cartao */
+.titulo-cartao {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto cartao */
+.texto-cartao {
+  margin: 0;
+  line-height: 1.55;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 12px;
+}
+
+/* Cartão: cartao ajuda.virado */
+.cartao-ajuda.virado {
+  transform: rotateY(180deg);
+}
+
+/* Seção: secao sobre mesa */
+.secao-sobre-mesa {
+  padding: 72px 0;
+}
+
+/* Contêiner: conteiner sobre mesa */
+.conteiner-sobre-mesa {
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Área: area botao sobre */
+.area-botao-sobre {
+  margin-top: 18px;
+}
+
+/* Botão: botao sobre mesa */
+.botao-sobre-mesa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #00123B;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+/* Botão: botao sobre mesa */
+.botao-sobre-mesa:hover {
+  transform: translateY(-1px);
+  background: #0A245F;
+}
+
+/* Seção: secao publicos */
+.secao-publicos {
+  padding: 72px 0;
+  background-color: #F5F6FA;
+}
+
+/* Contêiner: conteiner publicos */
+.conteiner-publicos {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grade: grade publicos */
+.grade-publicos {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao publico */
+.cartao-publico {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cartão: cartao publico */
+.cartao-publico:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* Título: titulo cartao publico */
+.titulo-cartao-publico {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto cartao publico */
+.texto-cartao-publico {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 14px;
+}
+
+/* Seção: secao como funciona */
+.secao-como-funciona {
+  padding: 72px 0;
+}
+
+/* Contêiner: conteiner como funciona */
+.conteiner-como-funciona {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grade: grade passos funcionamento */
+.grade-passos-funcionamento {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao passo funcionamento */
+.cartao-passo-funcionamento {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cartão: cartao passo funcionamento */
+.cartao-passo-funcionamento:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* Etapa de progresso: etapa passo */
+.etapa-passo {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  background: rgba(255, 122, 0, 0.14);
+  color: #FF7A00;
+  margin-bottom: 10px;
+}
+
+/* Título: titulo passo funcionamento */
+.titulo-passo-funcionamento {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto passo funcionamento */
+.texto-passo-funcionamento {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 14px;
+}
+
+/* Seção: secao seguranca */
+.secao-seguranca {
+  padding: 72px 0;
+  background-color: #F5F6FA;
+}
+
+/* Contêiner: conteiner seguranca */
+.conteiner-seguranca {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grade: grade seguranca */
+.grade-seguranca {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao seguranca */
+.cartao-seguranca {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cartão: cartao seguranca */
+.cartao-seguranca:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* Título: titulo cartao seguranca */
+.titulo-cartao-seguranca {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto cartao seguranca */
+.texto-cartao-seguranca {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 14px;
+}
+
+/* Área: area botao politicas */
+.area-botao-politicas {
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* Botão: botao politicas */
+.botao-politicas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(0, 18, 59, 0.14);
+  color: #00123B;
+  background: #FFFFFF;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+/* Botão: botao politicas */
+.botao-politicas:hover {
+  transform: translateY(-1px);
+  background-color: rgba(0, 18, 59, 0.06);
+}
+
+/* Seção: secao ods */
+.secao-ods {
+  padding: 72px 0;
+}
+
+/* Contêiner: conteiner ods */
+.conteiner-ods {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grade: grade ods */
+.grade-ods {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao ods */
+.cartao-ods {
+  background: #F5F6FA;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+}
+
+/* Título: titulo cartao ods */
+.titulo-cartao-ods {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #00123B;
+}
+
+/* Texto: texto cartao ods */
+.texto-cartao-ods {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 14px;
+}
+
+/* Seção: secao empresas */
+.secao-empresas {
+  padding: 72px 0;
+  background-color: #F5F6FA;
+}
+
+/* Contêiner: conteiner empresas */
+.conteiner-empresas {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grade: grade empresas */
+.grade-empresas {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao empresa */
+.cartao-empresa {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cartão: cartao empresa */
+.cartao-empresa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* Título: titulo cartao empresa */
+.titulo-cartao-empresa {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto cartao empresa */
+.texto-cartao-empresa {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(0, 18, 59, 0.80);
+  font-size: 14px;
+}
+
+/* Área: area botao empresas */
+.area-botao-empresas {
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* Botão: botao empresas */
+.botao-empresas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #FF7A00;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+/* Botão: botao empresas */
+.botao-empresas:hover {
+  transform: translateY(-1px);
+  background: #e86f00;
+}
+
+.cartao-ajuda,
+.cartao-publico,
+.cartao-passo-funcionamento,
+.cartao-seguranca,
+.cartao-ods,
+
+/* Cartão: cartao empresa */
+.cartao-empresa {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* Estilo do bloco "visivel" */
+.visivel {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Estilo do bloco "confete" */
+.confete {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  pointer-events: none;
+  animation: confete-explodir 0.8s ease-out forwards;
+}
+
+/* Animação "confete-explodir" */
+@keyframes confete-explodir {
+
+  /* Estilo do bloco "to" */
+  to {
+    transform: translate(var(--confete-x), var(--confete-y))
+      rotate(var(--confete-rotacao));
+    opacity: 0;
+  }
+}
+
+:root {
+  --azul: #00123B;
+  --azul-2: #0A245F;
+  --verde: #2E8B57;
+  --laranja: #FF7A00;
+  --amarelo: #FFD54F;
+
+  --fundo: #FFFFFF;
+  --texto: #00123B;
+  --borda: rgba(0, 18, 59, 0.14);
+  --sombra: 0 12px 28px rgba(0, 0, 0, 0.10);
+
+  --tinta-azul: rgba(0, 18, 59, 0.06);
+  --tinta-verde: rgba(46, 139, 87, 0.08);
+  --tinta-laranja: rgba(255, 122, 0, 0.10);
+  --tinta-amarelo: rgba(255, 213, 79, 0.18);
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  background-color: var(--fundo);
+  color: var(--texto);
+}
+
+.secao-ajuda-destaques,
+.secao-publicos,
+.secao-seguranca,
+
+/* Seção: secao empresas */
+.secao-empresas {
+  background-color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    var(--tinta-azul),
+    rgba(255, 255, 255, 0)
+  );
+  border-top: 1px solid rgba(0, 18, 59, 0.06);
+  border-bottom: 1px solid rgba(0, 18, 59, 0.06);
+}
+
+/* Seção: secao publicos */
+.secao-publicos {
+  background-image: linear-gradient(
+    180deg,
+    var(--tinta-verde),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* Seção: secao seguranca */
+.secao-seguranca {
+  background-image: linear-gradient(
+    180deg,
+    var(--tinta-amarelo),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* Seção: secao empresas */
+.secao-empresas {
+  background-image: linear-gradient(
+    180deg,
+    var(--tinta-laranja),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.cartao-ajuda,
+.cartao-publico,
+.cartao-passo-funcionamento,
+.cartao-seguranca,
+.cartao-ods,
+
+/* Cartão: cartao empresa */
+.cartao-empresa {
+  background-color: #FFFFFF;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Cartão: cartao ods */
+.cartao-ods {
+  background-color: #FFFFFF;
+}
+
+/* Cartão: cartao publico */
+.cartao-publico {
+  border-top: 4px solid var(--verde);
+}
+
+/* Cartão: cartao passo funcionamento */
+.cartao-passo-funcionamento {
+  border-top: 4px solid var(--laranja);
+}
+
+/* Cartão: cartao seguranca */
+.cartao-seguranca {
+  border-top: 4px solid var(--amarelo);
+}
+
+/* Cartão: cartao ods */
+.cartao-ods {
+  border-top: 4px solid var(--azul);
+}
+
+/* Cartão: cartao empresa */
+.cartao-empresa {
+  border-top: 4px solid var(--azul-2);
+}
+
+.botao-banner-secundario:hover,
+
+/* Botão: botao politicas */
+.botao-politicas:hover {
+  background-color: rgba(0, 18, 59, 0.06);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(255, 122, 0, 0.45);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* Fundo verde claro para ícones de categoria verde */
+.icone-verde {
+  background-color: #2E8B57 !important;
+}
+
+/* Fundo laranja claro para ícones de categoria laranja */
+.icone-laranja {
+  background-color: #FF7A00 !important;
+}
+
+/* Fundo azul claro para ícones de categoria azul */
+.icone-azul {
+  background-color: #00123B !important;
+}
+
+/* Ícone: icone amarelo */
+.icone-amarelo {
+  background-color: #FFD54F !important;
+}
+
+/* Quadradinho com ícone centralizado dentro do card */
+.icone-cartao {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+/* Imagem: imagem icone cartao */
+.imagem-icone-cartao {
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  /* Conteúdo do banner: título, subtítulo e botões, centralizados */
+  .conteudo-banner-inicial {
+    padding: 56px 0;
+  }
+
+  .conteiner-ajuda-destaques,
+  .conteiner-publicos,
+  .conteiner-como-funciona,
+  .conteiner-seguranca,
+  .conteiner-ods,
+
+  /* Contêiner: conteiner empresas */
+  .conteiner-empresas {
+    width: min(1120px, calc(100% - 40px));
+  }
+
+  .secao-ajuda-destaques,
+  .secao-sobre-mesa,
+  .secao-publicos,
+  .secao-como-funciona,
+  .secao-seguranca,
+  .secao-ods,
+
+  /* Seção: secao empresas */
+  .secao-empresas {
+    padding: 56px 0;
+  }
+
+  .grade-cartoes-ajuda,
+  .grade-publicos,
+  .grade-passos-funcionamento,
+
+  /* Grade: grade seguranca */
+  .grade-seguranca {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Grade: grade empresas */
+  .grade-empresas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Grade: grade ods */
+  .grade-ods {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  /* Conteúdo do banner: título, subtítulo e botões, centralizados */
+  .conteudo-banner-inicial {
+    width: calc(100% - 32px);
+    padding: 44px 0;
+  }
+
+  /* Fundo do banner com foto cobrindo toda a área */
+  .fundo-banner-inicial {
+    min-height: 420px;
+  }
+
+  /* Grupo de botões de ação do banner lado a lado */
+  .grupo-botoes-banner {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Botão padrão do banner com animação suave de elevação ao passar o mouse */
+  .botao-banner {
+    width: min(320px, 100%);
+  }
+
+  .conteiner-ajuda-destaques,
+  .conteiner-publicos,
+  .conteiner-como-funciona,
+  .conteiner-seguranca,
+  .conteiner-ods,
+  .conteiner-empresas,
+
+  /* Contêiner: conteiner sobre mesa */
+  .conteiner-sobre-mesa {
+    width: calc(100% - 32px);
+  }
+
+  .secao-ajuda-destaques,
+  .secao-sobre-mesa,
+  .secao-publicos,
+  .secao-como-funciona,
+  .secao-seguranca,
+  .secao-ods,
+
+  /* Seção: secao empresas */
+  .secao-empresas {
+    padding: 44px 0;
+  }
+
+  .grade-cartoes-ajuda,
+  .grade-publicos,
+  .grade-passos-funcionamento,
+  .grade-seguranca,
+  .grade-empresas,
+
+  /* Grade: grade ods */
+  .grade-ods {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cartao-ajuda,
+  .cartao-publico,
+  .cartao-passo-funcionamento,
+  .cartao-seguranca,
+  .cartao-ods,
+
+  /* Cartão: cartao empresa */
+  .cartao-empresa {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  /* Quadradinho com ícone centralizado dentro do card */
+  .icone-cartao {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+
+  /* Imagem: imagem icone cartao */
+  .imagem-icone-cartao {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Ajustes de layout para tamanhos de tela específicos */
+@media (prefers-reduced-motion: reduce) {
+
+    /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+    width: 100%;
+}
+
+.secao-banner-sobre,
+.secao-como-nascemos,
+
+/* Seção: secao time sobre */
+.secao-time-sobre {
+    width: 100%;
+    background: #F5F6FA;
+    padding: 40px 0 48px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Seção: secao banner sobre */
+.secao-banner-sobre {
+    padding-bottom: 50px;
+}
+
+.secao-missao-visao-valores,
+.secao-pilares-sobre,
+
+/* Seção: secao ods sobre */
+.secao-ods-sobre {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 40px 0 48px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Seção: secao ods sobre */
+.secao-ods-sobre {
+    padding-bottom: 60px;
+}
+
+.conteiner-banner-sobre,
+
+/* Contêiner: conteiner como nascemos */
+.conteiner-como-nascemos {
+    max-width: 1200px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Contêiner: conteiner banner sobre */
+.conteiner-banner-sobre {
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Contêiner: conteiner como nascemos */
+.conteiner-como-nascemos {
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 40px;
+}
+
+.conteiner-missao-visao-valores,
+.conteiner-pilares-sobre,
+.conteiner-time-sobre,
+
+/* Contêiner: conteiner ods sobre */
+.conteiner-ods-sobre {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.conteiner-time-sobre,
+
+/* Contêiner: conteiner ods sobre */
+.conteiner-ods-sobre {
+    text-align: center;
+}
+
+/* Bloco: bloco texto banner sobre */
+.bloco-texto-banner-sobre {
+    flex: 1;
+    max-width: 560px;
+}
+
+/* Banner: etiqueta banner sobre */
+.etiqueta-banner-sobre {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2E8B57;
+    background: #E0F2E9;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+/* Título: titulo banner sobre */
+.titulo-banner-sobre {
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 16px 0;
+}
+
+/* Texto: texto banner sobre */
+.texto-banner-sobre {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #00123B;
+    margin: 0;
+}
+
+/* Bloco: bloco imagem banner sobre */
+.bloco-imagem-banner-sobre {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Imagem: imagem banner sobre */
+.imagem-banner-sobre {
+    width: 100%;
+    max-width: 460px;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+/* Título: titulo secao sobre */
+.titulo-secao-sobre {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 20px 0;
+}
+
+.grade-missao-visao-valores,
+
+/* Grade: grade pilares sobre */
+.grade-pilares-sobre {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Grade: grade time sobre */
+.grade-time-sobre {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 220px));
+    gap: 20px;
+    margin-top: 24px;
+    justify-content: center;
+}
+
+.cartao-mvv,
+
+/* Cartão: cartao pilar sobre */
+.cartao-pilar-sobre {
+    background: #F5F6FA;
+    border-radius: 18px;
+    padding: 22px 22px 20px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.titulo-cartao-mvv,
+
+/* Título: titulo pilar sobre */
+.titulo-pilar-sobre {
+    font-size: 17px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 10px 0;
+}
+
+/* Título: titulo pilar sobre */
+.titulo-pilar-sobre {
+    margin-bottom: 8px;
+}
+
+.texto-cartao-mvv,
+
+/* Texto: texto pilar sobre */
+.texto-pilar-sobre {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* Cartão: cartao missao */
+.cartao-missao {
+    border-left: 4px solid #2E8B57;
+}
+
+/* Cartão: cartao visao */
+.cartao-visao {
+    border-left: 4px solid #FF7A00;
+}
+
+/* Cartão: cartao valores */
+.cartao-valores {
+    border-left: 4px solid #00123B;
+}
+
+/* Bloco: bloco texto como nascemos */
+.bloco-texto-como-nascemos {
+    font-size: 15px;
+    color: #00123B;
+}
+
+/* Texto: texto como nascemos */
+.texto-como-nascemos {
+    line-height: 1.6;
+    margin: 0 0 12px 0;
+}
+
+/* Linha: linha tempo sobre */
+.linha-tempo-sobre {
+    position: relative;
+    padding-left: 22px;
+}
+
+/* Linha: linha tempo sobre */
+.linha-tempo-sobre::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 2px;
+    height: calc(100% - 16px);
+    background: #D0D7E6;
+}
+
+/* Linha: etapa linha tempo */
+.etapa-linha-tempo {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+/* Linha: bola linha tempo */
+.bola-linha-tempo {
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #2E8B57;
+}
+
+/* Linha: conteudo linha tempo */
+.conteudo-linha-tempo {
+    padding-left: 16px;
+}
+
+/* Título: titulo etapa linha tempo */
+.titulo-etapa-linha-tempo {
+    font-size: 16px;
+    font-weight: 600;
+    color: #00123B;
+    margin: 0 0 6px 0;
+}
+
+/* Texto: texto etapa linha tempo */
+.texto-etapa-linha-tempo {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #00123B;
+    margin: 0;
+}
+
+/* Card: card membro sobre */
+.card-membro-sobre {
+    perspective: 800px;
+    cursor: pointer;
+    height: 220px;
+}
+
+/* Card: card inner membro */
+.card-inner-membro {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s ease;
+}
+
+/* Card: card membro sobre.virado .card inner membro */
+.card-membro-sobre.virado .card-inner-membro {
+    transform: rotateY(180deg);
+}
+
+.frente-membro,
+
+/* Estilo do bloco "verso membro" */
+.verso-membro {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 18px;
+    background: #FFFFFF;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 16px;
+    box-sizing: border-box;
+}
+
+/* Estilo do bloco "verso membro" */
+.verso-membro {
+    transform: rotateY(180deg);
+    gap: 14px;
+    background: #00123B;
+}
+
+/* Botão: btn social membro */
+.btn-social-membro {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+/* Botão: btn social membro */
+.btn-social-membro:hover {
+    opacity: 0.85;
+}
+
+/* Botão: btn linkedin */
+.btn-linkedin {
+    background: #0A66C2;
+    color: #FFFFFF;
+}
+
+/* Botão: btn github */
+.btn-github {
+    background: #FFFFFF;
+    color: #00123B;
+}
+
+/* Estilo do bloco "foto membro sobre" */
+.foto-membro-sobre {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Estilo do bloco "nome membro sobre" */
+.nome-membro-sobre {
+    font-size: 15px;
+    font-weight: 600;
+    color: #00123B;
+    margin: 0 0 4px 0;
+}
+
+/* Estilo do bloco "funcao membro sobre" */
+.funcao-membro-sobre {
+    font-size: 13px;
+    color: #00123B;
+    margin: 0;
+}
+
+/* Texto: texto ods sobre */
+.texto-ods-sobre {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00123B;
+    max-width: 720px;
+    margin: 0 auto 22px;
+}
+
+/* Linha: linha ods sobre */
+.linha-ods-sobre {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+/* Imagem: imagem ods sobre */
+.imagem-ods-sobre {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.conteiner-banner-sobre.visivel,
+.cartao-mvv.visivel,
+.etapa-linha-tempo.visivel,
+.cartao-pilar-sobre.visivel,
+.card-membro-sobre.visivel,
+
+/* Contêiner: conteiner ods sobre.visivel */
+.conteiner-ods-sobre.visivel {
+    animation: aparecer-suave 1.6s ease both;
+}
+
+/* Animação "aparecer-suave" */
+@keyframes aparecer-suave {
+
+    /* Estilo do bloco "from" */
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    /* Estilo do bloco "to" */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (max-width: 1024px) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-padding-top: 90px; 
+  }
+
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+
+  /* Seção: secao ods sobre */
+  .secao-ods-sobre {
+    padding: 32px 0 40px;
+  }
+
+  /* Contêiner: conteiner banner sobre */
+  .conteiner-banner-sobre {
+    padding: 28px 28px;
+    gap: 24px;
+  }
+
+  /* Contêiner: conteiner como nascemos */
+  .conteiner-como-nascemos {
+    padding: 24px 24px;
+    gap: 24px;
+    grid-template-columns: 1fr; 
+  }
+
+  /* Bloco: bloco imagem banner sobre */
+  .bloco-imagem-banner-sobre {
+    justify-content: center; 
+  }
+
+  /* Imagem: imagem banner sobre */
+  .imagem-banner-sobre {
+    max-width: 520px; 
+  }
+
+  .grade-missao-visao-valores,
+
+  /* Grade: grade pilares sobre */
+  .grade-pilares-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+
+  /* Grade: grade time sobre */
+  .grade-time-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+
+  /* Linha: linha ods sobre */
+  .linha-ods-sobre {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Imagem: imagem ods sobre */
+  .imagem-ods-sobre {
+    width: 110px;
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-padding-top: 80px; 
+  }
+
+  
+  /* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+  body {
+    overflow-x: hidden;
+  }
+
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+
+  /* Seção: secao ods sobre */
+  .secao-ods-sobre {
+    padding: 24px 0 32px;
+  }
+
+  /* Contêiner: conteiner banner sobre */
+  .conteiner-banner-sobre {
+    padding: 22px 16px;
+    gap: 18px;
+    flex-direction: column;      
+    text-align: center;           
+  }
+
+  /* Bloco: bloco texto banner sobre */
+  .bloco-texto-banner-sobre {
+    max-width: 100%;
+  }
+
+  /* Bloco: bloco imagem banner sobre */
+  .bloco-imagem-banner-sobre {
+    justify-content: center;
+  }
+
+  /* Imagem: imagem banner sobre */
+  .imagem-banner-sobre {
+    max-width: 100%;
+  }
+
+  /* Contêiner: conteiner como nascemos */
+  .conteiner-como-nascemos {
+    padding: 20px 16px;
+    gap: 18px;
+    grid-template-columns: 1fr;   
+  }
+
+  .grade-missao-visao-valores,
+  .grade-pilares-sobre,
+
+  /* Grade: grade time sobre */
+  .grade-time-sobre {
+    grid-template-columns: 1fr;   
+  }
+
+  /* Título: titulo banner sobre */
+  .titulo-banner-sobre {
+    font-size: 24px;
+  }
+
+  /* Título: titulo secao sobre */
+  .titulo-secao-sobre {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* Estilo do bloco "foto membro sobre" */
+  .foto-membro-sobre {
+    width: 84px;
+    height: 84px;
+  }
+
+  /* Linha: linha ods sobre */
+  .linha-ods-sobre {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* Imagem: imagem ods sobre */
+  .imagem-ods-sobre {
+    width: 96px;
+  }
+}
+
+/* Estilo do bloco "conteudo faq" */
+.conteudo-faq {
+  width: 100%;
+  background-color: #F5F6FA;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Estilo do bloco "faq animado" */
+.faq-animado {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estilo do bloco "faq animado.visivel" */
+.faq-animado.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Seção: secao faq hero */
+.secao-faq-hero {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 40px 0 32px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner faq hero */
+.conteiner-faq-hero {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Texto: coluna faq hero texto */
+.coluna-faq-hero-texto {
+  flex: 1.4;
+}
+
+/* Estilo do bloco "coluna faq hero ilustracao" */
+.coluna-faq-hero-ilustracao {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Estilo do bloco "etiqueta faq" */
+.etiqueta-faq {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #00123B;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Título: titulo faq hero */
+.titulo-faq-hero {
+  font-size: 28px;
+  font-weight: 700;
+  color: #00123B;
+  margin: 0 0 10px 0;
+}
+
+/* Texto: texto faq hero */
+.texto-faq-hero {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #00123B;
+  margin: 0 0 16px 0;
+}
+
+/* Linha: linha resumo faq */
+.linha-resumo-faq {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Chip: chip faq */
+.chip-faq {
+  background-color: #F5F6FA;
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+}
+
+/* Chip: chip faq strong */
+.chip-faq strong {
+  color: #00123B;
+}
+
+/* Chip: chip faq span */
+.chip-faq span {
+  color: #00123B;
+  opacity: 0.85;
+}
+
+/* Cartão: cartao ilustracao faq */
+.cartao-ilustracao-faq {
+  background-color: #00123B;
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  min-width: 280px;
+  max-width: 340px;
+}
+
+/* Banner: banner faq */
+.banner-faq {
+  background-color: #FFFFFF;
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo banner faq */
+.titulo-banner-faq {
+  font-size: 12px;
+  font-weight: 700;
+  color: #00123B;
+}
+
+/* Texto: texto banner faq */
+.texto-banner-faq {
+  font-size: 10px;
+  color: #00123B;
+  opacity: 0.85;
+}
+
+/* Área: area imagem faq */
+.area-imagem-faq {
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+/* Estilo do bloco "ilustracao simulada faq" */
+.ilustracao-simulada-faq {
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.65);
+  padding: 18px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Texto: texto ilustracao faq */
+.texto-ilustracao-faq {
+  font-size: 11px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Linha: linha metricas faq */
+.linha-metricas-faq {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* Bloco: bloco metrica faq */
+.bloco-metrica-faq {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo do bloco "numero metrica faq" */
+.numero-metrica-faq {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFD54F;
+}
+
+/* Estilo do bloco "rotulo metrica faq" */
+.rotulo-metrica-faq {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* Seção: secao filtros faq */
+.secao-filtros-faq {
+  width: 100%;
+  background-color: #F5F6FA;
+  padding: 24px 0 22px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner filtros faq */
+.conteiner-filtros-faq {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Título: titulo filtros faq */
+.titulo-filtros-faq {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00123B;
+  margin: 0 0 4px 0;
+}
+
+/* Estilo do bloco "subtitulo filtros faq" */
+.subtitulo-filtros-faq {
+  font-size: 13px;
+  color: #00123B;
+  opacity: 0.9;
+  margin: 0 0 12px 0;
+}
+
+/* Linha: linha botoes filtro faq */
+.linha-botoes-filtro-faq {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Botão: botao filtro faq */
+.botao-filtro-faq {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #00123B;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Botão: botao filtro faq.ativo */
+.botao-filtro-faq.ativo {
+  background-color: #00123B;
+  color: #FFFFFF;
+}
+
+/* Seção: secao lista faq */
+.secao-lista-faq {
+  width: 100%;
+  background-color: #F5F6FA;
+  padding: 12px 0 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner lista faq */
+.conteiner-lista-faq {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 0.9fr);
+  gap: 28px;
+}
+
+/* Estilo do bloco "coluna perguntas faq" */
+.coluna-perguntas-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Item: item pergunta faq */
+.item-pergunta-faq {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Cabeçalho: cabecalho pergunta faq */
+.cabecalho-pergunta-faq {
+  width: 100%;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 12px 16px 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Texto: texto pergunta faq */
+.texto-pergunta-faq {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00123B;
+  text-align: left;
+}
+
+/* Cabeçalho: cabecalho pergunta faq */
+.cabecalho-pergunta-faq::after {
+  content: "+";
+  font-size: 18px;
+  font-weight: 700;
+  color: #00123B;
+  margin-left: 12px;
+}
+
+/* Item: item pergunta faq.aberta .cabecalho pergunta faq */
+.item-pergunta-faq.aberta .cabecalho-pergunta-faq::after {
+  content: "âˆ’";
+}
+
+/* Estilo do bloco "corpo pergunta faq" */
+.corpo-pergunta-faq {
+  padding: 0 18px 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Estilo do bloco "corpo pergunta faq p" */
+.corpo-pergunta-faq p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #00123B;
+  margin: 0 0 14px 0;
+}
+
+/* Estilo do bloco "coluna ajuda faq" */
+.coluna-ajuda-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cartão: cartao ajuda faq */
+.cartao-ajuda-faq {
+  background-color: #00123B;
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Título: titulo ajuda faq */
+.titulo-ajuda-faq {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+/* Texto: texto ajuda faq */
+.texto-ajuda-faq {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+/* Lista: lista ajuda faq */
+.lista-ajuda-faq {
+  margin: 0 0 12px 18px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Lista: lista ajuda faq li */
+.lista-ajuda-faq li {
+  margin-bottom: 4px;
+}
+
+/* Botão: botao ajuda faq */
+.botao-ajuda-faq {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background-color: #2E8B57;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Botão: botao ajuda faq */
+.botao-ajuda-faq:hover {
+  opacity: 0.96;
+}
+
+/* Cartão: cartao dica faq */
+.cartao-dica-faq {
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Título: titulo dica faq */
+.titulo-dica-faq {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00123B;
+  margin: 0 0 6px 0;
+}
+
+/* Texto: texto dica faq */
+.texto-dica-faq {
+  font-size: 12px;
+  color: #00123B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Seção: secao cta faq final */
+.secao-cta-faq-final {
+  width: 100%;
+  background-color: #00123B;
+  padding: 36px 0 42px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner cta faq final */
+.conteiner-cta-faq-final {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Título: titulo cta faq final */
+.titulo-cta-faq-final {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+}
+
+/* Estilo do bloco "subtitulo cta faq final" */
+.subtitulo-cta-faq-final {
+  font-size: 13px;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin: 0 0 18px 0;
+}
+
+/* Linha: linha botoes cta faq */
+.linha-botoes-cta-faq {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Botão: botao cta faq */
+.botao-cta-faq {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Botão: botao cta faq principal */
+.botao-cta-faq-principal {
+  background-color: #2E8B57;
+  color: #FFFFFF;
+}
+
+/* Botão: botao cta faq secundario */
+.botao-cta-faq-secundario {
+  background-color: #FFFFFF;
+  color: #00123B;
+}
+
+.botao-cta-faq-principal:hover,
+
+/* Botão: botao cta faq secundario */
+.botao-cta-faq-secundario:hover {
+  opacity: 0.96;
+}
+
+/* Linha: linha divisoria faq */
+.linha-divisoria-faq {
+  border: none;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  width: 14%;
+  margin: 0 auto;
+}
+
+/* Estilo do bloco "conteudo impacto" */
+.conteudo-impacto {
+    width: 100%;
+    background-color: #F5F6FA;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilo do bloco "impacto animado" */
+.impacto-animado {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estilo do bloco "impacto animado.visivel" */
+.impacto-animado.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Seção: secao impacto hero */
+.secao-impacto-hero {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 48px 0 40px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner impacto hero */
+.conteiner-impacto-hero {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Texto: coluna hero impacto texto */
+.coluna-hero-impacto-texto {
+    flex: 1.4;
+}
+
+/* Estilo do bloco "coluna hero impacto kpi" */
+.coluna-hero-impacto-kpi {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Estilo do bloco "etiqueta impacto" */
+.etiqueta-impacto {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: #00123B;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Título: titulo impacto hero */
+.titulo-impacto-hero {
+    font-size: 30px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 14px 0;
+}
+
+/* Texto: texto impacto hero */
+.texto-impacto-hero {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00123B;
+    margin: 0 0 18px 0;
+}
+
+/* Linha: linha resumo impacto */
+.linha-resumo-impacto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Chip: chip impacto */
+.chip-impacto {
+    background-color: #F5F6FA;
+    border-radius: 999px;
+    padding: 6px 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+}
+
+/* Chip: chip titulo */
+.chip-titulo {
+    font-weight: 600;
+    color: #00123B;
+}
+
+/* Chip: chip texto */
+.chip-texto {
+    color: #00123B;
+    opacity: 0.85;
+}
+
+/* Cartão: cartao kpi hero */
+.cartao-kpi-hero {
+    background-color: #00123B;
+    border-radius: 24px;
+    padding: 24px 24px 22px;
+    color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    min-width: 260px;
+    max-width: 320px;
+}
+
+/* Estilo do bloco "rotulo kpi hero" */
+.rotulo-kpi-hero {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Estilo do bloco "numero kpi hero" */
+.numero-kpi-hero {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 10px 0 4px 0;
+}
+
+/* Legenda: legenda kpi hero */
+.legenda-kpi-hero {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Seção: secao indicadores impacto */
+.secao-indicadores-impacto {
+    width: 100%;
+    background-color: #F5F6FA;
+    padding: 32px 0 40px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner indicadores impacto */
+.conteiner-indicadores-impacto {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+/* Grade: grade indicadores impacto */
+.grade-indicadores-impacto {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Cartão: cartao indicador impacto */
+.cartao-indicador-impacto {
+    background-color: #FFFFFF;
+    border-radius: 22px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Estilo do bloco "rotulo indicador impacto" */
+.rotulo-indicador-impacto {
+    font-size: 12px;
+    font-weight: 600;
+    color: #00123B;
+    opacity: 0.8;
+}
+
+/* Estilo do bloco "numero indicador impacto" */
+.numero-indicador-impacto {
+    font-size: 26px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 8px 0 6px 0;
+}
+
+/* Texto: texto indicador impacto */
+.texto-indicador-impacto {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #00123B;
+    opacity: 0.9;
+}
+
+/* Seção: secao graficos impacto */
+.secao-graficos-impacto {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 40px 0 44px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner graficos impacto */
+.conteiner-graficos-impacto {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 32px;
+}
+
+/* Título: titulo grafico */
+.titulo-grafico {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 6px 0;
+}
+
+/* Estilo do bloco "subtitulo grafico" */
+.subtitulo-grafico {
+    font-size: 13px;
+    color: #00123B;
+    opacity: 0.9;
+    margin: 0 0 18px 0;
+}
+
+/* Legenda: legenda grafico */
+.legenda-grafico {
+    font-size: 11px;
+    color: #00123B;
+    opacity: 0.9;
+    margin: 10px 0 0 0;
+}
+
+/* Bloco: bloco grafico barras */
+.bloco-grafico-barras {
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 20px 24px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Área: area grafico barras */
+.area-grafico-barras {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 8px;
+    align-items: flex-end;
+    height: 230px;
+    margin-top: 10px;
+}
+
+/* Linha: linha eixo y */
+.linha-eixo-y {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    font-size: 10px;
+    color: #00123B;
+    opacity: 0.7;
+}
+
+/* Grade: grade barras */
+.grade-barras {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    padding-bottom: 8px;
+    gap: 12px;
+}
+
+/* Estilo do bloco "coluna barra" */
+.coluna-barra {
+    flex: 1;
+    max-width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 6px;
+}
+
+/* Estilo do bloco "barra mes" */
+.barra-mes {
+    width: 100%;
+    border-radius: 999px 999px 4px 4px;
+    background: linear-gradient(180deg, #2E8B57, #00123B);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    height: 0%;
+    transition: height 0.6s ease-out;
+}
+
+/* Estilo do bloco "rotulo mes" */
+.rotulo-mes {
+    font-size: 11px;
+    font-weight: 500;
+    color: #00123B;
+    text-align: center;
+}
+
+/* Bloco: bloco grafico pizza */
+.bloco-grafico-pizza {
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 20px 24px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Área: area grafico pizza */
+.area-grafico-pizza {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+/* Estilo do bloco "pizza impacto" */
+.pizza-impacto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#2E8B57 0 50%, #FF7A00 50% 80%, #00123B 80% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    position: relative;
+}
+
+/* Estilo do bloco "miolo pizza" */
+.miolo-pizza {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo do bloco "porcentagem central" */
+.porcentagem-central {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00123B;
+}
+
+/* Texto: texto central */
+.texto-central {
+    font-size: 11px;
+    color: #00123B;
+    text-align: center;
+}
+
+/* Legenda: legenda pizza */
+.legenda-pizza {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    color: #00123B;
+}
+
+/* Item: item legenda pizza */
+.item-legenda-pizza {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Bolinha colorida indicadora na legenda */
+.bolinha-legenda {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Legenda: bolinha legenda verde */
+.bolinha-legenda-verde {
+    background-color: #2E8B57;
+}
+
+/* Legenda: bolinha legenda laranja */
+.bolinha-legenda-laranja {
+    background-color: #FF7A00;
+}
+
+/* Legenda: bolinha legenda azul */
+.bolinha-legenda-azul {
+    background-color: #00123B;
+}
+
+/* Seção: secao impacto perfis */
+.secao-impacto-perfis {
+    width: 100%;
+    background-color: #F5F6FA;
+    padding: 40px 0 44px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner impacto perfis */
+.conteiner-impacto-perfis {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+/* Título: titulo impacto perfis */
+.titulo-impacto-perfis {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 20px 0;
+}
+
+/* Grade: grade impacto perfis */
+.grade-impacto-perfis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Cartão: cartao impacto perfil */
+.cartao-impacto-perfil {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 16px 18px 16px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    font-size: 12px;
+    line-height: 1.5;
+    color: #00123B;
+}
+
+/* Estilo do bloco "etiqueta perfil impacto" */
+.etiqueta-perfil-impacto {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+}
+
+/* Estilo do bloco "etiqueta beneficiarios" */
+.etiqueta-beneficiarios {
+    background-color: #2E8B57;
+}
+
+/* Estilo do bloco "etiqueta doadores" */
+.etiqueta-doadores {
+    background-color: #FF7A00;
+}
+
+/* Estilo do bloco "etiqueta voluntarios" */
+.etiqueta-voluntarios {
+    background-color: #00123B;
+}
+
+/* Pontos: etiqueta pontos */
+.etiqueta-pontos {
+    background-color: #FFD54F;
+    color: #00123B;
+}
+
+/* Texto: texto impacto perfil */
+.texto-impacto-perfil {
+    margin: 0;
+}
+
+/* Seção: secao linha tempo impacto */
+.secao-linha-tempo-impacto {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 40px 0 44px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner linha tempo impacto */
+.conteiner-linha-tempo-impacto {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+/* Título: titulo linha tempo impacto */
+.titulo-linha-tempo-impacto {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00123B;
+    margin: 0 0 20px 0;
+}
+
+/* Linha: linha tempo impacto */
+.linha-tempo-impacto {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid rgba(0, 18, 59, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Linha: etapa linha tempo */
+.etapa-linha-tempo {
+    position: relative;
+    padding-left: 12px;
+}
+
+/* Linha: etapa linha tempo */
+.etapa-linha-tempo::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2E8B57;
+}
+
+/* Linha: ano linha tempo */
+.ano-linha-tempo {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #00123B;
+    margin-bottom: 4px;
+}
+
+/* Texto: texto linha tempo */
+.texto-linha-tempo {
+    font-size: 12px;
+    color: #00123B;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Seção: secao cta impacto final */
+.secao-cta-impacto-final {
+    width: 100%;
+    background-color: #00123B;
+    padding: 40px 0 48px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contêiner: conteiner cta impacto final */
+.conteiner-cta-impacto-final {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px;
+    text-align: center;
+}
+
+/* Título: titulo cta impacto final */
+.titulo-cta-impacto-final {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+}
+
+/* Estilo do bloco "subtitulo cta impacto final" */
+.subtitulo-cta-impacto-final {
+    font-size: 13px;
+    color: #FFFFFF;
+    opacity: 0.9;
+    margin: 0 0 20px 0;
+}
+
+/* Linha: linha botoes cta impacto */
+.linha-botoes-cta-impacto {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+.botao-cta-impacto-principal,
+
+/* Botão: botao cta impacto secundario */
+.botao-cta-impacto-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Botão: botao cta impacto principal */
+.botao-cta-impacto-principal {
+    background-color: #2E8B57;
+    color: #FFFFFF;
+}
+
+/* Botão: botao cta impacto secundario */
+.botao-cta-impacto-secundario {
+    background-color: #FFFFFF;
+    color: #00123B;
+}
+.botao-cta-impacto-principal:hover,
+
+/* Botão: botao cta impacto secundario */
+.botao-cta-impacto-secundario:hover {
+    opacity: 0.96;
+}
+
+/* Linha: linha divisoria impacto */
+.linha-divisoria-impacto {
+    border: none;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    width: 15%;
+    margin: 0 auto;
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #F5F6FA;
+  color: #00123B;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  width: 100%;
+}
+
+/* Estilo do bloco "familia animado" */
+.familia-animado{
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do bloco "js ativo .familia animado" */
+.js-ativo .familia-animado{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Estilo do bloco "js ativo .familia animado.familia visivel" */
+.js-ativo .familia-animado.familia-visivel{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Seção: secao familia hero */
+.secao-familia-hero {
+  width: 100%;
+  padding: 40px 0 50px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner familia hero */
+.conteiner-familia-hero {
+  max-width: 1200px;
+  width: 100%;
+  padding: 40px 48px;
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Texto: coluna hero familia texto */
+.coluna-hero-familia-texto {
+  flex: 1;
+  max-width: 560px;
+}
+
+/* Estilo do bloco "etiqueta familia" */
+.etiqueta-familia {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: #00123B;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo familia hero */
+.titulo-familia-hero {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #00123B;
+  margin: 0 0 16px 0;
+}
+
+/* Texto: texto familia hero */
+.texto-familia-hero {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  color: #00123B;
+}
+
+/* Linha: linha resumo familia */
+.linha-resumo-familia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+/* Chip: chip resumo familia */
+.chip-resumo-familia {
+  background-color: #F5F6FA;
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Chip: chip resumo familia strong */
+.chip-resumo-familia strong {
+  font-size: 12px;
+  color: #00123B;
+}
+
+/* Chip: chip resumo familia span */
+.chip-resumo-familia span {
+  font-size: 11px;
+  color: #4A5670;
+}
+
+/* Área: area botoes hero familia */
+.area-botoes-hero-familia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.botao-hero-familia-principal,
+
+/* Botão: botao hero familia secundario */
+.botao-hero-familia-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Botão: botao hero familia principal */
+.botao-hero-familia-principal {
+  background-color: #2E8B57;
+  color: #FFFFFF;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+/* Botão: botao hero familia principal */
+.botao-hero-familia-principal:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+/* Botão: botao hero familia secundario */
+.botao-hero-familia-secundario {
+  background-color: #FFFFFF;
+  color: #2E8B57;
+  border: 2px solid #2E8B57;
+}
+
+/* Botão: botao hero familia secundario */
+.botao-hero-familia-secundario:hover {
+  background-color: #F5F6FA;
+}
+
+/* Imagem: coluna hero familia imagem */
+.coluna-hero-familia-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Cartão: cartao hero familia imagem */
+.cartao-hero-familia-imagem {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  min-height: 260px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+}
+
+/* Imagem: imagem familia hero */
+.imagem-familia-hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilo do bloco "faixa impacto hero" */
+.faixa-impacto-hero {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(0, 18, 59, 0.92);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Estilo do bloco "numero impacto hero" */
+.numero-impacto-hero {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Texto: texto impacto hero */
+.texto-impacto-hero {
+  font-size: 11px;
+}
+
+/* Seção: secao familia realidade */
+.secao-familia-realidade {
+  width: 100%;
+  padding: 32px 0 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner familia realidade */
+.conteiner-familia-realidade {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+}
+
+.coluna-realidade,
+
+/* Estilo do bloco "coluna solucao" */
+.coluna-solucao {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 26px 26px 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.titulo-realidade-familia,
+
+/* Título: titulo solucao familia */
+.titulo-solucao-familia {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #00123B;
+}
+
+.texto-realidade-familia,
+
+/* Texto: texto solucao familia */
+.texto-solucao-familia {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+}
+
+/* Grade: grade dados realidade */
+.grade-dados-realidade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao dado realidade */
+.cartao-dado-realidade {
+  background-color: #F5F6FA;
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+/* Estilo do bloco "rotulo dado realidade" */
+.rotulo-dado-realidade {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4A5670;
+}
+
+/* Estilo do bloco "valor dado realidade" */
+.valor-dado-realidade {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 4px 0 4px 0;
+  color: #00123B;
+}
+
+/* Estilo do bloco "descricao dado realidade" */
+.descricao-dado-realidade {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Lista: lista solucao familia */
+.lista-solucao-familia {
+  margin: 0 0 18px 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Lista: lista solucao familia li */
+.lista-solucao-familia li {
+  margin-bottom: 6px;
+}
+
+/* Estilo do bloco "caixa informacao familia" */
+.caixa-informacao-familia {
+  margin-top: 6px;
+  background-color: #FFF7E6;
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #5A4820;
+}
+
+/* Estilo do bloco "caixa informacao familia strong" */
+.caixa-informacao-familia strong {
+  font-weight: 700;
+}
+
+/* Seção: secao familia trilha */
+.secao-familia-trilha {
+  width: 100%;
+  padding: 40px 0 44px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner familia trilha */
+.conteiner-familia-trilha {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Título: titulo familia trilha */
+.titulo-familia-trilha {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00123B;
+  margin: 0 0 8px 0;
+}
+
+/* Estilo do bloco "subtitulo familia trilha" */
+.subtitulo-familia-trilha {
+  font-size: 14px;
+  color: #00123B;
+  margin: 0 0 24px 0;
+  max-width: 640px;
+}
+
+/* Linha: linha trilha familia */
+.linha-trilha-familia {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Bloco: bloco trilha familia */
+.bloco-trilha-familia {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+/* Estilo do bloco "etapa trilha familia" */
+.etapa-trilha-familia {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título: titulo bloco trilha */
+.titulo-bloco-trilha {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 26px 0 8px 0;
+  color: #00123B;
+}
+
+/* Texto: texto bloco trilha */
+.texto-bloco-trilha {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Seção: secao familia cadastro detalhado */
+.secao-familia-cadastro-detalhado {
+  width: 100%;
+  padding: 40px 0 44px;
+  display: flex;
+  justify-content: center;
+  background-color: #F5F6FA;
+}
+
+/* Contêiner: conteiner familia cadastro detalhado */
+.conteiner-familia-cadastro-detalhado {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 28px;
+}
+
+.coluna-cadastro-texto,
+
+/* Informação: coluna cadastro info */
+.coluna-cadastro-info {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 24px 22px 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Título: titulo familia cadastro */
+.titulo-familia-cadastro {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+/* Texto: texto familia cadastro */
+.texto-familia-cadastro {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+}
+
+/* Grade: grade requisitos familia */
+.grade-requisitos-familia {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+/* Cartão: cartao requisito familia */
+.cartao-requisito-familia {
+  background-color: #F5F6FA;
+  border-radius: 14px;
+  padding: 12px 12px 10px;
+}
+
+/* Título: titulo requisito familia */
+.titulo-requisito-familia {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+/* Texto: texto requisito familia */
+.texto-requisito-familia {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Botão: botao iniciar cadastro familia */
+.botao-iniciar-cadastro-familia {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 30px;
+  border-radius: 999px;
+  background-color: #2E8B57;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 4px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Botão: botao iniciar cadastro familia */
+.botao-iniciar-cadastro-familia:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+/* Cartão: cartao aviso familia */
+.cartao-aviso-familia {
+  background-color: #F5F6FA;
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  margin-bottom: 14px;
+}
+
+/* Título: titulo aviso familia */
+.titulo-aviso-familia {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+/* Texto: texto aviso familia */
+.texto-aviso-familia {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Cartão: cartao alerta familia */
+.cartao-alerta-familia {
+  background-color: #FFF1F1;
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+/* Estilo do bloco "rotulo alerta familia" */
+.rotulo-alerta-familia {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #B3261E;
+  margin-bottom: 4px;
+}
+
+/* Texto: texto alerta familia */
+.texto-alerta-familia {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Seção: secao familia duvidas */
+.secao-familia-duvidas {
+  width: 100%;
+  padding: 40px 0 44px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner familia duvidas */
+.conteiner-familia-duvidas {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Título: titulo familia duvidas */
+.titulo-familia-duvidas {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+
+/* Grade: grade familia duvidas */
+.grade-familia-duvidas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao familia duvida */
+.cartao-familia-duvida {
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo do bloco "pergunta familia duvida" */
+.pergunta-familia-duvida {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+/* Estilo do bloco "resposta familia duvida" */
+.resposta-familia-duvida {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Seção: secao cta familia final */
+.secao-cta-familia-final {
+  width: 100%;
+  background-color: #00123B;
+  padding: 40px 0 44px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner cta familia final */
+.conteiner-cta-familia-final {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Título: titulo cta familia final */
+.titulo-cta-familia-final {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+}
+
+/* Estilo do bloco "subtitulo cta familia final" */
+.subtitulo-cta-familia-final {
+  font-size: 14px;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin: 0 0 20px 0;
+}
+
+/* Botão: botao cta familia final */
+.botao-cta-familia-final {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background-color: #2E8B57;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Botão: botao cta familia final */
+.botao-cta-familia-final:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+/* Linha: linha divisoria familia */
+.linha-divisoria-familia {
+  border: none;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  width: 12%;
+  margin: 0 auto 24px auto;
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (max-width: 1024px) {
+  
+  /* Seção: secao familia hero */
+  .secao-familia-hero {
+    padding: 28px 0 34px;
+  }
+
+  /* Contêiner: conteiner familia hero */
+  .conteiner-familia-hero {
+    padding: 28px 24px;
+    gap: 24px;
+    border-radius: 22px;
+  }
+
+  /* Título: titulo familia hero */
+  .titulo-familia-hero {
+    font-size: 28px;
+  }
+
+  /* Texto: coluna hero familia texto */
+  .coluna-hero-familia-texto {
+    max-width: 100%;
+  }
+
+  /* Imagem: coluna hero familia imagem */
+  .coluna-hero-familia-imagem {
+    justify-content: center;
+  }
+
+  /* Cartão: cartao hero familia imagem */
+  .cartao-hero-familia-imagem {
+    max-width: 520px;
+  }
+
+  
+  /* Seção: secao familia realidade */
+  .secao-familia-realidade {
+    padding: 24px 0 32px;
+  }
+
+  /* Contêiner: conteiner familia realidade */
+  .conteiner-familia-realidade {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 18px;
+  }
+
+  /* Grade: grade dados realidade */
+  .grade-dados-realidade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  
+  /* Seção: secao familia trilha */
+  .secao-familia-trilha {
+    padding: 32px 0 36px;
+  }
+
+  /* Contêiner: conteiner familia trilha */
+  .conteiner-familia-trilha {
+    padding: 0 20px;
+  }
+
+  /* Linha: linha trilha familia */
+  .linha-trilha-familia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  
+  /* Seção: secao familia cadastro detalhado */
+  .secao-familia-cadastro-detalhado {
+    padding: 32px 0 36px;
+  }
+
+  /* Contêiner: conteiner familia cadastro detalhado */
+  .conteiner-familia-cadastro-detalhado {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 18px;
+  }
+
+  /* Grade: grade requisitos familia */
+  .grade-requisitos-familia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  
+  /* Seção: secao familia duvidas */
+  .secao-familia-duvidas {
+    padding: 32px 0 36px;
+  }
+
+  /* Contêiner: conteiner familia duvidas */
+  .conteiner-familia-duvidas {
+    padding: 0 20px;
+  }
+
+  /* Grade: grade familia duvidas */
+  .grade-familia-duvidas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  
+  /* Seção: secao cta familia final */
+  .secao-cta-familia-final {
+    padding: 32px 0 36px;
+  }
+
+  /* Contêiner: conteiner cta familia final */
+  .conteiner-cta-familia-final {
+    padding: 0 20px;
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+  
+  /* Seção: secao familia hero */
+  .secao-familia-hero {
+    padding: 18px 0 26px;
+  }
+
+  /* Contêiner: conteiner familia hero */
+  .conteiner-familia-hero {
+    padding: 22px 16px;
+    gap: 18px;
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Título: titulo familia hero */
+  .titulo-familia-hero {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  /* Texto: texto familia hero */
+  .texto-familia-hero {
+    font-size: 13px;
+  }
+
+  /* Linha: linha resumo familia */
+  .linha-resumo-familia {
+    gap: 10px;
+  }
+
+  
+  /* Chip: chip resumo familia */
+  .chip-resumo-familia {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Área: area botoes hero familia */
+  .area-botoes-hero-familia {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-hero-familia-principal,
+
+  /* Botão: botao hero familia secundario */
+  .botao-hero-familia-secundario {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  /* Cartão: cartao hero familia imagem */
+  .cartao-hero-familia-imagem {
+    min-height: 220px;
+    border-radius: 18px;
+  }
+
+  /* Estilo do bloco "faixa impacto hero" */
+  .faixa-impacto-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 14px;
+  }
+
+  
+  /* Seção: secao familia realidade */
+  .secao-familia-realidade {
+    padding: 18px 0 26px;
+  }
+
+  /* Contêiner: conteiner familia realidade */
+  .conteiner-familia-realidade {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .coluna-realidade,
+
+  /* Estilo do bloco "coluna solucao" */
+  .coluna-solucao {
+    padding: 20px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .titulo-realidade-familia,
+
+  /* Título: titulo solucao familia */
+  .titulo-solucao-familia {
+    font-size: 18px;
+  }
+
+  /* Grade: grade dados realidade */
+  .grade-dados-realidade {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Estilo do bloco "valor dado realidade" */
+  .valor-dado-realidade {
+    font-size: 20px;
+  }
+
+  
+  /* Seção: secao familia trilha */
+  .secao-familia-trilha {
+    padding: 22px 0 28px;
+  }
+
+  /* Contêiner: conteiner familia trilha */
+  .conteiner-familia-trilha {
+    padding: 0 16px;
+  }
+
+  /* Título: titulo familia trilha */
+  .titulo-familia-trilha {
+    font-size: 20px;
+  }
+
+  /* Linha: linha trilha familia */
+  .linha-trilha-familia {
+    grid-template-columns: 1fr;
+  }
+
+  
+  /* Seção: secao familia cadastro detalhado */
+  .secao-familia-cadastro-detalhado {
+    padding: 22px 0 28px;
+  }
+
+  /* Contêiner: conteiner familia cadastro detalhado */
+  .conteiner-familia-cadastro-detalhado {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .coluna-cadastro-texto,
+
+  /* Informação: coluna cadastro info */
+  .coluna-cadastro-info {
+    padding: 20px 18px 18px;
+    border-radius: 18px;
+  }
+
+  /* Título: titulo familia cadastro */
+  .titulo-familia-cadastro {
+    font-size: 18px;
+  }
+
+  /* Grade: grade requisitos familia */
+  .grade-requisitos-familia {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Botão: botao iniciar cadastro familia */
+  .botao-iniciar-cadastro-familia {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  
+  /* Seção: secao familia duvidas */
+  .secao-familia-duvidas {
+    padding: 22px 0 28px;
+  }
+
+  /* Contêiner: conteiner familia duvidas */
+  .conteiner-familia-duvidas {
+    padding: 0 16px;
+  }
+
+  /* Título: titulo familia duvidas */
+  .titulo-familia-duvidas {
+    font-size: 20px;
+  }
+
+  /* Grade: grade familia duvidas */
+  .grade-familia-duvidas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  
+  /* Seção: secao cta familia final */
+  .secao-cta-familia-final {
+    padding: 28px 0 32px;
+  }
+
+  /* Contêiner: conteiner cta familia final */
+  .conteiner-cta-familia-final {
+    padding: 0 16px;
+  }
+
+  /* Título: titulo cta familia final */
+  .titulo-cta-familia-final {
+    font-size: 20px;
+  }
+
+  /* Botão: botao cta familia final */
+  .botao-cta-familia-final {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  /* Linha: linha divisoria familia */
+  .linha-divisoria-familia {
+    width: 26%;
+  }
+}
+
+:root {
+  --azul: #00123B;
+  --azul-claro: #0A245F;
+  --verde: #2E8B57;
+  --laranja: #FF7A00;
+
+  --cinza: #F5F6FA;
+  --cinza-2: #EEF1F7;
+  --branco: #FFFFFF;
+
+  --texto-suave: #4A5670;
+
+  --raio-12: 12px;
+  --raio-16: 16px;
+  --raio-20: 20px;
+  --raio-24: 24px;
+  --raio-28: 28px;
+
+  --sombra-1: 0 8px 20px rgba(0, 0, 0, 0.06);
+  --sombra-2: 0 14px 34px rgba(0, 0, 0, 0.08);
+
+  --transicao: 0.22s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+/* Ajustes de layout para tamanhos de tela específicos */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--cinza);
+  color: var(--azul);
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  width: 100%;
+}
+
+/* Estilo do bloco "conteudo principal como" */
+.conteudo-principal-como {
+  width: 100%;
+}
+
+/* Cabeçalho: cabecalho secao */
+.cabecalho-secao {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 30px;
+}
+
+/* Título azul escuro e em negrito de uma seção da página */
+.titulo-secao {
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Seção: subtitulo secao */
+.subtitulo-secao {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.botao-primario,
+
+/* Botão: botao secundario */
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transicao);
+  cursor: pointer;
+  border: 0;
+}
+
+/* Botão: botao primario */
+.botao-primario {
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+}
+
+/* Botão: botao primario */
+.botao-primario:hover {
+  transform: translateY(-1px);
+  opacity: 0.98;
+}
+
+/* Botão: botao secundario */
+.botao-secundario {
+  background: var(--branco);
+  color: var(--azul);
+  border: 2px solid rgba(0, 18, 59, 0.12);
+}
+
+/* Botão: botao secundario */
+.botao-secundario:hover {
+  background: var(--cinza-2);
+}
+
+/* Seção: secao hero como */
+.secao-hero-como {
+  width: 100%;
+  padding: 56px 0 68px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(46, 139, 87, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 122, 0, 0.08), transparent 45%),
+    linear-gradient(180deg, #FFFFFF 0%, #F6F8FD 100%);
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner hero como */
+.conteiner-hero-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 44px;
+  align-items: center;
+}
+
+/* Estilo do bloco "etiqueta hero" */
+.etiqueta-hero {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(46, 139, 87, 0.12);
+  color: var(--verde);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo hero */
+.titulo-hero {
+  font-size: 40px;
+  line-height: 1.12;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+}
+
+/* Texto: texto hero */
+.texto-hero {
+  font-size: 15.2px;
+  line-height: 1.65;
+  margin: 0 0 22px 0;
+  color: var(--texto-suave);
+}
+
+/* Linha: linha metricas hero */
+.linha-metricas-hero {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 22px 0;
+}
+
+/* Cartão: cartao metrica */
+.cartao-metrica {
+  background: var(--branco);
+  border-radius: var(--raio-12);
+  padding: 12px 12px 10px;
+  min-width: 180px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Cartão: cartao metrica strong */
+.cartao-metrica strong {
+  font-size: 12px;
+}
+
+/* Cartão: cartao metrica span */
+.cartao-metrica span {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+/* Linha: linha botoes hero */
+.linha-botoes-hero {
+  display: flex;
+  gap: 12px;
+}
+
+/* Imagem: coluna hero imagem */
+.coluna-hero-imagem {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Estilo do bloco "moldura hero" */
+.moldura-hero {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  border-radius: var(--raio-28);
+  overflow: hidden;
+  background: var(--branco);
+  box-shadow: var(--sombra-2);
+}
+
+/* Imagem: imagem hero */
+.imagem-hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilo do bloco "faixa hero" */
+.faixa-hero {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(0, 18, 59, 0.92);
+  color: var(--branco);
+  border-radius: var(--raio-16);
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Título: faixa titulo */
+.faixa-titulo {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Texto: faixa texto */
+.faixa-texto {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* Seção: secao pilares como */
+.secao-pilares-como {
+  width: 100%;
+  padding: 60px 0 70px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner pilares como */
+.conteiner-pilares-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade pilares como */
+.grade-pilares-como {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao pilar persona */
+.cartao-pilar-persona {
+  background: var(--branco);
+  border-radius: var(--raio-24);
+  padding: 26px 22px 22px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: var(--transicao);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 230px;
+}
+
+/* Cartão: cartao pilar persona */
+.cartao-pilar-persona:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-2);
+}
+
+/* Ícone: icone pilar persona */
+.icone-pilar-persona {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Título: titulo pilar persona */
+.titulo-pilar-persona {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  color: var(--azul);
+}
+
+/* Texto: texto pilar persona */
+.texto-pilar-persona {
+  font-size: 12.8px;
+  line-height: 1.55;
+  margin: 0;
+  color: var(--texto-suave);
+  max-width: 210px;
+}
+
+/* Seção: secao jornada como */
+.secao-jornada-como {
+  width: 100%;
+  padding: 64px 0 76px;
+  display: flex;
+  justify-content: center;
+  background: var(--branco);
+}
+
+/* Contêiner: conteiner jornada como */
+.conteiner-jornada-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Linha: linha timeline como */
+.linha-timeline-como {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Cartão: cartao etapa como */
+.cartao-etapa-como {
+  background: linear-gradient(180deg, var(--cinza) 0%, #FFFFFF 100%);
+  border-radius: var(--raio-24);
+  padding: 22px 20px 20px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: var(--transicao);
+}
+
+/* Cartão: cartao etapa como */
+.cartao-etapa-como:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-2);
+}
+
+/* Estilo do bloco "numero etapa" */
+.numero-etapa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--laranja);
+  color: var(--branco);
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Título: titulo etapa */
+.titulo-etapa {
+  font-size: 15.6px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+/* Texto: texto etapa */
+.texto-etapa {
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* Seção: secao regras como */
+.secao-regras-como {
+  width: 100%;
+  padding: 60px 0 70px;
+  display: flex;
+  justify-content: center;
+  background: var(--cinza);
+}
+
+/* Contêiner: conteiner regras como */
+.conteiner-regras-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade regras como */
+.grade-regras-como {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao regra como */
+.cartao-regra-como {
+  background: var(--branco);
+  border-radius: var(--raio-22);
+  padding: 26px 24px 22px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Título: titulo regra */
+.titulo-regra {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+/* Texto: texto regra */
+.texto-regra {
+  font-size: 13.2px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* Seção: secao perfis como */
+.secao-perfis-como {
+  width: 100%;
+  padding: 64px 0 76px;
+  display: flex;
+  justify-content: center;
+  background: var(--branco);
+}
+
+/* Contêiner: conteiner perfis como */
+.conteiner-perfis-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade perfis como */
+.grade-perfis-como {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao perfil como */
+.cartao-perfil-como {
+  background: var(--branco);
+  border-radius: var(--raio-24);
+  padding: 28px 28px 24px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cartão: cartao perfil como */
+.cartao-perfil-como::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--azul);
+}
+
+/* Estilo do bloco "perfil beneficiario" */
+.perfil-beneficiario::before {
+  background: var(--verde);
+}
+
+/* Doador: perfil doador */
+.perfil-doador::before {
+  background: var(--laranja);
+}
+
+/* Voluntário: perfil voluntario */
+.perfil-voluntario::before {
+  background: var(--azul);
+}
+
+/* Ponto de coleta: perfil ponto coleta */
+.perfil-ponto-coleta::before {
+  background: var(--azul-claro);
+}
+
+/* Título: titulo perfil */
+.titulo-perfil {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 8px 0 12px 0;
+}
+
+/* Lista: lista perfil */
+.lista-perfil {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.4px;
+  line-height: 1.6;
+  color: var(--texto-suave);
+}
+
+/* Lista: lista perfil li */
+.lista-perfil li {
+  margin-bottom: 6px;
+}
+
+/* Seção: secao tecnologia como */
+.secao-tecnologia-como {
+  width: 100%;
+  padding: 64px 0 76px;
+  display: flex;
+  justify-content: center;
+  background: var(--cinza);
+}
+
+/* Contêiner: conteiner tecnologia como */
+.conteiner-tecnologia-como {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade tecnologia como */
+.grade-tecnologia-como {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao tecnologia como */
+.cartao-tecnologia-como {
+  background: var(--branco);
+  border-radius: var(--raio-22);
+  padding: 26px 24px 22px;
+  box-shadow: var(--sombra-1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: var(--transicao);
+}
+
+/* Cartão: cartao tecnologia como */
+.cartao-tecnologia-como:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-2);
+}
+
+/* Estilo do bloco "etiqueta tecnologia" */
+.etiqueta-tecnologia {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0, 18, 59, 0.08);
+  color: var(--azul);
+  font-size: 9.8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo tecnologia */
+.titulo-tecnologia {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+/* Texto: texto tecnologia */
+.texto-tecnologia {
+  font-size: 13.2px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* Seção: secao cta como */
+.secao-cta-como {
+  width: 100%;
+  padding: 70px 0 80px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--azul) 0%, #031B4F 100%);
+  color: var(--branco);
+}
+
+/* Contêiner: conteiner cta como */
+.conteiner-cta-como {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Título: titulo cta */
+.titulo-cta {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+/* Texto: texto cta */
+.texto-cta {
+  font-size: 14.8px;
+  line-height: 1.6;
+  margin: 0 0 22px 0;
+  opacity: 0.9;
+}
+
+/* Linha: linha botoes cta */
+.linha-botoes-cta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Estilo do bloco "animar entrada" */
+.animar-entrada {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do bloco "js ativo .animar entrada" */
+.js-ativo .animar-entrada {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estilo do bloco "js ativo .animar entrada.visivel" */
+.js-ativo .animar-entrada.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (max-width: 1024px) {
+  .conteiner-hero-como,
+  .conteiner-pilares-como,
+  .conteiner-jornada-como,
+  .conteiner-perfis-como,
+  .conteiner-regras-como,
+  .conteiner-tecnologia-como,
+
+  /* Contêiner: conteiner cta como */
+  .conteiner-cta-como {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Seção: secao hero como */
+  .secao-hero-como {
+    padding: 44px 0 58px;
+  }
+
+  /* Contêiner: conteiner hero como */
+  .conteiner-hero-como {
+    gap: 32px;
+  }
+
+  /* Linha: linha metricas hero */
+  .linha-metricas-hero {
+    flex-wrap: wrap;
+  }
+
+  /* Cartão: cartao metrica */
+  .cartao-metrica {
+    min-width: 0;          
+    flex: 1 1 220px;       
+  }
+
+  .linha-botoes-hero,
+
+  /* Linha: linha botoes cta */
+  .linha-botoes-cta {
+    flex-wrap: wrap;
+  }
+
+ 
+  /* Grade: grade pilares como */
+  .grade-pilares-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Linha: linha timeline como */
+  .linha-timeline-como {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grade-regras-como,
+
+  /* Grade: grade tecnologia como */
+  .grade-tecnologia-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ajustes para tablets (telas até 900px) */
+@media (max-width: 900px) {
+
+  /* Contêiner: conteiner hero como */
+  .conteiner-hero-como {
+    grid-template-columns: 1fr;
+  }
+
+  /* Imagem: coluna hero imagem */
+  .coluna-hero-imagem {
+    justify-content: center;
+  }
+
+  /* Estilo do bloco "moldura hero" */
+  .moldura-hero {
+    max-width: 720px;
+    min-height: 320px;
+  }
+
+  /* Linha: linha timeline como */
+  .linha-timeline-como {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+  .conteiner-hero-como,
+  .conteiner-pilares-como,
+  .conteiner-jornada-como,
+  .conteiner-perfis-como,
+  .conteiner-regras-como,
+  .conteiner-tecnologia-como,
+
+  /* Contêiner: conteiner cta como */
+  .conteiner-cta-como {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Seção: secao hero como */
+  .secao-hero-como {
+    padding: 34px 0 46px;
+  }
+
+  /* Título: titulo hero */
+  .titulo-hero {
+    font-size: clamp(24px, 7.6vw, 30px);
+    line-height: 1.15;
+  }
+
+  /* Texto: texto hero */
+  .texto-hero {
+    font-size: 14.5px;
+  }
+
+  /* Linha: linha metricas hero */
+  .linha-metricas-hero {
+    flex-direction: column;
+  }
+
+  /* Cartão: cartao metrica */
+  .cartao-metrica {
+    width: 100%;
+    flex: none;
+  }
+
+  .linha-botoes-hero,
+
+  /* Linha: linha botoes cta */
+  .linha-botoes-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-primario,
+
+  /* Botão: botao secundario */
+  .botao-secundario {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Estilo do bloco "moldura hero" */
+  .moldura-hero {
+    min-height: 240px;
+    border-radius: var(--raio-24);
+  }
+
+  /* Estilo do bloco "faixa hero" */
+  .faixa-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .grade-pilares-como,
+  .linha-timeline-como,
+  .grade-perfis-como,
+  .grade-regras-como,
+
+  /* Grade: grade tecnologia como */
+  .grade-tecnologia-como {
+    grid-template-columns: 1fr;
+  }
+
+  .secao-pilares-como,
+  .secao-jornada-como,
+  .secao-regras-como,
+  .secao-perfis-como,
+
+  /* Seção: secao tecnologia como */
+  .secao-tecnologia-como {
+    padding: 44px 0 54px;
+  }
+
+  /* Seção: secao cta como */
+  .secao-cta-como {
+    padding: 52px 0 62px;
+  }
+}
+
+:root{
+  --azul:#00123B;
+  --verde:#2E8B57;
+  --laranja:#FF7A00;
+  --cinza:#F5F6FA;
+  --branco:#FFFFFF;
+  --sombra-suave:0 8px 20px rgba(0,0,0,.06);
+  --sombra-media:0 14px 34px rgba(0,0,0,.08);
+  --raio-18:18px;
+  --raio-22:22px;
+  --raio-28:28px;
+  --transicao:.2s ease;
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:80px;
+}
+
+/* Ajustes de layout para tamanhos de tela específicos */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+}
+
+*{box-sizing:border-box;}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  color:var(--azul);
+  background:var(--cinza);
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina{
+  width:100%;
+  min-height:100vh;
+}
+
+/* Estilo do bloco "conteudo principal" */
+.conteudo-principal{
+  width:100%;
+}
+
+/* Cabeçalho: cabecalho secao */
+.cabecalho-secao{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 28px;
+  padding:0 12px;
+}
+
+/* Título azul escuro e em negrito de uma seção da página */
+.titulo-secao{
+  font-size:28px;
+  line-height:1.2;
+  margin:0 0 10px 0;
+  font-weight:700;
+}
+
+/* Seção: subtitulo secao */
+.subtitulo-secao{
+  font-size:14.5px;
+  line-height:1.6;
+  margin:0;
+}
+
+/* Texto: texto secao */
+.texto-secao{
+  font-size:14.5px;
+  line-height:1.65;
+  margin:0 0 12px 0;
+}
+
+.botao-primario,
+
+/* Botão: botao secundario */
+.botao-secundario{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 26px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  transition:var(--transicao);
+  cursor:pointer;
+}
+
+/* Botão: botao primario */
+.botao-primario{
+  background:var(--verde);
+  color:var(--branco);
+  box-shadow:0 6px 14px rgba(0,0,0,.14);
+}
+
+/* Botão: botao primario */
+.botao-primario:hover{
+  transform:translateY(-1px);
+  opacity:.98;
+}
+
+/* Botão: botao secundario */
+.botao-secundario{
+  background:var(--branco);
+  color:var(--verde);
+  border:2px solid var(--verde);
+}
+
+/* Botão: botao secundario */
+.botao-secundario:hover{
+  background:#f0f7f4;
+}
+
+/* Seção: secao hero voluntario */
+.secao-hero-voluntario{
+  width:100%;
+  padding:48px 0 40px;
+  display:flex;
+  justify-content:center;
+  background:linear-gradient(180deg,#ffffff 0%, #f6f8fd 100%);
+}
+
+/* Contêiner: conteiner hero voluntario */
+.conteiner-hero-voluntario{
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:36px;
+  align-items:center;
+}
+
+/* Estilo do bloco "etiqueta hero" */
+.etiqueta-hero{
+  display:inline-flex;
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(46,139,87,.12);
+  color:var(--verde);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+/* Título: titulo hero */
+.titulo-hero{
+  font-size:36px;
+  line-height:1.15;
+  margin:0 0 12px 0;
+}
+
+/* Estilo do bloco "subtitulo hero" */
+.subtitulo-hero{
+  font-size:15.2px;
+  line-height:1.65;
+  margin:0 0 18px 0;
+  max-width:560px;
+}
+
+/* Linha: linha destaques hero */
+.linha-destaques-hero{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 22px 0;
+}
+
+/* Cartão: cartao destaque hero */
+.cartao-destaque-hero{
+  background:var(--branco);
+  border-radius:14px;
+  padding:10px 12px;
+  min-width:190px;
+  box-shadow:var(--sombra-suave);
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+/* Cartão: cartao destaque hero strong */
+.cartao-destaque-hero strong{
+  font-size:12px;
+}
+
+/* Cartão: cartao destaque hero span */
+.cartao-destaque-hero span{
+  font-size:11px;
+  opacity:.85;
+}
+
+/* Linha: linha botoes hero */
+.linha-botoes-hero{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* Estilo do bloco "moldura hero" */
+.moldura-hero{
+  position:relative;
+  background:var(--branco);
+  border-radius:var(--raio-28);
+  overflow:hidden;
+  box-shadow:var(--sombra-media);
+  min-height:320px;
+}
+
+/* Imagem: imagem hero */
+.imagem-hero{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Estilo do bloco "etiqueta flutuante" */
+.etiqueta-flutuante{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  background:rgba(0,18,59,.92);
+  color:var(--branco);
+  border-radius:16px;
+  padding:10px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+/* Título: titulo etiqueta */
+.titulo-etiqueta{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+/* Texto: texto etiqueta */
+.texto-etiqueta{
+  font-size:11px;
+  opacity:.9;
+}
+
+/* Seção: secao definicao voluntario nova */
+.secao-definicao-voluntario-nova{
+  width:100%;
+  padding:48px 0 56px;
+  display:flex;
+  justify-content:center;
+}
+
+/* Contêiner: conteiner definicao novo */
+.conteiner-definicao-novo{
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+}
+
+/* Card: card definicao */
+.card-definicao{
+  background:var(--branco);
+  border-radius:var(--raio-28);
+  box-shadow:var(--sombra-suave);
+  padding:34px 34px 30px;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:34px;
+  align-items:center;
+}
+
+/* Linha: linha chips definicao */
+.linha-chips-definicao{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+/* Chip: chip definicao */
+.chip-definicao{
+  background:#eef1fb;
+  color:var(--azul);
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:6px 10px;
+  border-radius:999px;
+}
+
+/* Imagem: imagem definicao */
+.imagem-definicao{
+  width:100%;
+  max-width:460px;
+  border-radius:var(--raio-22);
+  object-fit:cover;
+  display:block;
+  margin-left:auto;
+}
+
+/* Seção: secao motivos voluntario nova */
+.secao-motivos-voluntario-nova{
+  width:100%;
+  padding:48px 0 56px;
+  display:flex;
+  justify-content:center;
+  background:var(--cinza);
+}
+
+/* Contêiner: conteiner motivos */
+.conteiner-motivos{
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+}
+
+/* Grade: grade motivos */
+.grade-motivos{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+/* Cartão: cartao motivo */
+.cartao-motivo{
+  background:var(--branco);
+  border-radius:var(--raio-22);
+  padding:22px 22px 20px;
+  box-shadow:var(--sombra-suave);
+  transition:var(--transicao);
+  border:1px solid rgba(0,0,0,.04);
+}
+
+/* Cartão: cartao motivo */
+.cartao-motivo:hover{
+  transform:translateY(-4px);
+}
+
+/* Estilo do bloco "selo motivo" */
+.selo-motivo{
+  display:inline-flex;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+/* Estilo do bloco "selo motivo.verde" */
+.selo-motivo.verde{
+  background:rgba(46,139,87,.12);
+  color:var(--verde);
+}
+
+/* Estilo do bloco "selo motivo.laranja" */
+.selo-motivo.laranja{
+  background:rgba(255,122,0,.12);
+  color:var(--laranja);
+}
+
+/* Estilo do bloco "selo motivo.azul" */
+.selo-motivo.azul{
+  background:#eef1fb;
+  color:var(--azul);
+}
+
+/* Título: titulo cartao */
+.titulo-cartao{
+  font-size:18px;
+  margin:0 0 8px 0;
+  font-weight:700;
+}
+
+/* Texto: texto cartao */
+.texto-cartao{
+  font-size:13.5px;
+  line-height:1.6;
+  margin:0;
+}
+
+/* Seção: secao cadastro voluntario nova */
+.secao-cadastro-voluntario-nova{
+  width:100%;
+  padding:54px 0 60px;
+  display:flex;
+  justify-content:center;
+  background:var(--branco);
+}
+
+/* Contêiner: conteiner cadastro */
+.conteiner-cadastro{
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+}
+
+/* Linha: linha passos */
+.linha-passos{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+
+/* Cartão: cartao passo */
+.cartao-passo{
+  background:var(--cinza);
+  border-radius:var(--raio-22);
+  padding:20px 18px 18px;
+  box-shadow:var(--sombra-suave);
+}
+
+/* Etapa de progresso: numero passo */
+.numero-passo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--laranja);
+  color:var(--branco);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+/* Área: area botao cadastro */
+.area-botao-cadastro{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+}
+
+/* Seção: secao beneficios voluntariado nova */
+.secao-beneficios-voluntariado-nova {
+  width: 100%;
+  padding: 56px 0 64px;
+  display: flex;
+  justify-content: center;
+  background: var(--cinza);
+}
+
+/* Contêiner: conteiner beneficios */
+.conteiner-beneficios {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade beneficios */
+.grade-beneficios {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+/* Cartão: cartao beneficio */
+.cartao-beneficio {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 32px 16px 26px;
+  box-shadow: 0 4px 18px rgba(0, 18, 59, 0.07);
+  border: 1px solid rgba(0, 18, 59, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transicao);
+}
+
+/* Cartão: cartao beneficio */
+.cartao-beneficio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0, 18, 59, 0.12);
+}
+
+/* Ícone: icone beneficio */
+.icone-beneficio {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+/* Cartão: cartao beneficio .titulo cartao */
+.cartao-beneficio .titulo-cartao {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--azul);
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+/* Cartão: cartao beneficio .texto cartao */
+.cartao-beneficio .texto-cartao {
+  font-size: 13px;
+  color: #5a6476;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Seção: secao cta voluntario nova */
+.secao-cta-voluntario-nova{
+  width:100%;
+  padding:64px 0 70px;
+  display:flex;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--azul), #0a245f);
+}
+
+/* Contêiner: conteiner cta */
+.conteiner-cta{
+  max-width:900px;
+  width:100%;
+  padding:0 24px;
+  text-align:center;
+  color:var(--branco);
+}
+
+/* Título: titulo cta */
+.titulo-cta{
+  font-size:30px;
+  margin:0 0 10px 0;
+}
+
+/* Estilo do bloco "subtitulo cta" */
+.subtitulo-cta{
+  font-size:14.5px;
+  line-height:1.6;
+  margin:0 0 22px 0;
+  opacity:.95;
+}
+
+/* Linha: linha divisoria */
+.linha-divisoria{
+  border:none;
+  height:1px;
+  background:rgba(0,0,0,.06);
+  margin:0;
+}
+
+/* Estilo do bloco "animar entrada" */
+.animar-entrada{
+  opacity:1;
+  transform:none;
+}
+
+/* Estilo do bloco "js ativo .animar entrada" */
+.js-ativo .animar-entrada{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+/* Estilo do bloco "js ativo .animar entrada.visivel" */
+.js-ativo .animar-entrada.visivel{
+  opacity:1;
+  transform:translateY(0);
+}
+
+:root {
+  --azul: #00123B;
+  --verde: #2E8B57;
+  --laranja: #FF7A00;
+  --cinza: #F5F6FA;
+  --branco: #FFFFFF;
+  --sombra-suave: 0 8px 20px rgba(0, 0, 0, 0.06);
+  --sombra-media: 0 14px 34px rgba(0, 0, 0, 0.08);
+  --raio-18: 18px;
+  --raio-22: 22px;
+  --raio-28: 28px;
+  --transicao: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Ajustes de layout para tamanhos de tela específicos */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--azul);
+  background: var(--cinza);
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Estilo do bloco "conteudo principal" */
+.conteudo-principal {
+  width: 100%;
+}
+
+/* Cabeçalho: cabecalho secao */
+.cabecalho-secao {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 28px;
+  padding: 0 12px;
+}
+
+/* Título azul escuro e em negrito de uma seção da página */
+.titulo-secao {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+/* Seção: subtitulo secao */
+.subtitulo-secao {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Texto: texto secao */
+.texto-secao {
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin: 0 0 12px 0;
+}
+
+.botao-primario,
+
+/* Botão: botao secundario */
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transicao);
+  cursor: pointer;
+}
+
+/* Botão: botao primario */
+.botao-primario {
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+}
+
+/* Botão: botao primario */
+.botao-primario:hover {
+  transform: translateY(-1px);
+  opacity: 0.98;
+}
+
+/* Botão: botao secundario */
+.botao-secundario {
+  background: var(--branco);
+  color: var(--verde);
+  border: 2px solid var(--verde);
+}
+
+/* Botão: botao secundario */
+.botao-secundario:hover {
+  background: #f0f7f4;
+}
+
+/* Seção: secao hero voluntario */
+.secao-hero-voluntario {
+  width: 100%;
+  padding: 48px 0 40px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8fd 100%);
+}
+
+/* Contêiner: conteiner hero voluntario */
+.conteiner-hero-voluntario {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 36px;
+  align-items: center;
+}
+
+/* Estilo do bloco "etiqueta hero" */
+.etiqueta-hero {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(46, 139, 87, 0.12);
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo hero */
+.titulo-hero {
+  font-size: 36px;
+  line-height: 1.15;
+  margin: 0 0 12px 0;
+}
+
+/* Estilo do bloco "subtitulo hero" */
+.subtitulo-hero {
+  font-size: 15.2px;
+  line-height: 1.65;
+  margin: 0 0 18px 0;
+  max-width: 560px;
+}
+
+/* Linha: linha destaques hero */
+.linha-destaques-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 22px 0;
+}
+
+/* Cartão: cartao destaque hero */
+.cartao-destaque-hero {
+  background: var(--branco);
+  border-radius: 14px;
+  padding: 10px 12px;
+  min-width: 190px;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Cartão: cartao destaque hero strong */
+.cartao-destaque-hero strong {
+  font-size: 12px;
+}
+
+/* Cartão: cartao destaque hero span */
+.cartao-destaque-hero span {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* Linha: linha botoes hero */
+.linha-botoes-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Estilo do bloco "moldura hero" */
+.moldura-hero {
+  position: relative;
+  background: var(--branco);
+  border-radius: var(--raio-28);
+  overflow: hidden;
+  box-shadow: var(--sombra-media);
+  min-height: 320px;
+}
+
+/* Imagem: imagem hero */
+.imagem-hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilo do bloco "etiqueta flutuante" */
+.etiqueta-flutuante {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(0, 18, 59, 0.92);
+  color: var(--branco);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Título: titulo etiqueta */
+.titulo-etiqueta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Texto: texto etiqueta */
+.texto-etiqueta {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* Seção: secao definicao voluntario nova */
+.secao-definicao-voluntario-nova {
+  width: 100%;
+  padding: 48px 0 56px;
+  display: flex;
+  justify-content: center;
+  background: var(--cinza);
+}
+
+/* Contêiner: conteiner definicao novo */
+.conteiner-definicao-novo {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Card: card definicao */
+.card-definicao {
+  background: var(--branco);
+  border-radius: var(--raio-28);
+  box-shadow: var(--sombra-suave);
+  padding: 34px 34px 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 34px;
+  align-items: center;
+}
+
+/* Linha: linha chips definicao */
+.linha-chips-definicao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Chip: chip definicao */
+.chip-definicao {
+  background: #eef1fb;
+  color: var(--azul);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+/* Imagem: imagem definicao */
+.imagem-definicao {
+  width: 50%;
+  max-width: 460px;
+  border-radius: var(--raio-22);
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+}
+
+/* Seção: secao motivos voluntario nova */
+.secao-motivos-voluntario-nova {
+  width: 100%;
+  padding: 48px 0 56px;
+  display: flex;
+  justify-content: center;
+  background: var(--cinza);
+}
+
+/* Contêiner: conteiner motivos */
+.conteiner-motivos {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade motivos */
+.grade-motivos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao motivo */
+.cartao-motivo {
+  background: var(--branco);
+  border-radius: var(--raio-22);
+  padding: 22px 22px 20px;
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicao);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Cartão: cartao motivo */
+.cartao-motivo:hover {
+  transform: translateY(-4px);
+}
+
+/* Estilo do bloco "selo motivo" */
+.selo-motivo {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Estilo do bloco "selo motivo.verde" */
+.selo-motivo.verde {
+  background: rgba(46, 139, 87, 0.12);
+  color: var(--verde);
+}
+
+/* Estilo do bloco "selo motivo.laranja" */
+.selo-motivo.laranja {
+  background: rgba(255, 122, 0, 0.12);
+  color: var(--laranja);
+}
+
+/* Estilo do bloco "selo motivo.azul" */
+.selo-motivo.azul {
+  background: #eef1fb;
+  color: var(--azul);
+}
+
+/* Título: titulo cartao */
+.titulo-cartao {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+/* Texto: texto cartao */
+.texto-cartao {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Seção: secao cadastro voluntario nova */
+.secao-cadastro-voluntario-nova {
+  width: 100%;
+  padding: 54px 0 60px;
+  display: flex;
+  justify-content: center;
+  background: var(--branco);
+}
+
+/* Contêiner: conteiner cadastro */
+.conteiner-cadastro {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Linha: linha passos */
+.linha-passos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao passo */
+.cartao-passo {
+  background: var(--cinza);
+  border-radius: var(--raio-22);
+  padding: 20px 18px 18px;
+  box-shadow: var(--sombra-suave);
+}
+
+/* Etapa de progresso: numero passo */
+.numero-passo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--laranja);
+  color: var(--branco);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Área: area botao cadastro */
+.area-botao-cadastro {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Seção: secao cta voluntario nova */
+.secao-cta-voluntario-nova {
+  width: 100%;
+  padding: 64px 0 70px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--azul), #0a245f);
+}
+
+/* Contêiner: conteiner cta */
+.conteiner-cta {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+  color: var(--branco);
+}
+
+/* Título: titulo cta */
+.titulo-cta {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+}
+
+/* Estilo do bloco "subtitulo cta" */
+.subtitulo-cta {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 22px 0;
+  opacity: 0.95;
+}
+
+/* Linha: linha divisoria */
+.linha-divisoria {
+  border: none;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0;
+}
+
+/* Estilo do bloco "animar entrada" */
+.animar-entrada {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do bloco "js ativo .animar entrada" */
+.js-ativo .animar-entrada {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estilo do bloco "js ativo .animar entrada.visivel" */
+.js-ativo .animar-entrada.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (max-width: 1024px) {
+
+  /* Grade: grade beneficios */
+  .grade-beneficios {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+
+  /* Grade: grade beneficios */
+  .grade-beneficios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  /* Cartão: cartao beneficio */
+  .cartao-beneficio {
+    padding: 24px 12px 20px;
+  }
+}
+
+/* Ajustes para celulares pequenos (telas até 380px) */
+@media (max-width: 380px) {
+
+  /* Grade: grade beneficios */
+  .grade-beneficios {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root {
+  --azul: #00123b;
+  --verde: #2e8b57;
+  --laranja: #ff7a00;
+  --amarelo: #ffd54f;
+
+  --texto: #00123b;
+  --texto-suave: rgba(0, 18, 59, 0.82);
+
+  --cinza: #eef1f7;
+  --branco: #ffffff;
+  --superficie: #ffffff;
+  --superficie-2: #f7f9fd;
+
+  --borda-suave: rgba(0, 18, 59, 0.14);
+
+  --sombra-suave: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+  --tinta-azul: rgba(0, 18, 59, 0.05);
+  --tinta-verde: rgba(46, 139, 87, 0.07);
+  --tinta-laranja: rgba(255, 122, 0, 0.08);
+  --tinta-amarelo: rgba(255, 213, 79, 0.14);
+
+  --raio-20: 20px;
+  --raio-24: 24px;
+
+  --transicao: 0.2s ease;
+}
+
+/* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Ajustes de layout para tamanhos de tela específicos */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Estilo do bloco "img" */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--texto);
+  background: var(--cinza);
+  overflow-x: hidden;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Estilo do bloco "conteudo principal" */
+.conteudo-principal {
+  width: 100%;
+}
+
+/* Cabeçalho: cabecalho secao */
+.cabecalho-secao {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 28px;
+  padding: 0 12px;
+}
+
+/* Título azul escuro e em negrito de uma seção da página */
+.titulo-secao {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+/* Seção: subtitulo secao */
+.subtitulo-secao {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* Seção: secao hero doador */
+.secao-hero-doador {
+  width: 100%;
+  padding: 44px 0 30px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--branco) 0%, var(--superficie-2) 100%);
+  border-bottom: 1px solid rgba(0, 18, 59, 0.06);
+}
+
+/* Contêiner: conteiner hero doador */
+.conteiner-hero-doador {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 36px;
+  align-items: center;
+}
+
+/* Estilo do bloco "etiqueta hero" */
+.etiqueta-hero {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(46, 139, 87, 0.14);
+  border: 1px solid rgba(46, 139, 87, 0.22);
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Título: titulo hero */
+.titulo-hero {
+  font-size: 36px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+/* Estilo do bloco "subtitulo hero" */
+.subtitulo-hero {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 18px;
+  max-width: 560px;
+  color: var(--texto-suave);
+}
+
+/* Linha: linha beneficios */
+.linha-beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 22px;
+  align-items: flex-start; 
+}
+
+/* Chip: chip beneficio */
+.chip-beneficio {
+  background: var(--superficie);
+  border: 1px solid var(--borda-suave);
+  border-radius: 14px;
+  padding: 10px 12px;
+  min-width: 180px;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  align-self: flex-start; 
+  height: auto;
+  min-height: 0;
+}
+
+/* Chip: chip beneficio strong */
+.chip-beneficio strong {
+  font-size: 12px;
+  color: var(--azul);
+}
+
+/* Chip: chip beneficio span */
+.chip-beneficio span {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+/* Linha: linha botoes hero */
+.linha-botoes-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.botao-primario,
+
+/* Botão: botao secundario */
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transicao);
+  border: 0;
+}
+
+/* Botão: botao primario */
+.botao-primario {
+  background: var(--verde);
+  color: var(--branco);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+/* Botão: botao primario */
+.botao-primario:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+/* Botão: botao secundario */
+.botao-secundario {
+  background: rgba(46, 139, 87, 0.10);
+  color: #155a37;
+  border: 2px solid rgba(46, 139, 87, 0.60);
+}
+
+/* Botão: botao secundario */
+.botao-secundario:hover {
+  background: rgba(46, 139, 87, 0.16);
+}
+
+/* Botão: botao primario.pequeno */
+.botao-primario.pequeno {
+  padding: 10px 22px;
+  font-size: 13px;
+}
+
+/* Estilo do bloco "moldura hero" */
+.moldura-hero {
+  position: relative;
+  background: var(--superficie);
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--raio-24);
+  overflow: hidden;
+  box-shadow: var(--sombra-media);
+  min-height: 320px;
+}
+
+/* Imagem: imagem hero */
+.imagem-hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilo do bloco "faixa hero" */
+.faixa-hero {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(0, 18, 59, 0.94);
+  color: var(--branco);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Título: titulo faixa */
+.titulo-faixa {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Texto: texto faixa */
+.texto-faixa {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Seção: secao caminhos doador */
+.secao-caminhos-doador {
+  width: 100%;
+  padding: 44px 0 52px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--tinta-azul), rgba(255, 255, 255, 0));
+}
+
+/* Contêiner: conteiner caminhos */
+.conteiner-caminhos {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade caminhos */
+.grade-caminhos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao caminho */
+.cartao-caminho {
+  background: var(--superficie);
+  border-radius: var(--raio-24);
+  padding: 22px 22px 20px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicao);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cartão: cartao caminho.destaque */
+.cartao-caminho.destaque {
+  border: 1px solid rgba(46, 139, 87, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Cartão: cartao caminho */
+.cartao-caminho:hover {
+  transform: translateY(-4px);
+}
+
+/* Cartão: etiqueta cartao */
+.etiqueta-cartao {
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--azul);
+  background: rgba(0, 18, 59, 0.06);
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Título: titulo cartao */
+.titulo-cartao {
+  font-size: 18px;
+  margin: 0;
+  color: var(--azul);
+}
+
+/* Texto: texto cartao */
+.texto-cartao {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+/* Lista: lista cartao */
+.lista-cartao {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+
+/* Link: link cartao */
+.link-cartao {
+  margin-top: auto;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--verde);
+  text-decoration: none;
+}
+
+/* Link: link cartao */
+.link-cartao:hover {
+  text-decoration: underline;
+  color: #1f6f45;
+}
+
+/* Seção: secao passo perfil */
+.secao-passo-perfil {
+  width: 100%;
+  padding: 50px 0 56px;
+  display: flex;
+  justify-content: center;
+  background: var(--superficie);
+  border-top: 1px solid rgba(0, 18, 59, 0.06);
+  border-bottom: 1px solid rgba(0, 18, 59, 0.06);
+}
+
+/* Contêiner: conteiner passo perfil */
+.conteiner-passo-perfil {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Estilo do bloco "abas perfis" */
+.abas-perfis {
+  display: none;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* Estilo do bloco "aba perfil" */
+.aba-perfil {
+  border: 1px solid rgba(0, 18, 59, 0.12);
+  background: var(--superficie-2);
+  color: var(--azul);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+/* Estilo do bloco "aba perfil" */
+.aba-perfil:hover {
+  background: rgba(0, 18, 59, 0.06);
+}
+
+/* Estilo do bloco "aba perfil.ativa" */
+.aba-perfil.ativa {
+  background: var(--azul);
+  color: var(--branco);
+  border-color: rgba(0, 18, 59, 0.22);
+}
+
+/* Painel: painel perfis */
+.painel-perfis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* Painel: painel perfil */
+.painel-perfil {
+  width: 100%;
+  max-width: none;
+  display: block;
+  text-align: left;
+}
+
+/* Painel: painel perfil.ativo */
+.painel-perfil.ativo {
+  display: block;
+}
+
+/* Bloco: bloco painel */
+.bloco-painel {
+  background: var(--superficie-2);
+  border-radius: var(--raio-24);
+  padding: 22px 22px 20px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+  display: block;
+  width: 100%;
+  max-width: none;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Título: titulo painel */
+.titulo-painel {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: var(--azul);
+}
+
+/* Lista: lista painel */
+.lista-painel {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--texto-suave);
+}
+
+/* Bloco: bloco painel .botao primario */
+.bloco-painel .botao-primario {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.secao-o-que-doar,
+.secao-planos-doacao,
+.secao-transparencia-doacao,
+
+/* Seção: secao duvidas doadores */
+.secao-duvidas-doadores {
+  width: 100%;
+  padding: 50px 0 56px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Seção: secao o que doar */
+.secao-o-que-doar {
+  background: linear-gradient(180deg, var(--tinta-verde), rgba(255, 255, 255, 0));
+}
+
+/* Seção: secao planos doacao */
+.secao-planos-doacao {
+  background: var(--superficie);
+  border-top: 1px solid rgba(0, 18, 59, 0.06);
+  border-bottom: 1px solid rgba(0, 18, 59, 0.06);
+}
+
+/* Seção: secao transparencia doacao */
+.secao-transparencia-doacao {
+  background: linear-gradient(180deg, var(--tinta-amarelo), rgba(255, 255, 255, 0));
+}
+
+/* Seção: secao duvidas doadores */
+.secao-duvidas-doadores {
+  background: var(--superficie);
+  border-top: 1px solid rgba(0, 18, 59, 0.06);
+}
+
+.conteiner-o-que-doar,
+.conteiner-planos-doacao,
+.conteiner-transparencia-doacao,
+
+/* Contêiner: conteiner duvidas doadores */
+.conteiner-duvidas-doadores {
+  max-width: 1230px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade tipos doacao */
+.grade-tipos-doacao {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao tipo doacao */
+.cartao-tipo-doacao {
+  background: var(--superficie);
+  border-radius: var(--raio-24);
+  padding: 26px 26px 24px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Cartão: cartao tipo doacao .titulo cartao */
+.cartao-tipo-doacao .titulo-cartao {
+  margin: 10px 0 12px;
+}
+
+/* Cartão: cartao tipo doacao .lista cartao */
+.cartao-tipo-doacao .lista-cartao {
+  line-height: 1.75;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Estilo do bloco "etiqueta tipo" */
+.etiqueta-tipo {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 18, 59, 0.06);
+  border: 1px solid rgba(0, 18, 59, 0.10);
+  color: var(--azul);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Grade: grade planos doacao */
+.grade-planos-doacao {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao plano */
+.cartao-plano {
+  background: var(--superficie-2);
+  border-radius: var(--raio-24);
+  padding: 26px 26px 24px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicao);
+}
+
+/* Cartão: cartao plano.destaque */
+.cartao-plano.destaque {
+  background: var(--superficie);
+  border: 1px solid rgba(255, 122, 0, 0.28);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Cartão: cartao plano */
+.cartao-plano:hover {
+  transform: translateY(-4px);
+}
+
+/* Cartão: cartao plano .titulo cartao */
+.cartao-plano .titulo-cartao {
+  margin: 10px 0 6px;
+}
+
+/* Cartão: cartao plano .texto cartao */
+.cartao-plano .texto-cartao {
+  margin: 0 0 12px;
+  font-size: 13px;
+}
+
+/* Cartão: cartao plano .lista cartao */
+.cartao-plano .lista-cartao {
+  line-height: 1.75;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Estilo do bloco "etiqueta plano" */
+.etiqueta-plano {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 122, 0, 0.12);
+  color: var(--laranja);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 122, 0, 0.18);
+}
+
+/* Grade: grade transparencia */
+.grade-transparencia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Cartão: cartao transparencia */
+.cartao-transparencia {
+  background: var(--superficie);
+  border-radius: var(--raio-24);
+  padding: 26px 26px 24px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Cartão: cartao transparencia .titulo cartao */
+.cartao-transparencia .titulo-cartao {
+  margin: 10px 0 8px;
+}
+
+/* Cartão: cartao transparencia .texto cartao */
+.cartao-transparencia .texto-cartao {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Grade: grade duvidas */
+.grade-duvidas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Cartão: cartao duvida */
+.cartao-duvida {
+  background: var(--superficie-2);
+  border-radius: var(--raio-20);
+  padding: 24px 24px 22px;
+  border: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Cartão: cartao duvida .titulo cartao */
+.cartao-duvida .titulo-cartao {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+/* Cartão: cartao duvida .texto cartao */
+.cartao-duvida .texto-cartao {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Texto: texto faq final */
+.texto-faq-final {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+/* Texto: texto faq final a */
+.texto-faq-final a {
+  color: var(--verde);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Texto: texto faq final a */
+.texto-faq-final a:hover {
+  text-decoration: underline;
+  color: #1f6f45;
+}
+
+/* Seção: secao cta final */
+.secao-cta-final {
+  width: 100%;
+  padding: 56px 0 64px;
+  background: var(--azul);
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner cta final */
+.conteiner-cta-final {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+  color: var(--branco);
+}
+
+/* Título: titulo cta */
+.titulo-cta {
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+
+/* Estilo do bloco "subtitulo cta" */
+.subtitulo-cta {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Estilo do bloco "animar entrada" */
+.animar-entrada {
+  opacity: 1;
+  transform: none;
+}
+
+/* Estilo do bloco "js ativo .animar entrada" */
+.js-ativo .animar-entrada {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estilo do bloco "js ativo .animar entrada.visivel" */
+.js-ativo .animar-entrada.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(255, 122, 0, 0.45);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* Ajustes para notebooks e monitores menores (telas até 1024px) */
+@media (max-width: 1024px) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  /* Seção: secao hero doador */
+  .secao-hero-doador {
+    padding: 38px 0 26px;
+  }
+
+  /* Contêiner: conteiner hero doador */
+  .conteiner-hero-doador {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+    padding: 0 18px;
+  }
+
+  /* Estilo do bloco "subtitulo hero" */
+  .subtitulo-hero {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Linha: linha beneficios */
+  .linha-beneficios {
+    justify-content: center;
+    align-items: flex-start; 
+  }
+
+  /* Chip: chip beneficio */
+  .chip-beneficio {
+    min-width: 0;
+    flex: 1 1 240px;
+    align-self: flex-start;
+  }
+
+  /* Linha: linha botoes hero */
+  .linha-botoes-hero {
+    justify-content: center;
+  }
+
+  /* Estilo do bloco "moldura hero" */
+  .moldura-hero {
+    min-height: 280px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .secao-caminhos-doador,
+  .secao-passo-perfil,
+  .secao-o-que-doar,
+  .secao-planos-doacao,
+  .secao-transparencia-doacao,
+  .secao-duvidas-doadores,
+
+  /* Seção: secao cta final */
+  .secao-cta-final {
+    padding: 44px 0 50px;
+  }
+
+  .conteiner-caminhos,
+  .conteiner-passo-perfil,
+  .conteiner-o-que-doar,
+  .conteiner-planos-doacao,
+  .conteiner-transparencia-doacao,
+  .conteiner-duvidas-doadores,
+
+  /* Contêiner: conteiner cta final */
+  .conteiner-cta-final {
+    padding: 0 18px;
+  }
+
+  .grade-caminhos,
+  .grade-tipos-doacao,
+  .grade-planos-doacao,
+  .grade-transparencia,
+
+  /* Grade: grade duvidas */
+  .grade-duvidas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ajustes para celulares (telas até 600px) */
+@media (max-width: 600px) {
+
+  /* Comportamento de rolagem suave ao clicar em âncoras, com espaço para o menu não cobrir o destino */
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  /* Seção: secao hero doador */
+  .secao-hero-doador {
+    padding: 32px 0 22px;
+  }
+
+  .conteiner-hero-doador,
+  .conteiner-caminhos,
+  .conteiner-passo-perfil,
+  .conteiner-o-que-doar,
+  .conteiner-planos-doacao,
+  .conteiner-transparencia-doacao,
+  .conteiner-duvidas-doadores,
+
+  /* Contêiner: conteiner cta final */
+  .conteiner-cta-final {
+    padding: 0 16px;
+  }
+
+  /* Título: titulo hero */
+  .titulo-hero {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  /* Estilo do bloco "subtitulo hero" */
+  .subtitulo-hero {
+    font-size: 14px;
+  }
+
+  /* Linha: linha beneficios */
+  .linha-beneficios {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  /* Chip: chip beneficio */
+  .chip-beneficio {
+    width: 100%;
+    min-width: 0;
+    align-self: auto;
+  }
+
+  /* Linha: linha botoes hero */
+  .linha-botoes-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .botao-primario,
+
+  /* Botão: botao secundario */
+  .botao-secundario {
+    width: 100%;
+    padding: 12px 18px;
+  }
+
+  /* Estilo do bloco "moldura hero" */
+  .moldura-hero {
+    min-height: 240px;
+  }
+
+  /* Estilo do bloco "faixa hero" */
+  .faixa-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .secao-caminhos-doador,
+  .secao-passo-perfil,
+  .secao-o-que-doar,
+  .secao-planos-doacao,
+  .secao-transparencia-doacao,
+  .secao-duvidas-doadores,
+
+  /* Seção: secao cta final */
+  .secao-cta-final {
+    padding: 38px 0 44px;
+  }
+
+  /* Título azul escuro e em negrito de uma seção da página */
+  .titulo-secao {
+    font-size: 24px;
+  }
+
+  /* Seção: subtitulo secao */
+  .subtitulo-secao {
+    font-size: 14px;
+  }
+
+  .grade-caminhos,
+  .grade-tipos-doacao,
+  .grade-planos-doacao,
+  .grade-transparencia,
+
+  /* Grade: grade duvidas */
+  .grade-duvidas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .cartao-caminho,
+  .cartao-tipo-doacao,
+  .cartao-plano,
+  .cartao-transparencia,
+
+  /* Cartão: cartao duvida */
+  .cartao-duvida {
+    padding: 18px;
+  }
+
+  /* Estilo do bloco "abas perfis" */
+  .abas-perfis {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Painel: painel perfis */
+  .painel-perfis {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Painel: painel perfil */
+  .painel-perfil {
+    display: none;
+    max-width: 860px;
+  }
+
+  /* Painel: painel perfil.ativo */
+  .painel-perfil.ativo {
+    display: block;
+  }
+
+  /* Bloco: bloco painel */
+  .bloco-painel {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+  }
+
+  /* Lista: lista painel */
+  .lista-painel {
+    flex: none;
+  }
+
+  /* Estilo do bloco "aba perfil" */
+  .aba-perfil {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container principal de cada página — garante que o rodapé fique sempre no final */
+.pagina {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Seção: secao banner empresas */
+.secao-banner-empresas {
+  width: 100%;
+  margin: 0;
+  background-color: #f5f6fa;
+}
+
+/* Banner: fundo banner empresas */
+.fundo-banner-empresas {
+  width: 100%;
+  padding: 48px 0 40px;
+}
+
+/* Contêiner: conteiner banner empresas */
+.conteiner-banner-empresas {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Bloco: bloco texto banner empresas */
+.bloco-texto-banner-empresas {
+  flex: 1;
+}
+
+/* Título: titulo banner empresas */
+.titulo-banner-empresas {
+  font-size: 30px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 16px 0;
+}
+
+/* Banner: subtitulo banner empresas */
+.subtitulo-banner-empresas {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #00123b;
+  margin: 0 0 24px 0;
+}
+
+/* Banner: grupo botoes banner empresas */
+.grupo-botoes-banner-empresas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Botão: botao banner empresas */
+.botao-banner-empresas {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Botão: botao banner primario empresas */
+.botao-banner-primario-empresas {
+  background-color: #2e8b57;
+  color: #ffffff;
+  border: none;
+}
+
+/* Botão: botao banner primario empresas */
+.botao-banner-primario-empresas:hover {
+  opacity: 0.95;
+}
+
+/* Botão: botao banner secundario empresas */
+.botao-banner-secundario-empresas {
+  background-color: transparent;
+  color: #00123b;
+  border: 2px solid #00123b;
+}
+
+/* Botão: botao banner secundario empresas */
+.botao-banner-secundario-empresas:hover {
+  background-color: #00123b;
+  color: #ffffff;
+}
+
+/* Bloco: bloco imagem banner empresas */
+.bloco-imagem-banner-empresas {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Imagem: imagem banner empresas */
+.imagem-banner-empresas {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Título: titulo secao empresas */
+.titulo-secao-empresas {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 20px 0;
+}
+
+/* Seção: secao motivos empresas */
+.secao-motivos-empresas {
+  background-color: #ffffff;
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner motivos empresas */
+.conteiner-motivos-empresas {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade motivos empresas */
+.grade-motivos-empresas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Cartão: cartao motivo empresa */
+.cartao-motivo-empresa {
+  background-color: #f5f6fa;
+  border-radius: 24px;
+  padding: 20px 20px 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* Título: titulo cartao empresa */
+.titulo-cartao-empresa {
+  font-size: 15px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 8px 0;
+}
+
+/* Texto: texto cartao empresa */
+.texto-cartao-empresa {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #00123b;
+  margin: 0;
+}
+
+/* Seção: secao como funciona empresas */
+.secao-como-funciona-empresas {
+  background-color: #f5f6fa;
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner como funciona empresas */
+.conteiner-como-funciona-empresas {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade passos empresas */
+.grade-passos-empresas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Cartão: cartao passo empresa */
+.cartao-passo-empresa {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 20px 20px 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Etapa de progresso: etapa passo empresa */
+.etapa-passo-empresa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ff7a00;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Título: titulo passo empresa */
+.titulo-passo-empresa {
+  font-size: 15px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 8px 0;
+}
+
+/* Texto: texto passo empresa */
+.texto-passo-empresa {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #00123b;
+  margin: 0;
+}
+
+/* Seção: secao beneficios empresas */
+.secao-beneficios-empresas {
+  background-color: #ffffff;
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner beneficios empresas */
+.conteiner-beneficios-empresas {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Grade: grade beneficios empresas */
+.grade-beneficios-empresas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Cartão: cartao beneficio empresa */
+.cartao-beneficio-empresa {
+  background-color: #f5f6fa;
+  border-radius: 24px;
+  padding: 20px 20px 18px;
+}
+
+/* Título: titulo beneficio empresa */
+.titulo-beneficio-empresa {
+  font-size: 15px;
+  font-weight: 700;
+  color: #00123b;
+  margin: 0 0 8px 0;
+}
+
+/* Texto: texto beneficio empresa */
+.texto-beneficio-empresa {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #00123b;
+  margin: 0;
+}
+
+/* Seção: secao contato empresas */
+.secao-contato-empresas {
+  background-color: #f5f6fa;
+  padding: 48px 0 64px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner: conteiner contato empresas */
+.conteiner-contato-empresas {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Texto: texto contato empresas */
+.texto-contato-empresas {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #00123b;
+  margin: 0 0 12px 0;
+}
+
+/* Área: area botoes contato empresas */
+.area-botoes-contato-empresas {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Botão: botao contato empresas */
+.botao-contato-empresas {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Botão: botao contato principal */
+.botao-contato-principal {
+  background-color: #00123b;
+  color: #ffffff;
+  border: none;
+}
+
+/* Botão: botao contato principal */
+.botao-contato-principal:hover {
+  opacity: 0.95;
+}
+
+/* Botão: botao contato secundario */
+.botao-contato-secundario {
+  background-color: transparent;
+  color: #00123b;
+  border: 2px solid #00123b;
+}
+
+/* Botão: botao contato secundario */
+.botao-contato-secundario:hover {
+  background-color: #00123b;
+  color: #ffffff;
+}
+
+.cartao-motivo-empresa,
+.cartao-passo-empresa,
+
+/* Cartão: cartao beneficio empresa */
+.cartao-beneficio-empresa {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cartao-motivo-empresa.visivel,
+.cartao-passo-empresa.visivel,
+
+/* Cartão: cartao beneficio empresa.visivel */
+.cartao-beneficio-empresa.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cartao-motivo-empresa:hover,
+.cartao-passo-empresa:hover,
+
+/* Cartão: cartao beneficio empresa */
+.cartao-beneficio-empresa:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+:root {
+  --cor-azul-marinho: #00123b;
+  --cor-branco: #ffffff;
+  --cor-cinza-claro: #f5f6fa;
+  --cor-cinza-escuro: #9aa4b2;
+  --cor-laranja: #ff7a00;
+  --cor-verde: #2e8b57;
+  --cor-amarelo: #ffd54f;
+  --sombra-suave: 0 14px 30px rgba(0, 18, 59, 0.08);
+  --raio-borda-grande: 18px;
+}
+
+/* Estilo do bloco "body.pagina contato" */
+body.pagina-contato {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--cor-cinza-claro);
+  color: var(--cor-azul-marinho);
+}
+
+/* Estilo do bloco "pagina contato wrapper" */
+.pagina-contato-wrapper {
+  min-height: 100vh;
+  background-color: var(--cor-cinza-claro);
+}
+
+/* Estilo do bloco "conteudo contato" */
+.conteudo-contato {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 110px 20px 60px;
+}
+
+/* Estilo do bloco "pagina contato section" */
+.pagina-contato section {
+  margin: 0;
+}
+
+/* Seção: secao cabecalho contato */
+.secao-cabecalho-contato {
+  margin-bottom: 24px;
+}
+
+/* Estilo do bloco "etiqueta pagina" */
+.etiqueta-pagina {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-azul-marinho);
+  background: rgba(255, 212, 79, 0.35);
+}
+
+/* Estilo do bloco "etiqueta pagina" */
+.etiqueta-pagina::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cor-laranja);
+}
+
+/* Título: titulo contato */
+.titulo-contato {
+  font-size: clamp(1.9rem, 2.4vw, 2.5rem);
+  margin: 8px 0 6px;
+  color: var(--cor-azul-marinho);
+}
+
+/* Estilo do bloco "descricao contato" */
+.descricao-contato {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--cor-cinza-escuro);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Seção: secao layout contato */
+.secao-layout-contato {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: flex-start;
+}
+
+/* Estilo do bloco "coluna esquerda contato" */
+.coluna-esquerda-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Bloco: bloco perfis contato */
+.bloco-perfis-contato {
+  background: transparent;
+}
+
+/* Lista: lista perfis contato */
+.lista-perfis-contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+/* Botão: botao perfil */
+.botao-perfil {
+  border-radius: 999px;
+  border: 1px solid rgba(0, 18, 59, 0.15);
+  padding: 7px 18px;
+  font-size: 0.85rem;
+  background-color: var(--cor-branco);
+  color: var(--cor-azul-marinho);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.08s ease;
+}
+
+/* Botão: botao perfil */
+.botao-perfil:hover {
+  box-shadow: 0 4px 12px rgba(0, 18, 59, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Botão: botao perfil ativo */
+.botao-perfil-ativo {
+  background: linear-gradient(135deg, var(--cor-verde), var(--cor-azul-marinho));
+  color: var(--cor-branco);
+  border-color: transparent;
+}
+
+/* Texto: texto perfil selecionado */
+.texto-perfil-selecionado {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--cor-cinza-escuro);
+}
+
+/* Texto: texto perfil selecionado span */
+.texto-perfil-selecionado span {
+  font-weight: 600;
+  color: var(--cor-azul-marinho);
+}
+
+/* Estilo do bloco "formulario contato" */
+.formulario-contato {
+  background-color: var(--cor-branco);
+  border-radius: 24px;
+  padding: 22px 20px 24px;
+  box-shadow: var(--sombra-suave);
+  border: 1px solid rgba(0, 18, 59, 0.04);
+}
+
+/* Estilo do bloco "grupo campo" */
+.grupo-campo {
+  margin-bottom: 14px;
+}
+
+/* Estilo do bloco "campos lado a lado" */
+.campos-lado-a-lado {
+  display: flex;
+  gap: 12px;
+}
+
+/* Estilo do bloco "campo metade" */
+.campo-metade {
+  flex: 1;
+}
+
+/* Estilo do bloco "rotulo campo" */
+.rotulo-campo {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cor-azul-marinho);
+}
+
+/* Estilo do bloco "campo contato" */
+.campo-contato {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 18, 59, 0.18);
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--cor-azul-marinho);
+  background-color: var(--cor-branco);
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+/* Estilo do bloco "campo contato" */
+.campo-contato::placeholder {
+  color: rgba(154, 164, 178, 0.8);
+}
+
+/* Estilo do bloco "campo contato" */
+.campo-contato:focus {
+  border-color: var(--cor-verde);
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.18);
+  background-color: #fbfffd;
+}
+
+/* Estilo do bloco "campo textarea" */
+.campo-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Estilo do bloco "grupo checkbox" */
+.grupo-checkbox {
+  margin-top: 6px;
+}
+
+/* Estilo do bloco "rotulo checkbox" */
+.rotulo-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--cor-cinza-escuro);
+  cursor: pointer;
+}
+
+/* Estilo do bloco "rotulo checkbox input[type="checkbox"]" */
+.rotulo-checkbox input[type="checkbox"] {
+  margin-top: 2px;
+}
+
+/* Estilo do bloco "mensagem erro formulario" */
+.mensagem-erro-formulario {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  color: #c62828;
+  min-height: 16px;
+}
+
+/* Estilo do bloco "mensagem sucesso formulario" */
+.mensagem-sucesso-formulario {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  color: var(--cor-verde);
+  min-height: 16px;
+}
+
+/* Botão: botao enviar contato */
+.botao-enviar-contato {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--cor-laranja), var(--cor-amarelo));
+  color: var(--cor-azul-marinho);
+  box-shadow: 0 10px 25px rgba(255, 122, 0, 0.35);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+/* Botão: botao enviar contato */
+.botao-enviar-contato:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 35px rgba(255, 122, 0, 0.4);
+  opacity: 0.95;
+}
+
+/* Botão: botao enviar contato */
+.botao-enviar-contato:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(255, 122, 0, 0.35);
+}
+
+/* Texto: texto legenda formulario */
+.texto-legenda-formulario {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--cor-cinza-escuro);
+}
+
+/* Estilo do bloco "coluna direita contato" */
+.coluna-direita-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cartão: cartao contato */
+.cartao-contato {
+  background-color: var(--cor-branco);
+  border-radius: var(--raio-borda-grande);
+  padding: 16px 16px 18px;
+  box-shadow: 0 14px 30px rgba(0, 18, 59, 0.06);
+  border: 1px solid rgba(0, 18, 59, 0.05);
+}
+
+/* Cartão: cartao contato secundario */
+.cartao-contato-secundario {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 18, 59, 0.02),
+    rgba(46, 139, 87, 0.04)
+  );
+}
+
+/* Cartão: cartao contato destaque */
+.cartao-contato-destaque {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 18, 59, 0.02),
+    rgba(255, 212, 79, 0.2)
+  );
+}
+
+/* Título: titulo cartao contato */
+.titulo-cartao-contato {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  color: var(--cor-azul-marinho);
+}
+
+/* Texto: texto cartao contato */
+.texto-cartao-contato {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--cor-cinza-escuro);
+  line-height: 1.5;
+}
+
+/* Lista: lista dados contato */
+.lista-dados-contato {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0 0;
+  font-size: 0.86rem;
+}
+
+/* Lista: lista dados contato li + li */
+.lista-dados-contato li + li {
+  margin-top: 4px;
+}
+
+/* Link: link faq contato */
+.link-faq-contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cor-verde);
+}
+
+/* Link: link faq contato */
+.link-faq-contato::after {
+  content: "â†—";
+  font-size: 0.85rem;
+}
+
+:root {
+  --azul: #00123b;
+  --verde: #2e8b57;
+  --verde-hover: #277649;
+  --cinza-fundo: #f5f6fa;
+  --cinza-borda: #d6d8e0;
+  --cinza-texto: #6b7280;
+  --branco: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Espaçamento no topo da página para o conteúdo não ficar escondido atrás do menu fixo */
+body {
+
+    margin: 0;
+    padding-top: var(--altura-cabecalho);
+
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  background: var(--cinza-fundo);
+  color: var(--azul);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Estilo do bloco "corpo login" */
+.corpo-login {
+  margin: 0;
+  padding-top: 0 !important;
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  background: var(--cinza-fundo);
+  color: var(--azul);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Estilo do bloco "pagina login" */
+.pagina-login {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* Painel: painel esquerdo */
+.painel-esquerdo {
+  flex: 0 0 42%;
+  background: var(--azul);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Painel: painel esquerdo */
+.painel-esquerdo::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* Painel: painel esquerdo */
+.painel-esquerdo::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  bottom: -70px;
+  left: -70px;
+  pointer-events: none;
+}
+
+/* Estilo do bloco "conteudo esquerdo" */
+.conteudo-esquerdo {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--branco);
+  max-width: 340px;
+}
+
+/* Logo: logo login */
+.logo-login {
+  height: clamp(80px, 16vh, 180px);
+  object-fit: contain;
+  margin-bottom: clamp(16px, 2.5vh, 32px);
+  filter: brightness(0) invert(1);
+}
+
+/* Estilo do bloco "divisor login" */
+.divisor-login {
+  width: 44px;
+  height: 3px;
+  background: var(--verde);
+  border-radius: 2px;
+  margin: 0 auto 24px;
+}
+
+/* Estilo do bloco "slogan login" */
+.slogan-login {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 16px;
+}
+
+/* Estilo do bloco "descricao login" */
+.descricao-login {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+}
+
+/* Painel: painel direito */
+.painel-direito {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+/* Estilo do bloco "caixa login" */
+.caixa-login {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+/* Título: titulo form */
+.titulo-form {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 6px;
+}
+
+/* Campo de formulário: subtitulo form */
+.subtitulo-form {
+  font-size: 13.5px;
+  color: var(--cinza-texto);
+  margin-bottom: 18px;
+}
+
+/* Grade: grade perfis */
+.grade-perfis {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+/* Cartão: cartao perfil */
+.cartao-perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--branco);
+  border: 1.5px solid var(--cinza-borda);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--azul);
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  text-align: left;
+}
+
+/* Cartão: cartao perfil */
+.cartao-perfil:hover {
+  border-color: var(--azul);
+  box-shadow: 0 4px 14px rgba(0, 18, 59, 0.09);
+}
+
+/* Cartão: cartao perfil.ativo */
+.cartao-perfil.ativo {
+  border-color: var(--verde);
+  background: #f0faf5;
+  color: #1a6640;
+  box-shadow: 0 4px 14px rgba(46, 139, 87, 0.12);
+}
+
+/* Ícone: icone perfil */
+.icone-perfil {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Estilo do bloco "mensagem erro" */
+.mensagem-erro {
+  background: #fff3f3;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+/* Estilo do bloco "campo login" */
+.campo-login {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+/* Estilo do bloco "rotulo campo" */
+.rotulo-campo {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Estilo do bloco "entrada formulario" */
+.entrada-formulario {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--cinza-borda);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--azul);
+  background: var(--branco);
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Estilo do bloco "entrada formulario" */
+.entrada-formulario:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 18, 59, 0.07);
+}
+
+/* Estilo do bloco "entrada formulario" */
+.entrada-formulario::placeholder {
+  color: #9ca3af;
+}
+
+/* Estilo do bloco "entrada formulario.campo invalido" */
+.entrada-formulario.campo-invalido {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Botão: botao submit */
+.botao-submit {
+  width: 100%;
+  padding: 13px;
+  background: var(--verde);
+  color: var(--branco);
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+
+/* Botão: botao submit */
+.botao-submit:hover {
+  background: var(--verde-hover);
+  transform: translateY(-1px);
+}
+
+/* Botão: botao submit */
+.botao-submit:active {
+  transform: translateY(0);
+}
+
+/* Estilo do bloco "criar conta cta" */
+.criar-conta-cta {
+  margin-top: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Estilo do bloco "criar conta cta p" */
+.criar-conta-cta p {
+  font-size: 13.5px;
+  color: var(--cinza-texto);
+}
+
+/* Botão: botao criar conta */
+.botao-criar-conta {
+  display: inline-block;
+  padding: 11px 28px;
+  border: 1.5px solid var(--azul);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+/* Botão: botao criar conta */
+.botao-criar-conta:hover {
+  background: var(--azul);
+  color: var(--branco);
+}
+
+/* Estilo do bloco "formulario wrapper.visivel + .criar conta cta" */
+.formulario-wrapper.visivel + .criar-conta-cta {
+  display: none;
+}
+
+/* Estilo do bloco "formulario wrapper" */
+.formulario-wrapper {
+  display: none;
+  flex-direction: column;
+}
+
+/* Estilo do bloco "formulario wrapper.visivel" */
+.formulario-wrapper.visivel {
+  display: flex;
+  animation: surgir 0.3s ease;
+}
+
+/* Animação "surgir" */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo do bloco "links login" */
+.links-login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+/* Link: link form */
+.link-form {
+  font-size: 13px;
+  color: var(--azul);
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+}
+
+/* Link: link form */
+.link-form:hover {
+  opacity: 1;
+}
+
+/* Ajustes para tablets (telas até 820px) */
+@media (max-width: 820px) {
+
+  /* Estilo do bloco "pagina login" */
+  .pagina-login {
+    flex-direction: column;
+  }
+
+  /* Painel: painel esquerdo */
+  .painel-esquerdo {
+    flex: none;
+    padding: 36px 24px 32px;
+    min-height: auto;
+  }
+
+  /* Estilo do bloco "slogan login" */
+  .slogan-login {
+    font-size: 18px;
+  }
+
+  /* Estilo do bloco "descricao login" */
+  .descricao-login {
+    display: none;
+  }
+
+  /* Painel: painel direito */
+  .painel-direito {
+    padding: 36px 24px 48px;
+  }
+}
+
+/* Ajustes para celulares pequenos (telas até 400px) */
+@media (max-width: 400px) {
+
+  /* Grade: grade perfis */
+  .grade-perfis {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root {
+  --azul-escuro: #00123b;
+  --verde: #2e8b57;
+  --verde-hover: #277649;
+  --cinza-fundo: #f5f6fa;
+  --cinza-borda: #d6d8e0;
+  --cinza-texto: #5b5f6b;
+  --branco: #ffffff;
+}
+
+/* Estilo do bloco "pagina cadastro beneficiario" */
+.pagina-cadastro-beneficiario {
+  min-height: calc(100vh - 100px);
+  padding: 40px 16px 60px;
+  background-color: var(--cinza-fundo);
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Estilo do bloco "pagina cadastro beneficiario *" */
+.pagina-cadastro-beneficiario * {
+  box-sizing: border-box;
+}
+
+/* Seção: secao cadastro beneficiario */
+.secao-cadastro-beneficiario {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--branco);
+  padding: 32px 28px 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Cabeçalho: cabecalho cadastro */
+.cabecalho-cadastro {
+  margin-bottom: 24px;
+}
+
+/* Título: titulo cadastro */
+.titulo-cadastro {
+  font-size: 26px;
+  color: var(--azul-escuro);
+  margin: 0 0 6px;
+}
+
+/* Texto: texto cadastro */
+.texto-cadastro {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  margin: 0;
+}
+
+/* Estilo do bloco "formulario cadastro beneficiario" */
+.formulario-cadastro-beneficiario {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Bloco: bloco formulario */
+.bloco-formulario {
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--cinza-borda);
+  background-color: #ffffff;
+}
+
+/* Bloco: subtitulo bloco */
+.subtitulo-bloco {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--azul-escuro);
+  margin: 0 0 14px;
+}
+
+/* Linha: linha campos */
+.linha-campos {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Estilo do bloco "campo formulario" */
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Estilo do bloco "campo maior" */
+.campo-maior {
+  flex: 2;
+}
+
+/* Estilo do bloco "campo menor" */
+.campo-menor {
+  flex: 0.8;
+}
+
+/* Estilo do bloco "rotulo campo" */
+.rotulo-campo {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--azul-escuro);
+}
+
+/* Estilo do bloco "entrada campo" */
+.entrada-campo {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--cinza-borda);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: var(--azul-escuro);
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Estilo do bloco "entrada campo" */
+.entrada-campo:focus {
+  border-color: var(--azul-escuro);
+  box-shadow: 0 0 0 2px rgba(0, 18, 59, 0.12);
+}
+
+/* Estilo do bloco "entrada textarea" */
+.entrada-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Rodapé: rodape formulario */
+.rodape-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* Botão: botao principal cadastro */
+.botao-principal-cadastro {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  background-color: var(--verde);
+  color: var(--branco);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.1s ease;
+}
+
+/* Botão: botao principal cadastro */
+.botao-principal-cadastro:hover {
+  background-color: var(--verde-hover);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Botão: botao principal cadastro */
+.botao-principal-cadastro:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Botão: botao secundario cadastro */
+.botao-secundario-cadastro {
+  border-radius: 999px;
+  padding: 9px 18px;
+  border: 1px solid var(--azul-escuro);
+  background-color: transparent;
+  color: var(--azul-escuro);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+/* Botão: botao secundario cadastro */
+.botao-secundario-cadastro:hover {
+  background-color: var(--azul-escuro);
+  color: var(--branco);
+}
+
+/* Estilo do bloco "pagina cadastro beneficiario .mensagem erro campo" */
+.pagina-cadastro-beneficiario .mensagem-erro-campo {
+  font-size: 12px;
+  color: #c62828;
+  margin-top: 2px;
+}
+
+/* Estilo do bloco "pagina cadastro beneficiario .campo invalido" */
+.pagina-cadastro-beneficiario .campo-invalido {
+  border-color: #c62828;
+}
+
+/* Estilo do bloco "pagina cadastro beneficiario .campo invalido" */
+.pagina-cadastro-beneficiario .campo-invalido:focus {
+  box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.2);
+}
+
+/* Fundo de sobreposição: overlay confirmacao */
+.overlay-confirmacao {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* Fundo de sobreposição: overlay confirmacao.ativo */
+.overlay-confirmacao.ativo {
+  display: flex;
+}
+
+/* Popup: popup confirmacao */
+.popup-confirmacao {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 26px;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título: titulo confirmacao */
+.titulo-confirmacao {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00123B;
+  margin: 0 0 10px 0;
+}
+
+/* Texto: texto confirmacao */
+.texto-confirmacao {
+  font-size: 14px;
+  color: #4A5670;
+  margin: 0 0 18px 0;
+}
+
+/* Botão: botao confirmacao */
+.botao-confirmacao {
+  border: none;
+  background: #00123B;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Fundo de sobreposição: overlay confirmacao */
+.overlay-confirmacao {
+  display: none;
+}
+
+/* Fundo de sobreposição: overlay confirmacao.ativo */
+.overlay-confirmacao.ativo {
+  display: flex;
+}
+
